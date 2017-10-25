@@ -1,0 +1,42 @@
+{
+  "name": "candyland-app",
+  "version": "0.0.0",
+  "description": "⚡️ Backend & frontend designing for the Candyland app",
+  "author": "Candyland team",
+  "license": "MIT",
+  "homepage": "https://github.com/klauscfhq/candyland-app#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klauscfhq/candyland-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/klauscfhq/candyland-app/issues"
+  },
+  "scripts": {
+    "test": "npm run test:js && npm run test:html && npm run test:scss",
+    "test:js": "xo",
+    "test:html": "htmlhint",
+    "test:scss": "sass-lint app/scss/**/*.scss -v -q",
+    "start": "gulp start",
+    "dist": "gulp build",
+    "clean": "gulp clean"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.11",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-useref": "^3.1.2",
+    "run-sequence": "^2.2.0",
+    "sass-lint": "^1.12.1",
+    "xo": "^0.19.0",
+    "materialize-css": "^0.100.2"
+  },
+  "dependencies": {
+    "gulp-cssnano": "^2.1.2",
+    "gulp-if": "^2.0.2",
+    "htmlhint": "^0.9.13",
+    "raleway-webfont": "^3.0.1"
+  }
+}
