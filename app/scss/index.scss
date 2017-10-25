@@ -1,0 +1,50 @@
+@charset 'UTF-8';
+
+// Colors
+@import '../assets/components/color';
+
+// Variables;
+@import '../assets/components/variables';
+
+// Reset
+@import '../assets/components/normalize';
+
+// Components
+@import '../assets/components/global';
+@import '../assets/components/badges';
+@import '../assets/components/icons-material-design';
+@import '../assets/components/grid';
+@import '../assets/components/navbar';
+@import '../assets/components/roboto';
+@import '../assets/components/typography';
+@import '../assets/components/transitions';
+@import '../assets/components/cards';
+@import '../assets/components/toast';
+@import '../assets/components/tabs';
+@import '../assets/components/tooltip';
+@import '../assets/components/buttons';
+@import '../assets/components/dropdown';
+@import '../assets/components/waves';
+@import '../assets/components/modal';
+@import '../assets/components/collapsible';
+@import '../assets/components/chips';
+@import '../assets/components/materialbox';
+@import '../assets/components/forms/forms';
+@import '../assets/components/table_of_contents';
+@import '../assets/components/sideNav';
+@import '../assets/components/preloader';
+@import '../assets/components/slider';
+@import '../assets/components/carousel';
+@import '../assets/components/tapTarget';
+@import '../assets/components/pulse';
+@import '../assets/components/date_picker/default';
+@import '../assets/components/date_picker/default.date';
+@import '../assets/components/date_picker/default.time';
+
+.icon-block {
+  padding: 0 15px;
+
+  .material-icons {
+    font-size: inherit;
+  }
+}
