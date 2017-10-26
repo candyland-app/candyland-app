@@ -25,13 +25,14 @@
     "browser-sync": "^2.18.11",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-changed": "^3.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
     "gulp-useref": "^3.1.2",
+    "materialize-css": "^0.100.2",
     "run-sequence": "^2.2.0",
     "sass-lint": "^1.12.1",
-    "xo": "^0.19.0",
-    "materialize-css": "^0.100.2"
+    "xo": "^0.19.0"
   },
   "dependencies": {
     "gulp-cssnano": "^2.1.2",

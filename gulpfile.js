@@ -5,6 +5,7 @@ const gulpIf = require('gulp-if');
 const sass = require('gulp-sass');
 const useref = require('gulp-useref');
 const uglify = require('gulp-uglify');
+const changed = require('gulp-changed');
 const cssnano = require('gulp-cssnano');
 const runSequence = require('run-sequence');
 const browserSync = require('browser-sync');
@@ -21,6 +22,7 @@ gulp.task('browserSync', () => {
 gulp.task('sass', () => {
 	// Compile SASS to CSS
 	return gulp.src('app/scss/**/*.scss')
+	.pipe(changed('app/css', {extension: '.css'}))
 	.pipe(sass().on('error', sass.logError))
 	.pipe(gulp.dest('app/css'))
 	.pipe(browserSync.reload({
@@ -48,18 +50,21 @@ gulp.task('fonts', () => {
 	// Get Roboto
 	return gulp.src('node_modules/materialize-css/dist/fonts/roboto/**/*')
 	.pipe(gulp.dest('app/fonts/roboto'))
+	.pipe(changed('dist/fonts/roboio'))
 	.pipe(gulp.dest('dist/fonts/roboto'));
 });
 
 gulp.task('js-assets', () => {
 	// Get materialize js assets
 	return gulp.src('node_modules/materialize-css/dist/js/**/*.js')
+	.pipe(changed('app/assets/js'))
 	.pipe(gulp.dest('app/assets/js'));
 });
 
 gulp.task('sass-assets', () => {
 	// Get materialize sass modules
 	return gulp.src('node_modules/materialize-css/sass/components/**/*.scss')
+	.pipe(changed('app/assets/components'))
 	.pipe(gulp.dest('app/assets/components'));
 });
 
