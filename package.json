@@ -19,6 +19,7 @@
     "test:scss": "sass-lint app/scss/**/*.scss -v -q",
     "start": "gulp start",
     "dist": "gulp build",
+    "pack": "cd dist && zip -ryq9 candyland-webapp-${npm_package_version}.zip *",
     "clean": "gulp clean"
   },
   "devDependencies": {
