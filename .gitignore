@@ -17,3 +17,6 @@ dist
 app/css
 app/fonts
 app/assets
+
+# maven output
+api/target/
