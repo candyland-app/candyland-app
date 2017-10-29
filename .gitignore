@@ -20,3 +20,8 @@ app/assets
 
 # maven output
 api/target/
+
+# eclipse
+api/.classpath
+api/.project
+api/.settings/
