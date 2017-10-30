@@ -10,9 +10,7 @@
 
 ## Related
 
-- [Frontend](https://github.com/klauscfhq/candyland-frontend)
 - [Docs](https://github.com/klauscfhq/candyland-docs)
-- [Backend](https://github.com/klauscfhq/candyland-backend)
 
 ## Contents
 
@@ -36,6 +34,7 @@ Built with [Materialize](http://materializecss.com/).
 - Once done editing your changes check for errors `npm test`
 - Run the development server `npm start`
 - Build Candyland `npm run dist`
+- Cleanup assets & compiled files `npm run clean`
 
 ## Team
 

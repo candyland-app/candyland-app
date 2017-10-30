@@ -11,17 +11,16 @@ node_modules
 .idea
 *.swp
 *.swo
+## eclipse
+api/.classpath
+api/.project
+api/.settings/
 
 # compiled
+## npm
 dist
 app/css
 app/fonts
 app/assets
-
-# maven output
+## mvn
 api/target/
-
-# eclipse
-api/.classpath
-api/.project
-api/.settings/
