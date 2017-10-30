@@ -26,10 +26,10 @@ script:
   - npm run dist
   - npm run pack
   - cd api
-  - mvn checkstyle:check
-  - mvn compile
-  - mvn test-compile
-  - mvn install
+  - mvn -B checkstyle:check
+  - mvn -B compile
+  - mvn -B test-compile
+  - mvn -B install
 
 deploy:
   provider: releases
