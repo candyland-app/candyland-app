@@ -26,6 +26,7 @@ script:
   - npm run dist
   - npm run pack
   - cd api
+  - mvn checkstyle:check
   - mvn compile
   - mvn test-compile
   - mvn install
