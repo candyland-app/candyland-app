@@ -1,18 +1,33 @@
 package com.candyland.entities;
 
 import com.candyland.interfaces.Person;
-import com.candyland.interfaces.User;
+import com.candyland.money.Wallet;
 
 /**
  * Parent user entity.
  *
  */
 
-public class Parent implements User, Person {
+public class Parent extends RegisteredUser implements Person {
 
     private String firstName;
     private String lastName;
     private String username;
+
+    /**
+     * Constructor.
+     * 
+     * @param firstName
+     * @param lastName
+     * @param username
+     */
+    public Parent(String firstName, String lastName, String username) {
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        // Upon registration the wallet is always empty
+        setWallet(new Wallet());
+    }
 
     public String getFirstName() {
         return this.firstName;

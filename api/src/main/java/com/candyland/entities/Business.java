@@ -1,13 +1,11 @@
 package com.candyland.entities;
 
-import com.candyland.interfaces.User;
-
 /**
  * Business user entity.
  *
  */
 
-public class Business implements User {
+public class Business extends RegisteredUser {
 
     private String username;
 
