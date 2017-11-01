@@ -5,7 +5,7 @@ package com.candyland.interfaces;
  *
  */
 
-public interface Admin extends User, Person {
+public interface Administrator extends User, Person {
 
     // empty
 

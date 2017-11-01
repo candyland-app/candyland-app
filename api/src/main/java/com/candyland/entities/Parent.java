@@ -18,8 +18,11 @@ public class Parent extends RegisteredUser implements Person {
      * Constructor.
      * 
      * @param firstName
+     *            First name
      * @param lastName
+     *            Last Name
      * @param username
+     *            Username
      */
     public Parent(String firstName, String lastName, String username) {
         this.username = username;

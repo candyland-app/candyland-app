@@ -20,6 +20,10 @@ public class Card {
         setCardNo(null);
     }
 
+    public Card(CardType type) {
+        setCardNo(null);
+    }
+
     /**
      * Checks if the card number is valid.
      * 

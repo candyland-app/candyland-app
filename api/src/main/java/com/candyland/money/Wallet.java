@@ -8,10 +8,10 @@ import java.util.List;
  *
  */
 public class Wallet {
-    
-    private Integer points;
+
+    private Long points;
     private List<Card> linkedCards;
-    
+
     public Wallet() {
         setPoints(0);
         setLinkedCards(null);
@@ -25,12 +25,12 @@ public class Wallet {
         this.linkedCards = linkedCards;
     }
 
-    public Integer getPoints() {
+    public Long getPoints() {
         return points;
     }
 
-    public void setPoints(Integer points) {
-        this.points = points;
+    public void setPoints(long l) {
+        this.points = l;
     }
-    
+
 }
