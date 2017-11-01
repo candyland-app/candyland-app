@@ -8,7 +8,7 @@ public enum CardType {
 
     CREDIT_CARD,
 
-    DEBITD_CARD,
+    DEBIT_CARD,
 
     PREPAID_CARD;
 
