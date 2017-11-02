@@ -21,6 +21,9 @@ install:
   - npm install
   - npm prune
 
+before_script:
+  - export MAVEN_OPTS=-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+
 script:
   - npm test
   - npm run dist
@@ -43,3 +46,4 @@ deploy:
 
 notifications:
   email: true
+
