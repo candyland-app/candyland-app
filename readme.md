@@ -41,12 +41,12 @@ Built with [Materialize](http://materializecss.com/).
 
 ## Team
 
-- Leonidas Avdelas ([@LoniasGR](https://github.com/LoniasGR)) `**AM: 3113182**`
-- George Baxopoulos ([@georgebax](https://github.com/georgebax)) `**AM: 3113021**`
-- Konstantinos Mitropoulos ([@tsikos7](https://github.com/tsikos7)) `**AM: 3113169**`
-- Philippos Orphanoudakis ([@PhilOrfan](https://github.com/PhilOrfan)) `**AM: 3113140**`
-- Klaus Sinani ([@klauscfhq](https://github.com/klauscfhq)) `**AM: 3113623**`
-- Christos Stilianidis ([@Jezulas](https://github.com/Jezulas)) `**AM: 3113130**`
+- Leonidas Avdelas ([@LoniasGR](https://github.com/LoniasGR)) **`AM: 3113182`**
+- George Baxopoulos ([@georgebax](https://github.com/georgebax)) **`AM: 3113021`**
+- Konstantinos Mitropoulos ([@tsikos7](https://github.com/tsikos7)) **`AM: 3113169`**
+- Philippos Orphanoudakis ([@PhilOrfan](https://github.com/PhilOrfan)) **`AM: 3113140`**
+- Klaus Sinani ([@klauscfhq](https://github.com/klauscfhq)) **`AM: 3113623`**
+- Christos Stilianidis ([@Jezulas](https://github.com/Jezulas)) **`AM: 3113130`**
 
 ## License
 
