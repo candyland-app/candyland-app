@@ -11,6 +11,7 @@
 ## Related
 
 - [Docs](https://github.com/klauscfhq/candyland-docs)
+- [Dependency](https://github.com/klauscfhq/candyland-dependency)
 
 ## Contents
 
