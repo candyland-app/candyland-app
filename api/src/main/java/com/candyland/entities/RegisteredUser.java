@@ -1,9 +1,9 @@
 package com.candyland.entities;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import com.candyland.enums.CardType;
-import com.candyland.interfaces.User;
 import com.candyland.money.Card;
 import com.candyland.money.Wallet;
 
@@ -11,14 +11,31 @@ import com.candyland.money.Wallet;
  * Registered user.
  *
  */
-public class RegisteredUser implements User {
-
-    private String username;
+public class RegisteredUser extends Person {
 
     private Wallet wallet;
 
+    private BufferedImage avatar; // TODO
+
     /**
-     * Adds an associated card to the user's wallet
+     * Superclass constructor.
+     */
+    public RegisteredUser() {
+        super();
+    }
+
+    /**
+     * Constructor with field.
+     * 
+     * @param wallet
+     */
+    public RegisteredUser(Wallet wallet) {
+        super();
+        this.wallet = wallet;
+    }
+
+    /**
+     * Adds an associated card to the user's wallet.
      * 
      * @param type
      *            The {@link CardType} of the card to be added
@@ -31,7 +48,6 @@ public class RegisteredUser implements User {
             wallet.getLinkedCards().add(card);
         } else {
             System.out.println("Not a valid card");
-            // TODO change, better design for the frontend
         }
     }
 
@@ -44,11 +60,19 @@ public class RegisteredUser implements User {
     }
 
     public String getUsername() {
-        return this.username;
+        return this.userName;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.userName = username;
+    }
+
+    public BufferedImage getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(BufferedImage avatar) {
+        this.avatar = avatar;
     }
 
 }

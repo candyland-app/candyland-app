@@ -1,59 +1,64 @@
 package com.candyland.entities;
 
-import com.candyland.interfaces.Person;
 import com.candyland.money.Wallet;
 
 /**
  * Parent user entity.
- *
  */
+public class Parent extends RegisteredUser {
 
-public class Parent extends RegisteredUser implements Person {
-
-    private String firstName;
-    private String lastName;
-    private String username;
+    private Integer purchases;
+    private Double points;
+    private Double pointsSinceLastBonus;
+    private Short locked;
 
     /**
-     * Constructor.
+     * Constructor with fields, empty wallet for new registration.
      * 
-     * @param firstName
-     *            First name
-     * @param lastName
-     *            Last Name
-     * @param username
-     *            Username
+     * @param purchases
+     * @param points
+     * @param pointsSinceLastBonus
+     * @param locked
      */
-    public Parent(String firstName, String lastName, String username) {
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        // Upon registration the wallet is always empty
+    public Parent(Integer purchases, Double points, Double pointsSinceLastBonus, Short locked) {
+        super(new Wallet());
+        this.purchases = purchases;
+        this.points = points;
+        this.pointsSinceLastBonus = pointsSinceLastBonus;
+        this.locked = locked;
         setWallet(new Wallet());
     }
 
-    public String getFirstName() {
-        return this.firstName;
+    public Integer getPurchases() {
+        return purchases;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setPurchases(Integer purchases) {
+        this.purchases = purchases;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public Double getPoints() {
+        return points;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPoints(Double points) {
+        this.points = points;
     }
 
-    public String getUsername() {
-        return username;
+    public Double getPointsSinceLastBonus() {
+        return pointsSinceLastBonus;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPointsSinceLastBonus(Double pointsSinceLastBonus) {
+        this.pointsSinceLastBonus = pointsSinceLastBonus;
+    }
+
+    public Short getLocked() {
+        return locked;
+    }
+
+    public void setLocked(Short locked) {
+        this.locked = locked;
     }
 
 }
