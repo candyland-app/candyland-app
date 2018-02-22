@@ -19,6 +19,13 @@ public class Provider extends RegisteredUser {
         return companyName;
     }
 
+    /**
+     * Default Constructor.
+     */
+    public Provider() {
+        super();
+    }
+
     public Provider(String companyName, String taxNumber, String bankAccountNo, String description, Short locked,
             Short confirmed) {
         super(new Wallet());

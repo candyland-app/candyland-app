@@ -13,6 +13,13 @@ public class Parent extends RegisteredUser {
     private Short locked;
 
     /**
+     * Default constructor.
+     */
+    public Parent() {
+        super();
+    }
+
+    /**
      * Constructor with fields, empty wallet for new registration.
      * 
      * @param purchases

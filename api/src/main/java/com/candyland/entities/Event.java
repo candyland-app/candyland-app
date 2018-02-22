@@ -1,13 +1,13 @@
 package com.candyland.entities;
 
+import java.util.Date;
+
 public class Event {
 
     private String name;
     private String address;
     private String postalCode;
-    private String startDate;
     private String startTime;
-    private String endDate;
     private String endTime;
     private String description;
     private String imagesPath;
@@ -18,6 +18,16 @@ public class Event {
     private Short category;
     private Short minAge;
     private Short maxAge;
+
+    private Date startDate;
+    private Date endDate;
+
+    /**
+     * Default constructor.
+     */
+    public Event() {
+        // empty
+    }
 
     public String getName() {
         return name;
@@ -43,11 +53,11 @@ public class Event {
         this.postalCode = postalCode;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
@@ -59,11 +69,11 @@ public class Event {
         this.startTime = startTime;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
