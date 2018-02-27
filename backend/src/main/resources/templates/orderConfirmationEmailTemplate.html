@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+
+		table,
+		th,
+		td {
+			border: 2px solid black;
+		}
+
+	</style>
+</head>
+
+<body>
+	<p>Dear
+		<span th:text="${user.firstName}"></span>,</p>
+	<br/>
+	<p>Thank you for booking through Candyland.</p>
+	<p>We hope you enjoyed our service.</p>
+	<p>Here is your Order Number:
+		<strong>
+			<span th:text="${order.id}"></span>
+		</strong>
+		<br/>Your Order Details:</p>
+	<h2>
+		<span th:text="${order.id}"></span>
+	</h2>
+	<hr/>
+
+	<table>
+		<tr>
+			<th>Billing Details.</th>
+			<th>Payment Information.</th>
+		</tr>
+		<tr>
+			<td>
+				<span th:text="${order.billingAddress.billingAddressName}"></span>
+				<br/>
+				<span th:text="${order.billingAddress.billingAddressPostalCode}"></span>
+				<br/>
+			</td>
+			<td>
+				<span th:text="${order.payment.holderName}">Card Holder</span>
+				<br/>
+				<span th:text="${order.payment.cardNumber}">Card Number</span>
+				<br/>
+				<span>Exp Date:</span>
+				<span th:text="${order.payment.expiryMonth}"></span>/
+				<span th:text="${order.payment.expiryYear}"></span>
+				<br/>
+			</td>
+		</tr>
+	</table>
+
+	<h3>
+		<strong>Order Summary</strong>
+	</h3>
+	<table>
+		<thead>
+			<tr>
+				<td>
+					<strong>Name</strong>
+				</td>
+				<td class="text-center">
+					<strong>Price</strong>
+				</td>
+				<td class="text-center">
+					<strong>Quantity</strong>
+				</td>
+				<td class="text-right">
+					<strong>Total</strong>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="orderItem : ${orderItemList}">
+				<td>
+					<span data-th-text="${orderItem.event.name}"></span>
+				</td>
+				<td data-th-text="${orderItem.quantity}" class="text-center">
+				</td>
+				<td data-th-text="${orderItem.subtotal}" class="text-right">
+				</td>
+			</tr>
+			<tr>
+				<td class="highrow"></td>
+				<td class="highrow"></td>
+				<td class="highrow text-center">
+					<strong>Subtotal</strong>
+				</td>
+				<td data-th-text="${order.orderTotal}" class="highrow text-right">
+				</td>
+			</tr>
+			<tr>
+				<td class="emptyrow"></td>
+				<td class="emptyrow"></td>
+				<td class="emptyrow text-center">
+					<strong>Tax</strong>
+				</td>
+				<td data-th-text="${#numbers.formatDecimal(order.orderTotal*0.06, 0, 2)}" class="emptyrow text-right">
+				</td>
+			</tr>
+			<tr>
+				<td class="emptyrow">
+					<i class="fa fa-barcode iconbig"></i>
+				</td>
+				<td class="emptyrow"></td>
+				<td class="emptyrow text-center">
+					<strong>Total</strong>
+				</td>
+				<td th:with="total=${order.orderTotal+order.orderTotal*0.06}" data-th-text="${#numbers.formatDecimal(total, 0, 2)}" class="emptyrow text-right">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br/>
+	<p>Best Regards</p>
+	<p>Candyland</p>
+</body>
+
+</html>
