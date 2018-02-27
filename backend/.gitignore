@@ -1,0 +1,19 @@
+# meta
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+# ide
+.idea
+*.iws
+*.iml
+*.ipr
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
