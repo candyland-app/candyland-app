@@ -1,0 +1,48 @@
+<div class="container">
+	<div style="margin-top: 20px;">
+		<a routerLink="/userList">
+			<i class="fa fa-long-arrow-left"></i> Go Back</a>
+		<span> / </span>
+		<a (click)="onSelect(user)" style="cursor: pointer">Edit</a>
+	</div>
+	<md-grid-list cols="9" rowHeight="100px">
+		<md-grid-tile [colspan]="3" [rowspan]="5">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<img [src]="'http://localhost:8181/image/user/'+user.id+'.png'" class="responsive-img" />
+				</div>
+			</div>
+		</md-grid-tile>
+		<md-grid-tile [colspan]="6">
+			<h3>{{user.username}}</h3>
+		</md-grid-tile>
+		<md-grid-tile [colspan]="3" [rowspan]="3">
+			<md-list>
+				<md-list-item>
+					<p>
+						<strong>First Name: </strong>{{user.firstName}}</p>
+				</md-list-item>
+				<md-list-item>
+					<p>
+						<strong>Last Name: </strong>{{user.lastName}}</p>
+				</md-list-item>
+				<md-list-item>
+					<p>
+						<strong>Address: </strong>{{user.address}}</p>
+				</md-list-item>
+				<md-list-item>
+					<p>
+						<strong>Postal Code: </strong>{{user.postalCode}}</p>
+				</md-list-item>
+				<md-list-item>
+					<p>
+						<strong>Telephone: </strong>{{user.telephone}}</p>
+				</md-list-item>
+				<md-list-item>
+					<p>
+						<strong>Email: </strong>{{user.email}}</p>
+				</md-list-item>
+			</md-list>
+		</md-grid-tile>
+	</md-grid-list>
+</div>
