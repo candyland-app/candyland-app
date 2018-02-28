@@ -1,0 +1,38 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8">
+			<h2 class="section-headline">
+				<span>Order Summary</span></h2>
+		</div>
+		<div class="col-xs-4">
+			<img src="../../../assets/image/logo.png" class="img-responsive right" style="width:400px; z-index:1;"/>
+		</div>
+	</div>
+	<hr style="position: absolute;width:85%; height:6px; background-color: #333; z-index:-1; margin-top: -170px;"/>
+	<div class="row" style="margin-top: 120px;">
+		<div class="alert alert-success">
+			<h3>
+				<i class="fa fa-check" style="color:limegreen;"></i>
+				Thank you for booking with Candyland.</h3>
+		</div>
+		<h3>Order Details</h3>
+		<div class="row" *ngfor="let orderItem of orderItemList">
+			<hr/>
+			<div class="col-xs-2">
+				<a md-button="md-button" (click)="onSelect(orderItem.event)"><img class="img-responsive" src="{{serverPath}}/image/event/{{orderItem.event.id}}.png" style="width:70px;"/></a>
+			</div>
+			<div class="col-xs-6">
+				<a class="pointer" (click)="onSelect(orderItem.event)">
+					<h4>{{orderItem.event.name}}</h4>
+				</a>
+			</div>
+			<div class="col-xs-2">
+				<h5 style="color:#db3208; font-size:large;">$<span>{{orderItem.event.ticketPrice}}</span>
+				</h5>
+			</div>
+			<div class="col-xs-2 text-center">
+				<h5 style="font-size: large">{{orderItem.quantity}}</h5>
+			</div>
+		</div>
+	</div>
+</div>
