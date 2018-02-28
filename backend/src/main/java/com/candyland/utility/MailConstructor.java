@@ -2,8 +2,6 @@ package com.candyland.utility;
 
 import java.util.Locale;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
@@ -30,16 +28,6 @@ public class MailConstructor {
     @Autowired
     private TemplateEngine templateEngine;
 
-    /**
-     * the document's filename.
-     */
-    String filename;
-
-    /**
-     * path to the file.
-     */
-    String filePath;
-
     MimeBodyPart attachment = new MimeBodyPart();
 
     public SimpleMailMessage constructNewUserEmail(User user, String password) throws MessagingException {
@@ -62,8 +50,7 @@ public class MailConstructor {
         context.setVariable("orderItemList", order.getOrderItemList());
         String text = templateEngine.process("orderConfirmationEmailTemplate", context);
 
-        MimeMessagePreparator messagePreparator = new MimeMessagePreparator()
-        {
+        MimeMessagePreparator messagePreparator = new MimeMessagePreparator() {
             @Override
             public void prepare(MimeMessage mimeMessage) throws Exception {
                 MimeMessageHelper email = new MimeMessageHelper(mimeMessage);
