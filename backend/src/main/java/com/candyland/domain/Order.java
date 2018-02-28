@@ -19,92 +19,90 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "user_order")
-public class Order implements Serializable{
+public class Order implements Serializable {
+    private static final long serialVersionUID = 2893475845L;
 
-	private static final long serialVersionUID = 2893475845L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private Date orderDate;
+    private String orderStatus;
+    private BigDecimal orderTotal;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private Date orderDate;
-	private String orderStatus;
-	private BigDecimal orderTotal;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderItem> orderItemList;
 
-	@OneToMany(mappedBy = "order", cascade=CascadeType.ALL)
-	private List<OrderItem> orderItemList;
+    @OneToOne(cascade = CascadeType.ALL)
+    private BillingAddress billingAddress;
 
-	@OneToOne(cascade=CascadeType.ALL)
-	private BillingAddress billingAddress;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Payment payment;
 
-	@OneToOne(cascade=CascadeType.ALL)
-	private Payment payment;
+    @ManyToOne
+    @JsonIgnore
+    private User user;
 
-	@ManyToOne
-	@JsonIgnore
-	private User user;
+    public Long getId() {
+        return id;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Date getOrderDate() {
+        return orderDate;
+    }
 
-	public Date getOrderDate() {
-		return orderDate;
-	}
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
 
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
-	}
+    public String getOrderStatus() {
+        return orderStatus;
+    }
 
-	public String getOrderStatus() {
-		return orderStatus;
-	}
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
 
-	public void setOrderStatus(String orderStatus) {
-		this.orderStatus = orderStatus;
-	}
+    public BigDecimal getOrderTotal() {
+        return orderTotal;
+    }
 
-	public BigDecimal getOrderTotal() {
-		return orderTotal;
-	}
+    public void setOrderTotal(BigDecimal orderTotal) {
+        this.orderTotal = orderTotal;
+    }
 
-	public void setOrderTotal(BigDecimal orderTotal) {
-		this.orderTotal = orderTotal;
-	}
+    public List<OrderItem> getOrderItemList() {
+        return orderItemList;
+    }
 
-	public List<OrderItem> getOrderItemList() {
-		return orderItemList;
-	}
+    public void setOrderItemList(List<OrderItem> orderItemList) {
+        this.orderItemList = orderItemList;
+    }
 
-	public void setOrderItemList(List<OrderItem> orderItemList) {
-		this.orderItemList = orderItemList;
-	}
+    public BillingAddress getBillingAddress() {
+        return billingAddress;
+    }
 
-	public BillingAddress getBillingAddress() {
-		return billingAddress;
-	}
+    public void setBillingAddress(BillingAddress billingAddress) {
+        this.billingAddress = billingAddress;
+    }
 
-	public void setBillingAddress(BillingAddress billingAddress) {
-		this.billingAddress = billingAddress;
-	}
+    public Payment getPayment() {
+        return payment;
+    }
 
-	public Payment getPayment() {
-		return payment;
-	}
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
 
-	public void setPayment(Payment payment) {
-		this.payment = payment;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

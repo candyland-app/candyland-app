@@ -10,42 +10,42 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class EventToOrderItem implements Serializable{
-	private static final long serialVersionUID = 879172834L;
+public class EventToOrderItem implements Serializable {
+    private static final long serialVersionUID = 879172834L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	@ManyToOne
-	@JoinColumn(name="event_id")
-	private Event event;
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
 
-	@ManyToOne
-	@JoinColumn(name="order_item_id")
-	private OrderItem orderItem;
+    @ManyToOne
+    @JoinColumn(name = "order_item_id")
+    private OrderItem orderItem;
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Event getEvent() {
-		return event;
-	}
+    public Event getEvent() {
+        return event;
+    }
 
-	public void setEvent(Event event) {
-		this.event = event;
-	}
+    public void setEvent(Event event) {
+        this.event = event;
+    }
 
-	public OrderItem getOrderItem() {
-		return orderItem;
-	}
+    public OrderItem getOrderItem() {
+        return orderItem;
+    }
 
-	public void setOrderItem(OrderItem orderItem) {
-		this.orderItem = orderItem;
-	}
+    public void setOrderItem(OrderItem orderItem) {
+        this.orderItem = orderItem;
+    }
 }
