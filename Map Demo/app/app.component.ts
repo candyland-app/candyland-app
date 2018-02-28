@@ -37,7 +37,9 @@ export class AppComponent {
       alert("Geolocation is not supported by this browser.");
     }
   }
-
+  checkDistance(a,b,a2,b2) {
+    if (Math.sqrt(Math.pow(a - a2, 2) + Math.pow(b - b2, 2)) < 0.04) this.putMarker(a2, b2);
+  }
 
   putMarker(a, b) {
     this.currentLat = a;
@@ -46,17 +48,14 @@ export class AppComponent {
     let location = new google.maps.LatLng(a, b);
     this.map.panTo(location);
 
-    if (!this.marker) {
+    if (true) {
       this.marker = new google.maps.Marker({
         position: location,
         map: this.map,
         title: 'Got you!'
       });
     }
-    else {
-      alert(location);
-      this.marker.setPosition(location);
-    }
+
   }
   showPosition(position) {
     this.currentLat = position.coords.latitude;

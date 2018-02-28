@@ -11,7 +11,7 @@
   <div>
     <div>
       <button [disabled]="isTracking" class="btn btn-primary" (click)="findMe()">Find me</button>
-      <button class="btn btn-primary" (click)="trackMe();putMarker(38.2466395, 21.734574000000066)">Track me</button>
+      <button class="btn btn-primary" (click)="trackMe();checkDistance(38.2466395, 22.7745740000000066, 38.2466395, 22.7745740000000066);checkDistance(38.2466395, 22.7745740000000066, 38.2466395, 22.7345742000000066)">Track me</button>
     </div>
     <div class="text-white">
       <span>Longitude: {{currentLong}}</span>
