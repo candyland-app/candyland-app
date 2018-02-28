@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: 127.0.0.1
--- Χρόνος δημιουργίας: 28 Φεβ 2018 στις 22:23:25
+-- Χρόνος δημιουργίας: 28 Φεβ 2018 στις 22:59:20
 -- Έκδοση διακομιστή: 10.1.26-MariaDB
 -- Έκδοση PHP: 7.1.8
 
@@ -67,7 +67,8 @@ CREATE TABLE `booking` (
 
 INSERT INTO `booking` (`booking_id`, `event_event_id`, `Parent_parent_id`, `ticket_number`, `total_cost`) VALUES
 (1, 1, 1, 2, 16),
-(2, 2, 2, 2, 10);
+(2, 2, 2, 2, 10),
+(3, 3, 1, 4, 40);
 
 -- --------------------------------------------------------
 
@@ -96,8 +97,9 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`event_id`, `provider_id`, `name`, `address`, `date`, `time`, `tickets_available`, `cost`, `description`, `tickets_sold`, `category`, `min_age`, `max_age`) VALUES
-(1, 1, 'bird watching', 'argonafton 25', '2018-03-02', '08:00:00.000000', 20, '8', 'Lots of birds, come see! There will be penguins too.', 5, 'outdoors', 10, 18),
-(2, 1, '5v5 football match', 'grigoriou kousidi 23', '2018-03-03', '10:00:00.000000', 8, '5', 'Just another match.', 2, 'sports', 12, 14);
+(1, 1, 'Παρατήρηση πουλιών', 'Αργοναυτών 25', '2018-03-02', '08:00:00.000000', 20, '8', 'Παπαγάλοι, πιγκουίνοι και πολλά άλλα πουλιά!', 5, 'εξωτερικό', 10, 18),
+(2, 1, '5v5 ποδόσφαιρο', 'Γρηγορίου Κουσίδη', '2018-03-03', '10:00:00.000000', 8, '5', 'Κλασσικό ματς.', 2, 'αθλήματα', 12, 14),
+(3, 2, 'τρελή ζωγραφική', 'Αρετής 90', '2018-03-10', '10:00:00.000000', 50, '10', 'Το easter egg θα έμπαινε εδώ. Τελικά τα παιδιά απλά θα ζωγραφίσουν.', 5, 'ζωγραφική', 8, 16);
 
 -- --------------------------------------------------------
 
@@ -155,7 +157,8 @@ CREATE TABLE `provider` (
 --
 
 INSERT INTO `provider` (`provider_id`, `username`, `password`, `first_name`, `last_name`, `company_name`, `address`, `postal_code`, `telephone`, `email`, `afm`, `bank_account`, `description`) VALUES
-(1, 'loniasgr', '12345678', 'leonidas', 'avdelas', 'lonias enterprise', 'metron 12', 17123, '2105555555', 'avdelasleonidas@gmail.com', 0, 1111111111111112, 'Great provider, great products, lots of money, please invest!');
+(1, 'loniasgr', '12345678', 'leonidas', 'avdelas', 'lonias enterprise', 'metron 12', 17123, '2105555555', 'avdelasleonidas@gmail.com', 0, 1111111111111112, 'Great provider, great products, lots of money, please invest!'),
+(2, 'bakos', '12345678', 'panagiotis', 'bakos', 'Ankle Breaker AE', 'Αρριανού 31', 11635, '21012345678', 'pmpakos12@gmail.com', 1, 3545145431545133, 'Μπασκετικές δραστηριότητες για όλους.');
 
 --
 -- Ευρετήρια για άχρηστους πίνακες
@@ -207,12 +210,12 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT για πίνακα `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT για πίνακα `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `event_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT για πίνακα `parent`
 --
@@ -222,7 +225,7 @@ ALTER TABLE `parent`
 -- AUTO_INCREMENT για πίνακα `provider`
 --
 ALTER TABLE `provider`
-  MODIFY `provider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `provider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Περιορισμοί για άχρηστους πίνακες
 --
