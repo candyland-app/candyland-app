@@ -1,0 +1,74 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8">
+			<h2 class="section-headline">
+				<span>Events List</span></h2>
+		</div>
+		<div class="col-xs-4">
+			<img src="../../../assets/image/logo.png" class="img-responsive right" style="width:400px; z-index:1;"/>
+		</div>
+	</div>
+	<hr style="position: absolute;width:85%; height:6px; background-color: #333; z-index:-1; margin-top: -170px;"/>
+
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-9">
+			<table class="table" [mfdata]="eventList | dataFilter : filterQuery" #mf="mfDataTable" [mfrowsonpage]="rowsOnPage" [(mfsortby)]="sortBy" [(mfsortorder)]="sortOrder">
+				<thead>
+					<tr>
+						<th colspan="5">
+							<div class="row">
+								<div class="col-md-9">
+									Search by Description:
+									<input class="form-control" [(ngmodel)]="filterQuery"/>
+								</div>
+								<div class="col-md-3">
+									<label class="label-control">Rows on page</label>
+									<select class="form-control input-sm" [(ngmodel)]="rowsOnPage">
+										<option [ngvalue]="5">5</option>
+										<option [ngvalue]="10">10</option>
+										<option [ngvalue]="15">15</option>
+									</select>
+								</div>
+							</div>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngfor="let event of mf.data">
+						<div class="row" style="margin-bottom: 30px;">
+							<div class="col-md-3">
+								<a (click)="onSelect(event)" style="cursor:pointer;">
+									<img class="img-responsive" src="{{serverPath}}/image/event/{{event.id}}.png"/>
+								</a>
+							</div>
+							<div class="col-md-9">
+								<h4 (click)="onSelect(event)" style="margin-top:20px; cursor:pointer;">{{event.name}}
+								</h4>
+								<span>{{event.startDate}}</span>
+								<p>{{event.address}}</p>
+								<a (click)="onSelect(event)" style="cursor:pointer;">
+									<span>{{event.endDate}}</span></a>
+								<span>{{event.ticketsAvailable}}</span>
+								<span>
+									tickets
+								</span>
+								<br/>
+								<a (click)="onSelect(event)">
+									<span style="font-size: x-large; color:#BD3208">{{event.ticketPrice}}
+										$</span></span></a>
+						</div>
+					</div>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="5">
+						<mfbootstrappaginator [rowsonpageset]="[5,10,15]"></mfbootstrappaginator>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>
+</div>
