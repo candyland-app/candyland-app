@@ -50,10 +50,7 @@ public class MailConstructor {
         email.setSubject("Candyland - New User");
         email.setText(message);
         email.setFrom(env.getProperty("support.email"));
-        DataSource source = new FileDataSource(filePath);
-        attachment.setDataHandler(new DataHandler(source));
-        attachment.setFileName("ticket1234.pdf");
-        // TODO change to multipart.
+
         return email;
     }
 

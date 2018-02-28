@@ -1,13 +1,19 @@
+package com.candyland.utility;
+
 
 import java.util.Properties;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.activation.*;
+import javax.mail.internet.MimeMultipart;
 
 public class SimpleEmailDemo {
    public static void main(String[] args) {
@@ -48,12 +54,25 @@ public class SimpleEmailDemo {
          InternetAddress.parse(to));
 
          // Set Subject: header field
-         message.setSubject("Testing Subject");
+         message.setSubject("Your ticket from Candyland");
 
          // Now set the actual message
-         message.setText("Hello, this is sample for to check send "
-            + "email using JavaMailAPI ");
+         message.setText("Thank you for purchasing your ticket from our platform. You are now able to show it at the event's entrance!");
          // Send message
+
+         MimeBodyPart messageBodyPart = new MimeBodyPart();
+
+         Multipart multipart = new MimeMultipart();
+
+         messageBodyPart = new MimeBodyPart();
+         String file = "/Users/konstantinos/Documents/InProgress/candyland-app/backend/order123.pdf";
+         String fileName = "order123.pdf";
+         DataSource source = new FileDataSource(file);
+         messageBodyPart.setDataHandler(new DataHandler(source));
+         messageBodyPart.setFileName(fileName);
+         multipart.addBodyPart(messageBodyPart);
+
+         message.setContent(multipart);
          Transport.send(message);
 
          System.out.println("Sent message successfully....");

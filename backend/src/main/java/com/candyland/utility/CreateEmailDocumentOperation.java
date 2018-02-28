@@ -58,7 +58,7 @@ public class CreateEmailDocumentOperation {
             document.addPage(page);
             PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
-            File image = new File("/home/gbax/Workspace/candyland-app/media/logo.png");
+            File image = new File("/Users/konstantinos/Documents/InProgress/candyland-app/media/logo.png");
             PDImageXObject logo = PDImageXObject.createFromFileByContent(image, document);
 
             contentStream.drawImage(logo, 80.0f, 620.0f, 100.0f, 100.0f);
@@ -91,7 +91,7 @@ public class CreateEmailDocumentOperation {
             contentStream.close();
         }
 
-        document.save("tickets/order" + order.getId() + ".pdf");
+        document.save("ticket/order" + order.getId() + ".pdf");
         document.close();
 
         this.document = document;
