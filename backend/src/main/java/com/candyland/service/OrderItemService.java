@@ -8,17 +8,17 @@ import com.candyland.domain.Checkout;
 import com.candyland.domain.User;
 
 public interface OrderItemService {
-	OrderItem findById(Long id);
+    OrderItem findById(Long id);
 
-	OrderItem save(OrderItem orderItem);
+    OrderItem save(OrderItem orderItem);
 
     List<OrderItem> findByOrder(Order order);
 
-	void removeOrderItem(OrderItem orderItem);
+    void removeOrderItem(OrderItem orderItem);
 
-	OrderItem updateOrderItem(OrderItem orderItem);
+    OrderItem updateOrderItem(OrderItem orderItem);
 
     List<OrderItem> findByCheckout(Checkout checkout);
 
-	OrderItem addEventToOrderItem(Event event, User user, int quantity);
+    OrderItem addEventToOrderItem(Event event, User user, int quantity);
 }

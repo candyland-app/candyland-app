@@ -12,5 +12,5 @@ public interface OrderService {
         BillingAddress billingAddress,
         Payment payment,
         User user
-    );
+        );
 }
