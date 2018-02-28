@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.candyland.domain.Event;
 
-public interface EventRepository extends CrudRepository<Event, Long>{
-	List<Event> findByTitleContaining(String keyword);
+public interface EventRepository extends CrudRepository<Event, Long> {
+    List<Event> findByTitleContaining(String keyword);
 }

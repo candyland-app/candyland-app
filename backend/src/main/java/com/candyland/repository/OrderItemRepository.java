@@ -10,6 +10,7 @@ import com.candyland.domain.Checkout;
 import com.candyland.domain.Order;
 
 public interface OrderItemRepository extends CrudRepository<OrderItem, Long> {
-	List<OrderItem> findByCheckout(Checkout checkout);
-	List<OrderItem> findByOrder(Order order);
+    List<OrderItem> findByCheckout(Checkout checkout);
+
+    List<OrderItem> findByOrder(Order order);
 }
