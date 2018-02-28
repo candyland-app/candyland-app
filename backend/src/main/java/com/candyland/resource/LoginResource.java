@@ -18,30 +18,30 @@ import com.candyland.service.UserService;
 
 @RestController
 public class LoginResource {
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private UserService userService;
 
-	@RequestMapping("/token")
-	public Map<String, String> token(HttpSession session, HttpServletRequest request) {
-		System.out.println(request.getRemoteHost());
+    @RequestMapping("/token")
+    public Map<String, String> token(HttpSession session, HttpServletRequest request) {
+        System.out.println(request.getRemoteHost());
 
-		String remoteHost = request.getRemoteHost();
-		int portNumber = request.getRemotePort();
+        String remoteHost = request.getRemoteHost();
+        int portNumber = request.getRemotePort();
 
-		System.out.println(remoteHost+":"+portNumber);
-		System.out.println(request.getRemoteAddr());
+        System.out.println(remoteHost + ":" + portNumber);
+        System.out.println(request.getRemoteAddr());
 
-		return Collections.singletonMap("token", session.getId());
-	}
+        return Collections.singletonMap("token", session.getId());
+    }
 
-	@RequestMapping("/checkSession")
-	public ResponseEntity checkSession() {
-		return new ResponseEntity("Session Active", HttpStatus.OK);
-	}
+    @RequestMapping("/checkSession")
+    public ResponseEntity checkSession() {
+        return new ResponseEntity("Session Active", HttpStatus.OK);
+    }
 
-	@RequestMapping(value="/user/logout", method=RequestMethod.POST)
-	public ResponseEntity logout(){
-		SecurityContextHolder.clearContext();
-		return new ResponseEntity("Logout Successfully", HttpStatus.OK);
-	}
+    @RequestMapping(value = "/user/logout", method = RequestMethod.POST)
+    public ResponseEntity logout() {
+        SecurityContextHolder.clearContext();
+        return new ResponseEntity("Logout Successfully", HttpStatus.OK);
+    }
 }

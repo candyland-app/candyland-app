@@ -19,58 +19,55 @@ import com.candyland.service.UserService;
 @RestController
 @RequestMapping("/payment")
 public class PaymentResource {
+    @Autowired
+    private UserService userService;
 
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private PaymentService paymentService;
 
-	@Autowired
-	private PaymentService paymentService;
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ResponseEntity addNewCreditCardPost(
+        @RequestBody Payment payment,
+        Principal principal) {
+        User user = userService.findByUsername(principal.getName());
 
-	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public ResponseEntity addNewCreditCardPost (
-			@RequestBody Payment payment,
-			Principal principal) {
-		User user = userService.findByUsername(principal.getName());
+        UserBilling userBilling = payment.getUserBilling();
 
-		UserBilling userBilling = payment.getUserBilling();
+        userService.updateUserBilling(userBilling, payment, user);
 
-		userService.updateUserBilling(userBilling, payment, user);
+        return new ResponseEntity("Payment Added Successfully", HttpStatus.OK);
+    }
 
-		return new ResponseEntity("Payment Added Successfully", HttpStatus.OK);
-	}
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public ResponseEntity removePaymentPost(
+        @RequestBody String id,
+        Principal principal
+        ) {
+        paymentService.removeById(Long.valueOf(id));
 
-	@RequestMapping(value="/remove", method=RequestMethod.POST)
-	public ResponseEntity removePaymentPost(
-			@RequestBody String id,
-			Principal principal
-			){
+        return new ResponseEntity("Payment Removed Successfully", HttpStatus.OK);
+    }
 
-		paymentService.removeById(Long.valueOf(id));
+    @RequestMapping(value = "/setDefault", method = RequestMethod.POST)
+    public ResponseEntity setDefaultPaymentPost(
+        @RequestBody String id,
+        Principal principal
+        ) {
+        User user = userService.findByUsername(principal.getName());
 
-		return new ResponseEntity("Payment Removed Successfully", HttpStatus.OK);
-	}
+        userService.setUserDefaultPayment(Long.parseLong(id), user);
 
-	@RequestMapping(value="/setDefault", method=RequestMethod.POST)
-	public ResponseEntity setDefaultPaymentPost(
-			@RequestBody String id,
-			Principal principal
-			){
-		User user = userService.findByUsername(principal.getName());
+        return new ResponseEntity("Payment Removed Successfully", HttpStatus.OK);
+    }
 
-		userService.setUserDefaultPayment(Long.parseLong(id), user);
+    @RequestMapping("/getUserPaymentList")
+    public List<Payment> getUserPaymentList(
+        Principal principal
+        ) {
+        User user = userService.findByUsername(principal.getName());
 
-		return new ResponseEntity("Payment Removed Successfully", HttpStatus.OK);
-	}
+        List<Payment> userPaymentList = user.getUserPaymentList();
 
-	@RequestMapping("/getUserPaymentList")
-	public List<Payment> getUserPaymentList(
-			Principal principal
-			){
-		User user = userService.findByUsername(principal.getName());
-
-		List<Payment> userPaymentList = user.getUserPaymentList();
-
-		return userPaymentList;
-	}
-
+        return userPaymentList;
+    }
 }

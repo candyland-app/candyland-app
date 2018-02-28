@@ -30,42 +30,43 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
 @RequestMapping("/checkout")
 public class CheckoutResource {
-	private Order order = new Order();
+    private Order order = new Order();
 
-	@Autowired
-	private JavaMailSender mailSender;
+    @Autowired
+    private JavaMailSender mailSender;
 
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private UserService userService;
 
-	@Autowired
-	private OrderItemService orderItemService;
+    @Autowired
+    private OrderItemService orderItemService;
 
-	@Autowired
-	private OrderService orderService;
+    @Autowired
+    private OrderService orderService;
 
-	@Autowired
-	private CheckoutService checkoutService;
+    @Autowired
+    private CheckoutService checkoutService;
 
-	@Autowired
-	private MailConstructor mailConstructor;
+    @Autowired
+    private MailConstructor mailConstructor;
 
-	@RequestMapping(value = "/checkout", method=RequestMethod.POST)
-	public Order checkoutPost(
-				@RequestBody HashMap<String, Object> mapper,
-				Principal principal
-			){
-		ObjectMapper om = new ObjectMapper();
-		BillingAddress billingAddress = om.convertValue(mapper.get("billingAddress"), BillingAddress.class);
-		Payment payment = om.convertValue(mapper.get("payment"), Payment.class);
-		Checkout checkout = userService.findByUsername(principal.getName()).getCheckout();
-		List<OrderItem> orderItemList = orderItemService.findByCheckout(checkout);
-		User user = userService.findByUsername(principal.getName());
+    @RequestMapping(value = "/checkout", method = RequestMethod.POST)
+    public Order checkoutPost(
+        @RequestBody HashMap<String, Object> mapper,
+        Principal principal
+        ) {
+        ObjectMapper om = new ObjectMapper();
+        BillingAddress billingAddress = om.convertValue(mapper.get("billingAddress"), BillingAddress.class);
+        Payment payment = om.convertValue(mapper.get("payment"), Payment.class);
+        Checkout checkout = userService.findByUsername(principal.getName()).getCheckout();
 
-		Order order = orderService.createOrder(checkout, billingAddress, payment, user);
-		mailSender.send(mailConstructor.constructOrderConfirmationEmail(user, order, Locale.ENGLISH));
-		checkoutService.clearCheckout(checkout);
-		this.order = order;
-		return order;
-	}
+        List<OrderItem> orderItemList = orderItemService.findByCheckout(checkout);
+        User user = userService.findByUsername(principal.getName());
+
+        Order order = orderService.createOrder(checkout, billingAddress, payment, user);
+        mailSender.send(mailConstructor.constructOrderConfirmationEmail(user, order, Locale.ENGLISH));
+        checkoutService.clearCheckout(checkout);
+        this.order = order;
+        return order;
+    }
 }

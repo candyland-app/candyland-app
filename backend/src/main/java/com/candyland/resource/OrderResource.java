@@ -14,16 +14,15 @@ import com.candyland.service.UserService;
 @RestController
 @RequestMapping("/order")
 public class OrderResource {
+    @Autowired
+    private UserService userService;
 
-	@Autowired
-	private UserService userService;
+    @RequestMapping("/getOrderList")
+    public List<Order> getOrderList(Principal principal) {
+        User user = userService.findByUsername(principal.getName());
 
-	@RequestMapping("/getOrderList")
-	public List<Order> getOrderList(Principal principal) {
-		User user = userService.findByUsername(principal.getName());
-		List<Order> orderList = user.getOrderList();
+        List<Order> orderList = user.getOrderList();
 
-		return orderList;
-	}
-
+        return orderList;
+    }
 }
