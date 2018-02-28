@@ -17,11 +17,11 @@ import com.candyland.domain.OrderItem;
 import com.candyland.domain.Payment;
 
 public class TestCreateEmailDocumentOperation {
-
     @Test
     public void testExecute() throws IOException {
         CreateEmailDocumentOperation op = new CreateEmailDocumentOperation();
         Event event = new Event();
+
         event.setStartDate(Date.from(Instant.now()).toString());
         event.setName("show");
         op.setEvent(event);
@@ -52,5 +52,4 @@ public class TestCreateEmailDocumentOperation {
 
         assertNotNull(op.getDocument());
     }
-
 }

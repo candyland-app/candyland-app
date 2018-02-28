@@ -19,7 +19,6 @@ import com.candyland.domain.User;
  * The operation used to create documents in PDF format.
  */
 public class CreateEmailDocumentOperation {
-
     /**
      * The customer.
      */
@@ -47,7 +46,7 @@ public class CreateEmailDocumentOperation {
 
     /**
      * Makes the document
-     * 
+     *
      * @throws IOException
      */
     public void execute() throws IOException {
@@ -85,7 +84,7 @@ public class CreateEmailDocumentOperation {
             contentStream.setFont(PDType1Font.HELVETICA_BOLD, 10);
             contentStream.newLineAtOffset(50, 490);
             contentStream.showText("Price: " + order.getOrderTotal() + ", paid for with card ending in: "
-                    + (Long.parseLong(order.getPayment().getCardNumber()) % 10000));
+                                   + (Long.parseLong(order.getPayment().getCardNumber()) % 10000));
             contentStream.endText();
 
             contentStream.close();
@@ -136,5 +135,4 @@ public class CreateEmailDocumentOperation {
     public void setPayment(Payment payment) {
         this.payment = payment;
     }
-
 }

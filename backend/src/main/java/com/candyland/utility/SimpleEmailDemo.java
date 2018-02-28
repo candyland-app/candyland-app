@@ -16,69 +16,71 @@ import javax.activation.*;
 import javax.mail.internet.MimeMultipart;
 
 public class SimpleEmailDemo {
-   public static void main(String[] args) {
-      // Recipient's email ID needs to be mentioned.
-      String to = "konsmitr@gmail.com";//change accordingly
+    public static void main(String[] args) {
+        // Recipient's email ID needs to be mentioned.
+        String to = "konsmitr@gmail.com";//change accordingly
 
-      // Sender's email ID needs to be mentioned
-      String from = "teamcandyland6@gmail.com";//change accordingly
-      final String username = "teamcandyland6";//change accordingly
-      final String password = "Aa012345";//change accordingly
+        // Sender's email ID needs to be mentioned
+        String from = "teamcandyland6@gmail.com"; //change accordingly
+        final String username = "teamcandyland6"; //change accordingly
+        final String password = "Aa012345";       //change accordingly
 
-      // Assuming you are sending email through relay.jangosmtp.net
-      String host = "smtp.gmail.com";
+        // Assuming you are sending email through relay.jangosmtp.net
+        String host = "smtp.gmail.com";
 
-      Properties props = new Properties();
-      props.put("mail.smtp.auth", "true");
-      props.put("mail.smtp.starttls.enable", "true");
-      props.put("mail.smtp.host", host);
-      props.put("mail.smtp.port", "587");
+        Properties props = new Properties();
 
-      // Get the Session object.
-      Session session = Session.getInstance(props,
-      new javax.mail.Authenticator() {
-         protected PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication(username, password);
-         }
-      });
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
 
-      try {
-         // Create a default MimeMessage object.
-         Message message = new MimeMessage(session);
+        // Get the Session object.
+        Session session = Session.getInstance(props,
+                                              new javax.mail.Authenticator()
+        {
+            protected PasswordAuthentication getPasswordAuthentication()
+            {
+                return new PasswordAuthentication(username, password);
+            }
+        });
 
-         // Set From: header field of the header.
-         message.setFrom(new InternetAddress(from));
+        try {
+            // Create a default MimeMessage object.
+            Message message = new MimeMessage(session);
 
-         // Set To: header field of the header.
-         message.setRecipients(Message.RecipientType.TO,
-         InternetAddress.parse(to));
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(from));
 
-         // Set Subject: header field
-         message.setSubject("Your ticket from Candyland");
+            // Set To: header field of the header.
+            message.setRecipients(Message.RecipientType.TO,
+                                  InternetAddress.parse(to));
 
-         // Now set the actual message
-         message.setText("Thank you for purchasing your ticket from our platform. You are now able to show it at the event's entrance!");
-         // Send message
+            // Set Subject: header field
+            message.setSubject("Your ticket from Candyland");
 
-         MimeBodyPart messageBodyPart = new MimeBodyPart();
+            // Now set the actual message
+            message.setText("Thank you for purchasing your ticket from our platform. You are now able to show it at the event's entrance!");
+            // Send message
 
-         Multipart multipart = new MimeMultipart();
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
 
-         messageBodyPart = new MimeBodyPart();
-         String file = "/Users/konstantinos/Documents/InProgress/candyland-app/backend/order123.pdf";
-         String fileName = "order123.pdf";
-         DataSource source = new FileDataSource(file);
-         messageBodyPart.setDataHandler(new DataHandler(source));
-         messageBodyPart.setFileName(fileName);
-         multipart.addBodyPart(messageBodyPart);
+            Multipart multipart = new MimeMultipart();
 
-         message.setContent(multipart);
-         Transport.send(message);
+            messageBodyPart = new MimeBodyPart();
+            String file = "/Users/konstantinos/Documents/InProgress/candyland-app/backend/order123.pdf";
+            String fileName = "order123.pdf";
+            DataSource source = new FileDataSource(file);
+            messageBodyPart.setDataHandler(new DataHandler(source));
+            messageBodyPart.setFileName(fileName);
+            multipart.addBodyPart(messageBodyPart);
 
-         System.out.println("Sent message successfully....");
+            message.setContent(multipart);
+            Transport.send(message);
 
-      } catch (MessagingException e) {
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException e) {
             throw new RuntimeException(e);
-      }
-   }
+        }
+    }
 }
