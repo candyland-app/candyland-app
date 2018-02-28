@@ -44,9 +44,6 @@ public class User implements UserDetails, Serializable {
     @JsonIgnore
     private Set<UserRole> userRoles = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<UserPayment> userPaymentList;
-
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
     private Checkout checkout;
 
