@@ -1,0 +1,80 @@
+@import '~@angular/material/core/theming/prebuilt/pink-bluegrey.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import './non-responsive.css';
+
+hr {
+	height: 1px;
+	color: #333;
+	border: none;
+	background-color: #333;
+}
+
+body {
+	font-family: Tahoma, Serif;
+	margin: 0;
+	padding-top: 0;
+}
+
+md-input-container {
+	width: 100%;
+}
+
+md-select {
+	width: 100%;
+}
+
+md-slide-toggle {
+	width: 100%;
+}
+
+.container {
+	width: 90%;
+}
+
+.section-headline {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 24px;
+	margin: 90px auto auto;
+	text-align: center;
+	color: #fff;
+}
+
+.section-headline span {
+	padding: 5px 22px;
+	background-color: #231f20;
+}
+
+.home-headline {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 24px;
+	margin: -13px auto auto;
+	text-align: center;
+	color: #fff;
+}
+
+.home-headline span {
+	padding: 5px 22px;
+	background-color: #231f20;
+}
+
+.box {
+	border: 1px solid red;
+}
+
+.li {
+	display: inline;
+	white-space: nowrap;
+}
+
+.box {
+	border: 1px solid black;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.full-width {
+	width: 100%;
+}
