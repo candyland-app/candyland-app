@@ -24,33 +24,33 @@ import { ViewUserComponent } from './components/view-user/view-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavBarComponent,
-    LoginComponent,
-    AddNewUserComponent,
-    UserListComponent,
-    DialogResultExampleDialog,
-    ViewUserComponent,
-    EditUserComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    routing,
-    MatButtonModule,
-    MatCheckboxModule
-  ],
-  providers: [
-    LoginService,
-    AddUserService,
-    UploadImageService,
-    GetUserListService,
-    GetUserService,
-    EditUserService,
-    RemoveUserService
-  ],
-  bootstrap: [AppComponent, DialogResultExampleDialog]
+	declarations: [
+		AppComponent,
+		NavBarComponent,
+		LoginComponent,
+		AddNewUserComponent,
+		UserListComponent,
+		DialogResultExampleDialog,
+		ViewUserComponent,
+		EditUserComponent
+	],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		HttpModule,
+		routing,
+		MatButtonModule,
+		MatCheckboxModule
+	],
+	providers: [
+		LoginService,
+		AddUserService,
+		UploadImageService,
+		GetUserListService,
+		GetUserService,
+		EditUserService,
+		RemoveUserService
+	],
+	bootstrap: [AppComponent, DialogResultExampleDialog]
 })
 export class AppModule { }

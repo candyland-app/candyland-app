@@ -78,7 +78,7 @@
 
 			<md-grid-list cols="20" rowHeight="60px">
 				<md-grid-tile [colspan]="2" [rowspan]="1">
-						<button class="mat-primary" md-raised-button type="submit">Add User</button>
+					<button class="mat-primary" md-raised-button type="submit">Add User</button>
 				</md-grid-tile>
 				<md-grid-tile [colspan]="2" [rowspan]="1">
 					<a class="mat-warn" md-raised-button routerLink="/">Cancel</a>
@@ -86,8 +86,7 @@
 			</md-grid-list>
 		</form>
 	</div>
-	<div class="row" [hidden]="!userAdded"
-	>
+	<div class="row" [hidden]="!userAdded">
 		<h3>User added successfully!</h3>
 	</div>
 </div>

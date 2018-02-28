@@ -1,14 +1,14 @@
-import {ModuleWithProviders} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {LoginComponent} from './components/login/login.component';
-import {AddNewUserComponent} from './components/add-new-user/add-new-user.component';
-import {UserListComponent} from './components/user-list/user-list.component';
-import {ViewUserComponent} from './components/view-user/view-user.component';
-import {EditUserComponent} from './components/edit-user/edit-user.component';
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
+import { AddNewUserComponent } from './components/add-new-user/add-new-user.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { ViewUserComponent } from './components/view-user/view-user.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 const appRoutes: Routes = [
 	{
-		path : '',
+		path: '',
 		redirectTo: '/login',
 		pathMatch: 'full'
 	},
