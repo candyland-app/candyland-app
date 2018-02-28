@@ -1,0 +1,320 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8">
+			<h2 class="section-headline">
+				<span>My Profile</span></h2>
+		</div>
+		<div class="col-xs-4">
+			<img src="../../../assets/image/logo.png" class="img-responsive right" style="width:400px; z-index:1;"/>
+		</div>
+	</div>
+	<hr style="position: absolute;width:85%; height:6px; background-color: #333; z-index:-1; margin-top: -170px;"/>
+	<div *ngif="!dataFetched" style="margin-top: 50px;">
+		<div class="row">
+			<div class="col-md-2 col-md-offset-5">
+				<md-spinner></md-spinner>
+			</div>
+		</div>
+	</div>
+	<div class="row" style="margin-top:30px;">
+		<div class="col-xs-3"></div>
+		<div *ngif="dataFetched">
+			<div class="col-xs-9">
+				<div class="panel-group">
+					<div class="panel panel-default" style="border:none;">
+						<div class="panel-body" style="background-color: #ededed; margin-top: 20px;">
+							<md-tab-group [selectedindex]="selectedProfileTab">
+								<md-tab label="Edit">
+									<div style="margin-top: 20px;">
+										<div class="alert alert-danger" *ngif="incorrectPassword">
+											<strong>Wrong Password.</strong>
+											Please enter your correct password.
+										</div>
+										<div class="alert alert-success" *ngif="updateSuccess">
+											<strong>Success!</strong>
+										</div>
+									</div>
+									<form (ngsubmit)="onUpdateUserInfo()">
+										<input type="hidden" name="id" [(ngmodel)]="user.id"/>
+										<div class="bg-info" *ngif="updateUserInfo">Updated info successfully.</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-xs-6">
+													<label for="firstName">First Name</label>
+													<input type="text" class="form-control" id="firstName" name="firstName" [(ngmodel)]="user.firstName"/>
+												</div>
+												<div class="col-xs-6">
+													<label for="lastName">Last Name</label>
+													<input type="text" class="form-control" id="lastName" name="lastName" [(ngmodel)]="user.lastName"/>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="username">
+												Username *
+											</label>&nbsp;<span *ngif="usernameExists" style="color:red">Username already taken.</span>
+											<input required="required" type="text" class="form-control" id="username" name="username" [(ngmodel)]="user.username"/>
+										</div>
+										<div class="form-group">
+											<label for="currentPassword">
+												Current Password
+											</label>
+											<input type="password" class="form-control" id="password" name="password" [(ngmodel)]="currentPassword"/>
+											<p style="color:#828282;">Type your current Password to update your Password or Email Address.</p>
+										</div>
+										<div class="form-group">
+											<label for="email">
+												Email Address *
+											</label>&nbsp;<span *ngif="emailExists" style="color:red">Email already taken.</span>
+											<input required="required" type="email" class="form-control" id="email" name="email" [(ngmodel)]="user.email"/>
+										</div>
+										<div class="form-group">
+											<label for="txtNewPassword">
+												New Password *
+											</label>&nbsp;<span id="checkPasswordMatch" style="color:red;"></span>
+											<input type="password" class="form-control" id="txtNewPassword" name="txtNewPassword" [(ngmodel)]="newPassword"/>
+										</div>
+										<div class="form-group">
+											<label for="txtConfirmPassword">
+												Confirm new Password *
+											</label>
+											<input type="password" class="form-control" id="txtConfirmPassword" name="txtNewPassword"/>
+										</div>
+										<button md-raised-button="md-raised-button" type="submit" class="mat-primary" id="udpateuserInfoButton">Save</button>
+									</form>
+								</md-tab>
+								<md-tab label="Orders">
+									<div class="panel-group">
+										<div class="panel panel-default panel-faq" style="border: none;">
+											<div class="panel-body" style="background-color: #ededed; margin-top: 20px;">
+												<table class="table table-sm table-inverse">
+													<thead>
+														<tr>
+															<th>Order Date</th>
+															<th>Order Number</th>
+															<th>Total</th>
+															<th>Status</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr *ngfor="let order of orderList">
+															<td>
+																<a class="pointer" (click)="onDisplayOrder(order)">
+																	<span >{{order.orderDate}}</span></a>
+															</td>
+															<td>{{order.id}}</td>
+															<td>{{order.orderTotal}}</td>
+															<td>{{order.orderStatus}}</td>
+														</tr>
+													</tbody>
+												</table>
+												<div *ngif="displayOrderDetail">
+													<div class="row">
+														<div class="col-xs-12">
+															<div class="text-center">
+																<h2>Order Details:
+																	<span>{{order.id}}</span></h2>
+															</div>
+															<hr/>
+															<div class="row">
+																<div class="col-xs-4">
+																	<div class="panel panel-default height">
+																		<div class="panel-heading">
+																			<strong>Billing Details</strong>
+																		</div>
+																		<div class="panel-body">
+																			<span>{{order.billingAddress.billingAddressName}}</span>
+																			<br/>
+																			<span>{{order.billingAddress.billingAddressPostalCode}}
+																			</span>
+																			<br/>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-xs-4">
+																	<div class="panel panel-default height">
+																		<div class="panel-heading">
+																			<strong>Payment Info</strong>
+																		</div>
+																		<div class="panel-body">
+																			<span>{{order.payment.holderName}}</span>
+																			<br/>
+																			<span>{{order.payment.cardNumber}}</span>
+																			<br/>
+																			<span>Expires on:</span>
+																			<span>{{order.payment.expiryMonth}}</span>/<span>{{order.payment.expiryYear}}</span>
+																			<br/>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+															<div class="panel panel-default">
+																<div class="panel-heading">
+																	<h3 class="text-center">
+																		<strong>Order summary</strong>
+																	</h3>
+																</div>
+																<div class="panel-body">
+																	<div class="table-responsive">
+																		<table class="table table-condensed">
+																			<thead>
+																				<tr>
+																					<td>
+																						<strong>Name</strong>
+																					</td>
+																					<td class="text-center">
+																						<strong>Price</strong>
+																					</td>
+																					<td class="text-center">
+																						<strong>Quantity</strong>
+																					</td>
+																					<td class="text-right">
+																						<strong>Total</strong>
+																					</td>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<tr *ngfor="let orderItem of orderItemList">
+																					<td>{{orderItem.event.name}}
+																					</td>
+																					<td class="text-center">
+																						{{orderItem.quantity}}
+																					</td>
+																					<td class="text-right">{{orderItem.subtotal}}
+																					</td>
+																				</tr>
+																				<tr>
+																					<td class="emptyrow">
+																						<i class="fa fa-barcode iconbig"></i>
+																					</td>
+																					<td class="emptyrow"></td>
+																					<td class="emptyrow text-center">
+																						<strong>Total</strong>
+																					</td>
+																					<td class="emptyrow text-right">{{order.orderTotal*1.6}}
+																					</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</md-tab>
+								<md-tab label="Payment">
+									<br>
+									<br>
+									<div>
+										<md-tab-group (selectedindexchange)="selectedBillingChange($event)" [selectedindex]="selectedBillingTab">
+											<md-tab label="Add(Update) Credit Card">
+												<form (ngsubmit)="onNewPayment()" method="post">
+													<div class="bg-info" *ngif="updateUserPaymentInfo">User info Updated.</div>
+													<input hidden="hidden" name="id" [(ngmodel)]="userPayment.id"/>
+													<div class="form-group">
+														<h4>Credit Card Info</h4>
+													</div>
+													<div class="row">
+														<div class="col-xs-12">
+															<img src="../../../assets/image/creditcard.png" class="img-responsive"/>
+															<br>
+															<div class="form-group">
+																<label for="cardType">* Select Card Type</label>
+																<select id="cardType" class="form-control" name="cardType" [(ngmodel)]="userPayment.type" required="required">
+																	<option value="" disabled="disabled">Card Type</option>
+																	<option value="visa">Visa</option>
+																	<option value="mastercard">Mastercard</option>
+																	<option value="discover">Discover</option>
+																	<option value="amex">American Express</option>
+																</select>
+															</div>
+															<div class="form-group">
+																<label for="cardHolder">* Card Holder</label>
+																<input type="text" class="form-control" id="cardholder" placeholder="Card Holder Name" name="cardHolderName" required="required" [(ngmodel)]="userPayment.holderName"/>
+															</div>
+															<div class="form-group">
+																<label for="cardNumber">* Card Number</label>
+																<div class="input-group">
+																	<input required="required" id="cardNumber" type="tel" class="form-control" name="cardNumber" placeholder="Valid Card Number" [(ngmodel)]="userPayment.cardNumber"/>
+																	<span class="input-group-addon">
+																		<i class="fa fa-credit-card"></i>
+																	</span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-7">
+															<div class="form-group">
+																<label>* Expiration Date</label>
+																<div class="row">
+																	<div class="col-xs-6">
+																		<select class="form-control" name="expiryMonth" required="required" [(ngmodel)]="userPayment.expiryMonth">
+																			<option value="" disabled="disabled">
+																				Month
+																			</option>
+																			<option value="1">Jan - 01</option>
+																			<option value="2">Feb - 02</option>
+																			<option value="3">Mar - 03</option>
+																			<option value="4">Apr - 04</option>
+																			<option value="5">May - 05</option>
+																			<option value="6">Jun - 06</option>
+																			<option value="7">July - 07</option>
+																			<option value="8">Aug - 08</option>
+																			<option value="9">Sep - 09</option>
+																			<option value="10">Oct - 10</option>
+																			<option value="11">Nov - 11</option>
+																			<option value="12">Dec - 12</option>
+																		</select>
+																	</div>
+																	<div class="col-xs-6">
+																		<select class="form-control" name="expiryYear" required="required" [(ngmodel)]="userPayment.expiryYear">
+																			<option value="" disabled="disabled">
+																				Year
+																			</option>
+																			<option value="17">2017</option>
+																			<option value="18">2018</option>
+																			<option value="19">2019</option>
+																			<option value="20">2020</option>
+																			<option value="21">2021</option>
+																			<option value="22">2022</option>
+																			<option value="23">2023</option>
+																			<option value="24">2024</option>
+																			<option value="25">2025</option>
+																		</select>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-5 pull-right">
+															<div class="form-group">
+																<label for="cardCVC">CV Code</label>
+																<input id="cardCVC" type="tel" class="form-control" name="cardCVC" placeholder="CVC" [(ngmodel)]="userPayment.cvc"/>
+															</div>
+														</div>
+													</div>
+													<hr/>
+													<button md-raised-button="md-raised-button" type="submit" class="mat-primary">
+														Save All
+													</button>
+												</form>
+											</md-tab>
+										</md-tab-group>
+									</div>
+								</md-tab>
+							</md-tab-group>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
