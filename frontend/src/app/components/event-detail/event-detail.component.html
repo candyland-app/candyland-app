@@ -1,0 +1,73 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8">
+			<h2 class="section-headline">
+				<span>Event Info</span></h2>
+		</div>
+		<div class="col-xs-4">
+			<img src="../../../assets/image/logo.png" class="img-responsive right" style="width:400px; z-index:1;"/>
+		</div>
+	</div>
+	<hr style="position: absolute;width:85%; height:6px; background-color: #333; z-index:-1; margin-top: -170px;"/>
+	<div class="row">
+		<div class="row" style="margin-top: 120px;">
+			<div class="col-xs-3">
+				<a routerlink="/eventList">Back to event list</a>
+				<br/>
+				<img class="img-responsive" src="{{serverPath}}/image/event/{{event.id}}.png"/>
+			</div>
+			<div class="col-xs-9">
+				<h3>
+					<span *ngif="addEventSuccess" style="color:forestgreen">
+						<i class="fa fa-check" style="color:forestgreen"></i>Added to order.</span></h3>
+				<h3>{{event.name}}</h3>
+				<div class="row">
+					<div class="col-xs-5">
+						<h5>
+							<strong>Event Name
+							</strong>
+							<span>{{event.name}}</span>
+						</h5>
+						<p>
+							<strong>Address</strong>
+							<span>{{event.address}}</span></p>
+						<p>
+							<strong>Start Date</strong>
+							<span>{{event.startDate}}</span></p>
+						<p>
+							<strong>End Date</strong>
+							<span>{{event.endDate}}</span></p>
+						<p>
+							<strong>Start Time</strong>
+							<span>{{event.startTime}}</span></p>
+						<p>
+							<strong>End Time</strong>
+							<span>{{event.endTime}}</span></p>
+						<p>
+							<strong>Tickets Available</strong>
+							<span>{{event.ticketsAvailable}}</span></p>
+						<p>
+							<strong>Tickets Sold</strong>
+							<span>{{event.ticketsSold}}</span></p>
+						<p>
+							<strong>Category</strong>
+							<span>{{event.category}}</span></p>
+						<p>
+							<strong>Minimum Age</strong>
+							<span>{{event.minAge}}</span></p>
+						<p>
+							<strong>Maximum Age</strong>
+							<span>{{event.maxAge}}</span></p>
+					</div>
+					<p>
+						<strong>Tickt Price</strong>
+						<span style="color: #db3208;">$
+							{{event.ticketPrice}}
+							<span></p>
+						</div>
+					</div>
+					<hr/>
+					<p>{{event.description}}</p>
+				</div>
+			</div>
+		</div>
