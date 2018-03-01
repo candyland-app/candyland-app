@@ -1,0 +1,47 @@
+<div class="container">
+  <div style="text-align:center">
+    <h1>
+      Google Map Geolocation Demo
+    </h1>
+  </div>
+
+  <div class="alert alert-warning">
+    Note: Once Track me is enabled, refresh page to enable Find me feature!
+  </div>
+  <div>
+    <div>
+      <button [disabled]="isTracking" class="btn btn-primary" (click)="findMe()">Find me</button>
+      <button class="btn btn-primary" (click)="trackMe();checkDistance(38.2466395, 22.7745740000000066, 38.2466395, 22.7745740000000066);checkDistance(38.2466395, 22.7745740000000066, 38.2466395, 22.7345742000000066)">Track me</button>
+    </div>
+    <div class="text-white">
+      <span>Longitude: {{currentLong}}</span>
+      <span>Latitude: {{currentLat}}</span>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center">
+          <h3>
+            <div #gmap style="width:100%;height:300px"></div>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <footer>
+    <div>
+      <h3>
+        Balram Chavan
+      </h3>
+    </div>
+    <div class="row">
+      <div class="col-md-1">
+        <a class="lead" href="https://www.linkedin.com/in/balram-chavan-957511116/" target="_blank">LinkedIn</a>
+      </div>
+      <div class="col-md-2">
+        <a class="lead" href="https://github.com/ultrasonicsoft" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </footer>
+</div>
