@@ -36,7 +36,7 @@ public class Order implements Serializable {
     private BillingAddress billingAddress;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Payment payment;
+    private UserPayment payment;
 
     @ManyToOne
     @JsonIgnore
@@ -90,11 +90,11 @@ public class Order implements Serializable {
         this.billingAddress = billingAddress;
     }
 
-    public Payment getPayment() {
+    public UserPayment getPayment() {
         return payment;
     }
 
-    public void setPayment(Payment payment) {
+    public void setPayment(UserPayment payment) {
         this.payment = payment;
     }
 

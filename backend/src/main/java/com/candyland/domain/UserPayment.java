@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Payment implements Serializable {
+public class UserPayment implements Serializable {
     private static final long serialVersionUID = 79151235145L;
 
     @Id
@@ -24,6 +24,7 @@ public class Payment implements Serializable {
     private String cardNumber;
     private String holderName;
     private boolean defaultPayment;
+    private BillingAddress billingAddress; // TODO change to userBilling probably.
 
     @OneToOne
     @JsonIgnore
@@ -99,5 +100,13 @@ public class Payment implements Serializable {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public BillingAddress getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(BillingAddress billingAddress) {
+        this.billingAddress = billingAddress;
     }
 }

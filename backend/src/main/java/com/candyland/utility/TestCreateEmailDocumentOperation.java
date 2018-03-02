@@ -14,7 +14,7 @@ import org.junit.Test;
 import com.candyland.domain.Event;
 import com.candyland.domain.Order;
 import com.candyland.domain.OrderItem;
-import com.candyland.domain.Payment;
+import com.candyland.domain.UserPayment;
 
 public class TestCreateEmailDocumentOperation {
     @Test
@@ -27,7 +27,7 @@ public class TestCreateEmailDocumentOperation {
         op.setEvent(event);
         Order order = new Order();
         order.setId(123L);
-        Payment payment = new Payment();
+        UserPayment payment = new UserPayment();
         payment.setCardNumber("1324132413241324");
         order.setPayment(payment);
         List<OrderItem> tickets = new ArrayList<>();

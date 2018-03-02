@@ -12,7 +12,7 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import com.candyland.domain.Event;
 import com.candyland.domain.Order;
 import com.candyland.domain.OrderItem;
-import com.candyland.domain.Payment;
+import com.candyland.domain.UserPayment;
 import com.candyland.domain.User;
 
 /**
@@ -37,7 +37,7 @@ public class CreateEmailDocumentOperation {
     /**
      * The payment.
      */
-    Payment payment;
+    UserPayment payment;
 
     /**
      * The document exported from this operation.
@@ -128,11 +128,11 @@ public class CreateEmailDocumentOperation {
         this.user = user;
     }
 
-    public Payment getPayment() {
+    public UserPayment getPayment() {
         return payment;
     }
 
-    public void setPayment(Payment payment) {
+    public void setPayment(UserPayment payment) {
         this.payment = payment;
     }
 }

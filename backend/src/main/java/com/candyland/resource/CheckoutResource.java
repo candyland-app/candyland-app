@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.candyland.domain.BillingAddress;
 import com.candyland.domain.OrderItem;
 import com.candyland.domain.Order;
-import com.candyland.domain.Payment;
+import com.candyland.domain.UserPayment;
 import com.candyland.domain.Checkout;
 import com.candyland.domain.User;
 import com.candyland.service.OrderItemService;
@@ -57,7 +57,7 @@ public class CheckoutResource {
         ) {
         ObjectMapper om = new ObjectMapper();
         BillingAddress billingAddress = om.convertValue(mapper.get("billingAddress"), BillingAddress.class);
-        Payment payment = om.convertValue(mapper.get("payment"), Payment.class);
+        UserPayment payment = om.convertValue(mapper.get("payment"), UserPayment.class);
         Checkout checkout = userService.findByUsername(principal.getName()).getCheckout();
 
         List<OrderItem> orderItemList = orderItemService.findByCheckout(checkout);

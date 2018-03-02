@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.candyland.domain.BillingAddress;
 import com.candyland.domain.User;
-import com.candyland.domain.Payment;
+import com.candyland.domain.UserPayment;
 import com.candyland.service.PaymentService;
 import com.candyland.service.UserService;
 
@@ -26,12 +27,10 @@ public class PaymentResource {
     private PaymentService paymentService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ResponseEntity addNewCreditCardPost(
-        @RequestBody Payment payment,
-        Principal principal) {
+    public ResponseEntity addNewCreditCardPost(@RequestBody UserPayment payment, Principal principal) {
         User user = userService.findByUsername(principal.getName());
 
-        UserBilling userBilling = payment.getUserBilling();
+        BillingAddress userBilling = payment.getBillingAddress();
 
         userService.updateUserBilling(userBilling, payment, user);
 
@@ -39,20 +38,14 @@ public class PaymentResource {
     }
 
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
-    public ResponseEntity removePaymentPost(
-        @RequestBody String id,
-        Principal principal
-        ) {
+    public ResponseEntity removePaymentPost(@RequestBody String id, Principal principal) {
         paymentService.removeById(Long.valueOf(id));
 
         return new ResponseEntity("Payment Removed Successfully", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/setDefault", method = RequestMethod.POST)
-    public ResponseEntity setDefaultPaymentPost(
-        @RequestBody String id,
-        Principal principal
-        ) {
+    public ResponseEntity setDefaultPaymentPost(@RequestBody String id, Principal principal) {
         User user = userService.findByUsername(principal.getName());
 
         userService.setUserDefaultPayment(Long.parseLong(id), user);
@@ -61,12 +54,10 @@ public class PaymentResource {
     }
 
     @RequestMapping("/getUserPaymentList")
-    public List<Payment> getUserPaymentList(
-        Principal principal
-        ) {
+    public List<UserPayment> getUserPaymentList(Principal principal) {
         User user = userService.findByUsername(principal.getName());
 
-        List<Payment> userPaymentList = user.getUserPaymentList();
+        List<UserPayment> userPaymentList = user.getUserPaymentList();
 
         return userPaymentList;
     }

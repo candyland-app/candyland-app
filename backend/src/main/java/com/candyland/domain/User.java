@@ -50,6 +50,8 @@ public class User implements UserDetails, Serializable {
     @OneToMany(mappedBy = "user")
     private List<Order> orderList;
 
+    private List<UserPayment> userPaymentList;
+
     public Long getId() {
         return id;
     }
@@ -110,7 +112,6 @@ public class User implements UserDetails, Serializable {
         this.locked = locked;
     }
 
-    @Override
     public boolean isLocked() {
         return locked;
     }
@@ -150,7 +151,7 @@ public class User implements UserDetails, Serializable {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = new HashSet<>();
-        userRoles.forEach(ur->authorities.add(new Authority(ur.getRole().getName())));
+        userRoles.forEach(ur -> authorities.add(new Authority(ur.getRole().getName())));
 
         return authorities;
     }
@@ -171,5 +172,11 @@ public class User implements UserDetails, Serializable {
     public boolean isCredentialsNonExpired() {
         // Auto-generated method
         return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        // TODO Auto-generated method stub
+        return false;
     }
 }
