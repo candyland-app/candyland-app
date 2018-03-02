@@ -25,3 +25,5 @@ app/assets
 ## mvn
 api/target/
 /nbproject/private/
+# nbproject
+nbproject/
