@@ -1,5 +1,4 @@
-<form action="do something" align="center">
-
+<form novalidate (ngSubmit)="onSubmit(f)" #f="ngForm" action="www.facebook.com" method="get" align="center">
 	<div class="container">
 		<div>
 			<input type="radio" id="parent" name="user" value="parent">
@@ -9,14 +8,14 @@
 		</div>
 	  	<div>
 	    <label for="uname"><b>Όνομα Χρήστη</b></label>
-	    <input type="text" placeholder="Enter Username" name="username" required>
+	    <input type="text" placeholder="Enter Username" name="username" [(ngModel)]="username" required>
 		</div>
 		<div>
 	    <label for="psw"><b>Κωδικός</b></label>
-	    <input type="password" placeholder="Enter Password" name="username" required>
+	    <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="password" required>
 		</div>
 	<div>
-    <button type="submit">Συνδεθείτε</button>
+    <button type="submit" class="btn btn-success" [disabled]="!f.form.valid">Συνδεθείτε</button>
     <label>
     		<input type="checkbox" checked="checked" name="remember"> Remember me
     </label>

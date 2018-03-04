@@ -1,14 +1,16 @@
-import { FooterComponent } from './Guests/footer/footer.component';
+import { FooterComponent } from './components/Guests/footer/footer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import {appRoutes, appRoutingProviders} from './app.routing';
-import { HomeComponent } from './Guests/home/home.component';
-import { HomeService } from './Guests/home/home.service';
-import { LoginComponent } from './Guests/login/login.component';
-import { NavbarComponent } from './Guests/nav-bar/navbar.component';
+import { HomeComponent } from './components/Guests/home/home.component';
+import { HomeService } from './components/Guests/home/home.service';
+import { LoginComponent } from './components/Guests/login/login.component';
+import { NavbarComponent } from './components/Guests/nav-bar/navbar.component';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http'
 import { RouterModule } from '@angular/router';
 import { provideRoutes} from '@angular/router';
 
@@ -24,7 +26,9 @@ import { provideRoutes} from '@angular/router';
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    HttpModule,
+    HttpClientModule
   ],
   providers: [HomeService, appRoutingProviders],
   bootstrap: [AppComponent],

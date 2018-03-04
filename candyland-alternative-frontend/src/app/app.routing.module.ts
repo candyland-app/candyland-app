@@ -1,8 +1,8 @@
-import { FooterComponent } from './Guests/footer/footer.component';
+import { FooterComponent } from './components/Guests/footer/footer.component';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './Guests/home/home.component';
-import { LoginComponent } from './Guests/login/login.component';
-import { NavbarComponent } from './Guests/nav-bar/navbar.component';
+import { HomeComponent } from './components/Guests/home/home.component';
+import { LoginComponent } from './components/Guests/login/login.component';
+import { NavbarComponent } from './components/Guests/nav-bar/navbar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
