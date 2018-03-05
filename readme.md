@@ -30,7 +30,7 @@ Engineering course at ECE NTUA.
 
 ## Development
 
-Built with [Materialize](http://materializecss.com/).
+Built with [Angular](https://angular.io) and [Spring](https://spring.io).
 
 - [Clone](https://help.github.com/articles/cloning-a-repository/) this repository to your local machine
 - Navigate to your clone `cd candyland-app`
