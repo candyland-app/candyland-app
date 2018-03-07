@@ -17,10 +17,12 @@ import { UserService } from './services/user.service';
 import { PaymentService } from './services/payment.service';
 
 import { AppComponent } from './app.component';
+import { FaqComponent } from './components/faq/faq.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
     HomeComponent,
     NavBarComponent,
     MyAccountComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    FaqComponent
   ],
   imports: [
     BrowserAnimationsModule,

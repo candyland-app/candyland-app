@@ -1,3 +1,4 @@
+import { FaqComponent } from './components/faq/faq.component';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -22,6 +23,10 @@ const appRoutes: Routes = [
   {
     path: "myProfile",
     component: MyProfileComponent
+  },
+  {
+    path: "faq",
+    component: FaqComponent
   }
 ];
 
