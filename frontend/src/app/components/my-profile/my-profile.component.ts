@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { AppConst } from '../../constants/app-const';
-import { UserService } from '../../services/user.service';
-import { LoginService } from '../../services/login.service';
-import { User } from '../../models/user';
-import { Router } from '@angular/router';
-import { PaymentService } from '../../services/payment.service';
-import { UserPayment } from '../../models/user-payment';
-import { UserBilling } from '../../models/user-billing';
+import {Component, OnInit} from '@angular/core';
+import {AppConst} from '../../constants/app-const';
+import {UserService} from '../../services/user.service';
+import {LoginService} from '../../services/login.service';
+import {User} from '../../models/user';
+import {Router} from '@angular/router';
+import {PaymentService} from '../../services/payment.service';
+import {UserPayment} from '../../models/user-payment';
+import {UserBilling} from '../../models/user-billing';
 
 @Component({
   selector: "app-my-profile",
@@ -18,7 +18,7 @@ export class MyProfileComponent implements OnInit {
   private dataFetched = false;
   private loginError: boolean;
   private loggedIn: boolean;
-  private credential = { username: "", password: "" };
+  private credential = {username: "", password: ""};
   private currentPassword: string;
 
   private user: User = new User();
@@ -36,6 +36,9 @@ export class MyProfileComponent implements OnInit {
   private defaultUserPaymentId: number;
   private stateList: string[] = [];
 
+  private invalidCardNo: boolean = false;
+  private invalidCvc: boolean = false;
+
   constructor(
     private loginService: LoginService,
     private paymentService: PaymentService,
@@ -51,17 +54,17 @@ export class MyProfileComponent implements OnInit {
     this.userService
       .updateUserInfo(this.user, this.newPassword, this.currentPassword)
       .subscribe(
-        res => {
-          console.log(res.text());
-          this.updateSuccess = true;
-        },
-        error => {
-          console.log(error.text());
-          let errorMessage = error.text();
-          if (errorMessage === "Incorrect current password!") {
-            this.incorrectPassword = true;
-          }
+      res => {
+        console.log(res.text());
+        this.updateSuccess = true;
+      },
+      error => {
+        console.log(error.text());
+        let errorMessage = error.text();
+        if (errorMessage === "Incorrect current password!") {
+          this.incorrectPassword = true;
         }
+      }
       );
   }
 
@@ -87,15 +90,25 @@ export class MyProfileComponent implements OnInit {
   }
 
   onNewPayment() {
-    this.paymentService.newPayment(this.userPayment).subscribe(
-      res => {
-        this.getCurrentUser();
-        this.selectedBillingTab = 0;
-      },
-      error => {
-        console.log(error.text());
-      }
-    );
+    if (this.userPayment.cardNumber.length != 16) {
+      this.invalidCardNo = true;
+    } 
+    else if (this.userPayment.cvc.toString.length > 4 || this.userPayment.cvc.toString.length < 3) {
+      this.invalidCvc = true;
+    } 
+    else {
+      this.invalidCardNo = false;
+      this.invalidCvc = false;
+      this.paymentService.newPayment(this.userPayment).subscribe(
+        res => {
+          this.getCurrentUser();
+          this.selectedBillingTab = 0;
+        },
+        error => {
+          console.log(error.text());
+        }
+      );
+    }
   }
 
   onUpdatePayment(payment: UserPayment) {
@@ -146,10 +159,10 @@ export class MyProfileComponent implements OnInit {
       this.stateList.push(state);
     }
 
-    this.userBilling.userBillingState="";
-    this.userPayment.type="";
-    this.userPayment.expiryMonth="";
-    this.userPayment.expiryYear="";
+    this.userBilling.userBillingState = "";
+    this.userPayment.type = "";
+    this.userPayment.expiryMonth = "";
+    this.userPayment.expiryYear = "";
     this.userPayment.userBilling = this.userBilling;
     this.defaultPaymentSet = false;
 
