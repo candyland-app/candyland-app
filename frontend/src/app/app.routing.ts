@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { MyAccountComponent } from "./components/my-account/my-account.component";
 import { MyProfileComponent } from "./components/my-profile/my-profile.component";
+import { TeamComponent } from './components/team/team.component';
 
 const appRoutes: Routes = [
   {
@@ -27,6 +28,10 @@ const appRoutes: Routes = [
   {
     path: "faq",
     component: FaqComponent
+  },
+  {
+    path: "team",
+    component: TeamComponent
   }
 ];
 

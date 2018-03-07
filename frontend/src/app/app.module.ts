@@ -22,6 +22,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { TeamComponent } from './components/team/team.component';
 
 
 
@@ -32,7 +33,8 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
     NavBarComponent,
     MyAccountComponent,
     MyProfileComponent,
-    FaqComponent
+    FaqComponent,
+    TeamComponent
   ],
   imports: [
     BrowserAnimationsModule,
