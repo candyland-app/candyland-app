@@ -25,6 +25,7 @@ export class MyProfileComponent implements OnInit {
   private updateSuccess: boolean;
   private newPassword: string;
   private incorrectPassword: boolean;
+  private updateUserInfo: boolean = false;
 
   private selectedProfileTab: number = 0;
   private selectedBillingTab: number = 0;
@@ -35,6 +36,7 @@ export class MyProfileComponent implements OnInit {
   private defaultPaymentSet: boolean;
   private defaultUserPaymentId: number;
   private stateList: string[] = [];
+  private updateUserPaymentInfo: boolean;
 
   private invalidCardNo: boolean = false;
   private invalidCvc: boolean = false;
@@ -57,6 +59,7 @@ export class MyProfileComponent implements OnInit {
       res => {
         console.log(res.text());
         this.updateSuccess = true;
+        this.updateUserInfo = true;
       },
       error => {
         console.log(error.text());
@@ -90,10 +93,10 @@ export class MyProfileComponent implements OnInit {
   }
 
   onNewPayment() {
-    if (this.userPayment.cardNumber.length != 16) {
+    if (this.userPayment.cardNumber.length !== 16) {
       this.invalidCardNo = true;
     } 
-    else if (this.userPayment.cvc.toString.length > 4 || this.userPayment.cvc.toString.length < 3) {
+    else if (this.userPayment.cvc.toString().length > 4 || this.userPayment.cvc.toString().length < 3) {
       this.invalidCvc = true;
     } 
     else {
@@ -103,6 +106,7 @@ export class MyProfileComponent implements OnInit {
         res => {
           this.getCurrentUser();
           this.selectedBillingTab = 0;
+          this.updateUserPaymentInfo = true;
         },
         error => {
           console.log(error.text());
@@ -115,12 +119,14 @@ export class MyProfileComponent implements OnInit {
     this.userPayment = payment;
     this.userBilling = payment.userBilling;
     this.selectedBillingTab = 1;
+    this.updateUserPaymentInfo = true;
   }
 
   onRemovePayment(id: number) {
     this.paymentService.removePayment(id).subscribe(
       res => {
         this.getCurrentUser();
+        this.updateUserPaymentInfo = true;
       },
       error => {
         console.log(error.text());
