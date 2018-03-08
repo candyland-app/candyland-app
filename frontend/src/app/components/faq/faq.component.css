@@ -1,0 +1,38 @@
+#myDIV1 {
+  padding: 50px 0;
+  margin-left: 22%;
+  /*background-color: lightblue;*/
+  margin-right:22%;
+  margin-top: 30px;
+  display: none;
+}
+
+#myDIV2 {
+
+  padding: 50px 0;
+  margin-left: 22%;
+  /*background-color: lightblue;*/
+  margin-right:22%;
+  margin-top: 30px;
+  display:none;
+}
+
+#myDIV3 {
+  padding: 50px 0;
+  margin-left: 22%;
+  /*background-color: lightblue;*/
+  margin-right:22%;
+  margin-top: 30px;
+  display:none;
+}
+
+#element1 {display:inline-block;margin-right:40px;margin-left: 20%}
+#element2 {display:inline-block;}
+
+
+#element3 {display:inline-block;margin-right:40px;margin-left: 20%}
+#element4 {display:inline-block;}
+
+#element5 {display:inline-block;margin-right:40px;margin-left: 20%}
+#element6 {display:inline-block;}
+
