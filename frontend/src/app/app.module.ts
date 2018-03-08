@@ -17,6 +17,7 @@ import { UserService } from './services/user.service';
 import { PaymentService } from './services/payment.service';
 
 import { AppComponent } from './app.component';
+import { DemoMapComponent } from './components/demo-map/demo-map.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -34,7 +35,8 @@ import { TeamComponent } from './components/team/team.component';
     MyAccountComponent,
     MyProfileComponent,
     FaqComponent,
-    TeamComponent
+    TeamComponent,
+    DemoMapComponent
   ],
   imports: [
     BrowserAnimationsModule,
