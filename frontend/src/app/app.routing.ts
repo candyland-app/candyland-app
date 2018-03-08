@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MyAccountComponent } from "./components/my-account/my-account.component";
 import { MyProfileComponent } from "./components/my-profile/my-profile.component";
 import { TeamComponent } from './components/team/team.component';
+import { DemoMapComponent } from './components/demo-map/demo-map.component';
 
 const appRoutes: Routes = [
   {
@@ -32,6 +33,10 @@ const appRoutes: Routes = [
   {
     path: "team",
     component: TeamComponent
+  },
+  {
+    path: "map",
+    component: DemoMapComponent
   }
 ];
 
