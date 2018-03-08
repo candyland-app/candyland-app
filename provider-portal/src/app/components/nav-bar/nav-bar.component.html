@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <h3>
+    Provider Portal
+  </h3>
+  <span class="example-padding"></span>
+  <span [hidden]="!loggedIn">
+    <a mat-button>
+      View Event List
+    </a>
+  </span>
+  <span [hidden]="!loggedIn">
+    <a mat-button routerLink="/addNewEvent">
+      Add an Event
+    </a>
+  </span>
+  <span [hidden]="!loggedIn">
+    <a mat-button (click)="logout()">
+      Logout
+    </a>
+  </span>
+</mat-toolbar>
