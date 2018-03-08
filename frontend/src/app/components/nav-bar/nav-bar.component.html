@@ -10,7 +10,7 @@
     <div id="navbar">
       <ul class="nav navbar-nav navbar-left">
         <li>
-          <a mat-button routerLink="/eventList">
+            <a mat-button routerLink="/eventList">
             Events
           </a>
         </li>
@@ -23,7 +23,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!loggedIn">
-          <a mat-button routerLink="/myAccount">My Account</a>
+          <a mat-button routerLink="/myAccount" class="myacc">My Account</a>
         </li>
         <li>
           <a mat-button routerLink="/team">Team</a>
