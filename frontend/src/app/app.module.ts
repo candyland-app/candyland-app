@@ -24,6 +24,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { TeamComponent } from './components/team/team.component';
+import {Footer2Component} from './components/footer2/footer2.component';
 
 
 
@@ -36,7 +37,8 @@ import { TeamComponent } from './components/team/team.component';
     MyProfileComponent,
     FaqComponent,
     TeamComponent,
-    DemoMapComponent
+    DemoMapComponent,
+    Footer2Component
   ],
   imports: [
     BrowserAnimationsModule,
