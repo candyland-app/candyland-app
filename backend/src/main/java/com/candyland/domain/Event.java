@@ -19,23 +19,23 @@ public class Event implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private String title;
-	private String author;
-	private String publisher;
-	private String publicationDate;
-	private String language;
+	private String name;
+	private String address;
+	private String zipcode;
+	private String startDate;
+	private String endDate;
+	private String startTime;
+	private String endTime;
 	private String category;
-	private int numberOfPages;
-	private String format;
-	private String isbn;
-	private double shippingWeight;
-	private double listPrice;
-	private double ourPrice;
+	private int minAge;
+	private int maxAge;
+	private double price;
 	private boolean active=true;
+	
 	
 	@Column(columnDefinition="text")
 	private String description;
-	private int inStockNumber;
+	private int availableTickets;
 	
 	@Transient
 	private MultipartFile eventImage;
@@ -48,44 +48,60 @@ public class Event implements Serializable{
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getAuthor() {
-		return author;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public String getPublisher() {
-		return publisher;
+	public String getZipcode() {
+		return zipcode;
 	}
 
-	public void setPublisher(String publisher) {
-		this.publisher = publisher;
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
 	}
 
-	public String getPublicationDate() {
-		return publicationDate;
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setPublicationDate(String publicationDate) {
-		this.publicationDate = publicationDate;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 
-	public String getLanguage() {
-		return language;
+	public String getEndDate() {
+		return endDate;
 	}
 
-	public void setLanguage(String language) {
-		this.language = language;
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 
 	public String getCategory() {
@@ -96,52 +112,28 @@ public class Event implements Serializable{
 		this.category = category;
 	}
 
-	public int getNumberOfPages() {
-		return numberOfPages;
+	public int getMinAge() {
+		return minAge;
 	}
 
-	public void setNumberOfPages(int numberOfPages) {
-		this.numberOfPages = numberOfPages;
+	public void setMinAge(int minAge) {
+		this.minAge = minAge;
 	}
 
-	public String getFormat() {
-		return format;
+	public int getMaxAge() {
+		return maxAge;
 	}
 
-	public void setFormat(String format) {
-		this.format = format;
+	public void setMaxAge(int maxAge) {
+		this.maxAge = maxAge;
 	}
 
-	public String getIsbn() {
-		return isbn;
+	public double getPrice() {
+		return price;
 	}
 
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
-
-	public double getShippingWeight() {
-		return shippingWeight;
-	}
-
-	public void setShippingWeight(double shippingWeight) {
-		this.shippingWeight = shippingWeight;
-	}
-
-	public double getListPrice() {
-		return listPrice;
-	}
-
-	public void setListPrice(double listPrice) {
-		this.listPrice = listPrice;
-	}
-
-	public double getOurPrice() {
-		return ourPrice;
-	}
-
-	public void setOurPrice(double ourPrice) {
-		this.ourPrice = ourPrice;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public boolean isActive() {
@@ -160,12 +152,12 @@ public class Event implements Serializable{
 		this.description = description;
 	}
 
-	public int getInStockNumber() {
-		return inStockNumber;
+	public int getAvailableTickets() {
+		return availableTickets;
 	}
 
-	public void setInStockNumber(int inStockNumber) {
-		this.inStockNumber = inStockNumber;
+	public void setAvailableTickets(int availableTickets) {
+		this.availableTickets = availableTickets;
 	}
 
 	public MultipartFile getEventImage() {
