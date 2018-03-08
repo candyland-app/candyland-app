@@ -1,0 +1,34 @@
+<div class="container">
+  <div style="text-align:center">
+    <h1>
+      Google Map Geolocation Demo
+    </h1>
+  </div>
+	
+  <!-- <div class="alert alert-warning">
+    Note: Once Track me is enabled, refresh page to enable Find me feature!
+  </div> -->
+  <div>
+    <div>
+	  Insert Address Here: 
+      <input type="text" [(ngModel)]="location">
+      <!-- <button [disabled]="isTracking" class="btn btn-primary" (click)="trackMe()">Find me</button> -->
+      <button class="btn btn-primary" (click)="do()">Add Marker</button>
+      <!-- <button class="btn btn-primary" (click)="trackMe()">Find Location</button> -->
+    </div>
+    <div class="text-white">
+      <span>Longitude: {{currentLong}}</span>
+      <span>Latitude: {{currentLat}}</span>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center">
+          <h3>
+            <div #gmap style="width:100%;height:350px"></div>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
