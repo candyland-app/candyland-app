@@ -12,7 +12,7 @@ public interface EventService {
 	
 	Event save(Event book);
 	
-	List<Event> blurrySearch(String title);
+	List<Event> blurrySearch(String name);
 	
 	void removeOne(Long id);
 }
