@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import {AppConstants} from '../constants/app-constants'
+import { Headers, Http } from '@angular/http';
 
 @Injectable()
 export class GetUserListService {
@@ -9,13 +9,13 @@ export class GetUserListService {
 
 	constructor(private http: Http) { }
 
-	getUserList() {
-		let url = this.serverPath + "user/userList";
-		let headers = new Headers({
-			'Content-Type': 'application/json',
-			'x-auth-token': localStorage.getItem('xAuthToken')
-		});
+    getUserList() {
+        const url = this.serverPath + '/user/userList';
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'x-auth-token': localStorage.getItem('xAuthToken')
+        });
 
-		return this.http.get(url, { headers: headers });
-	}
+        return this.http.get(url, { headers });
+    }
 }

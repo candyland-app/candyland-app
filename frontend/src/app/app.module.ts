@@ -19,7 +19,7 @@ import { UserService } from './services/user.service';
 import { AppComponent } from './app.component';
 import { DemoMapComponent } from './components/demo-map/demo-map.component';
 import { FaqComponent } from './components/faq/faq.component';
-import { Footer2Component } from './components/footer2/footer2.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
@@ -36,7 +36,7 @@ import { TeamComponent } from './components/team/team.component';
         FaqComponent,
         TeamComponent,
         DemoMapComponent,
-        Footer2Component
+        FooterComponent
     ],
     imports: [
         BrowserAnimationsModule,

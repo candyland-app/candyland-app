@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 import { User } from '../models/user';
 import {AppConstants} from '../constants/app-constants'
 
@@ -9,16 +9,15 @@ export class RemoveUserService {
 	private serverPath:string = AppConstants.serverPath;
 
 	constructor(private http: Http) { }
+    
+    sendUser(userId: number) {
+        const url = this.serverPath + '/user/remove';
 
-	sendUser(userId: number) {
-		let url = this.serverPath + "/user/remove";
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'x-auth-token': localStorage.getItem('xAuthToken')
+        });
 
-		let headers = new Headers({
-			'Content-Type': 'application/json',
-			'x-auth-token': localStorage.getItem('xAuthToken')
-		});
-
-		return this.http.post(url, userId, { headers: headers });
-	}
-
+        return this.http.post(url, userId, { headers });
+    }
 }

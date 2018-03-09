@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import {AppConstants} from '../constants/app-constants'
-
+import { Headers, Http } from '@angular/http';
 
 @Injectable()
 export class GetUserService {
+    constructor(private http: Http) {}
 
 	private serverPath:string = AppConstants.serverPath;
 
 	constructor(private http: Http) { }
 
-	getUser(id: number) {
-		let url = this.serverPath + "/user/" + id;
-		let headers = new Headers({
-			'Content-Type': 'application/json',
-			'x-auth-token': localStorage.getItem('xAuthToken')
-		});
+    getUser(id: number) {
+        const url = this.serverPath + '8181/user/' + id;
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'x-auth-token': localStorage.getItem('xAuthToken')
+        });
 
-		return this.http.get(url, { headers: headers });
-	}
+        return this.http.get(url, { headers });
+    }
 }
