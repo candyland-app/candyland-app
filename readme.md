@@ -6,9 +6,14 @@
     ⚡️ Backend & frontend designing for the Candyland app
 </h4>
 
-<div align="center">
-    [![Build Status](https://travis-ci.com/klauscfhq/candyland-app.svg?token=rXPPxPTH1doiuVrFnjqh&branch=master)](https://travis-ci.com/klauscfhq/candyland-app) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
-<div>
+<p align="center">
+    <a href="https://travis-ci.com/klauscfhq/candyland-app">
+        <img alt="Follow+Prettier+on+Twitter" src="https://travis-ci.com/klauscfhq/candyland-app.svg?token=rXPPxPTH1doiuVrFnjqh&branch=master">
+    </a>
+    <a href="https://github.com/prettier/prettier">
+        <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat">
+    </a>
+</p>
 
 ## Related
 
