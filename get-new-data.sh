@@ -17,8 +17,6 @@ do
     git status
     echo "Fetching"
     git fetch
-    echo "LoniasGR"
-    echo "la1995la"
     echo "Pulling"
     git pull
     echo "Done at `date`"
