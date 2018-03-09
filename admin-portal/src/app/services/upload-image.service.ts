@@ -49,7 +49,7 @@ export class UploadImageService {
         return new Promise((resolve, reject) => {
             const formData: any = new FormData();
             const xhr = new XMLHttpRequest();
-            for (let i = 0; i < files.length; i++) {
+            for (const i of files) {
                 formData.append('uploads[]', files[i], files[i].name);
             }
             xhr.onreadystatechange = () => {

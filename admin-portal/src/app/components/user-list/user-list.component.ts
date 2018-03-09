@@ -98,11 +98,3 @@ export class UserListComponent implements OnInit {
         this.getUserList();
     }
 }
-
-@Component({
-    selector: 'dialog-result-example-dialog',
-    templateUrl: './dialog-result-example-dialog.html'
-})
-export class DialogResultExampleDialog {
-    constructor(public dialogRef: MatDialogRef<DialogResultExampleDialog>) {}
-}
