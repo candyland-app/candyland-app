@@ -14,6 +14,7 @@ do
     if ! [ "`pwd`" = "$HOME/$REPO" ]; then 
         cd $HOME/$REPO
     fi
+    git checkout test-server
     git status
     echo "Fetching"
     git fetch
