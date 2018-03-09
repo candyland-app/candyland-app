@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import {AppConstants} from '../constants/app-constants'
 
 @Injectable()
 export class UploadImageService {
 
+	private serverPath:string = AppConstants.serverPath;
 	filesToUpload: Array<File>;
 
 	constructor() {
@@ -10,7 +12,8 @@ export class UploadImageService {
 	}
 
 	upload(userId: number) {
-		this.makeFileRequest("http://localhost:8181/user/add/image?id=" + userId, [], this.filesToUpload).then((result) => {
+		this.makeFileRequest(this.serverPath + "/user/add/image?id=" + userId,
+			[], this.filesToUpload).then((result) => {
 			console.log(result);
 		}, (error) => {
 			console.log(error);
@@ -20,7 +23,8 @@ export class UploadImageService {
 	modify(userId: number) {
 		console.log(this.filesToUpload);
 		if (this.filesToUpload.length > 0) {
-			this.makeFileRequest("http://localhost:8181/user/update/image?id=" + userId, [], this.filesToUpload).then((result) => {
+			this.makeFileRequest(this.serverPath + "/user/update/image?id=" + 
+			userId, [], this.filesToUpload).then((result) => {
 				console.log(result);
 			}, (error) => {
 				console.log(error);

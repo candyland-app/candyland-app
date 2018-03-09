@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import {AppConstants} from '../constants/app-constants'
+
 
 @Injectable()
 export class LoginService {
 
+	private serverPath:string = AppConstants.serverPath;
+
 	constructor(private http: Http) { }
 
 	sendCredential(username: string, password: string) {
-		let url = "http://localhost:8181/token";
+
+		let url = this.serverPath + "8181/token";
+
 		let encodedCredentials = btoa(username + ":" + password);
 		let basicHeader = "Basic " + encodedCredentials;
 		let headers = new Headers({
@@ -21,7 +27,7 @@ export class LoginService {
 	}
 
 	checkSession() {
-		let url = "http://localhost:8181/checkSession";
+		let url = this.serverPath + "/checkSession";
 
 		let headers = new Headers({
 			'x-auth-token': localStorage.getItem('xAuthToken')
@@ -31,7 +37,7 @@ export class LoginService {
 	}
 
 	logout() {
-		let url = "http://localhost:8181/user/logout";
+		let url = this.serverPath + "/user/logout";
 
 		let headers = new Headers({
 			'x-auth-token': localStorage.getItem('xAuthToken')

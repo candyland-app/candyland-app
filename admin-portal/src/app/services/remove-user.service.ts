@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { User } from '../models/user';
+import {AppConstants} from '../constants/app-constants'
 
 @Injectable()
 export class RemoveUserService {
 
+	private serverPath:string = AppConstants.serverPath;
+
 	constructor(private http: Http) { }
 
 	sendUser(userId: number) {
-		let url = "http://localhost:8181/user/remove";
+		let url = this.serverPath + "/user/remove";
 
 		let headers = new Headers({
 			'Content-Type': 'application/json',
