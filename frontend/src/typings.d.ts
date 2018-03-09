@@ -1,5 +1,6 @@
 /* SystemJS module definition */
-declare var module: NodeModule;
-interface NodeModule {
+declare var module: InteraceNodeModule;
+
+interface InterfaceNodeModule {
     id: string;
 }
