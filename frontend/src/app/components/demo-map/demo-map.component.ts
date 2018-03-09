@@ -2,22 +2,22 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {} from '@types/googlemaps';
 
 @Component({
-    selector: 'demo-map',
+    selector: 'app-demo-map',
     templateUrl: './demo-map.component.html',
     styleUrls: ['./demo-map.component.css']
 })
 export class DemoMapComponent implements OnInit {
-    //  public filterQuery = "";
-    //  public rowsOnPage = 5;
-    //  private selectedEvent: Event;
-    //  private eventList: Event[];
-    //  private serverPath = AppConst.serverPath;
-    //  constructor(
-    //    private eventService: EventService,
-    //    private router: Router,
-    //    private http: Http,
-    //    private route: ActivatedRoute
-    //  ) { }
+    // public filterQuery = '';
+    // public rowsOnPage = 5;
+    // private selectedEvent: Event;
+    // private eventList: Event[];
+    // private serverPath = AppConst.serverPath;
+    // constructor(
+    //     private eventService: EventService,
+    //     private router: Router,
+    //     private http: Http,
+    //     private route: ActivatedRoute
+    // ) {}
 
     @ViewChild('gmap') gmapElement: any;
     map: google.maps.Map;
@@ -30,31 +30,32 @@ export class DemoMapComponent implements OnInit {
     private lat;
     private location;
 
-    //  eventService: EventService,
+    // eventService: EventService,
 
     marker: google.maps.Marker;
 
-    //  onSelect(event: Event) {
-    //    this.selectedEvent = event;
-    //    this.router.navigate(['/eventDetail', this.selectedEvent.id]);
-    //  }
+    // onSelect(event: Event) {
+    //     this.selectedEvent = event;
+    //     this.router.navigate(['/eventDetail', this.selectedEvent.id]);
+    // }
+
     ngOnInit() {
-        //    this.route.queryParams.subscribe(params => {
-        //      if (params['eventList']) {
-        //        console.log("filtered event list");
-        //        this.eventList = JSON.parse(params['eventList']);
-        //      } else {
-        //        this.eventService.getEventList().subscribe(
-        //          res => {
-        //            console.log(res.json());
-        //            this.eventList = res.json();
-        //          },
-        //          err => {
-        //            console.log(err);
-        //          }
-        //        );
-        //      }
-        //    });
+        // this.route.queryParams.subscribe(params => {
+        //     if (params['eventList']) {
+        //         console.log('filtered event list');
+        //         this.eventList = JSON.parse(params['eventList']);
+        //     } else {
+        //         this.eventService.getEventList().subscribe(
+        //             res => {
+        //                 console.log(res.json());
+        //                 this.eventList = res.json();
+        //             },
+        //             err => {
+        //                 console.log(err);
+        //             }
+        //         );
+        //     }
+        // });
 
         const mapProp = {
             center: new google.maps.LatLng(38.2466395, 21.734574000000066),
@@ -63,8 +64,8 @@ export class DemoMapComponent implements OnInit {
         };
         this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
 
-        //    this.populateMap(this.eventList);
-        //this.populateMap(["Athens", "Patra"]);
+        // this.populateMap(this.eventList);
+        // this.populateMap(['Athens', 'Patra']);
     }
 
     do() {
@@ -79,39 +80,48 @@ export class DemoMapComponent implements OnInit {
 
     makeCallback(map, marker, event) {
         const geocoder = new google.maps.Geocoder();
-        const geocodeCallback = geocoder.geocode({ address: event }, function(
-            results,
-            status
-        ) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                //this.map.setCenter(results[0].geometry.location);
+        const geocodeCallback = geocoder.geocode(
+            { address: event },
+            (results, status) => {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    // this.map.setCenter(results[0].geometry.location);
+                    //
+                    // let mapProp = {
+                    //     center: new google.maps.LatLng(
+                    //         results[0].geometry.location
+                    //     ),
+                    //     zoom: 15,
+                    //     mapTypeId: google.maps.MapTypeId.ROADMAP
+                    // };
+                    // this.map = new google.maps.Map(
+                    //     this.gmapElement.nativeElement,
+                    //     mapProp
+                    // );
+                    //
+                    // putMarker(
+                    //     results[0].geometry.location.getLat(),
+                    //     results[0].geometry.location.getLng()
+                    // );
+                    // alert(results[0].geometry.location);
+                    // this.putMarker(results[0].geometry.location);
 
-                /*var mapProp = {
-          center: new google.maps.LatLng(results[0].geometry.location),
-          zoom: 15,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);*/
+                    marker = new google.maps.Marker({
+                        position: results[0].geometry.location,
+                        map,
+                        title: 'Got you!'
+                    });
 
-                //          putMarker(results[0].geometry.location.getLat(), results[0].geometry.location.getLng());
-                //          alert(results[0].geometry.location);
-                //        this.putMarker(results[0].geometry.location);
-
-                marker = new google.maps.Marker({
-                    position: results[0].geometry.location,
-                    map,
-                    title: 'Got you!'
-                });
-                //          this.marker.setMap(this.map);
-
-                //          places.push(results[0].geometry.location);
-            } else {
-                alert(
-                    'Geocode was not successful for the following reason: ' +
-                        status
-                );
+                    // this.marker.setMap(this.map);
+                    //
+                    // places.push(results[0].geometry.location);
+                } else {
+                    alert(
+                        'Geocode was not successful for the following reason: ' +
+                            status
+                    );
+                }
             }
-        });
+        );
 
         return geocodeCallback;
     }
@@ -120,38 +130,39 @@ export class DemoMapComponent implements OnInit {
         const places = [];
 
         list.forEach(event => {
-            //      putMarker(29, 42);
+            // putMarker(29, 42);
             //      event.
             //      putMarker();
             //      geocoder.geocode( { 'address': event.getAddress() }, function(results, status) {
+
             this.makeCallback(this.map, this.marker, event);
 
-            /*      navigator.geolocation.getCurrentPosition(function(position) {
-        let pos = {
-          lat: 18.5793,
-          lng: 73.8143
-        };
-        let marker = new google.maps.Marker({
-          map: this.map,
-          position: { lat: 18.5793, lng: 73.8143}
-        });
-      }
-*/
+            // navigator.geolocation.getCurrentPosition(function(position) {
+            //     let pos = {
+            //       lat: 18.5793,
+            //       lng: 73.8143
+            //     };
+            //     let marker = new google.maps.Marker({
+            //       map: this.map,
+            //       position: { lat: 18.5793, lng: 73.8143}
+            //     });
+            //   }
         });
     }
 
     putMarker(location) {
-        //    this.currentLat = a;
-        //    this.currentLong = b;
-        //    let location = new google.maps.LatLng(a, b);
-        //    this.map.panTo(location);
+        // this.currentLat = a;
+        // this.currentLong = b;
+        // const location = new google.maps.LatLng(a, b);
+        // this.map.panTo(location);
+
         alert('lmao');
 
         this.marker = new google.maps.Marker({
             position: location,
             map: this.map,
             title: 'Got you!'
-            //        this.router.navigate(['/eventDetail', this.selectedEvent.id]); something
+            // this.router.navigate(['/eventDetail', this.selectedEvent.id]); something
         });
     }
 
@@ -180,16 +191,21 @@ export class DemoMapComponent implements OnInit {
     trackMe() {
         const places = [];
         const geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ address: 'Patra' }, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                //this.map.setCenter(results[0].geometry.location);
-
-                /*var mapProp = {
-          center: new google.maps.LatLng(results[0].geometry.location),
-          zoom: 15,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);*/
+        geocoder.geocode({ address: 'Patra' }, (results, status) => {
+            if (status === google.maps.GeocoderStatus.OK) {
+                // this.map.setCenter(results[0].geometry.location);
+                //
+                // let mapProp = {
+                //     center: new google.maps.LatLng(
+                //         results[0].geometry.location
+                //     ),
+                //     zoom: 15,
+                //     mapTypeId: google.maps.MapTypeId.ROADMAP
+                // };
+                // this.map = new google.maps.Map(
+                //     this.gmapElement.nativeElement,
+                //     mapProp
+                // );
 
                 places.push(results[0].geometry.location);
             } else {
@@ -209,11 +225,12 @@ export class DemoMapComponent implements OnInit {
                 });
             });
 
-            //alert(places.pop());
+            // alert(places.pop());
         });
     }
 }
-interface marker {
+
+interface InterfaceMarker {
     lat: number;
     lng: number;
     label?: string;

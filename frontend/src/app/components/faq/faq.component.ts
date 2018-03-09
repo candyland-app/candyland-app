@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FaqComponent {
     myFunction1(element, text) {
-        let x = document.getElementById('myDIV1');
+        const x = document.getElementById('myDIV1');
         if (x.style.display === 'block') {
             element.textContent = '+';
             x.style.display = 'none';
@@ -18,7 +18,7 @@ export class FaqComponent {
     }
 
     myFunction2(element, text) {
-        let x = document.getElementById('myDIV2');
+        const x = document.getElementById('myDIV2');
         if (x.style.display === 'block') {
             x.style.display = 'none';
             element.textContent = '+';
@@ -29,7 +29,7 @@ export class FaqComponent {
     }
 
     myFunction3(element, text) {
-        let x = document.getElementById('myDIV3');
+        const x = document.getElementById('myDIV3');
         if (x.style.display === 'block') {
             x.style.display = 'none';
             element.textContent = '+';
