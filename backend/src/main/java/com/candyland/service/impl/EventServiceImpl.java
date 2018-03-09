@@ -39,8 +39,9 @@ public class EventServiceImpl implements EventService{
 	}
 
 	public List<Event> blurrySearch(String keyword) {
-		List<Event> eventList = eventRepository.findByDescriptionContaining(keyword);
-
+		
+        List<Event> eventList = eventRepository.findByNameContaining(keyword);
+		
 		List<Event> activeEventList = new ArrayList<>();
 
 		for (Event event : eventList) {
