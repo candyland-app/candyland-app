@@ -1,42 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LoginService {
+    constructor(private http: Http) {}
 
-	constructor(private http: Http) { }
+    sendCredential(username: string, password: string) {
+        const url = 'http://localhost:8181/token';
+        const encodedCredentials = btoa(username + ':' + password);
+        const basicHeader = 'Basic ' + encodedCredentials;
+        const headers = new Headers({
+            'Content-Type': 'application/x-www-form-urlencoded',
+            Authorization: basicHeader
+        });
 
-	sendCredential(username: string, password: string) {
-		let url = "http://localhost:8181/token";
-		let encodedCredentials = btoa(username + ":" + password);
-		let basicHeader = "Basic " + encodedCredentials;
-		let headers = new Headers({
-			'Content-Type': 'application/x-www-form-urlencoded',
-			'Authorization': basicHeader
-		});
+        return this.http.get(url, { headers });
+    }
 
-		return this.http.get(url, { headers: headers });
+    checkSession() {
+        const url = 'http://localhost:8181/checkSession';
 
-	}
+        const headers = new Headers({
+            'x-auth-token': localStorage.getItem('xAuthToken')
+        });
 
-	checkSession() {
-		let url = "http://localhost:8181/checkSession";
+        return this.http.get(url, { headers });
+    }
 
-		let headers = new Headers({
-			'x-auth-token': localStorage.getItem('xAuthToken')
-		});
+    logout() {
+        const url = 'http://localhost:8181/user/logout';
 
-		return this.http.get(url, { headers: headers });
-	}
+        const headers = new Headers({
+            'x-auth-token': localStorage.getItem('xAuthToken')
+        });
 
-	logout() {
-		let url = "http://localhost:8181/user/logout";
-
-		let headers = new Headers({
-			'x-auth-token': localStorage.getItem('xAuthToken')
-		});
-
-		return this.http.post(url, '', { headers: headers });
-	}
+        return this.http.post(url, '', { headers });
+    }
 }
