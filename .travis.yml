@@ -34,16 +34,5 @@ script:
   - mvn -B test-compile
   - mvn -B install
 
-deploy:
-  provider: releases
-  api_key:
-    secure: "JSXtGLJtAOCFIit4YkaTOi7SQ9oc3732aSHwO41Bsc1JH6YH/i5eITzx/5QxKEf4TcLyxV6ZqvqgXLsOu+stmJoVlq68AQkLc0Lwb7H1O7dV0vB51XlevA+H/1TIxcoH2TRp8S9W+p2B5ZVlYyGP71C/JnDrbVdEHEwJeN/QqIFu97tpkWYveZbosHn78hKZbzwgW4s00/J90U9gfyHKmv5s+Cc5CkaiYgWOhP2/cTxYuAuyLOI9H4WxAEacSSUTRb3Qf7yhnbX2z4R52Y4MZx1yt89bc3NFgKQDfRrFo7odol7nwKsfQzsDvGX6iY4b1WRA49Jy34vxcRv+J1DUgJ4pYYCzU/tjTO8+Qs637oW78zIC7tACswlFw2xI+39eoeqAtdQcca2axhHZlxoESuUd9dWBhmCO6fwuuNo6SxeLmB2YmwALXj+pB/U2VVjvwtq6N9EU4GLQ9FiPLxTl/+ZQi/fFSV1iz7Q+Dzn5FrCxIDirtn06v5YfoKJYbNXcd2czLx5Om3X5FZO5LKwRRevnfCBhmbFWcaUM424N+AdDAj8GC+Nhu44P9yCxLmQ4A6UTPvsmxJ4fWLj5g4wsm9aUkmn00UfkUArBu/zLEjJ5vwyD+HgTgWTQzrdVxr+XPA23GHEo7DvoyL73LUG9LdXA2M/T6vVkoO9ViC0ERAo="
-  file_glob: true
-  file: dist/*.zip
-  skip_cleanup: true
-  on:
-    tags: true
-
 notifications:
   email: true
-
