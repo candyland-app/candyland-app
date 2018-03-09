@@ -35,7 +35,7 @@ export class UserListComponent implements OnInit {
         const dialogRef = this.dialog.open(DialogResultExampleDialog);
         dialogRef.afterClosed().subscribe(result => {
             console.log(result);
-            if (result == 'yes') {
+            if (result === 'yes') {
                 this.removeUserService.sendUser(user.id).subscribe(
                     res => {
                         console.log(res);
@@ -71,7 +71,7 @@ export class UserListComponent implements OnInit {
         const dialogRef = this.dialog.open(DialogResultExampleDialog);
         dialogRef.afterClosed().subscribe(result => {
             console.log(result);
-            if (result == 'yes') {
+            if (result === 'yes') {
                 for (const user of this.removeUserList) {
                     this.removeUserService
                         .sendUser(user.id)

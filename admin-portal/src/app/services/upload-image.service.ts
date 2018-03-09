@@ -47,14 +47,14 @@ export class UploadImageService {
 
     makeFileRequest(url: string, params: string[], files: File[]) {
         return new Promise((resolve, reject) => {
-            let formData: any = new FormData();
-            let xhr = new XMLHttpRequest();
+            const formData: any = new FormData();
+            const xhr = new XMLHttpRequest();
             for (let i = 0; i < files.length; i++) {
                 formData.append('uploads[]', files[i], files[i].name);
             }
             xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4) {
-                    if (xhr.status == 200) {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
                         console.log('image uploaded successfully!');
                     } else {
                         reject(xhr.response);
