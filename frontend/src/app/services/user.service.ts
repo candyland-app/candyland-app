@@ -25,16 +25,16 @@ export class UserService {
         });
     }
 
-    updateUserInfo(user: User, newPassword: string, currentPassword: string) {
+    updateUserInfo(user: User, newPass: string, currentPass: string) {
         const url = this.serverPath + '/user/updateUserInfo';
         const userInfo = {
             id: user.id,
             firstName: user.firstName,
             lastName: user.lastName,
             username: user.username,
-            currentPassword: currentPassword,
+            currentPassword: currentPass,
             email: user.email,
-            newPassword: newPassword
+            newPassword: newPass
         };
 
         const tokenHeader = new Headers({
