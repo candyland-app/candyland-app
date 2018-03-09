@@ -1,12 +1,19 @@
 <h1 align="center">
-<img src="/media/logo.png" width="32%"><br/>Candyland
+    <img src="/media/logo.png" width="30%"><br/>Candyland
 </h1>
 
 <h4 align="center">
-  ⚡️ Backend & frontend designing for the Candyland app
+    ⚡️ Backend & frontend designing for the Candyland app
 </h4>
 
-[![Build Status](https://travis-ci.com/klauscfhq/candyland-app.svg?token=rXPPxPTH1doiuVrFnjqh&branch=master)](https://travis-ci.com/klauscfhq/candyland-app)
+<p align="center">
+    <a href="https://travis-ci.com/klauscfhq/candyland-app">
+        <img alt="Follow+Prettier+on+Twitter" src="https://travis-ci.com/klauscfhq/candyland-app.svg?token=rXPPxPTH1doiuVrFnjqh&branch=master">
+    </a>
+    <a href="https://github.com/prettier/prettier">
+        <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat">
+    </a>
+</p>
 
 ## Related
 
