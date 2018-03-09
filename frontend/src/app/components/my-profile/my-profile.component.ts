@@ -167,7 +167,9 @@ export class MyProfileComponent implements OnInit {
         this.getCurrentUser();
 
         for (const state in AppConst.usStates) {
-            this.stateList.push(state);
+            if (AppConst.usStates.hasOwnProperty(state)) {
+                this.stateList.push(state);
+            }
         }
 
         this.userBilling.userBillingState = '';
