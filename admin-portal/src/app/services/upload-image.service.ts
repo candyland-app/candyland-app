@@ -52,7 +52,7 @@ export class UploadImageService {
             for (let i = 0; i < files.length; i++) {
                 formData.append('uploads[]', files[i], files[i].name);
             }
-            xhr.onreadystatechange = function() {
+            xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
                         console.log('image uploaded successfully!');
