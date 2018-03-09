@@ -35,4 +35,4 @@ script:
   - mvn -B install
 
 notifications:
-  email: true
+  email: false
