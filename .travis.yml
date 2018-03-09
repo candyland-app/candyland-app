@@ -1,38 +1,15 @@
 sudo: false
-
-dist: trusty
-
-language: java
-
-osx_image: xcode9
-
-matrix:
-  include:
-    - os: osx
-    - os: linux
-
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
-
-install:
-  - nvm install 6
-  - npm install
-  - npm prune
-
-before_script:
-  - export MAVEN_OPTS=-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
-
+language: node_js
+node_js:
+  - 6
+  - 8
+env:
+  - SRC_DIR=admin-portal
+  - SRC_DIR=frontend
+  - SRC_DIR=provider-portal
 script:
-  - npm test
-  - npm run dist
-  - npm run pack
-  - cd api
-  - mvn -B checkstyle:check
-  - mvn -B compile
-  - mvn -B test-compile
-  - mvn -B install
-
+  - cd $SRC_DIR
+  - yarn install
+  - yarn lint
 notifications:
   email: false

@@ -24,3 +24,6 @@ api/target/
 /nbproject/private/
 # nbproject
 nbproject/
+
+# logs
+*.log
