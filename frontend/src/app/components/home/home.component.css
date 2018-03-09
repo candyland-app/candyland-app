@@ -1,0 +1,18 @@
+hr {
+    width: 50%;
+}
+
+.background {
+    width: 65%;
+    position: absolute;
+    margin-top: 90px;
+    z-index:-2;
+}
+
+.card {
+    width: 18rem;
+}
+.logo {
+    width:400px;
+    z-index:2;
+}
