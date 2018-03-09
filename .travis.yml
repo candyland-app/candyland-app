@@ -2,6 +2,7 @@ sudo: false
 language: node_js
 node_js:
   - 6
+  - 8
 env:
   - SRC_DIR=admin-portal
   - SRC_DIR=frontend
@@ -9,6 +10,6 @@ env:
 script:
   - cd $SRC_DIR
   - yarn install
-  - yarn list
+  - yarn lint
 notifications:
   email: false
