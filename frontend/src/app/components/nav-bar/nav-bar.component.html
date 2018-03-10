@@ -1,47 +1,61 @@
-<div class="page-top" style="width: 100%; height: 20px; background-color: #f3f3f3"></div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand pointer" routerLink="/home">
-        <img src="../../assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        Candyland
-      </a>
-    </div>
-    <div id="navbar">
-      <ul class="nav navbar-nav navbar-left">
-        <li>
-            <a mat-button routerLink="/eventList" class="evnt">
-            Events
-          </a>
+        <a class="navbar-brand pointer" routerLink="/home">
+            <img src="../../assets/logo.png" width="30" height="30"
+                class="d-inline-block align-top" alt="Logo">
+            Candyland
+        </a>
+        <!-- Button for when the elements need to collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+      <ul class="mx-auto">
+        <li class"nav-item">
+            <a mat-button routerLink="/eventList">
+            Εκδηλώσεις
+            </a>
         </li>
-        <form (ngSubmit)="onSearchByTitle()" class="form-inline navbar-form">
-          <div class="form-group">
-            <input type="text" name="searcyByTitle" [(ngModel)]="keyboard" class="form-control" placeholder="Search Event" />
-          </div>
-          <button type="submit" class="btn btn-default">Search</button>
+        <form (ngSubmit)="onSearchByTitle()" class="form-inline">
+            <div class="form-group">
+                <input type="search" name="searchByTitle" [(ngModel)]="keyboard"
+                    class="form-control mr-sm-2"
+                    placeholder="Αναζήτηση Εκδηλώσεων"/>
+                <button type="submit" class="btn btn-outline-success
+                    my-2 my-sm-0">Αναζήτηση</button>
+            </div>
         </form>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!loggedIn">
-          <a mat-button routerLink="/myAccount" class="myacc">My Account</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+              <li *ngIf="!loggedIn" class="nav-item">
+                  <a mat-button routerLink="/myAccount"
+                    class="nav-link">Ο λογαριασμός μου</a>
+              </li>
+            <li class="nav-item">
+                <a mat-button routerLink="/team" class="nav-link">
+                    Η ομάδα μας</a>
+            </li>
+            <li class="nav-item">
+                <a mat-button class="nav-link" routerLink="/faq">FAQ</a>
+            </li>
+		    <li class="nav-item">
+                <a mat-button class="nav-link" routerLink="/map">Map-Demo</a>
+            </li>
+            <li *ngIf="loggedIn" class="nav-item">
+                <a mat-button class="nav-link"
+                    routerLink="/shoppingCart">Πορτοφόλι</a>
         </li>
-        <li>
-          <a mat-button routerLink="/team">Team</a>
+        <li *ngIf="loggedIn" class="nav-item">
+          <a mat-button class="nav-link" routerLink="/myProfile">
+              Το Προφίλ μου</a>
         </li>
-        <li>
-          <a mat-button routerLink="/faq">FAQ</a>
-        </li>
-		<li>
-          <a mat-button routerLink="/map">Map-Demo</a>
-        </li>
-        <li *ngIf="loggedIn">
-          <a mat-button routerLink="/shoppingCart">Wallet</a>
-        </li>
-        <li *ngIf="loggedIn">
-          <a mat-button routerLink="/myProfile">My Profile</a>
-        </li>
-        <li *ngIf="loggedIn">
-          <a mat-button (click)="logout()">Logout </a>
+        <li *ngIf="loggedIn" class="nav-item">
+          <a mat-button class="nav-link" (click)="logout()">Έξοδος</a>
         </li>
       </ul>
     </div>
