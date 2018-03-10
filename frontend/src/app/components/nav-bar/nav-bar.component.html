@@ -5,20 +5,10 @@
                 class="d-inline-block align-top" alt="Logo">
             Candyland
         </a>
-        <!-- Button for when the elements need to collapse -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-
-      <ul class="mx-auto">
-        <li class"nav-item">
-            <a mat-button routerLink="/eventList">
-            Εκδηλώσεις
-            </a>
+      <ul class="mx-auto navbar-nav">
+        <li>
+            <a mat-button routerLink="/eventList">Εκδηλώσεις</a>
         </li>
         <form (ngSubmit)="onSearchByTitle()" class="form-inline">
             <div class="form-group">
@@ -30,7 +20,16 @@
             </div>
         </form>
       </ul>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <!-- Button for when the elements need to collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="navbarNav"
+          aria-controls="navbarNav" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
               <li *ngIf="!loggedIn" class="nav-item">
                   <a mat-button routerLink="/myAccount"
