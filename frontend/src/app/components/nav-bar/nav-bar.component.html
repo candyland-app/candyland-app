@@ -1,5 +1,4 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container">
         <a class="navbar-brand pointer" routerLink="/home">
             <img src="../../assets/logo.png" width="30" height="30"
                 class="d-inline-block align-top" alt="Logo">
@@ -7,8 +6,9 @@
         </a>
 
       <ul class="mx-auto navbar-nav">
-        <li>
-            <a mat-button routerLink="/eventList">Εκδηλώσεις</a>
+        <li class="nav-item">
+            <a class="nav-link" mat-button
+            routerLink="/eventList">Εκδηλώσεις</a>
         </li>
         <form (ngSubmit)="onSearchByTitle()" class="form-inline">
             <div class="form-group">
@@ -22,15 +22,16 @@
       </ul>
 
       <!-- Button for when the elements need to collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse"
-          data-target="navbarNav"
-          aria-controls="navbarNav" aria-expanded="false"
-          aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button"
+      (click)="isExpanded = !isExpanded" data-toggle="collapse"
+      data-target="navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarNav"
+      [ngbCollapse]="!isExpanded">
+          <ul class="navbar-nav mr-auto">
               <li *ngIf="!loggedIn" class="nav-item">
                   <a mat-button routerLink="/myAccount"
                     class="nav-link">Ο λογαριασμός μου</a>
@@ -58,5 +59,4 @@
         </li>
       </ul>
     </div>
-  </div>
 </nav>

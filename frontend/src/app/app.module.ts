@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {
@@ -39,6 +40,7 @@ import { TeamComponent } from './components/team/team.component';
         FooterComponent
     ],
     imports: [
+        NgbModule.forRoot(),
         BrowserAnimationsModule,
         HttpModule,
         BrowserModule,
