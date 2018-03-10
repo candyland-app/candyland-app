@@ -6,7 +6,7 @@
         </a>
 
       <ul class="mx-auto navbar-nav">
-        <li class="nav-item">
+        <li class="nav-item evnt">
             <a class="nav-link" mat-button
             routerLink="/eventList">Εκδηλώσεις</a>
         </li>
@@ -31,31 +31,40 @@
 
       <div class="collapse navbar-collapse" id="navbarNav"
       [ngbCollapse]="!isExpanded">
-          <ul class="navbar-nav mr-auto">
-              <li *ngIf="!loggedIn" class="nav-item">
+          <ul class="navbar-nav">
+              <li *ngIf="!loggedIn" class="nav-item myacc">
                   <a mat-button routerLink="/myAccount"
+                  (click)="isExpanded = !isExpanded"
                     class="nav-link">Ο λογαριασμός μου</a>
               </li>
             <li class="nav-item">
-                <a mat-button routerLink="/team" class="nav-link">
-                    Η ομάδα μας</a>
+                <a mat-button routerLink="/team"
+                (click)="isExpanded = !isExpanded"
+                class="nav-link">Η ομάδα μας</a>
             </li>
             <li class="nav-item">
-                <a mat-button class="nav-link" routerLink="/faq">FAQ</a>
+                <a mat-button routerLink="/faq"
+                (click)="isExpanded = !isExpanded"
+                class="nav-link">FAQ</a>
             </li>
 		    <li class="nav-item">
-                <a mat-button class="nav-link" routerLink="/map">Map-Demo</a>
+                <a mat-button routerLink="/map"
+                (click)="isExpanded = !isExpanded"
+                 class="nav-link">Map-Demo</a>
             </li>
             <li *ngIf="loggedIn" class="nav-item">
-                <a mat-button class="nav-link"
-                    routerLink="/shoppingCart">Πορτοφόλι</a>
+                <a mat-button routerLink="/shoppingCart"
+                (click)="isExpanded = !isExpanded"
+                class="nav-link">Πορτοφόλι</a>
         </li>
         <li *ngIf="loggedIn" class="nav-item">
-          <a mat-button class="nav-link" routerLink="/myProfile">
-              Το Προφίλ μου</a>
+          <a mat-button routerLink="/myProfile"
+          (click)="isExpanded = !isExpanded"
+          class="nav-link">Το Προφίλ μου</a>
         </li>
         <li *ngIf="loggedIn" class="nav-item">
-          <a mat-button class="nav-link" (click)="logout()">Έξοδος</a>
+          <a mat-button class="nav-link"
+          (click)="logout();isExpanded = !isExpanded;">Έξοδος</a>
         </li>
       </ul>
     </div>

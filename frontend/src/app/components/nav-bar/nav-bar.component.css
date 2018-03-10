@@ -13,3 +13,14 @@ body {
 .evnt {
     margin-right:1em;
 }
+
+input {
+    width: 400px;
+    padding: 0 12px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 12px;
+    line-height: 3;
+}
