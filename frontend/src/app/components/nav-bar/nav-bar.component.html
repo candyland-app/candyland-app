@@ -1,71 +1,71 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand pointer" routerLink="/home">
-            <img src="../../assets/logo.png" width="30" height="30"
-                class="d-inline-block align-top" alt="Logo">
-            Candyland
-        </a>
+    <a class="navbar-brand pointer" routerLink="/home">
+        <img src="../../assets/logo.png" width="30" height="30"
+        class="d-inline-block align-top" alt="Logo">
+        Candyland
+    </a>
 
-      <ul class="mx-auto navbar-nav">
+    <ul class="mx-auto navbar-nav">
         <li class="nav-item evnt">
             <a class="nav-link" mat-button
-            routerLink="/eventList">Εκδηλώσεις</a>
+                routerLink="/eventList">Εκδηλώσεις</a>
         </li>
         <form (ngSubmit)="onSearchByTitle()" class="form-inline">
             <div class="form-group">
                 <input type="search" name="searchByTitle" [(ngModel)]="keyboard"
-                    class="form-control mr-sm-2"
-                    placeholder="Αναζήτηση Εκδηλώσεων"/>
-                <button type="submit" class="btn btn-outline-success
-                    my-2 my-sm-0">Αναζήτηση</button>
-            </div>
-        </form>
-      </ul>
+                class="form-control mr-sm-2"
+                placeholder="Αναζήτηση Εκδηλώσεων"/>
+            <button type="submit" class="btn btn-outline-success
+                my-2 my-sm-0">Αναζήτηση</button>
+        </div>
+    </form>
+</ul>
 
-      <!-- Button for when the elements need to collapse -->
-      <button class="navbar-toggler" type="button"
-      (click)="isExpanded = !isExpanded" data-toggle="collapse"
-      data-target="navbarNav" aria-controls="navbarNav" aria-expanded="false"
-      aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
+<!-- Button for when the elements need to collapse -->
+<button class="navbar-toggler" type="button"
+    (click)="isExpanded = !isExpanded" data-toggle="collapse"
+    data-target="navbarNav" aria-controls="navbarNav" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
 
-      <div class="collapse navbar-collapse" id="navbarNav"
-      [ngbCollapse]="!isExpanded">
-          <ul class="navbar-nav">
-              <li *ngIf="!loggedIn" class="nav-item myacc">
-                  <a mat-button routerLink="/myAccount"
-                  (click)="isExpanded = !isExpanded"
-                    class="nav-link">Ο λογαριασμός μου</a>
-              </li>
-            <li class="nav-item">
-                <a mat-button routerLink="/team"
+<div class="collapse navbar-collapse" id="navbarNav"
+    [ngbCollapse]="!isExpanded">
+    <ul class="navbar-nav">
+        <li *ngIf="!loggedIn" class="nav-item myacc">
+            <a mat-button routerLink="/myAccount"
+                (click)="isExpanded = !isExpanded"
+                class="nav-link">Είσοδος</a>
+        </li>
+        <li class="nav-item">
+            <a mat-button routerLink="/team"
                 (click)="isExpanded = !isExpanded"
                 class="nav-link">Η ομάδα μας</a>
-            </li>
-            <li class="nav-item">
-                <a mat-button routerLink="/faq"
+        </li>
+        <li class="nav-item">
+            <a mat-button routerLink="/faq"
                 (click)="isExpanded = !isExpanded"
                 class="nav-link">FAQ</a>
-            </li>
-		    <li class="nav-item">
-                <a mat-button routerLink="/map"
+        </li>
+        <li class="nav-item">
+            <a mat-button routerLink="/map"
                 (click)="isExpanded = !isExpanded"
-                 class="nav-link">Map-Demo</a>
-            </li>
-            <li *ngIf="loggedIn" class="nav-item">
-                <a mat-button routerLink="/shoppingCart"
+                class="nav-link">Map-Demo</a>
+        </li>
+        <li *ngIf="loggedIn" class="nav-item">
+            <a mat-button routerLink="/shoppingCart"
                 (click)="isExpanded = !isExpanded"
                 class="nav-link">Πορτοφόλι</a>
         </li>
         <li *ngIf="loggedIn" class="nav-item">
-          <a mat-button routerLink="/myProfile"
-          (click)="isExpanded = !isExpanded"
-          class="nav-link">Το Προφίλ μου</a>
+            <a mat-button routerLink="/myProfile"
+                (click)="isExpanded = !isExpanded"
+                class="nav-link">Το Προφίλ μου</a>
         </li>
         <li *ngIf="loggedIn" class="nav-item">
-          <a mat-button class="nav-link"
-          (click)="logout();isExpanded = !isExpanded;">Έξοδος</a>
+            <a mat-button class="nav-link"
+                (click)="logout();isExpanded = !isExpanded;">Έξοδος</a>
         </li>
-      </ul>
-    </div>
+    </ul>
+</div>
 </nav>

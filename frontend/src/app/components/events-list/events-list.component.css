@@ -1,0 +1,33 @@
+.logo {
+    width: 400px;
+    z-index: 2;
+}
+
+.background {
+    width: 65%;
+    position: absolute;
+    margin-top: 90px;
+    z-index: -2;
+}
+
+.person {
+    border-radius: 50%;
+}
+
+.card {
+    width: 18rem;
+    border-style: none;
+}
+
+.form-group {
+	text-align: right;	
+}
+
+.form-control {
+	width: 100%;
+
+}
+
+input{
+   text-align:center;
+}
