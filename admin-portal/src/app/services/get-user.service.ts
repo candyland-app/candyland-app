@@ -4,10 +4,9 @@ import { Headers, Http } from '@angular/http';
 
 @Injectable()
 export class GetUserService {
-    constructor(private http: Http) {}
 
 	private serverPath:string = AppConstants.serverPath;
-
+    
 	constructor(private http: Http) { }
 
     getUser(id: number) {
