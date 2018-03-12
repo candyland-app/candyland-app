@@ -8,22 +8,12 @@
       </a>
     </div>
     <div id="navbar">
-      <ul class="nav navbar-nav navbar-left">
-        <li>
-            <a mat-button routerLink="/eventList" class="evnt">
-            Events
-          </a>
-        </li>
-        <form (ngSubmit)="onSearchByTitle()" class="form-inline navbar-form">
-          <div class="form-group">
-            <input type="text" name="searcyByTitle" [(ngModel)]="keyboard" class="form-control" placeholder="Search Event" />
-          </div>
-          <button type="submit" class="btn btn-default">Search</button>
-        </form>
-      </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!loggedIn">
-          <a mat-button routerLink="/myAccount" class="myacc">My Account</a>
+        <li>
+          <a mat-button routerLink="/home">Home</a>
+        </li>
+        <li>
+          <a mat-button routerLink="/eventList">Events</a>
         </li>
         <li>
           <a mat-button routerLink="/team">Team</a>
@@ -31,7 +21,7 @@
         <li>
           <a mat-button routerLink="/faq">FAQ</a>
         </li>
-		<li>
+		<li *ngIf="!loggedIn">
           <a mat-button routerLink="/map">Map-Demo</a>
         </li>
         <li *ngIf="loggedIn">
@@ -42,6 +32,9 @@
         </li>
         <li *ngIf="loggedIn">
           <a mat-button (click)="logout()">Logout </a>
+        </li>
+        <li *ngIf="!loggedIn">
+          <a mat-button routerLink="/myAccount" class="myacc">Sign in</a>
         </li>
       </ul>
     </div>
