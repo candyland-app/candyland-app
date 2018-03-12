@@ -1,64 +1,64 @@
 table {
-	border-collapse: separate;
-	border-spacing: 0;
-	color: #4a4a4d;
-	font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #4A4A4D;
+    font: 14px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 th,
 td {
-	padding: 10px 15px;
-	vertical-align: middle;
+    padding: 10px 15px;
+    vertical-align: middle;
 }
 
 thead {
-	background: #395870;
-	color: #fff;
+    background: #395870;
+    color: #FFF;
 }
 
 th {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 th:first-child {
-	text-align: left;
+    text-align: left;
 }
 
 tbody tr:nth-child(even) {
-	background: #f0f0f2;
+    background: #F0F0F2;
 }
 
 td {
-	border-bottom: 1px solid #cecfd5;
-	border-right: 1px solid #cecfd5;
+    border-bottom: 1px solid #CECFD5;
+    border-right: 1px solid #CECFD5;
 }
 
 td:first-child {
-	border-left: 1px solid #cecfd5;
+    border-left: 1px solid #CECFD5;
 }
 
 .book-title {
-	color: #395870;
-	display: block;
+    color: #395870;
+    display: block;
 }
 
 .item-stock,
 .item-qty {
-	text-align: center;
+    text-align: center;
 }
 
 .item-price {
-	text-align: right;
+    text-align: right;
 }
 
 .item-multiple {
-	display: block;
+    display: block;
 }
 
 tfoot {
-	text-align: right;
+    text-align: right;
 }
 
 tfoot tr:last-child {
-	background: #f0f0f2;
+    background: #F0F0F2;
 }

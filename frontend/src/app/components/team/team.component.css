@@ -1,12 +1,12 @@
 .logo {
-    width: 400px; 
+    width: 400px;
     z-index: 2;
 }
 
 .background {
-    width: 65%; 
-    position: absolute; 
-    margin-top: 90px; 
+    width: 65%;
+    position: absolute;
+    margin-top: 90px;
     z-index: -2;
 }
 
