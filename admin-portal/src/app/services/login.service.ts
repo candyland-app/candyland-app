@@ -10,8 +10,6 @@ export class LoginService {
 
 	private serverPath:string = AppConstants.serverPath;
 
-	constructor(private http: Http) { }
-
     sendCredential(username: string, password: string) {
         const url = this.serverPath + '/token';
         const encodedCredentials = btoa(username + ':' + password);
