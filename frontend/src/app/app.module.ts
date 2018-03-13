@@ -27,6 +27,7 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { TeamComponent } from './components/team/team.component';
+import { WalletComponent } from './components/wallet/wallet.component';
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import { TeamComponent } from './components/team/team.component';
         TeamComponent,
         DemoMapComponent,
         FooterComponent,
-        EventsListComponent
+        EventsListComponent,
+        WalletComponent
     ],
     imports: [
         NgbModule.forRoot(),

@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { TeamComponent } from './components/team/team.component';
+import { WalletComponent } from './components/wallet/wallet.component';
 
 const appRoutes: Routes = [
     {
@@ -42,6 +43,10 @@ const appRoutes: Routes = [
     {
         path: 'eventList',
         component: EventsListComponent
+    },
+    {
+        path: 'wallet',
+        component: WalletComponent
     }
 ];
 
