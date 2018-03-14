@@ -15,17 +15,17 @@
         <li>
           <a mat-button routerLink="/eventList">Events</a>
         </li>
-        <li>
-          <a mat-button routerLink="/team">Team</a>
+        <li *ngIf="loggedIn">
+          <a mat-button routerLink="/wallet">Wallet</a>
         </li>
         <li>
           <a mat-button routerLink="/faq">FAQ</a>
         </li>
+        <li>
+          <a mat-button routerLink="/team">Team</a>
+        </li>
 		<li *ngIf="!loggedIn">
           <a mat-button routerLink="/map">Map-Demo</a>
-        </li>
-        <li *ngIf="loggedIn">
-          <a mat-button routerLink="/wallet">Wallet</a>
         </li>
         <li *ngIf="loggedIn">
           <a mat-button routerLink="/myProfile">My Profile</a>
