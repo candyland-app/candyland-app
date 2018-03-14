@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Events } from '../../models/events';
 
 @Component({
-    selector: 'events-list',
+    selector: 'app-events-list',
     templateUrl: './events-list.component.html',
     styleUrls: ['./events-list.component.css']
 })
