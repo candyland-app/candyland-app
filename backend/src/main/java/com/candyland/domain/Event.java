@@ -12,161 +12,161 @@ import javax.persistence.Transient;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-public class Event implements Serializable{
-	private static final long serialVersionUID=425345L;
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
-	
-	private String name;
-	private String address;
-	private String zipcode;
-	private String startDate;
-	private String endDate;
-	private String startTime;
-	private String endTime;
-	private String category;
-	private int minAge;
-	private int maxAge;
-	private double price;
-	private boolean active=true;
-	
-	
-	@Column(columnDefinition="text")
-	private String description;
-	private int availableTickets;
-	
-	@Transient
-	private MultipartFile eventImage;
+public class Event implements Serializable {
+    private static final long serialVersionUID = 425345L;
 
-	public Long getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private String name;
+    private String address;
+    private String zipcode;
+    private String startDate;
+    private String endDate;
+    private String startTime;
+    private String endTime;
+    private String category;
+    private int minAge;
+    private int maxAge;
+    private double price;
+    private boolean active = true;
 
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Column(columnDefinition = "text")
+    private String description;
+    private int availableTickets;
 
-	public String getAddress() {
-		return address;
-	}
+    @Transient
+    private MultipartFile eventImage;
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getZipcode() {
-		return zipcode;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getStartDate() {
-		return startDate;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public String getEndDate() {
-		return endDate;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	}
+    public String getZipcode() {
+        return zipcode;
+    }
 
-	public String getStartTime() {
-		return startTime;
-	}
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
 
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
+    public String getStartDate() {
+        return startDate;
+    }
 
-	public String getEndTime() {
-		return endTime;
-	}
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
+    public String getEndDate() {
+        return endDate;
+    }
 
-	public String getCategory() {
-		return category;
-	}
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+    public String getStartTime() {
+        return startTime;
+    }
 
-	public int getMinAge() {
-		return minAge;
-	}
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
 
-	public void setMinAge(int minAge) {
-		this.minAge = minAge;
-	}
+    public String getEndTime() {
+        return endTime;
+    }
 
-	public int getMaxAge() {
-		return maxAge;
-	}
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
 
-	public void setMaxAge(int maxAge) {
-		this.maxAge = maxAge;
-	}
+    public String getCategory() {
+        return category;
+    }
 
-	public double getPrice() {
-		return price;
-	}
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
+    public int getMinAge() {
+        return minAge;
+    }
 
-	public boolean isActive() {
-		return active;
-	}
+    public void setMinAge(int minAge) {
+        this.minAge = minAge;
+    }
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
+    public int getMaxAge() {
+        return maxAge;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setMaxAge(int maxAge) {
+        this.maxAge = maxAge;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public double getPrice() {
+        return price;
+    }
 
-	public int getAvailableTickets() {
-		return availableTickets;
-	}
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
-	public void setAvailableTickets(int availableTickets) {
-		this.availableTickets = availableTickets;
-	}
+    public boolean isActive() {
+        return active;
+    }
 
-	public MultipartFile getEventImage() {
-		return eventImage;
-	}
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
-	public void setEventImage(MultipartFile eventImage) {
-		this.eventImage = eventImage;
-	}
-	
-	
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getAvailableTickets() {
+        return availableTickets;
+    }
+
+    public void setAvailableTickets(int availableTickets) {
+        this.availableTickets = availableTickets;
+    }
+
+    public MultipartFile getEventImage() {
+        return eventImage;
+    }
+
+    public void setEventImage(MultipartFile eventImage) {
+        this.eventImage = eventImage;
+    }
+
+
 }

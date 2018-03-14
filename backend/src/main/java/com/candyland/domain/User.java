@@ -1,5 +1,10 @@
 package com.candyland.domain;
 
+import com.candyland.domain.security.Authority;
+import com.candyland.domain.security.UserRole;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
@@ -18,148 +23,141 @@ import javax.persistence.OneToMany;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.candyland.domain.security.Authority;
-import com.candyland.domain.security.UserRole;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
-public class User implements UserDetails, Serializable{
+public class User implements UserDetails, Serializable {
 
-	private static final long serialVersionUID = 902783495L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="Id", nullable=false, updatable = false)
-	private Long id;
-	
-	private String username;
-	private String password;
-	private String firstName;
-	private String lastName;
-	
-	private String email;
-	private String phone;
-	private boolean enabled = true;
-	
-	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-	@JsonIgnore
-	private Set<UserRole> userRoles = new HashSet<>();
+    private static final long serialVersionUID = 902783495L;
 
-	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy = "user")
-	private List<UserPayment> userPaymentList;
-	
-	public List<UserPayment> getUserPaymentList() {
-		return userPaymentList;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "Id", nullable = false, updatable = false)
+    private Long id;
 
-	public void setUserPaymentList(List<UserPayment> userPaymentList) {
-		this.userPaymentList = userPaymentList;
-	}
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
 
-	public Long getId() {
-		return id;
-	}
+    private String email;
+    private String phone;
+    private boolean enabled = true;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<UserRole> userRoles = new HashSet<>();
 
-	public String getUsername() {
-		return username;
-	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<UserPayment> userPaymentList;
 
-	public String getPassword() {
-		return password;
-	}
+    public List<UserPayment> getUserPaymentList() {
+        return userPaymentList;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setUserPaymentList(List<UserPayment> userPaymentList) {
+        this.userPaymentList = userPaymentList;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public Set<UserRole> getUserRoles() {
-		return userRoles;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setUserRoles(Set<UserRole> userRoles) {
-		this.userRoles = userRoles;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		
-		Set<GrantedAuthority> authorities = new HashSet<>();
-		userRoles.forEach(ur -> authorities.add(new Authority(ur.getRole().getName())));
-		
-		return authorities;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
 
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
-	@Override
-	public boolean isEnabled() {
-		return enabled;
-	}
-	
-	
-	
-	
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        userRoles.forEach(ur -> authorities.add(new Authority(ur.getRole().getName())));
+
+        return authorities;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+
 }

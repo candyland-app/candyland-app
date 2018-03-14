@@ -11,43 +11,44 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Role implements Serializable{
-	
-	private static final long serialVersionUID = 890245234L;
-	
-	@Id
-	private int roleId;
-	
-	private String name;
-	
-	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<UserRole> userRoles = new HashSet<>();
-	
-	public Role(){}
+public class Role implements Serializable {
 
-	public int getRoleId() {
-		return roleId;
-	}
+    private static final long serialVersionUID = 890245234L;
 
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
-	}
+    @Id
+    private int roleId;
 
-	public String getName() {
-		return name;
-	}
+    private String name;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<UserRole> userRoles = new HashSet<>();
 
-	public Set<UserRole> getUserRoles() {
-		return userRoles;
-	}
+    public Role() {
+    }
 
-	public void setUserRoles(Set<UserRole> userRoles) {
-		this.userRoles = userRoles;
-	}
-	
-	
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
+
+
 }
