@@ -23,6 +23,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 import { AddNewEventComponent } from './components/add-new-event/add-new-event.component';
+import { AddEventService } from './services/add-event.service';
 import { LoginService } from './services/login.service';
 
 @NgModule({
@@ -49,7 +50,7 @@ import { LoginService } from './services/login.service';
         MatButtonModule,
         MatCheckboxModule
     ],
-    providers: [LoginService],
+    providers: [AddEventService, LoginService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
