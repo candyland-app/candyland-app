@@ -1,5 +1,7 @@
 package com.candyland.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
@@ -9,97 +11,95 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class UserBilling implements Serializable {
-	private static final long serialVersionUID = 79872894528934L;
-	
-	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String userBillingName;
-	private String userBillingStreet1;
-	private String userBillingStreet2;
-	private String userBillingCity;
-	private String userBillingState;
-	private String userBillingCountry;
-	private String userBillingZipcode;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JsonIgnore
-	private UserPayment userPayment;
+    private static final long serialVersionUID = 79872894528934L;
 
-	public Long getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String userBillingName;
+    private String userBillingStreet1;
+    private String userBillingStreet2;
+    private String userBillingCity;
+    private String userBillingState;
+    private String userBillingCountry;
+    private String userBillingZipcode;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private UserPayment userPayment;
 
-	public String getUserBillingName() {
-		return userBillingName;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setUserBillingName(String userBillingName) {
-		this.userBillingName = userBillingName;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getUserBillingStreet1() {
-		return userBillingStreet1;
-	}
+    public String getUserBillingName() {
+        return userBillingName;
+    }
 
-	public void setUserBillingStreet1(String userBillingStreet1) {
-		this.userBillingStreet1 = userBillingStreet1;
-	}
+    public void setUserBillingName(String userBillingName) {
+        this.userBillingName = userBillingName;
+    }
 
-	public String getUserBillingStreet2() {
-		return userBillingStreet2;
-	}
+    public String getUserBillingStreet1() {
+        return userBillingStreet1;
+    }
 
-	public void setUserBillingStreet2(String userBillingStreet2) {
-		this.userBillingStreet2 = userBillingStreet2;
-	}
+    public void setUserBillingStreet1(String userBillingStreet1) {
+        this.userBillingStreet1 = userBillingStreet1;
+    }
 
-	public String getUserBillingCity() {
-		return userBillingCity;
-	}
+    public String getUserBillingStreet2() {
+        return userBillingStreet2;
+    }
 
-	public void setUserBillingCity(String userBillingCity) {
-		this.userBillingCity = userBillingCity;
-	}
+    public void setUserBillingStreet2(String userBillingStreet2) {
+        this.userBillingStreet2 = userBillingStreet2;
+    }
 
-	public String getUserBillingState() {
-		return userBillingState;
-	}
+    public String getUserBillingCity() {
+        return userBillingCity;
+    }
 
-	public void setUserBillingState(String userBillingState) {
-		this.userBillingState = userBillingState;
-	}
+    public void setUserBillingCity(String userBillingCity) {
+        this.userBillingCity = userBillingCity;
+    }
 
-	public String getUserBillingCountry() {
-		return userBillingCountry;
-	}
+    public String getUserBillingState() {
+        return userBillingState;
+    }
 
-	public void setUserBillingCountry(String userBillingCountry) {
-		this.userBillingCountry = userBillingCountry;
-	}
+    public void setUserBillingState(String userBillingState) {
+        this.userBillingState = userBillingState;
+    }
 
-	public String getUserBillingZipcode() {
-		return userBillingZipcode;
-	}
+    public String getUserBillingCountry() {
+        return userBillingCountry;
+    }
 
-	public void setUserBillingZipcode(String userBillingZipcode) {
-		this.userBillingZipcode = userBillingZipcode;
-	}
+    public void setUserBillingCountry(String userBillingCountry) {
+        this.userBillingCountry = userBillingCountry;
+    }
 
-	public UserPayment getUserPayment() {
-		return userPayment;
-	}
+    public String getUserBillingZipcode() {
+        return userBillingZipcode;
+    }
 
-	public void setUserPayment(UserPayment userPayment) {
-		this.userPayment = userPayment;
-	}
-	
+    public void setUserBillingZipcode(String userBillingZipcode) {
+        this.userBillingZipcode = userBillingZipcode;
+    }
+
+    public UserPayment getUserPayment() {
+        return userPayment;
+    }
+
+    public void setUserPayment(UserPayment userPayment) {
+        this.userPayment = userPayment;
+    }
+
 }

@@ -65,27 +65,13 @@
   <hr style="width: 50%;"/>
   <br/>
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-4" *ngFor="let events of eventsList">
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="../../../assets/event1.jpg" alt="Card image cap">
         <div class="card-body">
-          <p class="card-text text-center">Featured Event A</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="../../../assets/event2.jpg" alt="Card image cap">
-        <div class="card-body">
-          <p class="card-text text-center">Featured Event B</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="../../../assets/event3.jpg" alt="Card image cap">
-        <div class="card-body">
-          <p class="card-text text-center">Featured Event C</p>
+          <h5 class="card-text text-left">{{ events.name }}</h5>
+          <div class="card-text text-left">{{ events.address }}</div>
+          <div class="card-text text-left">{{ events.category }}</div>
         </div>
       </div>
     </div>

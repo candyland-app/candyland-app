@@ -1,5 +1,7 @@
 package com.candyland.resource;
 
+import com.candyland.service.UserService;
+
 import java.util.Collections;
 import java.util.Map;
 
@@ -14,34 +16,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.candyland.service.UserService;
-
 @RestController
 public class LoginResource {
-	@Autowired
-	private UserService userService;
-	
-	@RequestMapping("/token")
-	public Map<String, String> token(HttpSession session, HttpServletRequest request) {
-		System.out.println(request.getRemoteHost());
-		
-		String remoteHost = request.getRemoteHost();
-		int portNumber = request.getRemotePort();
-		
-		System.out.println(remoteHost+":"+portNumber);
-		System.out.println(request.getRemoteAddr());
-		
-		return Collections.singletonMap("token", session.getId());
-	}
-	
-	@RequestMapping("/checkSession")
-	public ResponseEntity checkSession() {
-		return new ResponseEntity("Session Active!", HttpStatus.OK);
-	}
-	
-	@RequestMapping(value="/user/logout", method=RequestMethod.POST)
-	public ResponseEntity logout(){
-		SecurityContextHolder.clearContext();
-		return new ResponseEntity("Logout Successfully!", HttpStatus.OK);
-	}
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping("/token")
+    public Map<String, String> token(HttpSession session, HttpServletRequest request) {
+        System.out.println(request.getRemoteHost());
+
+        String remoteHost = request.getRemoteHost();
+        int portNumber = request.getRemotePort();
+
+        System.out.println(remoteHost + ":" + portNumber);
+        System.out.println(request.getRemoteAddr());
+
+        return Collections.singletonMap("token", session.getId());
+    }
+
+    @RequestMapping("/checkSession")
+    public ResponseEntity checkSession() {
+        return new ResponseEntity("Session Active!", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/user/logout", method = RequestMethod.POST)
+    public ResponseEntity logout() {
+        SecurityContextHolder.clearContext();
+        return new ResponseEntity("Logout Successfully!", HttpStatus.OK);
+    }
 }

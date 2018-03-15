@@ -1,11 +1,11 @@
 package com.candyland.repository;
 
+import com.candyland.domain.Event;
+
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.candyland.domain.Event;
-
-public interface EventRepository extends CrudRepository<Event, Long>{
-	List<Event> findByNameContaining(String keyword);
+public interface EventRepository extends CrudRepository<Event, Long> {
+    List<Event> findByNameContaining(String keyword);
 }
