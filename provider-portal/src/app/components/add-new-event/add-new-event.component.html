@@ -55,12 +55,12 @@
             <mat-grid-list cols="4" rowHeight="60px">
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="minAge" min="1" type="number" [(ngModel)]="newEvent.minAge" name="minAge" step="1" placeholder="Minimum Age">
+                        <input matInput id="minAge" min="1" type="number" [(ngModel)]="newEvent.minAge" name="minAge" step="1" required placeholder="Minimum Age">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="maxAge" min="1" type="number" [(ngModel)]="newEvent.maxAge" name="maxAge" step="1" placeholder="Maximum Age">
+                        <input matInput id="maxAge" min="1" type="number" [(ngModel)]="newEvent.maxAge" name="maxAge" step="1" required placeholder="Maximum Age">
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -68,7 +68,7 @@
             <mat-grid-list cols="4" rowHeight="60px">
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <mat-select placeholder="Category" id="category" [(ngModel)]="newEvent.Category" name="category">
+                        <mat-select required placeholder="Category" id="category" [(ngModel)]="newEvent.Category" name="category">
                             <mat-option value="Education">
                                 Education
                             </mat-option>
@@ -83,7 +83,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="price" min="0.01" type="number" [(ngModel)]="newEvent.price" name="price" step="0.01" placeholder="Ticket Price">
+                        <input matInput id="price" min="0.01" type="number" [(ngModel)]="newEvent.price" name="price" step="0.01" required placeholder="Ticket Price">
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -92,7 +92,7 @@
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
                         <input matInput id="ticketsAvailable" min="0" type="number" [(ngModel)]="newEvent.ticketsAvailable" name="ticketsAvailable"
-                            step="1" placeholder="Tickets Available">
+                            step="1" required placeholder="Tickets Available">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
