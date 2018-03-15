@@ -5,6 +5,7 @@ node_modules
 .DS_Store
 
 # IDE
+.vscode
 .idea
 *.swp
 *.swo
