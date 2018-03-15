@@ -1,109 +1,125 @@
 <div class="container">
-  <div [hidden]="eventAdded">
-    <h3 style="margin-top: 30px;">New Event Information
-      <span style="font-size:small">* is a required field</span>
-    </h3>
+    <div [hidden]="eventAdded">
+        <h3 style="margin-top: 30px;">New Event Information
+            <span style="font-size:small">* is a required field</span>
+        </h3>
 
-    <form (ngSubmit)="onSubmit()">
-      <mat-grid-list cols="4" rowHeight="60px">
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
-          <mat-form-field>
-            <input matInput id="name" type="text" required [(ngModel)]="newEvent.name" name="title" placeholder="Name">
-          </mat-form-field>
-        </mat-grid-tile>
-      </mat-grid-list>
+        <form (ngSubmit)="onSubmit()">
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="4" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="name" type="text" required [(ngModel)]="newEvent.name" name="title" placeholder="Name">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
 
-      <mat-grid-list cols="4" rowHeight="60px">
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field>
-            <input matInput id="address" type="text" required [(ngModel)]="newEvent.address" name="address" placeholder="Address">
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field>
-            <input matInput id="zipcode" type="text" required [(ngModel)]="newEvent.zipcode" name="zipcode" placeholder="Zipcode">
-          </mat-form-field>
-        </mat-grid-tile>
-      </mat-grid-list>
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="address" type="text" required [(ngModel)]="newEvent.address" name="address" placeholder="Address">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="zipcode" type="text" required [(ngModel)]="newEvent.zipcode" name="zipcode" placeholder="Zipcode">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
 
-      <mat-grid-list cols="4" rowHeight="60px">
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field>
-            <input matInput id="startDate" type="date" required [(ngModel)]="newEvent.startDate" name="startDate" placeholder="Start Date">
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field>
-            <input matInput id="endDate" type="date" required [(ngModel)]="newEvent.endDate" name="endDate" placeholder="End Date">
-          </mat-form-field>
-        </mat-grid-tile>
-      </mat-grid-list>
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="startDate" type="date" required [(ngModel)]="newEvent.startDate" name="startDate" placeholder="Start Date">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="endDate" type="date" required [(ngModel)]="newEvent.endDate" name="endDate" placeholder="End Date">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
 
-      <mat-grid-list cols="4" rowHeight="60px">
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field>
-            <input matInput id="startTime" type="time" required [(ngModel)]="newEvent.startTime" name="startTime" placeholder="StartTime">
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field>
-            <input matInput id="endTime" type="time" required [(ngModel)]="newEvent.endTime" name="endTime" placeholder="EndTime">
-          </mat-form-field>
-        </mat-grid-tile>
-      </mat-grid-list>
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="startTime" type="time" required [(ngModel)]="newEvent.startTime" name="startTime" placeholder="StartTime">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="endTime" type="time" required [(ngModel)]="newEvent.endTime" name="endTime" placeholder="EndTime">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
 
-      <mat-grid-list cols="4" rowHeight="60px">
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field>
-            <input matInput id="minAge" min="1" type="number" [(ngModel)]="newEvent.minAge" name="minAge" step="1" placeholder="Minimum Age">
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field>
-            <input matInput id="maxAge" min="1" type="number" [(ngModel)]="newEvent.maxAge" name="maxAge" step="1" placeholder="Maximum Age">
-          </mat-form-field>
-        </mat-grid-tile>
-      </mat-grid-list>
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="minAge" min="1" type="number" [(ngModel)]="newEvent.minAge" name="minAge" step="1" placeholder="Minimum Age">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="maxAge" min="1" type="number" [(ngModel)]="newEvent.maxAge" name="maxAge" step="1" placeholder="Maximum Age">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
 
-      <mat-grid-list cols="4" rowHeight="60px">
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field>
-            <input matInput id="price" min="0.01" type="number" [(ngModel)]="newEvent.price" name="price" step="0.01" placeholder="Ticket Price">
-          </mat-form-field>
-        </mat-grid-tile>
-      </mat-grid-list>
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-select placeholder="Category" id="category" [(ngModel)]="newEvent.Category" name="category">
+                            <mat-option value="Education">
+                                Education
+                            </mat-option>
+                            <mat-option value="Sports">
+                                Sports
+                            </mat-option>
+                            <mat-option value="Music">
+                                Music
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="price" min="0.01" type="number" [(ngModel)]="newEvent.price" name="price" step="0.01" placeholder="Ticket Price">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
 
-      <mat-grid-list cols="4" rowHeight="60px">
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field>
-            <input matInput id="ticketsAvailable" min="0" type="number" [(ngModel)]="newEvent.ticketsAvailable" name="ticketsAvailable" step="1" placeholder="Tickets Available">
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          &nbsp;
-          <mat-slide-toggle [color]="color" [checked]="checked" [disabled]="disabled" [(ngModel)]="newEvent.active" name="active">Active</mat-slide-toggle>
-        </mat-grid-tile>
-      </mat-grid-list>
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="ticketsAvailable" min="0" type="number" [(ngModel)]="newEvent.ticketsAvailable" name="ticketsAvailable"
+                            step="1" placeholder="Tickets Available">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    &nbsp;
+                    <mat-slide-toggle [color]="color" [checked]="checked" [disabled]="disabled" [(ngModel)]="newEvent.active" name="active">Active</mat-slide-toggle>
+                </mat-grid-tile>
+            </mat-grid-list>
 
-      <mat-form-field>
-        <textarea matInput id="description" [(ngModel)]="newEvent.description" name="description" placeholder="Description" required></textarea>
-      </mat-form-field>
-      Image &nbsp;
-      <input id="tile" type="file" id="eventImage" name="eventImage" (change)="uploadImageService.fileChangeEvent($event)">
-      <br>
-      <br>
+            <mat-form-field>
+                <textarea matInput id="description" [(ngModel)]="newEvent.description" name="description" placeholder="Description" required></textarea>
+            </mat-form-field>
+            Image &nbsp;
+            <input id="tile" type="file" id="eventImage" name="eventImage" (change)="uploadImageService.fileChangeEvent($event)">
+            <br>
+            <br>
 
-      <mat-grid-list cols="20" rowHeight="60px">
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <button class="mat-primary" mat-raised-button type="submit">Add Event</button>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <a class="mat-warn" mat-raised-button routerLink="/">Cancel</a>
-        </mat-grid-tile>
-      </mat-grid-list>
-    </form>
-  </div>
-  <div class="row" [hidden]="!eventAdded">
-    <h3>Event added successfully!</h3>
-  </div>
+            <mat-grid-list cols="20" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <button class="mat-primary" mat-raised-button type="submit">Add Event</button>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <a class="mat-warn" mat-raised-button routerLink="/">Cancel</a>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </div>
+    <div class="row" [hidden]="!eventAdded">
+        <h3>Event added successfully!</h3>
+    </div>
 </div>
