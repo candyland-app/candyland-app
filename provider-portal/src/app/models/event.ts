@@ -7,10 +7,11 @@ export class Event {
     public endDate: string;
     public startTime: string;
     public endTime: number;
+    public category: string;
     public minAge: number;
     public maxAge: number;
     public price: number;
     public active: boolean;
     public description: string;
-    public ticketsAvailable: number;
+    public availableTickets: number;
 }
