@@ -25,6 +25,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AddNewEventComponent } from './components/add-new-event/add-new-event.component';
 import { AddEventService } from './services/add-event.service';
 import { LoginService } from './services/login.service';
+import { UploadImageService } from './services/upload-image.service';
 
 @NgModule({
     declarations: [
@@ -50,7 +51,7 @@ import { LoginService } from './services/login.service';
         MatButtonModule,
         MatCheckboxModule
     ],
-    providers: [AddEventService, LoginService],
+    providers: [AddEventService, LoginService, UploadImageService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
