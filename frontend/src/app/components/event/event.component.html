@@ -3,7 +3,7 @@
     <div class="col-sm-8">
       <h2 class="section-headline">
         <span>
-          Events
+          Event {{ eventId}}
         </span>
       </h2>
     </div>
@@ -64,19 +64,21 @@
   <h3 class="text-center">Featured Events!</h3>
   <hr style="width: 50%;"/>
   <br/>
-  <div class="row">
-    <div class="col-sm-4" *ngFor="let events of eventsList">
-      <div class="card" style="width: 18rem;">
+  <div class="row" *ngFor="let events of eventsList">
+    <div class="col-sm-6">
+      <div class="card" style="width: 22rem;">
         <img class="card-img-top" src="../../../assets/event1.jpg" alt="Card image cap">
+      </div>
+    </div>
+    <div class="col-sm-6">
         <div class="card-body">
           <h5 class="card-text text-left">{{ events.name }}</h5>
           <div class="card-text text-left">{{ events.address }}</div>
           <div class="card-text text-left">{{ events.category }}</div>
-        </div>
-      </div>
-      <a routerLink="/event/{{events.id}}" style="color: pink">
+          <a routerLink="/event/{{events.id}}">
             <span class="badge">{{events.id}}</span> Book Now
-      </a>
+        </a>
+        </div>
     </div>
   </div>
   <br/>
