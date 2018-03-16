@@ -18,6 +18,12 @@ export class ViewEventComponent implements OnInit {
         private router: Router
     ) {}
 
+    onSelect(event: Event) {
+        this.router.navigate(['/editEvent', this.event.id]).then(res => {
+            location.reload();
+        });
+    }
+
     ngOnInit() {
         this.route.params.forEach((params: Params) => {
             this.eventId = Number.parseInt(params['id']);
