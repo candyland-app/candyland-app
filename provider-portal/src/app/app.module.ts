@@ -19,11 +19,13 @@ import 'hammerjs';
 import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
+import { AddNewEventComponent } from './components/add-new-event/add-new-event.component';
+import { EventListComponent } from './components/event-list/event-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
-import { AddNewEventComponent } from './components/add-new-event/add-new-event.component';
 import { AddEventService } from './services/add-event.service';
+import { GetEventListService } from './services/get-event-list.service';
 import { LoginService } from './services/login.service';
 import { UploadImageService } from './services/upload-image.service';
 
@@ -32,7 +34,8 @@ import { UploadImageService } from './services/upload-image.service';
         AppComponent,
         NavBarComponent,
         LoginComponent,
-        AddNewEventComponent
+        AddNewEventComponent,
+        EventListComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -51,7 +54,12 @@ import { UploadImageService } from './services/upload-image.service';
         MatButtonModule,
         MatCheckboxModule
     ],
-    providers: [AddEventService, LoginService, UploadImageService],
+    providers: [
+        AddEventService,
+        LoginService,
+        GetEventListService,
+        UploadImageService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
