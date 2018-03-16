@@ -14,6 +14,7 @@ import {
     MatTabsModule,
     MatToolbarModule
 } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
@@ -22,7 +23,10 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { AddNewEventComponent } from './components/add-new-event/add-new-event.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
-import { EventListComponent } from './components/event-list/event-list.component';
+import {
+    DialogResultExampleDialog,
+    EventListComponent
+} from './components/event-list/event-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ViewEventComponent } from './components/view-event/view-event.component';
@@ -32,6 +36,7 @@ import { EditEventService } from './services/edit-event.service';
 import { GetEventListService } from './services/get-event-list.service';
 import { GetEventService } from './services/get-event.service';
 import { LoginService } from './services/login.service';
+import { RemoveEventService } from './services/remove-event.service';
 import { UploadImageService } from './services/upload-image.service';
 
 @NgModule({
@@ -40,6 +45,7 @@ import { UploadImageService } from './services/upload-image.service';
         NavBarComponent,
         LoginComponent,
         AddNewEventComponent,
+        DialogResultExampleDialog,
         EventListComponent,
         ViewEventComponent,
         EditEventComponent
@@ -48,6 +54,7 @@ import { UploadImageService } from './services/upload-image.service';
         BrowserAnimationsModule,
         HttpModule,
         routing,
+        MatDialogModule,
         MatListModule,
         MatSlideToggleModule,
         MatSelectModule,
@@ -68,8 +75,9 @@ import { UploadImageService } from './services/upload-image.service';
         GetEventService,
         LoginService,
         GetEventListService,
+        RemoveEventService,
         UploadImageService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent, DialogResultExampleDialog]
 })
 export class AppModule {}

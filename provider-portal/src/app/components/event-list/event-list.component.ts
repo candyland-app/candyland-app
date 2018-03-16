@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { Event } from '../../models/event';
 import { GetEventListService } from '../../services/get-event-list.service';
 import { LoginService } from '../../services/login.service';
+import { RemoveEventService } from '../../services/remove-event.service';
 
 @Component({
     selector: 'app-event-list',
@@ -18,7 +20,9 @@ export class EventListComponent implements OnInit {
 
     constructor(
         private getEventListService: GetEventListService,
-        private router: Router
+        private removeEventService: RemoveEventService,
+        private router: Router,
+        private dialog: MatDialog
     ) {}
 
     onSelect(event: Event) {
@@ -26,7 +30,63 @@ export class EventListComponent implements OnInit {
         this.router.navigate(['/viewEvent', this.selectedEvent.id]);
     }
 
-    ngOnInit() {
+    openDialog(event: Event) {
+        const dialogRef = this.dialog.open(DialogResultExampleDialog);
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+            if (result === 'yes') {
+                this.removeEventService.sendEvent(event.id).subscribe(
+                    res => {
+                        console.log(res);
+                        this.getEventList();
+                    },
+                    err => {
+                        console.log(err);
+                    }
+                );
+            }
+        });
+    }
+
+    updateRemoveEventList(checked: boolean, event: Event) {
+        if (checked) {
+            this.removeEventList.push(event);
+        } else {
+            this.removeEventList.splice(this.removeEventList.indexOf(event), 1);
+        }
+    }
+
+    updateSelected(checked: boolean) {
+        if (checked) {
+            this.allChecked = true;
+            this.removeEventList = this.eventList;
+        } else {
+            this.allChecked = false;
+            this.removeEventList = [];
+        }
+    }
+
+    removeSelectedEvents() {
+        const dialogRef = this.dialog.open(DialogResultExampleDialog);
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+            if (result === 'yes') {
+                for (const event of this.removeEventList) {
+                    this.removeEventService.sendEvent(event.id).subscribe(
+                        res => {
+                            console.log(res);
+                        },
+                        err => {
+                            console.log(err);
+                        }
+                    );
+                }
+                location.reload();
+            }
+        });
+    }
+
+    getEventList() {
         this.getEventListService.getEventList().subscribe(
             res => {
                 console.log(res.json());
@@ -37,4 +97,16 @@ export class EventListComponent implements OnInit {
             }
         );
     }
+
+    ngOnInit() {
+        this.getEventList();
+    }
+}
+
+@Component({
+    selector: 'dialog-result-example-dialog',
+    templateUrl: './dialog-result-example-dialog.html'
+})
+export class DialogResultExampleDialog {
+    constructor(public dialogRef: MatDialogRef<DialogResultExampleDialog>) {}
 }
