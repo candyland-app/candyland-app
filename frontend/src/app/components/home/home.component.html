@@ -12,27 +12,35 @@
         </div>
         <img src="../../../assets/background.png" class="img-fluid background">
     </div>
-    <h3 class="text-center">Welcome to Candyland!</h3>
-    <hr/>
-    <br/>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card" style="width: 24rem;">
-                <img class="card-img-top" src="../../../assets/mother.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text text-center">As a working mother, I often struggle to find a nanny to take care of my child. Candyland allows me to
-                        find entertaining events from trustworthy providers for my child while I'm at work</p>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <img class="card-img-top" src="../../../assets/father.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text text-center">Growing up children on your own can be a challenge. Thanks to the Candyland Team I can now bond with
-                            my kids by easily finding fun activities around my area!</p>
-                    </div>
-                </div>
-            </div>
+</div>
+<hr/>
+<br/>
+
+<!-- Slideshow container -->
+<div class="slideshow-container">
+    <!--Full-width images with number and caption text -->
+    <div class="mySlides customfade">
+        <div class="numbertext">1 / 2</div>
+        <img src="../../../assets/mother.jpg" class="slideshow-image">
+        <div class="text">
+            As a working mother, I often struggle to find a nanny to take care of my child. Candyland allows me to find entertaining
+            events from trustworthy providers for my child while I'm at work
         </div>
     </div>
+    <div class="mySlides customfade">
+        <div class="numbertext">2 / 2</div>
+        <img src="../../../assets/father.jpg" class="slideshow-image">
+        <div class="text">
+            Growing up children on your own can be a challenge. Thanks to the Candyland Team I can now bond with my kids by easily finding
+            fun activities around my area!
+        </div>
+    </div>
+
+    <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+    <a class="next" (click)="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+<div id="mycircles">
+    <span class="dot" (click)="currentSlide(1)"></span>
+    <span class="dot" (click)="currentSlide(2)"></span>
 </div>
