@@ -7,6 +7,7 @@ import {
     MatFormFieldModule,
     MatGridListModule,
     MatInputModule,
+    MatListModule,
     MatProgressSpinnerModule,
     MatSelectModule,
     MatSlideToggleModule,
@@ -23,9 +24,11 @@ import { AddNewEventComponent } from './components/add-new-event/add-new-event.c
 import { EventListComponent } from './components/event-list/event-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ViewEventComponent } from './components/view-event/view-event.component';
 
 import { AddEventService } from './services/add-event.service';
 import { GetEventListService } from './services/get-event-list.service';
+import { GetEventService } from './services/get-event.service';
 import { LoginService } from './services/login.service';
 import { UploadImageService } from './services/upload-image.service';
 
@@ -35,12 +38,14 @@ import { UploadImageService } from './services/upload-image.service';
         NavBarComponent,
         LoginComponent,
         AddNewEventComponent,
-        EventListComponent
+        EventListComponent,
+        ViewEventComponent
     ],
     imports: [
         BrowserAnimationsModule,
         HttpModule,
         routing,
+        MatListModule,
         MatSlideToggleModule,
         MatSelectModule,
         MatInputModule,
@@ -56,6 +61,7 @@ import { UploadImageService } from './services/upload-image.service';
     ],
     providers: [
         AddEventService,
+        GetEventService,
         LoginService,
         GetEventListService,
         UploadImageService

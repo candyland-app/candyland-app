@@ -21,6 +21,11 @@ export class EventListComponent implements OnInit {
         private router: Router
     ) {}
 
+    onSelect(event: Event) {
+        this.selectedEvent = event;
+        this.router.navigate(['/viewEvent', this.selectedEvent.id]);
+    }
+
     ngOnInit() {
         this.getEventListService.getEventList().subscribe(
             res => {
