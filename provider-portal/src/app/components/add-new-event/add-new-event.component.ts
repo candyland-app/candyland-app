@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../../models/event';
+import { AddEventService } from '../../services/add-event.service';
+import { UploadImageService } from '../../services/upload-image.service';
 
 @Component({
     selector: 'app-add-new-event',
@@ -8,9 +10,39 @@ import { Event } from '../../models/event';
 })
 export class AddNewEventComponent implements OnInit {
     private newEvent: Event = new Event();
-    private;
+    private eventAdded: boolean;
 
-    constructor() {}
+    constructor(
+        private addEventService: AddEventService,
+        private uploadImageService: UploadImageService
+    ) {}
 
-    ngOnInit() {}
+    onSubmit() {
+        this.addEventService.sendEvent(this.newEvent).subscribe(
+            res => {
+                this.uploadImageService.upload(
+                    JSON.parse(JSON.parse(JSON.stringify(res))._body).id
+                );
+                this.eventAdded = true;
+                this.newEvent = new Event();
+                this.newEvent.active = true;
+                this.newEvent.minAge = 1;
+                this.newEvent.maxAge = this.newEvent.minAge + 1;
+                this.newEvent.availableTickets = 1;
+                this.newEvent.price = 0.01;
+            },
+            error => {
+                console.log(error);
+            }
+        );
+    }
+
+    ngOnInit() {
+        this.eventAdded = false;
+        this.newEvent.active = true;
+        this.newEvent.minAge = 1;
+        this.newEvent.maxAge = this.newEvent.minAge + 1;
+        this.newEvent.availableTickets = 1;
+        this.newEvent.price = 0.01;
+    }
 }

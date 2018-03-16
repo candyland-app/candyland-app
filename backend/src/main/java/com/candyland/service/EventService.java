@@ -10,7 +10,7 @@ public interface EventService {
 
     Event findOne(Long id);
 
-    Event save(Event book);
+    Event save(Event event);
 
     List<Event> blurrySearch(String name);
 
