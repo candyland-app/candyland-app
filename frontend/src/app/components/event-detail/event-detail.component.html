@@ -1,3 +1,102 @@
-<p>
-  event-detail works!
-</p>
+<div class="container" style="min-height: 450px;">
+    <div class="row justify-content-center" style="margin: 40px 0px;">
+        <div class="col-12">
+            <h2 class="section-headline text-center">
+                <span>Event Info</span>
+            </h2>
+            <hr style="width: 50%;" />
+        </div>
+    </div>
+    <div class="row justify-content-center" style="margin-top:30px">
+        <div class="col-sm-3">
+            <a routerLink="/eventList">Back to Events List</a>
+            <br/>
+            <img class="img-fluid" src="{{serverPath}}/image/event/{{event.id}}.png" />
+        </div>
+        <div class="col-sm-9">
+            <h3>
+                <span *ngIf="addEventSuccess" style="color: green;">
+                    <i class="fa fa-check" style="color: green;"></i>
+                    Added to Cart!
+                </span>
+            </h3>
+            <h3>
+                <span *ngIf="notEnoughStock" style="color: red">
+                    Only {{ event.inStockNumber }} Available
+                </span>
+            </h3>
+            <h3>
+                {{ event.name }}
+            </h3>
+            <div class="row">
+                <div class="col-sm-4">
+                    <span>
+                        <strong>Address:</strong>
+                        <span>{{ event.address }}</span>
+                    </span>
+                    <br/>
+                    <span>
+                        <strong>Zipcode:</strong>
+                        <span>{{ event.zipcode }}</span>
+                    </span>
+                    <br/>
+                    <span>
+                        <strong>Start Date:</strong>
+                        <span>{{ event.startDate }}</span>
+                    </span>
+                    <br/>
+                    <span>
+                        <span>{{ event.endDate }}</span>
+                        <strong>End Date:</strong>
+                    </span>
+                    <br/>
+                    <span>
+                        <strong>Start Time:</strong>
+                        <span>{{ event.startTime }}</span>
+                    </span>
+                    <br/>
+                    <span>
+                        <strong>End Time:</strong>
+                        <span>{{ event.endTime }}</span>
+                    </span>
+                </div>
+                <div class="col-sm-8">
+                    <div class="card" style="border-width: 0px;">
+                        <div class="card-body">
+                            <div class="col-sm-6">
+                                <h5>Ticket Price {{event.price | number: '1.2-2'}} $</h5>
+                                Number of Tickets:
+                                <select [(ngModel)]="qty" class="browser-default" style="display: inline;">
+                                    <option *ngFor="let x of numberList" [ngValue]="x">
+                                        {{ x }}
+                                    </option>
+                                </select>
+                            </div>
+                            <br/>
+                            <div class="col-md-6">
+                                <h5 *ngIf="event.availableTickets>10" style="color: green;">
+                                    In Stock
+                                </h5>
+                                <h5 *ngIf="event.availableTickets<10 && event.availableTickets>0" style="color: orange;">
+                                    Only {{ event.availableTickets }} Left
+                                </h5>
+                                <h5 *ngIf="event.availableTickets==0" style="color: red;">
+                                    Unavailable
+                                </h5>
+                                <button mat-raised-button [disabled]="event.availableTickets==0" (click)="onAddToCart()" color="primary">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 50px">
+            <p>
+                <strong>Description:</strong> {{ event.description }}
+            </p>
+            <hr/>
+        </div>
+    </div>
+</div>

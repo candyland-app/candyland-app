@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { log } from 'util';
+import { AppConst } from '../../constants/app-const';
+import { Event } from '../../models/event';
+import { EventService } from '../../services/event.service';
 
 @Component({
     selector: 'app-event-detail',
@@ -6,7 +12,40 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./event-detail.component.css']
 })
 export class EventDetailComponent implements OnInit {
-    constructor() {}
+    private eventId: number;
+    private event: Event = new Event();
+    private serverPath = AppConst.serverPath;
+    private numberList: number[] = new Array();
+    private qty: number;
 
-    ngOnInit() {}
+    private addEventSuccess = false;
+    private notEnoughStock = false;
+
+    constructor(
+        private eventService: EventService,
+        private router: Router,
+        private http: Http,
+        private route: ActivatedRoute
+    ) {}
+
+    onAddToCart() {}
+
+    ngOnInit() {
+        this.route.params.forEach((params: Params) => {
+            this.eventId = Number.parseInt(params['id']);
+        });
+        this.eventService.getEvent(this.eventId).subscribe(
+            res => {
+                console.log(res.json());
+                this.event = res.json();
+                for (let i = 1; i <= this.event.availableTickets; i++) {
+                    this.numberList.push(i);
+                }
+            },
+            error => {
+                console.log(error);
+            }
+        );
+        this.qty = 1;
+    }
 }
