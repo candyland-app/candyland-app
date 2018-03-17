@@ -1,38 +1,37 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand pointer" routerLink="/home">
-        <img src="../../assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        Candyland
-      </a>
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand pointer" routerLink="/home">
+                <img src="../../assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> Candyland
+            </a>
+        </div>
+        <div id="navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a mat-button style="text-decoration: none;" routerLink="/eventList">Events</a>
+                </li>
+                <li *ngIf="loggedIn">
+                    <a mat-button style="text-decoration: none;" routerLink="/wallet">Wallet</a>
+                </li>
+                <li>
+                    <a mat-button style="text-decoration: none;" routerLink="/faq">FAQ</a>
+                </li>
+                <li>
+                    <a mat-button style="text-decoration: none;" routerLink="/team">Team</a>
+                </li>
+                <li *ngIf="!loggedIn">
+                    <a mat-button style="text-decoration: none;" routerLink="/map">Map-Demo</a>
+                </li>
+                <li *ngIf="loggedIn">
+                    <a mat-button style="text-decoration: none;" routerLink="/myProfile">My Profile</a>
+                </li>
+                <li *ngIf="loggedIn">
+                    <a mat-button style="text-decoration: none;" (click)="logout()">Logout </a>
+                </li>
+                <li *ngIf="!loggedIn">
+                    <a mat-button style="text-decoration: none;" routerLink="/myAccount" class="myacc">Sign in</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div id="navbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a mat-button routerLink="/eventList">Events</a>
-        </li>
-        <li *ngIf="loggedIn">
-          <a mat-button routerLink="/wallet">Wallet</a>
-        </li>
-        <li>
-          <a mat-button routerLink="/faq">FAQ</a>
-        </li>
-        <li>
-          <a mat-button routerLink="/team">Team</a>
-        </li>
-		<li *ngIf="!loggedIn">
-          <a mat-button routerLink="/map">Map-Demo</a>
-        </li>
-        <li *ngIf="loggedIn">
-          <a mat-button routerLink="/myProfile">My Profile</a>
-        </li>
-        <li *ngIf="loggedIn">
-          <a mat-button (click)="logout()">Logout </a>
-        </li>
-        <li *ngIf="!loggedIn">
-          <a mat-button routerLink="/myAccount" class="myacc">Sign in</a>
-        </li>
-      </ul>
-    </div>
-  </div>
 </nav>
