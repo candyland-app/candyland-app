@@ -18,8 +18,8 @@ import { UserService } from './services/user.service';
 
 import { AppComponent } from './app.component';
 import { DemoMapComponent } from './components/demo-map/demo-map.component';
-import { EventsListComponent } from './components/events-list/events-list.component';
 import { EventComponent } from './components/event/event.component';
+import { EventsListComponent } from './components/events-list/events-list.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';

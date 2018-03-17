@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Events } from '../../models/events';
 import { ActivatedRoute } from '@angular/router';
+import { Events } from '../../models/events';
 
 @Component({
     selector: 'app-event',
@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
-    constructor(private route: ActivatedRoute) { }
+    constructor(private route: ActivatedRoute) {}
 
     private event: Events = new Events();
     private eventsList: Events[] = [];
@@ -24,6 +24,5 @@ export class EventComponent implements OnInit {
         this.eventId = Number(this.route.snapshot.paramMap.get('id'));
     }
 
-    createStaticEventList() {
-    }
+    createStaticEventList() {}
 }
