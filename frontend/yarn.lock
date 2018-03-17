@@ -171,6 +171,12 @@
   dependencies:
     tslib "^1.7.1"
 
+"@cmglez10/ng-datatable@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@cmglez10/ng-datatable/-/ng-datatable-0.7.0.tgz#28fdfb64361b5370bdcc1c65eae1da2d4e83938a"
+  dependencies:
+    lodash "^4.0.0"
+
 "@ngtools/json-schema@1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@ngtools/json-schema/-/json-schema-1.2.0.tgz#06e5ecd29e9a37d260a447dd873ea2becd228c4f"
