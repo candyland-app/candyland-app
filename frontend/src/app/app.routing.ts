@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FaqComponent } from './components/faq/faq.component';
 
 import { DemoMapComponent } from './components/demo-map/demo-map.component';
+import { EventListComponent } from './components/event-list/event-list.component';
 import { EventComponent } from './components/event/event.component';
-import { EventsListComponent } from './components/events-list/events-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
@@ -43,7 +43,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'eventList',
-        component: EventsListComponent
+        component: EventListComponent
     },
     {
         path: 'wallet',

@@ -5,19 +5,24 @@ import {
     MatButtonModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
     MatTabsModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DataTableModule } from '@cmglez10/ng-datatable';
 import 'hammerjs';
 import { routing } from './app.routing';
+import { DataFilterPipe } from './components/event-list/data-filter.pipe';
 
+import { EventService } from './services/event.service';
 import { LoginService } from './services/login.service';
 import { PaymentService } from './services/payment.service';
 import { UserService } from './services/user.service';
 
 import { AppComponent } from './app.component';
 import { DemoMapComponent } from './components/demo-map/demo-map.component';
+import { EventListComponent } from './components/event-list/event-list.component';
 import { EventComponent } from './components/event/event.component';
 import { EventsListComponent } from './components/events-list/events-list.component';
 import { FaqComponent } from './components/faq/faq.component';
@@ -42,20 +47,24 @@ import { WalletComponent } from './components/wallet/wallet.component';
         FooterComponent,
         EventsListComponent,
         EventComponent,
-        WalletComponent
+        WalletComponent,
+        EventListComponent,
+        DataFilterPipe
     ],
     imports: [
         BrowserAnimationsModule,
         HttpModule,
+        DataTableModule,
         BrowserModule,
         FormsModule,
+        MatSelectModule,
         MatProgressSpinnerModule,
         MatTabsModule,
         MatButtonModule,
         routing,
         MatCheckboxModule
     ],
-    providers: [LoginService, UserService, PaymentService],
+    providers: [EventService, LoginService, UserService, PaymentService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
