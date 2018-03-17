@@ -9,7 +9,7 @@
     </div>
     <div class="row justify-content-center" style="margin-top:30px">
         <div class="col-12">
-            <table class="table table-striped" [mfData]="eventList | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
+            <table class="table" [mfData]="eventList | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
                 [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                 <thead>
                     <tr>
@@ -41,29 +41,59 @@
                                     <img class="img-fluid" src="{{serverPath}}/image/event/{{event.id}}.png" />
                                 </a>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-9">
                                 <h4 (click)="onSelect(event)" style="margin-top: 20px; cursor:pointer">
                                     {{event.name}}
                                 </h4>
                                 <span>
-                                    {{event.address}}
-                                </span>
-                                <p>
-                                    {{event.zipcode}}
-                                </p>
-                                <span>
+                                    <strong>Category:</strong>
                                     {{event.category}}
                                 </span>
                                 <br/>
-                                <a (click)="onSelect(event)">
-                                    <span style="font-size: x-large; color: #db3208">
-                                        $
-                                    </span>
-                                    {{ event.price | number: '1.2-2'}}
-                                </a>
-                                <p style="">
-                                    {{ event.description | slice:0:500}}
-                                </p>
+                                <span>
+                                    <strong>Address:</strong>
+                                    {{event.address}}
+                                </span>
+                                <span> - </span>
+                                <span>
+                                    <strong>Zipcode:</strong>
+                                    {{event.zipcode}}
+                                </span>
+                                <br/>
+                                <span>
+                                    <strong>Start Date:</strong>
+                                    {{event.startDate}}
+                                </span>
+                                <span> - </span>
+                                <span>
+                                    <strong>End Date:</strong>
+                                    {{event.endDate}}
+                                </span>
+                                <br/>
+                                <span>
+                                    <strong>Start Time:</strong>
+                                    {{event.startTime}}
+                                </span>
+                                <span> - </span>
+                                <span>
+                                    <strong>End Time:</strong>
+                                    {{event.endTime}}
+                                </span>
+                                <br/>
+                                <span>
+                                    <strong>Ticket Price:</strong>
+                                    {{event.price | number: '1.2-2'}} $
+                                </span>
+                                <span> - </span>
+                                <span>
+                                    <strong>Available Ticket:</strong>
+                                    {{event.availableTickets}}
+                                </span>
+                                <br/>
+                                <span>
+                                    <strong>Description:</strong>
+                                    {{event.description | slice:0:500}}
+                                </span>
                             </div>
                         </div>
                     </tr>
