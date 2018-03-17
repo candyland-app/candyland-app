@@ -1,0 +1,146 @@
+<div class="container">
+    <div style="margin-top: 20px;">
+        <a routerLink="/eventList"><i class="fa fa-long-arrow-left"></i>Return</a>
+        <span> / </span>
+        <a (click)="onSelect(event)" style="cursor: pointer">
+            Edit
+        </a>
+    </div>
+    <mat-grid-list cols="9" rowHeight="100px">
+        <mat-grid-tile [colspan]="3" [rowspan]="5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <img [src]="'http://localhost:8181/image/event/' + event.id + '.png'" class="img-fluid" />
+                </div>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="6">
+            <h3>
+                {{ event.name }}
+            </h3>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="3" [rowspan]="3">
+            <mat-list>
+                <mat-list-item>
+                    <p>
+                        <strong>
+                            Address:
+                        </strong>
+                        {{ event.address }}
+                    </p>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <p>
+                        <strong>
+                            Zipcode:
+                        </strong>
+                        {{ event.zipcode }}
+                    </p>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <p>
+                        <strong>
+                            Start Date:
+                        </strong>
+                        {{ event.startDate }}
+                    </p>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <p>
+                        <strong>
+                            End Date:
+                        </strong>
+                        {{ event.endDate }}
+                    </p>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <p>
+                        <strong>
+                            Start Time:
+                        </strong>
+                        {{ event.endTime }}
+                    </p>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <p>
+                        <strong>
+                            End Time:
+                        </strong>
+                        {{ event.endTime }}
+                    </p>
+                </mat-list-item>
+            </mat-list>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="3">
+            <mat-list>
+                <mat-list-item>
+                    <p>
+                        <strong>
+                            Category:
+                        </strong>
+                        {{ event.category }}
+                    </p>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <p>
+                        <strong>
+                            Minimum Age:
+                        </strong>
+                        {{ event.minAge }}
+                    </p>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <p>
+                        <strong>
+                            Maximum Age:
+                        </strong>
+                        {{ event.endDate }}
+                    </p>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <p>
+                        <strong>
+                            Ticket Price:
+                        </strong>
+                        {{ event.price }} $
+                    </p>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <p>
+                        <strong>
+                            Available Ticket:
+                        </strong>
+                        {{ event.availableTickets }}
+                    </p>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <p>
+                        <strong>
+                            Active:
+                        </strong>
+                        {{ event.active }}
+                    </p>
+                </mat-list-item>
+            </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="6">
+            <p>
+                <strong>
+                    Description:
+                </strong>
+                {{ event.description }}
+            </p>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

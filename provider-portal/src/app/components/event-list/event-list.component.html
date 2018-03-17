@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="table-responsive" style="margin-top: 30px;">
+        <table id="eventListTable" class="table bordered highlight">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" (change)="updateSelected($event.target.checked)" />
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Zipcode
+                    </th>
+                    <th>
+                        Start Date
+                    </th>
+                    <th>
+                        End Date
+                    </th>
+                    <th>
+                        Start Time
+                    </th>
+                    <th>
+                        End Time
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Min Age
+                    </th>
+                    <th>
+                        Max Age
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Tickets
+                    </th>
+                    <th>
+                        Active
+                    </th>
+                    <th>
+                        Operation
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let event of eventList">
+                    <td>
+                        <input hidden="hidden" name="id" />
+                        <input type="checkbox" [checked]="allChecked" (change)="updateRemoveEventList($event.target.checked, event)" />
+                    </td>
+                    <td>
+                        <a (click)="onSelect(event)" style="cursor: pointer;">
+                            {{ event.name }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ event.address }}
+                    </td>
+                    <td>
+                        {{ event.zipcode }}
+                    </td>
+                    <td>
+                        {{ event.startDate }}
+                    </td>
+                    <td>
+                        {{ event.endDate }}
+                    </td>
+                    <td>
+                        {{ event.startTime }}
+                    </td>
+                    <td>
+                        {{ event.endTime }}
+                    </td>
+                    <td>
+                        {{ event.category }}
+                    </td>
+                    <td>
+                        {{ event.minAge }}
+                    </td>
+                    <td>
+                        {{ event.maxAge }}
+                    </td>
+                    <td>
+                        {{ event.price }}
+                    </td>
+                    <td>
+                        {{ event.availableTickets }}
+                    </td>
+                    <td>
+                        {{ event.active }}
+                    </td>
+                    <td>
+                        <input hidden="hidden" name="id" />
+                        <button mat-button (click)="openDialog(event)" value="delete">
+                            <span class="fa fa-times"></span>
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button mat-raised-button color="warn" id="deleteSelected" (click)="removeSelectedEvents()">
+        Delete Selected
+    </button>
+</div>

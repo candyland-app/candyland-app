@@ -23,6 +23,24 @@ export class UploadImageService {
         );
     }
 
+    modify(eventId: number) {
+        console.log(this.filesToUpload);
+        if (this.filesToUpload.length > 0) {
+            this.makeFileRequest(
+                'http://localhost:8181/event/update/image?id=' + eventId,
+                [],
+                this.filesToUpload
+            ).then(
+                result => {
+                    console.log(result);
+                },
+                error => {
+                    console.log(error);
+                }
+            );
+        }
+    }
+
     fileChangeEvent(fileInput: any) {
         this.filesToUpload = fileInput.target.files as File[];
     }
