@@ -22,6 +22,7 @@ import { UserService } from './services/user.service';
 
 import { AppComponent } from './app.component';
 import { DemoMapComponent } from './components/demo-map/demo-map.component';
+import { EventDetailComponent } from './components/event-detail/event-detail.component';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { EventComponent } from './components/event/event.component';
 import { EventsListComponent } from './components/events-list/events-list.component';
@@ -49,7 +50,8 @@ import { WalletComponent } from './components/wallet/wallet.component';
         EventComponent,
         WalletComponent,
         EventListComponent,
-        DataFilterPipe
+        DataFilterPipe,
+        EventDetailComponent
     ],
     imports: [
         BrowserAnimationsModule,
