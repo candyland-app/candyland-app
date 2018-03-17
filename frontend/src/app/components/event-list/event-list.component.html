@@ -1,0 +1,82 @@
+<div class="container" style="min-height: 450px;">
+    <div class="row justify-content-center" style="margin: 40px 0px;">
+        <div class="col-12">
+            <h2 class="section-headline text-center">
+                <span>Events</span>
+            </h2>
+            <hr style="width: 50%;" />
+        </div>
+    </div>
+    <div class="row justify-content-center" style="margin-top:30px">
+        <div class="col-12">
+            <table class="table table-striped" [mfData]="eventList | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
+                [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                <thead>
+                    <tr>
+                        <th colspan="5">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    Filter by Description:
+                                    <input class="form-control" [(ngModel)]="filterQuery" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="label-control">
+                                        Rows on page
+                                    </label>
+                                    <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
+                                        <option [ngValue]="5">5</option>
+                                        <option [ngValue]="10">10</option>
+                                        <option [ngValue]="15">15</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let event of mf.data">
+                        <div class="row" style="margin-bottom: 30px;">
+                            <div class="col-md-3">
+                                <a (click)="onSelect(event)" style="cursor:pointer">
+                                    <img class="img-fluid" src="{{serverPath}}/image/event/{{event.id}}.png" />
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <h4 (click)="onSelect(event)" style="margin-top: 20px; cursor:pointer">
+                                    {{event.name}}
+                                </h4>
+                                <span>
+                                    {{event.address}}
+                                </span>
+                                <p>
+                                    {{event.zipcode}}
+                                </p>
+                                <span>
+                                    {{event.category}}
+                                </span>
+                                <br/>
+                                <a (click)="onSelect(event)">
+                                    <span style="font-size: x-large; color: #db3208">
+                                        $
+                                    </span>
+                                    {{ event.price | number: '1.2-2'}}
+                                </a>
+                                <p style="">
+                                    {{ event.description | slice:0:500}}
+                                </p>
+                            </div>
+                        </div>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            <mfBootstrapPaginator [rowsOnPageSet]="[5, 10, 11]">
+                            </mfBootstrapPaginator>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
