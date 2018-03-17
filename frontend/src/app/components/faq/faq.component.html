@@ -1,45 +1,57 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-            <h2 class="section-headline">
-                <span>
-                    Frequently Asked Questions
-                </span>
+    <div class="row justify-content-center" style="margin: 40px 0px;">
+        <div class="col-12">
+            <h2 class="section-headline text-center">
+                <span>FAQ</span>
             </h2>
-        </div>
-        <div class="col-sm-4">
-            <img src="../../../assets/logo.png" class="img-fluid" style="width:400px; z-index:2;">
+            <hr style="width: 50%;" />
         </div>
     </div>
-    <h3 class="text-center">FAQ</h3>
-    <hr style="width: 50%;" />
-    <br/>
+
+    <div style="padding-top: 35px;">
+        <div class="row">
+            <div class="col-12">
+                <button id="element1" (click)="myFunction1($event.target, '-')">+</button>
+
+                <p id="element2">Τι κάνω αν έχω ξεχάσει τον κωδικό μου;</p>
+
+                <p id="myDIV1">
+                    Επιλέγετε My Account και στη συνέχεια την επιλογή 'Forgot My Password', εισάγετε την ηλεκτρονική σας διεύθυνση και θα σας
+                    σταλεί email με το νέο σας κωδικό.
+                </p>
+
+                <hr width="75%">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <button id="element3" (click)="myFunction2($event.target, '-')">+</button>
+
+                <p id="element4">Ακυρώθηκε το event λογω αδυναμίας του provider, πως θα πάρω τα χρήματα μου πίσω;</p>
+
+                <p id="myDIV2">
+                    Επιστροφές χρημάτων κατά κανόνα δεν πραγματοποιούνται μέσω της πλατφόρμας μας. Μπορείτε ωστόσο να επικοινωνήσετε με τον εκάστοτε
+                    πάροχο υπηρεσιών στον οποίο έχετε κάνει κράτηση για να κανονιστεί τυχόν αποζημίωση, εφόσον αυτή γίνει
+                    δεκτή.
+                </p>
+
+                <hr width="75%">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <button id="element5" (click)="myFunction3($event.target, '-')">+</button>
+
+                <p id="element6">Θα γίνει δεκτό το εισιτήριο από τον provider εφόσον φέρει την υπογραφή candyland;</p>
+
+                <p id="myDIV3">
+                    Ναί, όλοι οι πάροχοι έχουν δεχτεί πως τα παραγόμενα εισιτήρια από την πλατφόρμα μας θα γίνονται δεκτά.
+                </p>
+
+                <hr width="75%">
+            </div>
+        </div>
+    </div>
 </div>
-
-<button id="element1" (click)="myFunction1($event.target, '-')">+</button>
-<p id="element2">Τι κάνω αν έχω ξεχάσει τον κωδικό μου;</p>
-
-<p id="myDIV1">
-    Επιλέγετε My Account και στη συνέχεια την επιλογή 'Forgot My Password', εισάγετε την ηλεκτρονική σας διεύθυνση και θα σας
-    σταλεί email με το νέο σας κωδικό.
-</p>
-
-<br>
-<hr width="75%">
-<button id="element3" (click)="myFunction2($event.target, '-')">+</button>
-
-<p id="element4">Ακυρώθηκε το event λογω αδυναμίας του provider, πως θα πάρω τα χρήματα μου πίσω;</p>
-
-<p id="myDIV2">
-    Επιστροφές χρημάτων κατά κανόνα δεν πραγματοποιούνται μέσω της πλατφόρμας μας. Μπορείτε ωστόσο να επικοινωνήσετε με τον εκάστοτε
-    πάροχο υπηρεσιών στον οποίο έχετε κάνει κράτηση για να κανονιστεί τυχόν αποζημίωση, εφόσον αυτή γίνει δεκτή.
-</p>
-<br>
-<hr width="75%">
-<button id="element5" (click)="myFunction3($event.target, '-')">+</button>
-
-<p id="element6">Θα γίνει δεκτό το εισιτήριο από τον provider εφόσον φέρει την υπογραφή candyland;</p>
-
-<p id="myDIV3">
-    Ναί, όλοι οι πάροχοι έχουν δεχτεί πως τα παραγόμενα εισιτήρια από την πλατφόρμα μας θα γίνονται δεκτά.
-</p>
