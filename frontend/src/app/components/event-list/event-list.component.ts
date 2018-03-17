@@ -41,7 +41,6 @@ export class EventListComponent implements OnInit {
                     res => {
                         console.log(res.json());
                         this.eventList = res.json();
-                        console.log(this.eventList);
                     },
                     err => {
                         console.log(err);
