@@ -1,86 +1,87 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-8">
-      <h2 class="section-headline">
-        <span>
-          Event {{ eventId}}
-        </span>
-      </h2>
-    </div>
-    <div class="col-sm-4">
-      <img src="../../../assets/logo.png" class="img-fluid" style="width:400px; z-index:2;">
-    </div>
-      <img src="../../../assets/background.png" class="img-fluid" style="width: 65%; position: absolute; margin-top: 90px; z-index:-2;">
-  </div>
-  <br>
-  <form (ngSubmit)="onSearch()" class="form-inline navbar-form" style="margin-bottom:50px;">
-    <div class="col-sm-12" style="margin-bottom:5px;">
-      <input type="text" name="searcyByTitle" [(ngModel)]="keyboard" class="form-control" placeholder="Search Event" />
-    </div>
     <div class="row">
-      <div class="col-sm-4" style="text-align: center; margin-bottom:5px;">
-      	Date:
-      	<input type="date" name="date"><br>
-      </div>
-      <div class="col-sm-4" style="text-align: center; margin-bottom:5px;">
-      	Location:
-      	<input type="text" name="date" placeholder="Location"><br>
-      </div>
-      <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
-      	Ages:
-      	<select name="ages">
-		  <option value="3-5">3-5 years old</option>
-		  <option value="6-10">6-10 years old</option>
-		  <option value="11-14">11-14 years old</option>
-		  <option value="15+">+5+ years old</option>
-		</select>
-      </div>
-      <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
-      	Prices:
-      	<select name="prices">
-		  <option value="1-10">1-10€</option>
-		  <option value="11-20">11-20€</option>
-		  <option value="21-40">21-40€</option>
-		  <option value="41+">41+€</option>
-		</select>
-      </div>
-      <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
-      	Categories:
-      	<select name="categories">
-		  <option value="sports">Sports</option>
-		  <option value="cinema">Cinema</option>
-		  <option value="theatre">Theatre</option>
-		  <option value="playground">Playground</option>
-		</select>
-      </div>
-    </div>
-    <br>
-    <div class="col-sm-5"></div>
-    <div class="col-sm-2" style="text-align: center;">
-    		<button type="submit" class="btn btn-default" style="background-color: pink">Search</button>
-    </div>
-    <div class="col-sm-5"></div>
-  </form>
-  <h3 class="text-center">Featured Events!</h3>
-  <hr style="width: 50%;"/>
-  <br/>
-  <div class="row" *ngFor="let events of eventsList">
-    <div class="col-sm-6">
-      <div class="card" style="width: 22rem;">
-        <img class="card-img-top" src="../../../assets/event1.jpg" alt="Card image cap">
-      </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="card-body">
-          <h5 class="card-text text-left">{{ events.name }}</h5>
-          <div class="card-text text-left">{{ events.address }}</div>
-          <div class="card-text text-left">{{ events.category }}</div>
-          <a routerLink="/event/{{events.id}}">
-            <span class="badge">{{events.id}}</span> Book Now
-        </a>
+        <div class="col-sm-8">
+            <h2 class="section-headline">
+                <span>
+                    Event {{ eventId}}
+                </span>
+            </h2>
+        </div>
+        <div class="col-sm-4">
+            <img src="../../../assets/logo.png" class="img-fluid" style="width:400px; z-index:2;">
         </div>
     </div>
-  </div>
-  <br/>
-  <br/>
+    <br>
+    <form (ngSubmit)="onSearch()" class="form-inline navbar-form" style="margin-bottom:50px;">
+        <div class="col-sm-12" style="margin-bottom:5px;">
+            <input type="text" name="searcyByTitle" [(ngModel)]="keyboard" class="form-control" placeholder="Search Event" />
+        </div>
+        <div class="row">
+            <div class="col-sm-4" style="text-align: center; margin-bottom:5px;">
+                Date:
+                <input type="date" name="date">
+                <br>
+            </div>
+            <div class="col-sm-4" style="text-align: center; margin-bottom:5px;">
+                Location:
+                <input type="text" name="date" placeholder="Location">
+                <br>
+            </div>
+            <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
+                Ages:
+                <select name="ages">
+                    <option value="3-5">3-5 years old</option>
+                    <option value="6-10">6-10 years old</option>
+                    <option value="11-14">11-14 years old</option>
+                    <option value="15+">+5+ years old</option>
+                </select>
+            </div>
+            <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
+                Prices:
+                <select name="prices">
+                    <option value="1-10">1-10€</option>
+                    <option value="11-20">11-20€</option>
+                    <option value="21-40">21-40€</option>
+                    <option value="41+">41+€</option>
+                </select>
+            </div>
+            <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
+                Categories:
+                <select name="categories">
+                    <option value="sports">Sports</option>
+                    <option value="cinema">Cinema</option>
+                    <option value="theatre">Theatre</option>
+                    <option value="playground">Playground</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="col-sm-5"></div>
+        <div class="col-sm-2" style="text-align: center;">
+            <button type="submit" class="btn btn-default" style="background-color: pink">Search</button>
+        </div>
+        <div class="col-sm-5"></div>
+    </form>
+    <h3 class="text-center">Featured Events!</h3>
+    <hr style="width: 50%;" />
+    <br/>
+    <div class="row" *ngFor="let events of eventsList">
+        <div class="col-sm-6">
+            <div class="card" style="width: 22rem;">
+                <img class="card-img-top" src="../../../assets/event1.jpg" alt="Card image cap">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card-body">
+                <h5 class="card-text text-left">{{ events.name }}</h5>
+                <div class="card-text text-left">{{ events.address }}</div>
+                <div class="card-text text-left">{{ events.category }}</div>
+                <a routerLink="/event/{{events.id}}">
+                    <span class="badge">{{events.id}}</span> Book Now
+                </a>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br/>
 </div>
