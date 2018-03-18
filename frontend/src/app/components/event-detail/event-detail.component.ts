@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { log } from 'util';
 import { AppConst } from '../../constants/app-const';
 import { Event } from '../../models/event';
+import { CartService } from '../../services/cart.service';
 import { EventService } from '../../services/event.service';
 
 @Component({
@@ -22,13 +22,25 @@ export class EventDetailComponent implements OnInit {
     private notEnoughStock = false;
 
     constructor(
+        private cartService: CartService,
         private eventService: EventService,
         private router: Router,
         private http: Http,
         private route: ActivatedRoute
     ) {}
 
-    onAddToCart() {}
+    onAddToCart() {
+        this.cartService.addItem(this.eventId, this.qty).subscribe(
+            res => {
+                console.log(res.text());
+                this.addEventSuccess = true;
+            },
+            err => {
+                console.log(err.text());
+                this.notEnoughStock = true;
+            }
+        );
+    }
 
     ngOnInit() {
         this.route.params.forEach((params: Params) => {
