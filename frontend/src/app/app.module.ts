@@ -15,6 +15,7 @@ import 'hammerjs';
 import { routing } from './app.routing';
 import { DataFilterPipe } from './components/event-list/data-filter.pipe';
 
+import { CartService } from './services/cart.service';
 import { EventService } from './services/event.service';
 import { LoginService } from './services/login.service';
 import { PaymentService } from './services/payment.service';
@@ -32,6 +33,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { TeamComponent } from './components/team/team.component';
 import { WalletComponent } from './components/wallet/wallet.component';
 
@@ -51,7 +53,8 @@ import { WalletComponent } from './components/wallet/wallet.component';
         WalletComponent,
         EventListComponent,
         DataFilterPipe,
-        EventDetailComponent
+        EventDetailComponent,
+        ShoppingCartComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -66,7 +69,13 @@ import { WalletComponent } from './components/wallet/wallet.component';
         routing,
         MatCheckboxModule
     ],
-    providers: [EventService, LoginService, UserService, PaymentService],
+    providers: [
+        EventService,
+        CartService,
+        LoginService,
+        UserService,
+        PaymentService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
