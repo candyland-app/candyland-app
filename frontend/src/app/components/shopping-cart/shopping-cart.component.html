@@ -1,0 +1,106 @@
+<div class="container" style="min-height: 450px;">
+    <div class="row justify-content-center" style="margin: 40px 0px;">
+        <div class="col-12">
+            <h2 class="section-headline text-center">
+                <span>Shopping Cart</span>
+            </h2>
+            <hr style="width: 50%;" />
+        </div>
+    </div>
+    <div class="row" style="margin-top: 120px">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-6 text-left">
+                    <a mat-raised-button color="primary" routerLink="/eventList">
+                        Keep Shopping
+                    </a>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <a mat-raised-button color="primary" routerLink="/checkout">
+                        Checkout
+                    </a>
+                </div>
+            </div>
+            <br/>
+            <div *ngIf="cartItemUpdated" class="alert alert-success">
+                Cart Updated Successfully!
+            </div>
+            <div *ngIf="notEnoughStock" class="alert alert-warning">
+                Not Enough Tickets. Please Update your selected quantity.
+            </div>
+            <div *ngIf="emptyCart" class="alert alert-warning">
+                Your Cart is Empty!
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <h4>
+                        Events
+                    </h4>
+                </div>
+                <div class="col-sm-2">
+                    <h4>
+                        Price
+                    </h4>
+                </div>
+                <div class="col-sm-2">
+                    <h4>
+                        Tickets
+                    </h4>
+                </div>
+            </div>
+            <div class="row" *ngFor="let cartItem of cartItemList">
+                <hr/>
+                <div class="col-sm-2">
+                    <a mat-button (click)="onSelect(cartItem.event)">
+                        <img class="img-fluid" src="{{serverPath}}/image/event/{{cartItem.event.id}}.png" style="width: 70px;" />
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <a class="pointer" (click)="onSelect(cartItem.event)">
+                        <h4>
+                            {{ cartItem.event.name }}
+                        </h4>
+                    </a>
+                    <p *ngIf="cartItem.event.availableTickets > 10" style="color: green;">
+                        Tickets are available.
+                    </p>
+                    <p *ngIf="cartItem.event.availableTickets < 10 && cartItem.event.availableTickets > 0" style="color: orange;">
+                        Only {{ cartItem.event.availableTickets }} Tickets Left
+                    </p>
+                    <p *ngIf="cartItem.event.availableTickets == 10" style="color: red;">
+                        No Tickets Available
+                    </p>
+                    <a mat-button class="pointer" color="primary" (click)="onRemoveCartItem(cartItem)">
+                        Remove from Cart
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <h5>
+                        {{ cartItem.event.price }} $
+                    </h5>
+                </div>
+                <div class="col-sm-2">
+                    <input hidden="hidden" name="id" [(ngModel)]="cartItem.id" />
+                    <input id="cartItem.id" name="qty" [disabled]="cartItem.event.availableTickets == 0" class="form-control cartItemQty" [(ngModel)]="cartItem.qty"
+                        (ngModelChange)="cartItem.toUpdate = true" />
+                    <a mat-button *ngIf="cartItem.toUpdate" class="pointer" color="warn" (click)="onUpdateCartItem(cartItem)">
+                        Update
+                    </a>
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <br/>
+                <h4 class="col-sm-12 text-right">
+                    <strong style="font-size: large">
+                        Total Price
+                        (<span>{{ cartItemNumber }}</span> event):
+                    </strong>
+                    <span>
+                        {{ shoppingCart.grandTotal }} $
+                    </span>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
