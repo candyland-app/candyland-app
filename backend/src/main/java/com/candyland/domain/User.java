@@ -19,6 +19,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -46,7 +47,6 @@ public class User implements UserDetails, Serializable {
     @JsonIgnore
     private Set<UserRole> userRoles = new HashSet<>();
 
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserPayment> userPaymentList;
 
@@ -56,6 +56,17 @@ public class User implements UserDetails, Serializable {
 
     public void setUserPaymentList(List<UserPayment> userPaymentList) {
         this.userPaymentList = userPaymentList;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    private ShoppingCart shoppingCart;
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
+
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
     }
 
     public Long getId() {
@@ -113,7 +124,6 @@ public class User implements UserDetails, Serializable {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;

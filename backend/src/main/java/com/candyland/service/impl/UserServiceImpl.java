@@ -1,5 +1,6 @@
 package com.candyland.service.impl;
 
+import com.candyland.domain.ShoppingCart;
 import com.candyland.domain.User;
 import com.candyland.domain.UserBilling;
 import com.candyland.domain.UserPayment;
@@ -51,6 +52,10 @@ public class UserServiceImpl implements UserService {
             }
 
             user.getUserRoles().addAll(userRoles);
+
+            ShoppingCart shoppingCart = new ShoppingCart();
+            shoppingCart.setUser(user);
+            user.setShoppingCart(shoppingCart);
 
             user.setUserPaymentList(new ArrayList<UserPayment>());
 
