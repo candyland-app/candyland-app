@@ -1,6 +1,6 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { AppConst } from '../../constants/app-const';
 import { User } from '../../models/user';
 import { UserBilling } from '../../models/user-billing';
@@ -43,6 +43,10 @@ export class WalletComponent implements OnInit {
     private invalidCvc = false;
     private currentPoints = -1;
     private addedPoints = 0;
+    private bonusPoints = 0;
+    private noCards = false;
+    private notPositive = false;
+    private bonus = false;
 
     constructor(
         private loginService: LoginService,
@@ -50,30 +54,42 @@ export class WalletComponent implements OnInit {
         private userService: UserService,
         private router: Router,
         private location: Location
-    ) {}
+    ) { }
+
 
     selectedBillingChange(val: number) {
         this.selectedBillingTab = val;
     }
 
     onUpdateUserInfo() {
-        console.log();
         let guard = true;
-        if (this.user.userPaymentList === []) {
-            guard = false;
-        }
+        if (this.user.userPaymentList == []) guard = false;
         if (!guard) {
-            console.log('No cards selected');
-        } else if (this.addedPoints <= 0) {
-            console.log('Can not substract points');
-        } else {
+            console.log("No cards selected");
+            this.noCards = true;
+        }
+        else if (this.addedPoints <= 0) {
+            console.log("Can't substract points");
+            this.notPositive = true;
+        }
+        else if (confirm("Are you sure you want do add points? ")) {
+
             this.user.walletPoints = this.currentPoints + this.addedPoints;
+            this.currentPoints = this.user.walletPoints;
+            this.noCards = false;
+            this.notPositive = false;
+            this.bonus = false;
+            console.log(Math.floor(this.user.walletPoints / 100));
+            console.log(Math.floor(this.user.bonusPoints / 10));
+            if (Math.floor(this.user.walletPoints / 100) > Math.floor(this.user.bonusPoints / 10)) {
+                this.bonusPoints = Math.floor(this.user.walletPoints / 100) - Math.floor(this.user.bonusPoints / 10);
+                this.user.bonusPoints = 10 * Math.floor(this.user.walletPoints / 100);
+                this.bonus = true;
+            }
+            else this.bonusPoints = 0;
+
             this.userService
-                .updateUserInfo(
-                    this.user,
-                    this.newPassword,
-                    this.currentPassword
-                )
+                .updateUserInfo(this.user, this.newPassword, this.currentPassword)
                 .subscribe(
                     res => {
                         console.log(res.text());
@@ -88,7 +104,8 @@ export class WalletComponent implements OnInit {
                         }
                     }
                 );
-            location.reload();
+
+
         }
     }
 
@@ -200,6 +217,10 @@ export class WalletComponent implements OnInit {
         this.userPayment.expiryYear = '';
         this.userPayment.userBilling = this.userBilling;
         this.defaultPaymentSet = false;
+        this.noCards = false;
+        this.notPositive = false;
+        this.bonus = false;
+        this.bonusPoints = 0;
     }
 
     showInfo() {
@@ -207,5 +228,7 @@ export class WalletComponent implements OnInit {
         popup.classList.toggle('show');
     }
 
-    doSomething() {}
+    doSomething() { }
+
+
 }

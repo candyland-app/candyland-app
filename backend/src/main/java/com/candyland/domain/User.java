@@ -42,7 +42,7 @@ public class User implements UserDetails, Serializable {
     private String email;
     private String phone;
     private double walletPoints = 0.00;
-    private double bonusPoints;
+    private double bonusPoints = 0.00;
     private boolean enabled = true;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

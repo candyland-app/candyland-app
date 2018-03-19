@@ -108,6 +108,7 @@ public class UserResource {
         int id = (Integer) mapper.get("id");
         String email = (String) mapper.get("email");
         Double points = 1.0 * ((Integer) mapper.get("walletPoints"));
+        int bonusPoints = -2;
         String username = (String) mapper.get("username");
         String firstName = (String) mapper.get("firstName");
         String lastName = (String) mapper.get("lastName");
@@ -149,8 +150,9 @@ public class UserResource {
         currentUser.setLastName(lastName);
         currentUser.setUsername(username);
         currentUser.setWalletPoints(points);
+        currentUser.setBonusPoints((int) ((points / 100) * 10));
         currentUser.setEmail(email);
-
+        System.out.println((int) ((points / 100) * 10));
         userService.save(currentUser);
 
         return new ResponseEntity("Update Success", HttpStatus.OK);
