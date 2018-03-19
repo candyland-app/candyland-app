@@ -41,6 +41,8 @@ public class User implements UserDetails, Serializable {
 
     private String email;
     private String phone;
+    private double walletPoints = 0.00;
+    private double bonusPoints;
     private boolean enabled = true;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -146,6 +148,22 @@ public class User implements UserDetails, Serializable {
 
     public void setUserRoles(Set<UserRole> userRoles) {
         this.userRoles = userRoles;
+    }
+
+    public double getWalletPoints() {
+        return this.walletPoints;
+    }
+
+    public void setWalletPoints(double points) {
+        this.walletPoints = points;
+    }
+
+    public double getBonusPoints() {
+        return this.bonusPoints;
+    }
+
+    public void setBonusPoints(double points) {
+        this.bonusPoints = points;
     }
 
     @Override

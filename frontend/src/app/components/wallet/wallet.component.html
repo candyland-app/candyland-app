@@ -8,23 +8,39 @@
         </div>
     </div>
     <br>
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="points-text">Αυτήν τη στιγμή έχετε {{points}} πόντους στο λογαριασμό σας!</div>
+    <div style="margin-top: 0px;">
+        <!-- <div class="col-sm-1"></div> -->
+        <div *ngIf="dataFetched">
+            <div style="overflow: hidden">
+                <div class="card" style="background-color: #ededed">
+                    <div class="card-body">
+                        <form (ngSubmit)="onUpdateUserInfo()">
+                                    <div class="col-sm-12">
+                                        <div class="points-text">Αυτήν τη στιγμή έχετε {{ currentPoints }} πόντους στο λογαριασμό σας!</div>
+                                    </div>
+                                    <input type="hidden" name="id" [(ngModel)]="user.id" />
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label for="walletPoints">Βάλτε Πόντους στο λογαριασμό σας </label>
+                                                <input type="number" class="form-control" id="walletPoints"
+                                                    name="walletPoints" [(ngModel)]="addedPoints" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button mat-raised-button type="submit" style="background-color: pink; margin-left: 10px;" id="updateUserInfoButton">Προσθήκη</button>
+                                    <div class="popup" (click)="showInfo()">
+                                        <img src="../../../assets/grey-info.png" style="width:20px;">
+                                        <span class="popuptext" id="myPopup">Το ποσό που θα ενταχθεί θα αφαιρεθεί από το λογαριασμό που έχει οριστεί στο account σας. Για να αλλάξετε
+                                            το λογαριασμό πηγαινετε My Account και αλλάξτε τον από εκεί. Η αναλογία Πόντων/Ευρώ είναι 1:1</span>
+                                    </div>
+                                </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <form (ngSubmit)="doSomething()" class="form-inline" style="margin-bottom:50px; margin: 0 auto;">
-            <div style="text-align: center;">
-                Εισάγεται Πόντους στο λογαριασμό σας:
-                <input type="number" name="points" style="width: 80px;">
-                <br>
-            </div>
-            <button type="submit" class="btn btn-default" style="background-color: pink; margin-left: 20px;">Add Points</button>
-            <div class="popup" (click)="showInfo()">
-                <img src="../../../assets/grey-info.png" style="width:20px;">
-                <span class="popuptext" id="myPopup">Το ποσό που θα ενταχθεί θα αφαιρεθεί από το λογαριασμό που έχει οριστεί στο account σας. Για να αλλάξετε
-                    το λογαριασμό πηγαινετε My Account και αλλάξτε τον από εκεί. Η αναλογία Πόντων/Ευρώ είναι 1:1</span>
-            </div>
-        </form>
     </div>
     <br/>
     <br/>

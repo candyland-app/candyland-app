@@ -29,6 +29,7 @@ export class UserService {
         const url = this.serverPath + '/user/updateUserInfo';
         const userInfo = {
             id: user.id,
+            walletPoints: user.walletPoints,
             firstName: user.firstName,
             lastName: user.lastName,
             username: user.username,

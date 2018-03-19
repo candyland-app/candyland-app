@@ -107,6 +107,7 @@ public class UserResource {
 
         int id = (Integer) mapper.get("id");
         String email = (String) mapper.get("email");
+        Double points = 1.0 * ((Integer) mapper.get("walletPoints"));
         String username = (String) mapper.get("username");
         String firstName = (String) mapper.get("firstName");
         String lastName = (String) mapper.get("lastName");
@@ -147,6 +148,7 @@ public class UserResource {
         currentUser.setFirstName(firstName);
         currentUser.setLastName(lastName);
         currentUser.setUsername(username);
+        currentUser.setWalletPoints(points);
         currentUser.setEmail(email);
 
         userService.save(currentUser);
@@ -161,6 +163,36 @@ public class UserResource {
             user = userService.findByUsername(principal.getName());
         }
         return user;
+    }
+/*
+    @RequestMapping("/getWalletPoints")
+    public Double getWalletPoints(Principal principal) {
+        User user = new User();
+        if (null != principal) {
+            user = userService.findByUsername(principal.getName());
+        }
+        return user.getWalletPoints();
+    }*/
+
+    @RequestMapping(value = "/updateWalletInfo", method = RequestMethod.POST)
+    public ResponseEntity updateWalletInfo(
+        @RequestBody HashMap<String, Object> mapper
+    ) throws Exception {
+
+        int id = (Integer) mapper.get("id");
+        Double points = (Double) mapper.get("points");
+
+        User currentUser = userService.findById(Long.valueOf(id));
+
+        if (currentUser == null) {
+            throw new Exception("User not found");
+        }
+
+        currentUser.setWalletPoints(points);
+
+        userService.save(currentUser);
+
+        return new ResponseEntity("Update Success", HttpStatus.OK);
     }
 
 }

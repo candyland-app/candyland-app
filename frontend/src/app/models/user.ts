@@ -9,5 +9,7 @@ export class User {
     public email: string;
     public phone: string;
     public enabled: boolean;
+    public walletPoints: number;
+    public bonusPoints: number;
     public userPaymentList: UserPayment[];
 }
