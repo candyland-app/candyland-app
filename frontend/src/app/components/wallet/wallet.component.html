@@ -45,10 +45,10 @@
                                         <span class="popuptext" id="myPopup">Το ποσό που θα ενταχθεί θα αφαιρεθεί από το λογαριασμό που έχει οριστεί στο account σας. Για να αλλάξετε
                                             το λογαριασμό πηγαινετε My Account και αλλάξτε τον από εκεί. Η αναλογία Πόντων/Ευρώ είναι 1:1</span>
                                     </div>
-                                    <div style="text-align: left; color: #FF236D; font-size: 130%; margin-bottom: 20px; *ngIf="noCards">
+                                    <div style="text-align: left; color: #FF236D; font-size: 130%; margin-bottom: 20px;"  *ngIf="noCards">
                                         Δεν έχετε τοποθετήσει κάποια κάρτα στο λογαριασμό σας. Κατευθυνθείτε στο προφίλ σας για να προσθέσεται κάρτα!
                                     </div>
-                                    <div style="text-align: left; color: #FF236D; font-size: 130%; margin-bottom: 20px; *ngIf="notPositive">
+                                    <div style="text-align: left; color: #FF236D; font-size: 130%; margin-bottom: 20px;" *ngIf="notPositive">
                                         Ο αριθμός πόντων που προσθέσατε δεν είναι θετικός.
                                     </div>
                                     <div style="text-align: left; color: #FF236D; font-size: 130%; margin-bottom: 20px;" *ngIf="bonus">
