@@ -106,7 +106,7 @@ export class OrderComponent implements OnInit {
 
                     const navigationExtras: NavigationExtras = {
                         queryParams: {
-                            'order': JSON.stringify(this.order)
+                            order: JSON.stringify(this.order)
                         }
                     };
 

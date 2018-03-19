@@ -1,6 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { AppConst } from '../../constants/app-const';
 import { User } from '../../models/user';
 import { UserBilling } from '../../models/user-billing';
@@ -50,8 +50,7 @@ export class WalletComponent implements OnInit {
         private userService: UserService,
         private router: Router,
         private location: Location
-    ) { }
-
+    ) {}
 
     selectedBillingChange(val: number) {
         this.selectedBillingTab = val;
@@ -60,13 +59,21 @@ export class WalletComponent implements OnInit {
     onUpdateUserInfo() {
         console.log();
         let guard = true;
-        if (this.user.userPaymentList == []) guard = false;
-        if (!guard) console.log("No cards selected");
-        else if (this.addedPoints <= 0) console.log("Can't substract points");
-        else {
+        if (this.user.userPaymentList === []) {
+            guard = false;
+        }
+        if (!guard) {
+            console.log('No cards selected');
+        } else if (this.addedPoints <= 0) {
+            console.log('Can not substract points');
+        } else {
             this.user.walletPoints = this.currentPoints + this.addedPoints;
             this.userService
-                .updateUserInfo(this.user, this.newPassword, this.currentPassword)
+                .updateUserInfo(
+                    this.user,
+                    this.newPassword,
+                    this.currentPassword
+                )
                 .subscribe(
                     res => {
                         console.log(res.text());
@@ -81,9 +88,8 @@ export class WalletComponent implements OnInit {
                         }
                     }
                 );
-                location.reload()
-
-            }
+            location.reload();
+        }
     }
 
     getCurrentUser() {
@@ -202,6 +208,4 @@ export class WalletComponent implements OnInit {
     }
 
     doSomething() {}
-
-
 }
