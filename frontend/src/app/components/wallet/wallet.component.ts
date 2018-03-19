@@ -47,6 +47,7 @@ export class WalletComponent implements OnInit {
     private noCards = false;
     private notPositive = false;
     private bonus = false;
+    private pointsNeeded;
 
     constructor(
         private loginService: LoginService,
@@ -74,17 +75,20 @@ export class WalletComponent implements OnInit {
         }
         else if (confirm("Are you sure you want do add points? ")) {
 
-            this.user.walletPoints = this.currentPoints + this.addedPoints;
+            this.user.walletPoints = this.currentPoints + this.addedPoints ;
             this.currentPoints = this.user.walletPoints;
             this.noCards = false;
             this.notPositive = false;
             this.bonus = false;
-            console.log(Math.floor(this.user.walletPoints / 100));
-            console.log(Math.floor(this.user.bonusPoints / 10));
+            this.pointsNeeded = 100 - Math.floor(this.user.walletPoints % 100);
+            console.log(Math.floor(this.user.walletPoints) / 100);
+            console.log(Math.floor(this.user.bonusPoints) / 10);
             if (Math.floor(this.user.walletPoints / 100) > Math.floor(this.user.bonusPoints / 10)) {
                 this.bonusPoints = Math.floor(this.user.walletPoints / 100) - Math.floor(this.user.bonusPoints / 10);
                 this.user.bonusPoints = 10 * Math.floor(this.user.walletPoints / 100);
                 this.bonus = true;
+                console.log("fds");
+
             }
             else this.bonusPoints = 0;
 
@@ -115,7 +119,10 @@ export class WalletComponent implements OnInit {
                 this.user = res.json();
                 this.userPaymentList = this.user.userPaymentList;
                 this.currentPoints = this.user.walletPoints;
-
+                this.bonusPoints = this.user.bonusPoints;
+                console.log(this.user.walletPoints);
+                console.log(Math.floor(this.user.walletPoints % 100))
+                this.pointsNeeded = 100 - Math.floor(this.user.walletPoints % 100);
                 for (const index in this.userPaymentList) {
                     if (this.userPaymentList[index].defaultPayment) {
                         this.defaultUserPaymentId = this.userPaymentList[
@@ -131,6 +138,7 @@ export class WalletComponent implements OnInit {
                 console.log(err);
             }
         );
+
     }
 
     onNewPayment() {
@@ -220,7 +228,6 @@ export class WalletComponent implements OnInit {
         this.noCards = false;
         this.notPositive = false;
         this.bonus = false;
-        this.bonusPoints = 0;
     }
 
     showInfo() {

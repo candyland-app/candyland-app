@@ -22,6 +22,11 @@
     margin-bottom: 20px;
 }
 
+#custom div {
+    display: inline-block;
+    text-align: center;
+}
+
 
 /* Popup container */
 

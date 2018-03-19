@@ -150,7 +150,7 @@ public class UserResource {
         currentUser.setLastName(lastName);
         currentUser.setUsername(username);
         currentUser.setWalletPoints(points);
-        currentUser.setBonusPoints((int) ((points / 100) * 10));
+        currentUser.setBonusPoints(((int) (points / 100) * 10));
         currentUser.setEmail(email);
         System.out.println((int) ((points / 100) * 10));
         userService.save(currentUser);

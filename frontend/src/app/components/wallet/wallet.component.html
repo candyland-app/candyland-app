@@ -16,7 +16,16 @@
                     <div class="card-body">
                         <form (ngSubmit)="onUpdateUserInfo()">
                                     <div class="col-sm-12">
-                                        <div class="points-text">Αυτήν τη στιγμή έχετε {{ currentPoints }} πόντους στο λογαριασμό σας!</div>
+                                        <div class="points-text">Αυτήν τη στιγμή έχετε {{ this.user.walletPoints + this.user.bonusPoints }} Πόντους στο λογαριασμό σας!</div>
+                                    </div>
+                                    <div class="col-sm-12" id="custom">
+                                            <div style="text-align: center; color: #BF032D; font-size: 130%; margin-bottom: 20px; margin-left: 20%">Χρειάζεστε άλλους {{pointsNeeded}} Πόντους για να κερδίσετε +10!
+                                            </div>
+                                            <div class="popup" (click)="showInfo()">
+                                                <img src="../../../assets/grey-info.png" style="width:20px;">
+                                                <span class="popuptext" id="myPopup">Για κάθε 100€ που ξοδεύετε κερδίζετε 10 πόντους ακόμη!</span>
+
+                                        </div>
                                     </div>
                                     <input type="hidden" name="id" [(ngModel)]="user.id" />
 
