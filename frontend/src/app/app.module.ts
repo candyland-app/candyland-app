@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {
     MatButtonModule,
+    MatCardModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatSelectModule,
@@ -16,8 +17,10 @@ import { routing } from './app.routing';
 import { DataFilterPipe } from './components/event-list/data-filter.pipe';
 
 import { CartService } from './services/cart.service';
+import { CheckoutService } from './services/checkout.service';
 import { EventService } from './services/event.service';
 import { LoginService } from './services/login.service';
+import { OrderService } from './services/order.service';
 import { PaymentService } from './services/payment.service';
 import { UserService } from './services/user.service';
 
@@ -33,6 +36,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { OrderComponent } from './components/order/order.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { TeamComponent } from './components/team/team.component';
 import { WalletComponent } from './components/wallet/wallet.component';
@@ -54,7 +58,8 @@ import { WalletComponent } from './components/wallet/wallet.component';
         EventListComponent,
         DataFilterPipe,
         EventDetailComponent,
-        ShoppingCartComponent
+        ShoppingCartComponent,
+        OrderComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -62,6 +67,7 @@ import { WalletComponent } from './components/wallet/wallet.component';
         DataTableModule,
         BrowserModule,
         FormsModule,
+        MatCardModule,
         MatSelectModule,
         MatProgressSpinnerModule,
         MatTabsModule,
@@ -70,6 +76,8 @@ import { WalletComponent } from './components/wallet/wallet.component';
         MatCheckboxModule
     ],
     providers: [
+        OrderService,
+        CheckoutService,
         EventService,
         CartService,
         LoginService,

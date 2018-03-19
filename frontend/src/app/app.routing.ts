@@ -9,6 +9,7 @@ import { EventComponent } from './components/event/event.component';
 import { HomeComponent } from './components/home/home.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { OrderComponent } from './components/order/order.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { TeamComponent } from './components/team/team.component';
 import { WalletComponent } from './components/wallet/wallet.component';
@@ -62,6 +63,10 @@ const appRoutes: Routes = [
     {
         path: 'shoppingCart',
         component: ShoppingCartComponent
+    },
+    {
+        path: 'checkout',
+        component: OrderComponent
     }
 ];
 
