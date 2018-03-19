@@ -1,0 +1,79 @@
+<div class="container" style="min-height: 450px;">
+    <div class="row justify-content-center" style="margin: 40px 0px;">
+        <div class="col-12">
+            <h2 class="section-headline text-center">
+                <span>Order Summary</span>
+            </h2>
+            <hr style="width: 50%;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="alert alert-success">
+                <h3 class="text-center">
+                    <i class="fa fa-check" style="color: green;"></i> Your Order was Successfully Placed!</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-sm-12">
+            <h2 class="text-center">
+                Order Items
+            </h2>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 40px">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h4>
+                        Event
+                    </h4>
+                </div>
+                <div class="col-sm-2">
+                    <h4>
+                        Price
+                    </h4>
+                </div>
+                <div class="col-sm-2">
+                    <h4>
+                        Tickets
+                    </h4>
+                </div>
+            </div>
+            <div class="row" *ngFor="let cartItem of cartItemList">
+                <hr/>
+                <div class="col-sm-2">
+                    <a mat-button (click)="onSelect(cartItem.event)">
+                        <img class="img-fluid" src="{{serverPath}}/image/event/{{cartItem.event.id}}.png" style="width: 70px;" />
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <a class="pointer" (click)="onSelect(cartItem.event)">
+                        <h4>
+                            {{ cartItem.event.name }}
+                        </h4>
+                    </a>
+                    <p *ngIf="cartItem.event.availableTickets > 10" style="color: green;">
+                        Tickets are available.
+                    </p>
+                    <p *ngIf="cartItem.event.availableTickets < 10 && cartItem.event.availableTickets > 0" style="color: orange;">
+                        Only {{ cartItem.event.availableTickets }} Tickets Left
+                    </p>
+                    <p *ngIf="cartItem.event.availableTickets == 10" style="color: red;">
+                        No Tickets Available
+                    </p>
+                </div>
+                <div class="col-sm-2">
+                    <h5>
+                        {{ cartItem.event.price }} $
+                    </h5>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <h5>{{cartItem.qty}}</h5>
+                </div>
+            </div>
+            <hr/>
+        </div>
+    </div>
+</div>
