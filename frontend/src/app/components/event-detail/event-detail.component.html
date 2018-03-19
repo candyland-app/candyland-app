@@ -80,10 +80,10 @@
                                 <h5 *ngIf="event.availableTickets<10 && event.availableTickets>0" style="color: orange;">
                                     Only {{ event.availableTickets }} Left
                                 </h5>
-                                <h5 *ngIf="event.availableTickets==0" style="color: red;">
+                                <h5 *ngIf="event.availableTickets==0 || event.availableTickets<0" style="color: red;">
                                     Unavailable
                                 </h5>
-                                <button mat-raised-button [disabled]="event.availableTickets==0" (click)="onAddToCart()" color="primary">
+                                <button mat-raised-button [disabled]="event.availableTickets==0 || event.availableTickets<0" (click)="onAddToCart()" color="primary">
                                     Add to Cart
                                 </button>
                             </div>

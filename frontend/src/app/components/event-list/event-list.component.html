@@ -43,7 +43,10 @@
                             </div>
                             <div class="col-md-9">
                                 <h4 (click)="onSelect(event)" style="margin-top: 20px; cursor:pointer">
-                                    {{event.name}}
+                                    {{event.name}} -
+                                    <span *ngIf="event.availableTickets==0 || event.availableTickets<0" style="color: red;">
+                                        SOLD OUT!
+                                    </span>
                                 </h4>
                                 <span>
                                     <strong>Category:</strong>
@@ -87,7 +90,12 @@
                                 <span> - </span>
                                 <span>
                                     <strong>Available Ticket:</strong>
-                                    {{event.availableTickets}}
+                                    <span *ngIf="event.availableTickets==0 || event.availableTickets<0" style="color: red;">
+                                        SOLD OUT!
+                                    </span>
+                                    <span *ngIf="event.availableTickets>0" >
+                                        {{event.availableTickets}}
+                                    </span>
                                 </span>
                                 <br/>
                                 <span>
