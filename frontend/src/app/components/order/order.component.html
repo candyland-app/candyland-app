@@ -1,0 +1,284 @@
+<div class="container" style="min-height: 450px;">
+    <div class="row justify-content-center" style="margin: 40px 0px;">
+        <div class="col-12">
+            <h2 class="section-headline text-center">
+                <span>Order Checkout</span>
+            </h2>
+            <hr style="width: 50%;" />
+        </div>
+    </div>
+    <div class="row" style="margin-top: 80px;">
+        <form (ngSubmit)="onSubmit()" method="post" style="display: contents;">
+            <div class="col-sm-5">
+                <div class="card card-default">
+                    <div class="card-body">
+                        <button mat-raised-button="mat-raised-button" type="submit" class="btn-block mat-primary">Place Order
+                        </button>
+                        <hr/>
+                        <h3>Order Summary</h3>
+                        <div class="row">
+                            <div class="col-sm-7 text-left">
+                                Total without VAT:
+                            </div>
+                            <div class="col-sm-5 text-right">
+                                <span>{{shoppingCart.grandTotal}}</span>$
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-7 text-left">
+                                Estimated VAT:
+                            </div>
+                            <div class="col-sm-5 text-right">
+                                <span>{{shoppingCart.grandTotal*0.1 | number : '1.2-2'}}</span>$
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-sm-7 text-left">
+                                <h4 style="text-decoration: underline">
+                                    <strong>Order Total:</strong>
+                                </h4>
+                            </div>
+                            <div class="col-sm-5 text-right">
+                                <h4>
+                                    <strong style="color: green;">
+                                        <span>{{shoppingCart.grandTotal*1.1 | number : '1.2-2'}}</span>$
+                                    </strong>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div *ngIf="missingRequiredField">
+                    <h5 class="alert alert-warning">
+                        Required Fields (*) Missing.
+                    </h5>
+                </div>
+                <mat-card>
+                    <mat-tab-group (selectedIndexChange)="selectedChange($event)" [selectedIndex]="selectedTab">
+                        <mat-tab label="Payment Method">
+                            <div class="card card-default">
+                                <div class="card-heading">
+                                    <h4 class="card-title text-center" style="padding-top: 20px;">
+                                        Payment Method
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table" *ngIf="!emptyPaymentList">
+                                        <thead>
+                                            <tr>
+                                                <th>Available Credit Card</th>
+                                                <th>Operations</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let userPayment of userPaymentList">
+                                                <td>
+                                                    {{userPayment.cardName}}
+                                                </td>
+                                                <td>
+                                                    <a mat-button class="pointer" (click)="setPaymentMethod(userPayment)">
+                                                        Use this Card
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <img src="../../../assets/creditcard.png" class="img-fluid" />
+                                            <br/>
+                                            <div class="form-group">
+                                                <label for="cardType">* Select Card Type:</label>
+                                                <select class="form-control" id="cardType" name="type" [(ngModel)]="payment.type">
+                                                    <option value="" disabled="disabled">
+                                                        -- Card Type --
+                                                    </option>
+                                                    <option value="visa">Visa</option>
+                                                    <option value="mastercard">Mastercard</option>
+                                                    <option value="discover">Discover</option>
+                                                    <option value="amex">American Express</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cardHolder">* Card Holder</label>
+                                                <input type="text" class="form-control" id="cardHolder" required="required" placeholder="Card Holder Name" name="holderName"
+                                                    [(ngModel)]="payment.holderName" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cardNumber">* Card Number</label>
+                                                <div class="input-group">
+                                                    <input required="required" id="cardNumber" type="tel" class="form-control" name="cardNumber" placeholder="Valid Card Number"
+                                                        [(ngModel)]="payment.cardNumber" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-7 col-mat-7">
+                                            <div class="form-group">
+                                                <label>* Expiration Date</label>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <select class="form-control" name="expiryMonth" required="required" [(ngModel)]="payment.expiryMonth">
+                                                            <option value="" disabled="disabled">
+                                                                -- Month --
+                                                            </option>
+                                                            <option value="1">Jan</option>
+                                                            <option value="2">Feb</option>
+                                                            <option value="3">Mar</option>
+                                                            <option value="4">Apr</option>
+                                                            <option value="5">May</option>
+                                                            <option value="6">Jun</option>
+                                                            <option value="7">Jul</option>
+                                                            <option value="8">Aug</option>
+                                                            <option value="9">Sep</option>
+                                                            <option value="10">Oct</option>
+                                                            <option value="11">Nov</option>
+                                                            <option value="12">Dec</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <select class="form-control" name="expiryYear" [(ngModel)]="payment.expiryYear">
+                                                            <option value="" disabled="disabled">-- Year --
+                                                            </option>
+                                                            <option value="18">2018</option>
+                                                            <option value="19">2019</option>
+                                                            <option value="20">2020</option>
+                                                            <option value="21">2021</option>
+                                                            <option value="22">2022</option>
+                                                            <option value="23">2023</option>
+                                                            <option value="23">2024</option>
+                                                            <option value="23">2025</option>
+                                                            <option value="23">2026</option>
+                                                            <option value="23">2027</option>
+                                                            <option value="23">2028</option>
+                                                            <option value="23">2029</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-mat-5 pull-right">
+                                            <div class="form-group">
+                                                <label for="cardCVC">CVC</label>
+                                                <input id="cardCVC" type="tel" class="form-control" name="cvc" placeholder="CVC" [(ngModel)]="payment.cvc" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="billingName">* Billing Name</label>
+                                        <input type="text" class="form-control billingAddress" id="billingName" placeholder="Billing Name" name="billingAddressName"
+                                            [(ngModel)]="billingAddress.billingAddressName" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="billingAddress">* Street Address</label>
+                                        <input type="text" id="billingAddress" class="form-control billingAddress" placeholder="Street Address 1" name="billingAddressStreet1"
+                                            [(ngModel)]="billingAddress.billingAddressStreet1" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control billingAddress" placeholder="Street Address 2" name="billingAddressStreet2" [(ngModel)]="billingAddress.billingAddressStreet2"
+                                        />
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="billingCity">* City</label>
+                                                <input type="text" class="form-control billingAddress" id="billingCity" placeholder="City" name="billingAddressCity" [(ngModel)]="billingAddress.billingAddressCity"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="billingState">* State</label>
+                                                <select id="billingState" class="form-control billingAddress" name="billingAddressState" [(ngModel)]="billingAddress.billingAddressState">
+                                                    <option value="" disabled="disabled">-- State --
+                                                    </option>
+                                                    <option *ngFor="let state of stateList">{{state}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="billingZipcode">* Zipcode</label>
+                                                <input type="text" class="form-control billingAddress" id="billingZipcode" placeholder="Zipcode" name="billingAddressZipcode"
+                                                    [(ngModel)]="billingAddress.billingAddressZipcode" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a mat-raised-button="mat-raised-button" class="mat-primary" (click)="goToReview()">Next</a>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Review">
+                            <div class="card card-default">
+                                <div class="card-heading">
+                                    <h4 class="card-title text-center" style="padding-top: 20px;">
+                                        Review Order
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-7">
+                                            <h6>Events</h6>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <h6>Price</h6>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h6>Tickets</h6>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngFor="let cartItem of cartItemList">
+                                        <hr/>
+                                        <div class="col-sm-2">
+                                            <a mat-button="mat-button" (click)="onSelect(cartItem.event)">
+                                                <img class="img-fluid shelf-event" src="{{serverPath}}/image/event/{{cartItem.event.id}}.png" style="width:70px;" />
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <a class="pointer" (click)="onSelect(cartItem.event)">
+                                                <h6>{{cartItem.event.name}}</h6>
+                                            </a>
+                                            <p *ngIf="cartItem.event.availableTickets > 10" style="color: green;">In Stock</p>
+                                            <p *ngIf="cartItem.event.availableTickets < 10 && cartItem.event.availableTickets > 0" style="color: green;">
+                                                Only
+                                                <span>{{cartItem.event.availableTickets}}</span>
+                                                In Stock
+                                            </p>
+                                            <p style="color: red;" *ngIf="cartItem.event.availableTickets==0">Tickets Unavailable</p>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <h5 style="color: green; font-size: large;">
+                                                <span [ngClass]="{'text-strike': cartItem.event.availableTickets == 0 }">{{cartItem.event.price}}</span>$
+                                            </h5>
+                                        </div>
+                                        <div class="col-sm-3 text-center">
+                                            <h5 style="font-size: large">{{cartItem.qty}}</h5>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <h4 class="col-sm-12 text-right">
+                                        <strong class="text-center" style="font-size: large">
+                                            Total Price:
+                                        </strong>
+                                        <span style="color: green; font-size: large;">
+                                            <span>{{shoppingCart.grandTotal}}</span>$
+                                        </span>
+                                    </h4>
+                                    <br/>
+                                    <br/>
+                                    <button mat-raised-button="mat-raised-button" type="submit" class="btn-block mat-primary">Place Order
+                                    </button>
+                                </div>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </mat-card>
+            </div>
+        </form>
+    </div>
+</div>
