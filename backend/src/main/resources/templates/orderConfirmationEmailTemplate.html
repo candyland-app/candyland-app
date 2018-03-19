@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<p>Dear <span th:text="${user.firstName}"></span>,</p>
+<br/>
+<p>Thank you for booking through Candyland. We hope you enjoyed using our platform.</p>
+<p>Your order number is: <strong>#<span th:text="${order.id}"></span></strong>. Here are your order details:</p>
+<h2>Order #<span th:text="${order.id}"></span>Details</h2>
+<hr/>
+
+<table>
+    <tr>
+        <th>Billing Details</th>
+        <th>Payment Information</th>
+    </tr>
+    <tr>
+        <td>
+            <span th:text="${order.billingAddress.billingAddressName}"></span><br/>
+            <span th:text="${order.billingAddress.billingAddressStreet1}+' '+${order.billingAddress.billingAddressStreet2}"></span><br/>
+            <span th:text="${order.billingAddress.billingAddressCity}"></span><br/>
+            <span th:text="${order.billingAddress.billingAddressState}"></span><br/>
+            <span th:text="${order.billingAddress.billingAddressZipcode}"></span><br/>
+        </td>
+        <td>
+            <span th:text="${order.payment.holderName}">Card Name</span><br/>
+            Visa<br/>
+            <span th:text="${order.payment.cardNumber}">Card Number</span><br/>
+            <span>Expiring Date:</span> <span
+                th:text="${order.payment.expiryMonth}"></span>/<span
+                th:text="${order.payment.expiryYear}"></span><br/>
+        </td>
+    </tr>
+</table>
+
+<h3><strong>Order Summary</strong></h3>
+<table>
+    <thead>
+    <tr>
+        <td><strong>Event</strong></td>
+        <td class="text-center"><strong>Price</strong></td>
+        <td class="text-center"><strong>Tickets</strong>
+        </td>
+        <td class="text-right"><strong>Total</strong></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cartItem : ${cartItemList}">
+        <td><span data-th-text="${cartItem.event.name}"></span>
+        </td>
+        <td data-th-text="${cartItem.event.price}"
+            class="text-center">
+        </td>
+        <td data-th-text="${cartItem.qty}" class="text-center">
+
+        </td>
+        <td data-th-text="${cartItem.subtotal}"
+            class="text-right">
+        </td>
+    </tr>
+    <tr>
+        <td class="highrow"></td>
+        <td class="highrow"></td>
+        <td class="highrow text-center">
+            <strong>Subtotal</strong></td>
+        <td data-th-text="${order.orderTotal}"
+            class="highrow text-right">
+        </td>
+    </tr>
+    <tr>
+        <td class="emptyrow"></td>
+        <td class="emptyrow"></td>
+        <td class="emptyrow text-center"><strong>VAT</strong>
+        </td>
+        <td data-th-text="${#numbers.formatDecimal(order.orderTotal*0.1, 0, 2)}"
+            class="emptyrow text-right">
+        </td>
+    </tr>
+    <tr>
+        <td class="emptyrow"><i
+                class="fa fa-barcode iconbig"></i></td>
+        <td class="emptyrow"></td>
+        <td class="emptyrow text-center"><strong>Total</strong>
+        </td>
+        <td th:with="total=${order.orderTotal+order.orderTotal*0.1}"
+            data-th-text="${#numbers.formatDecimal(total, 0, 2)}"
+            class="emptyrow text-right">
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+<p>Forever yours,</p>
+<p>the Candyland team</p>
+</body>
+</html>
