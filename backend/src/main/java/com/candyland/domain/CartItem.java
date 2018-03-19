@@ -37,6 +37,19 @@ public class CartItem implements Serializable {
     @JsonIgnore
     private ShoppingCart shoppingCart;
 
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    @JsonIgnore
+    private Order order;
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
     public Long getId() {
         return id;
     }

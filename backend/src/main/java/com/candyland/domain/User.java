@@ -69,6 +69,17 @@ public class User implements UserDetails, Serializable {
         return shoppingCart;
     }
 
+    @OneToMany(mappedBy = "user")
+    private List<Order> orderList;
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
     public Long getId() {
         return id;
     }
