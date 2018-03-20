@@ -94,8 +94,143 @@
                                     </div>
 
                                     <button mat-raised-button type="submit" color="primary" id="updateUserInfoButton">Save</button>
-
                                 </form>
+                            </mat-tab>
+                            <mat-tab label="Orders">
+                                <div class="card-group">
+                                    <div class="card card-default card-faq" style="border: none;">
+                                        <div class="card-body" style="background-color: #ededed;">
+                                            <table class="table table-sm table-inverse">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Order Date</th>
+                                                        <th>Order Number</th>
+                                                        <th>Total</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let order of orderList">
+                                                        <td>
+                                                            <a mat-button class="pointer" (click)="onDisplayOrder(order)"><span
+                                                             >{{order.orderDate}}</span></a>
+                                                        </td>
+                                                        <td>{{order.id}}</td>
+                                                        <td>{{order.orderTotal}} $</td>
+                                                        <td>{{order.orderStatus}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div *ngIf="displayOrderDetail">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="text-center">
+                                                            <h2>Order #<span>{{order.id}}</span> Details</h2>
+                                                        </div>
+                                                        <hr/>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="card card-default height">
+                                                                    <div class="card-header"><strong>Billing Details</strong>
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <span>{{order.billingAddress.billingAddressName}}</span>
+                                                                        <br/>
+                                                                        <span>{{order.billingAddress.billingAddressStreet1}} {{order.billingAddress.billingAddressStreet2}}</span>
+                                                                        <br/>
+                                                                        <span>{{order.billingAddress.billingAddressCity}}</span>
+                                                                        <br/>
+                                                                        <span>{{order.billingAddress.billingAddressState}}</span>
+                                                                        <br/>
+                                                                        <span>{{order.billingAddress.billingAddressZipcode}}</span>
+                                                                        <br/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="card card-default height">
+                                                                    <div class="card-header"><strong>Payment Information</strong>
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <span>{{order.payment.holderName}}</span>
+                                                                        <br/> Visa
+                                                                        <br/>
+                                                                        <span>{{order.payment.cardNumber}}</span>
+                                                                        <br/>
+                                                                        <span>Exp Date:</span> <span>{{order.payment.expiryMonth}}</span>/<span>{{order.payment.expiryYear}}</span>
+                                                                        <br/>
+                                                                        <br/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="padding-top: 15px;">
+                                                    <div class="col-md-12">
+                                                        <div class="card card-default">
+                                                            <div class="card-header">
+                                                                <h3 class="text-center"><strong>Order Summary</strong></h3>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-condensed">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td><strong>Event Name</strong></td>
+                                                                                <td class="text-center"><strong>Ticket Price</strong></td>
+                                                                                <td class="text-center"><strong>Tickets Number</strong>
+                                                                                </td>
+                                                                                <td class="text-right"><strong>Total</strong></td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr *ngFor="let cartItem of order['cartItemList']">
+                                                                                <td>{{cartItem.event.name}}
+                                                                                </td>
+                                                                                <td class="text-center">{{cartItem.event.price}} $
+                                                                                </td>
+                                                                                <td class="text-center">
+                                                                                    {{cartItem.qty}}
+                                                                                </td>
+                                                                                <td class="text-right">{{cartItem.subtotal}} $
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="highrow"></td>
+                                                                                <td class="highrow"></td>
+                                                                                <td class="highrow text-center">
+                                                                                    <strong>Subtotal</strong></td>
+                                                                                <td class="highrow text-right">{{order.orderTotal}} $
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="emptyrow"></td>
+                                                                                <td class="emptyrow"></td>
+                                                                                <td class="emptyrow text-center"><strong>VAT</strong>
+                                                                                </td>
+                                                                                <td class="emptyrow text-right">{{order.orderTotal*0.1}} $
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="emptyrow"></td>
+                                                                                <td class="emptyrow"></td>
+                                                                                <td class="emptyrow text-center"><strong>Total</strong>
+                                                                                </td>
+                                                                                <td class="emptyrow text-right">{{order.orderTotal*1.1}} $
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </mat-tab>
                             <mat-tab label="Payment">
                                 <br />

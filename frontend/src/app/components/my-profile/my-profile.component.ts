@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppConst } from '../../constants/app-const';
+import { Order } from '../../models/order';
 import { User } from '../../models/user';
 import { UserBilling } from '../../models/user-billing';
 import { UserPayment } from '../../models/user-payment';
 import { LoginService } from '../../services/login.service';
+import { OrderService } from '../../services/order.service';
 import { PaymentService } from '../../services/payment.service';
 import { UserService } from '../../services/user.service';
 
@@ -41,9 +43,14 @@ export class MyProfileComponent implements OnInit {
     private invalidCardNo = false;
     private invalidCvc = false;
 
+    private orderList: Order[] = [];
+    private order: Order = new Order();
+    private displayOrderDetail: boolean;
+
     constructor(
         private loginService: LoginService,
         private paymentService: PaymentService,
+        private orderService: OrderService,
         private userService: UserService,
         private router: Router
     ) {}
@@ -152,6 +159,12 @@ export class MyProfileComponent implements OnInit {
             );
     }
 
+    onDisplayOrder(order: Order) {
+        console.log(order);
+        this.order = order;
+        this.displayOrderDetail = true;
+    }
+
     ngOnInit() {
         this.loginService.checkSession().subscribe(
             res => {
@@ -165,6 +178,15 @@ export class MyProfileComponent implements OnInit {
         );
 
         this.getCurrentUser();
+
+        this.orderService.getOrderList().subscribe(
+            res => {
+                this.orderList = res.json();
+            },
+            error => {
+                console.log(error.text());
+            }
+        );
 
         for (const state in AppConst.usStates) {
             if (AppConst.usStates.hasOwnProperty(state)) {
