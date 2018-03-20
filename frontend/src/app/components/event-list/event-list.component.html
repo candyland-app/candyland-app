@@ -9,16 +9,56 @@
     </div>
     <div class="row justify-content-center" style="margin-top:30px">
         <div class="col-12">
-            <table class="table" [mfData]="eventList | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
+            <table class="table" id="myTable" [mfData]="eventList | dataFilter : description : selectedAddress : selectedZipcode : selectedAge : selectedCategory : selectedMaxPrice" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
                 [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                 <thead>
                     <tr>
                         <th colspan="5">
                             <div class="row">
-                                <div class="col-md-9">
+                                <div class="col-md-12" style=" background-color: #ededed;">
                                     Filter by Description:
-                                    <input class="form-control" [(ngModel)]="filterQuery" />
+                                    <input class="form-control" style="margin-bottom: 20px; text-align: center;" placeholder="Search" [(ngModel)]="description"/>
                                 </div>
+                                <form (ngSubmit)="onSearch()" class="form-inline navbar-form" style="margin-bottom:50px; background-color: #ededed;">
+
+                                    <div class="row">
+                                        <div class="col-sm-4" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
+                                            Date:
+                                            <input class="form-control" type="date" name="date" [(ngModel)]="selectedDate">
+                                            <br>
+                                        </div>
+                                        <div class="col-sm-4" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
+                                            Address:
+                                            <input id="address" class="form-control" type="text" name="address" placeholder="Address" [(ngModel)]="selectedAddress">
+                                            <br>
+                                        </div>
+                                        <div class="col-sm-4" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
+                                            Zipcode:
+                                            <input id="zipcode" class="form-control" type="text" name="zipcode" placeholder="Zipcode" [(ngModel)]="selectedZipcode">
+                                            <br>
+                                        </div>
+                                        <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
+                                            Ages:
+                                            <input id="age" class="form-control" type="number" name="age"  [(ngModel)]="selectedAge">
+                                        </div>
+                                        <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
+                                            Maximum Price:
+                                            <input id="maxprice" class="form-control" type="number" name="maxprice" style="width: 100px;" step="0.01" [(ngModel)]="selectedMaxPrice">
+                                        </div>
+                                        <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
+                                            Categories:
+                                            <select [(ngModel)]="selectedCategory" name="categories">
+                                                  <option *ngFor="let category of categories" [ngValue]="category.name">{{category.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-sm-5"></div>
+                                    <div class="col-sm-2" style="text-align: center; margin-bottom: 20px">
+                                        <button class="form-control" type="submit" class="btn btn-default" style="background-color: pink">Search</button>
+                                    </div>
+                                    <div class="col-sm-5"></div>
+                                </form>
                                 <div class="col-md-3">
                                     <label class="label-control">
                                         Rows on page
@@ -88,6 +128,16 @@
                                 <span>
                                     <strong>Available Ticket:</strong>
                                     {{event.availableTickets}}
+                                </span>
+                                <br/>
+                                <span>
+                                    <strong>Minimum Age:</strong>
+                                    {{event.minAge }}
+                                </span>
+                                <span> - </span>
+                                <span>
+                                    <strong>Maximum Age:</strong>
+                                    {{event.maxAge}}
                                 </span>
                                 <br/>
                                 <span>

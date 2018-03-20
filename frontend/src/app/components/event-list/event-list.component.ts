@@ -12,13 +12,37 @@ import { EventService } from '../../services/event.service';
     styleUrls: ['./event-list.component.css']
 })
 export class EventListComponent implements OnInit {
-    public filterQuery = '';
+    public description = '';
     public rowsOnPage = 5;
 
     private selectedEvent: Event;
     private eventList: Event[];
+    public event = new Event;
     private serverPath = AppConst.serverPath;
 
+    private selectedDate: Date;
+    private selectedAddress;
+    private selectedZipcode;
+    private selectedAge;
+    private selectedPrice;
+    private selectedCategory;
+    private selectedMinPrice;
+    private selectedMaxPrice;
+
+
+     public prices: Array<Object> = [
+         { name: "1-10€" },
+         { name: "11-20€" },
+         { name: "21-40€" },
+         { name: "41+€" }
+    ];
+    public categories: Array<Object> = [
+        { name: "Any Category" },
+        { name: "Sports" },
+        { name: "Music" },
+        { name: "Education" },
+        { name: "Cinema" }
+    ];
     constructor(
         private eventService: EventService,
         private router: Router,
@@ -26,16 +50,26 @@ export class EventListComponent implements OnInit {
         private route: ActivatedRoute
     ) {}
 
+
     onSelect(event: Event) {
         this.selectedEvent = event;
         this.router.navigate(['/eventDetail', this.selectedEvent.id]);
     }
+    onSearch() {
+
+    }
 
     ngOnInit() {
+
+        this.selectedCategory = 'Any Category';
+        //this.selectedAge = 0;
+        //this.selectedMaxPrice = 0;
         this.route.queryParams.subscribe(params => {
             if (params['eventList']) {
                 console.log('filtered event list');
                 this.eventList = JSON.parse(params['eventList']);
+                this.event = new Event;
+                this.event.description = '';
             } else {
                 this.eventService.getEventList().subscribe(
                     res => {
@@ -48,5 +82,6 @@ export class EventListComponent implements OnInit {
                 );
             }
         });
+
     }
 }
