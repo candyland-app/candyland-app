@@ -22,9 +22,7 @@ public class EventServiceImpl implements EventService {
         List<Event> activeEventList = new ArrayList<>();
 
         for (Event event : eventList) {
-            if (event.isActive()) {
-                activeEventList.add(event);
-            }
+            activeEventList.add(event);
         }
 
         return activeEventList;
