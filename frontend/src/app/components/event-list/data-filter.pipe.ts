@@ -5,7 +5,7 @@ import * as _ from 'lodash';
     name: 'dataFilter'
 })
 export class DataFilterPipe implements PipeTransform {
-    transform(array: any[], queryDesc: string, queryAge: number, queryCat: string, queryMaxPr: number): any {
+    transform(array: any[], queryDesc: string, queryAge: number, queryCat: string, queryMaxPr: number, queryZip: number): any {
         let res = array;
         if (queryDesc) {
             res = _.filter(res, row => row.description.indexOf(queryDesc) > -1);
@@ -13,7 +13,9 @@ export class DataFilterPipe implements PipeTransform {
         if (queryAge) {
             res = _.filter(res, row => ((row.minAge <= queryAge) && (row.maxAge >= queryAge)) || queryAge == 0);
         }
-
+        if (queryZip) {
+            res = _.filter(res, row => row.zipcode.indexOf(queryZip) > -1);
+        }
         if (queryCat) {
             res = _.filter(res, row => (row.category.indexOf(queryCat) > -1) || queryCat === "Any Category");
         }

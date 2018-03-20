@@ -118,8 +118,10 @@ export class EventListComponent implements OnInit {
     }
 
     do() {
-        let name = this.selectedAddress + ", " + this.selectedZipcode;
-
+        let name;
+        if (this.selectedAddress == null && this.selectedZipcode == null) name = "";
+        else if (this.selectedAddress == null || this.selectedAddress == "") name = this.selectedZipcode;
+        else name = this.selectedAddress + ", " + this.selectedZipcode;
         this.populateListMap([name], name);
         this.populateMap(this.list, name);
 
