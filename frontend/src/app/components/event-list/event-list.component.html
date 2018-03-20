@@ -92,89 +92,87 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <ng-container *ngFor="let event of mf.data">
-                        <tr *ngIf="event.active">
-                            <div class="row" style="margin-bottom: 30px;">
-                                <div class="col-md-3">
-                                    <a (click)="onSelect(event)" style="cursor:pointer">
-                                        <img class="img-fluid" src="{{serverPath}}/image/event/{{event.id}}.png" />
-                                    </a>
-                                </div>
-                                <div class="col-md-9">
-                                    <h4 (click)="onSelect(event)" style="margin-top: 20px; cursor:pointer">
-                                        {{event.name}}
-                                        <span *ngIf="event.availableTickets==0 || event.availableTickets<0">-<span style="color: red;">
-                                            SOLD OUT!</span>
-                                        </span>
-                                    </h4>
-                                    <span>
-                                        <strong>Category:</strong>
-                                        {{event.category}}
-                                    </span>
-                                    <br/>
-                                    <span>
-                                        <strong>Address:</strong>
-                                        {{event.address}}
-                                    </span>
-                                    <span> - </span>
-                                    <span>
-                                        <strong>Zipcode:</strong>
-                                        {{event.zipcode}}
-                                    </span>
-                                    <br/>
-                                    <span>
-                                        <strong>Start Date:</strong>
-                                        {{event.startDate}}
-                                    </span>
-                                    <span> - </span>
-                                    <span>
-                                        <strong>End Date:</strong>
-                                        {{event.endDate}}
-                                    </span>
-                                    <br/>
-                                    <span>
-                                        <strong>Start Time:</strong>
-                                        {{event.startTime}}
-                                    </span>
-                                    <span> - </span>
-                                    <span>
-                                        <strong>End Time:</strong>
-                                        {{event.endTime}}
-                                    </span>
-                                    <br/>
-                                    <span>
-                                        <strong>Ticket Price:</strong>
-                                        {{event.price | number: '1.2-2'}} $
-                                    </span>
-                                    <span> - </span>
-                                    <span>
-                                        <strong>Available Ticket:</strong>
-                                        <span *ngIf="event.availableTickets==0 || event.availableTickets<0" style="color: red;">
-                                            SOLD OUT!
-                                        </span>
-                                        <span *ngIf="event.availableTickets>0" >
-                                            {{event.availableTickets}}
-                                        </span>
-                                    </span>
-                                    <br/>
-                                    <span>
-                                        <strong>Minimum Age:</strong>
-                                        {{event.minAge }}
-                                    </span>
-                                    <span> - </span>
-                                    <span>
-                                        <strong>Maximum Age:</strong>
-                                        {{event.maxAge}}
-                                    </span>
-                                    <br/>
-                                    <span>
-                                        <strong>Description:</strong>
-                                        {{event.description | slice:0:500}}
-                                    </span>
-                                </div>
+                    <tr *ngFor="let event of mf.data">
+                        <div class="row" style="margin-bottom: 30px;">
+                            <div class="col-md-3">
+                                <a (click)="onSelect(event)" style="cursor:pointer">
+                                    <img class="img-fluid" src="{{serverPath}}/image/event/{{event.id}}.png" />
+                                </a>
                             </div>
-                        </tr>
-                    </ng-container>
+                            <div class="col-md-9">
+                                <h4 (click)="onSelect(event)" style="margin-top: 20px; cursor:pointer">
+                                    {{event.name}} -
+                                    <span *ngIf="event.availableTickets==0 || event.availableTickets<0" style="color: red;">
+                                        SOLD OUT!
+                                    </span>
+                                </h4>
+                                <span>
+                                    <strong>Category:</strong>
+                                    {{event.category}}
+                                </span>
+                                <br/>
+                                <span>
+                                    <strong>Address:</strong>
+                                    {{event.address}}
+                                </span>
+                                <span> - </span>
+                                <span>
+                                    <strong>Zipcode:</strong>
+                                    {{event.zipcode}}
+                                </span>
+                                <br/>
+                                <span>
+                                    <strong>Start Date:</strong>
+                                    {{event.startDate}}
+                                </span>
+                                <span> - </span>
+                                <span>
+                                    <strong>End Date:</strong>
+                                    {{event.endDate}}
+                                </span>
+                                <br/>
+                                <span>
+                                    <strong>Start Time:</strong>
+                                    {{event.startTime}}
+                                </span>
+                                <span> - </span>
+                                <span>
+                                    <strong>End Time:</strong>
+                                    {{event.endTime}}
+                                </span>
+                                <br/>
+                                <span>
+                                    <strong>Ticket Price:</strong>
+                                    {{event.price | number: '1.2-2'}} $
+                                </span>
+                                <span> - </span>
+                                <span>
+                                    <strong>Available Ticket:</strong>
+                                    <span *ngIf="event.availableTickets==0 || event.availableTickets<0" style="color: red;">
+                                        SOLD OUT!
+                                    </span>
+                                    <span *ngIf="event.availableTickets>0" >
+                                        {{event.availableTickets}}
+                                    </span>
+                                </span>
+                                <br/>
+                                <span>
+                                    <strong>Minimum Age:</strong>
+                                    {{event.minAge }}
+                                </span>
+                                <span> - </span>
+                                <span>
+                                    <strong>Maximum Age:</strong>
+                                    {{event.maxAge}}
+                                </span>
+                                <br/>
+                                <span>
+                                    <strong>Description:</strong>
+                                    {{event.description | slice:0:500}}
+                                </span>
+                            </div>
+                        </div>
+                    </tr>
                 </tbody>
                 <tfoot>
                     <tr>
