@@ -84,7 +84,8 @@ import { WalletComponent } from './components/wallet/wallet.component';
         CartService,
         LoginService,
         UserService,
-        PaymentService
+        PaymentService,
+        DataFilterPipe
     ],
     bootstrap: [AppComponent]
 })
