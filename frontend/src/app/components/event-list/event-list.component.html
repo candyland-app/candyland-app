@@ -27,29 +27,29 @@
                                             <input class="form-control" type="date" name="date" [(ngModel)]="selectedDate">
                                             <br>
                                         </div>
-                                        <div class="col-sm-4" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
-                                            Address:
-                                            <input id="address" class="form-control" type="text" name="address" placeholder="Address" [(ngModel)]="selectedAddress">
-                                            <br>
-                                        </div>
-                                        <div class="col-sm-4" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
-                                            Zipcode:
-                                            <input id="zipcode" class="form-control" type="text" name="zipcode" placeholder="Zipcode" [(ngModel)]="selectedZipcode">
-                                            <br>
-                                        </div>
-                                        <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
+                                        <div class="col-sm-2" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
                                             Ages:
-                                            <input id="age" class="form-control" type="number" name="age"  [(ngModel)]="selectedAge">
+                                            <input id="age" class="form-control" type="number" name="age" style="width: 60px;" [(ngModel)]="selectedAge">
                                         </div>
-                                        <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
-                                            Maximum Price:
+                                        <div class="col-sm-3" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
+                                            Max Price:
                                             <input id="maxprice" class="form-control" type="number" name="maxprice" style="width: 100px;" step="1" [(ngModel)]="selectedMaxPrice">
                                         </div>
-                                        <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
+                                        <div class="col-sm-2" style="text-align: center; margin-bottom:10px; margin-top: 10px;">
                                             Categories:
                                             <select [(ngModel)]="selectedCategory" name="categories">
                                                   <option *ngFor="let category of categories" [ngValue]="category.name">{{category.name}}</option>
                                             </select>
+                                        </div>
+                                         <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
+                                            Address:
+                                            <input id="address" class="form-control" type="text" name="address" placeholder="Address" [(ngModel)]="selectedAddress">
+                                            <br>
+                                        </div>
+                                        <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
+                                            Zipcode:
+                                            <input id="zipcode" class="form-control" type="text" name="zipcode" placeholder="Zipcode"  [(ngModel)]="selectedZipcode">
+                                            <br>
                                         </div>
                                         <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
                                             Distances:
