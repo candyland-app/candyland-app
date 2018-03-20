@@ -44,6 +44,7 @@ export class EventListComponent implements OnInit {
     private location;
 
     marker: google.maps.Marker;
+    infowindow: google.maps.InfoWindow;
 
      public prices: Array<Object> = [
          { name: "1-10€" },
@@ -72,7 +73,14 @@ export class EventListComponent implements OnInit {
         this.router.navigate(['/eventDetail', this.selectedEvent.id]);
     }
     onSearch() {
-        this.list = this.dataPipe.transform(this.eventList, this.description, this.selectedAddress, this.selectedZipcode, this.selectedAge, this.selectedCategory, this.selectedMaxPrice);
+        const mapProp = {
+            center: new google.maps.LatLng(38.2466395, 21.734574000000066),
+            zoom: 8,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+
+        this.list = this.dataPipe.transform(this.eventList, this.description, this.selectedAge, this.selectedCategory, this.selectedMaxPrice);
         this.do();
     }
 
@@ -110,8 +118,11 @@ export class EventListComponent implements OnInit {
     }
 
     do() {
-        this.populateMap(this.list);
-        this.map
+        let name = this.selectedAddress + ", " + this.selectedZipcode;
+
+        this.populateListMap([name], name);
+        this.populateMap(this.list, name);
+
     }
 
     checkDistance(a, b, a2, b2) {
@@ -121,42 +132,117 @@ export class EventListComponent implements OnInit {
     }
 
 
-    makeCallback(map, marker, event) {
+    makeCallback(map, marker, infowindow, event, name, center) {
+        const geocoder = new google.maps.Geocoder();
+        const geocodeCallback = geocoder.geocode(
+            { address: center },
+            (results, status) => {
+                if (status === google.maps.GeocoderStatus.OK) {
+
+
+
+                    const geocoder2 = new google.maps.Geocoder();
+                    const geocodeCallback2 = geocoder.geocode(
+                        { address: event },
+                        (results2, status2) => {
+                            let a = results[0].geometry.location.lat();
+                            let a2 = results2[0].geometry.location.lat();
+                            let b = results[0].geometry.location.lng();
+                            let b2 = results2[0].geometry.location.lng();
+
+
+                            if (Math.sqrt(Math.pow(a - a2, 2) + Math.pow(b - b2, 2)) < 0.04) {
+                                if (status === google.maps.GeocoderStatus.OK) {
+
+                                    infowindow = new google.maps.InfoWindow({
+                                        content: "<span>" + name + "</span>"
+                                    });
+
+                                    marker = new google.maps.Marker({
+                                        position: results2[0].geometry.location,
+                                        map,
+                                        title: 'Got you!',
+                                        icon: "assets/red-dot.png"
+                                    });
+
+                                    google.maps.event.addListener(marker, 'click', function() {
+                                        infowindow.open(map, marker);
+                                    });
+                                    //infowindow.open(map, marker);
+
+                            }
+
+
+                            } else {
+
+                            }
+                        }
+                    );
+
+                } else {
+                    const geocoder3 = new google.maps.Geocoder();
+                    const geocodeCallback3 = geocoder3.geocode(
+                        { address: event },
+                        (results3, status3) => {
+                                if (status3 === google.maps.GeocoderStatus.OK) {
+
+                                    infowindow = new google.maps.InfoWindow({
+                                        content: "<span>" + name + "</span>"
+                                    });
+
+                                    marker = new google.maps.Marker({
+                                        position: results3[0].geometry.location,
+                                        map,
+                                        title: 'Got you!',
+                                        icon: "assets/red-dot.png"
+                                    });
+
+                                    google.maps.event.addListener(marker, 'click', function() {
+                                        infowindow.open(map, marker);
+                                    });
+                                    //infowindow.open(map, marker);
+
+
+
+
+                            } else {
+
+                            }
+                        }
+                    );
+                }
+            }
+        );
+
+        return geocodeCallback;
+    }
+
+    makeCallback2(map, marker, infowindow, event, name) {
         const geocoder = new google.maps.Geocoder();
         const geocodeCallback = geocoder.geocode(
             { address: event },
             (results, status) => {
                 if (status === google.maps.GeocoderStatus.OK) {
-                    // this.map.setCenter(results[0].geometry.location);
-                    //
-                    // let mapProp = {
-                    //     center: new google.maps.LatLng(
-                    //         results[0].geometry.location
-                    //     ),
-                    //     zoom: 15,
-                    //     mapTypeId: google.maps.MapTypeId.ROADMAP
-                    // };
-                    // this.map = new google.maps.Map(
-                    //     this.gmapElement.nativeElement,
-                    //     mapProp
-                    // );
-                    //
-                    // putMarker(
-                    //     results[0].geometry.location.getLat(),
-                    //     results[0].geometry.location.getLng()
-                    // );
-                    // alert(results[0].geometry.location);
-                    // this.putMarker(results[0].geometry.location);
+
+                    infowindow = new google.maps.InfoWindow({
+                        content: "<span>" + name + "</span>"
+                    });
 
                     marker = new google.maps.Marker({
                         position: results[0].geometry.location,
                         map,
-                        title: 'Got you!'
+                        title: 'Got you!',
+                        icon: "assets/blue-dot.png"
                     });
 
-                    // this.marker.setMap(this.map);
-                    //
-                    // places.push(results[0].geometry.location);
+                    google.maps.event.addListener(marker, 'click', function() {
+                        infowindow.open(map, marker);
+                    });
+                    //infowindow.open(map, marker);
+
+                    map.setZoom(13);
+                    map.panTo(results[0].geometry.location);
+
                 } else {
                     alert(
                         'Geocode was not successful for the following reason: ' +
@@ -169,7 +255,7 @@ export class EventListComponent implements OnInit {
         return geocodeCallback;
     }
 
-    populateMap(list) {
+    populateMap(list, center) {
         const places = [];
 
         list.forEach(event => {
@@ -178,7 +264,30 @@ export class EventListComponent implements OnInit {
             //      putMarker();
             //      geocoder.geocode( { 'address': event.getAddress() }, function(results, status) {
 
-            this.makeCallback(this.map, this.marker, event.address);
+            this.makeCallback(this.map, this.marker, this.infowindow, event.address, event.name, center);
+            // navigator.geolocation.getCurrentPosition(function(position) {
+            //     let pos = {
+            //       lat: 18.5793,
+            //       lng: 73.8143
+            //     };
+            //     let marker = new google.maps.Marker({
+            //       map: this.map,
+            //       position: { lat: 18.5793, lng: 73.8143}
+            //     });
+            //   }
+        });
+    }
+
+    populateListMap(list, name) {
+        const places = [];
+
+        list.forEach(event => {
+            // putMarker(29, 42);
+            //      event.
+            //      putMarker();
+            //      geocoder.geocode( { 'address': event.getAddress() }, function(results, status) {
+
+            this.makeCallback2(this.map, this.marker, this.infowindow, event, name);
 
             // navigator.geolocation.getCurrentPosition(function(position) {
             //     let pos = {
@@ -199,7 +308,6 @@ export class EventListComponent implements OnInit {
         // const location = new google.maps.LatLng(a, b);
         // this.map.panTo(location);
 
-        alert('lmao');
 
         this.marker = new google.maps.Marker({
             position: location,
@@ -226,7 +334,7 @@ export class EventListComponent implements OnInit {
                 title: 'Got you!'
             });
         } else {
-            alert(location);
+            //alert(location);
             this.marker.setPosition(location);
         }
     }
