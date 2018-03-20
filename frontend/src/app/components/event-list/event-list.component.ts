@@ -71,6 +71,7 @@ export class EventListComponent implements OnInit {
                 this.event = new Event;
                 this.event.description = '';
             } else {
+
                 this.eventService.getEventList().subscribe(
                     res => {
                         console.log(res.json());

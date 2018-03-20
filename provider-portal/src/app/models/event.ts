@@ -6,7 +6,7 @@ export class Event {
     public startDate: string;
     public endDate: string;
     public startTime: string;
-    public endTime: number;
+    public endTime: string;
     public category: string;
     public minAge: number;
     public maxAge: number;
