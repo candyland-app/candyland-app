@@ -7,6 +7,7 @@ import { log } from 'util';
 import { AppConst } from '../../constants/app-const';
 import { Event } from '../../models/event';
 import { EventService } from '../../services/event.service';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
     selector: 'app-event-list',
@@ -16,7 +17,7 @@ import { EventService } from '../../services/event.service';
 export class EventListComponent implements OnInit {
     public description = '';
     public rowsOnPage = 5;
-
+    public location2;
     private selectedEvent: Event;
     private eventList: Event[];
     public event = new Event;
@@ -31,6 +32,7 @@ export class EventListComponent implements OnInit {
     private selectedMinPrice;
     private selectedMaxPrice;
     public list;
+    public listCoords: Array<{ address: string, lat: number, lng: number }> = [];
 
     @ViewChild('gmap') gmapElement: any;
     map: google.maps.Map;
@@ -42,6 +44,8 @@ export class EventListComponent implements OnInit {
     private lng;
     private lat;
     private location;
+    private ticks;
+
 
     marker: google.maps.Marker;
     infowindow: google.maps.InfoWindow;
@@ -81,6 +85,7 @@ export class EventListComponent implements OnInit {
         this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
 
         this.list = this.dataPipe.transform(this.eventList, this.description, this.selectedAge, this.selectedCategory, this.selectedMaxPrice);
+
         this.do();
     }
 
@@ -101,12 +106,14 @@ export class EventListComponent implements OnInit {
                 this.eventList = JSON.parse(params['eventList']);
                 this.event = new Event;
                 this.event.description = '';
+
             } else {
 
                 this.eventService.getEventList().subscribe(
                     res => {
                         console.log(res.json());
                         this.eventList = res.json();
+
                     },
                     err => {
                         console.log(err);
@@ -115,15 +122,39 @@ export class EventListComponent implements OnInit {
             }
         });
         this.list = this.eventList;
+        this.do();
+
+
+    }
+
+    tempFun (){
+        for (var i = 0; i <= this.list.length - 1; i++) {
+            alert("fd");
+            this.location2 = this.list[i].address;
+            this.findLat();
+            this.findLng();
+            this.listCoords[i] = { address: this.location2, lat: this.lat, lng: this.lng };
+        }
     }
 
     do() {
+        //alert("aloha");
         let name;
+        //this.tempFun();
+        const mapProp = {
+            center: new google.maps.LatLng(38.2466395, 21.734574000000066),
+            zoom: 8,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
         if (this.selectedAddress == null && this.selectedZipcode == null) name = "";
-        else if (this.selectedAddress == null || this.selectedAddress == "") name = this.selectedZipcode;
-        else name = this.selectedAddress + ", " + this.selectedZipcode;
-        this.populateListMap([name], name);
+        else if (this.selectedAddress != null && this.selectedZipcode != null) name = this.selectedAddress + ", " + this.selectedZipcode;
+        else if (this.selectedAddress == null && this.selectedZipcode != null) name = this.selectedZipcode;
+        else if (this.selectedZipcode == null) name = this.selectedAddress;
+
+        if (name != "") this.populateListMap([name], name);
         this.populateMap(this.list, name);
+
 
     }
 
@@ -135,18 +166,21 @@ export class EventListComponent implements OnInit {
 
 
     makeCallback(map, marker, infowindow, event, name, center) {
+        //alert(event);
         const geocoder = new google.maps.Geocoder();
         const geocodeCallback = geocoder.geocode(
             { address: center },
             (results, status) => {
                 if (status === google.maps.GeocoderStatus.OK) {
 
-
+                    console.log(event + "1");
 
                     const geocoder2 = new google.maps.Geocoder();
-                    const geocodeCallback2 = geocoder.geocode(
+                    const geocodeCallback2 = geocoder2.geocode(
                         { address: event },
                         (results2, status2) => {
+                            console.log(results2);
+                            console.log(event + "2");
                             let a = results[0].geometry.location.lat();
                             let a2 = results2[0].geometry.location.lat();
                             let b = results[0].geometry.location.lng();
@@ -159,7 +193,7 @@ export class EventListComponent implements OnInit {
                                     infowindow = new google.maps.InfoWindow({
                                         content: "<span>" + name + "</span>"
                                     });
-
+                                    console.log(event + "2");
                                     marker = new google.maps.Marker({
                                         position: results2[0].geometry.location,
                                         map,
@@ -172,11 +206,13 @@ export class EventListComponent implements OnInit {
                                     });
                                     //infowindow.open(map, marker);
 
+                            }else {
+                                console.log(event + " fail 2")
                             }
 
 
                             } else {
-
+                                console.log(event + "too far");
                             }
                         }
                     );
@@ -191,7 +227,7 @@ export class EventListComponent implements OnInit {
                                     infowindow = new google.maps.InfoWindow({
                                         content: "<span>" + name + "</span>"
                                     });
-
+                                    console.log(event + "3");
                                     marker = new google.maps.Marker({
                                         position: results3[0].geometry.location,
                                         map,
@@ -208,7 +244,7 @@ export class EventListComponent implements OnInit {
 
 
                             } else {
-
+                                    console.log(event + "3 fail " + status3);
                             }
                         }
                     );
@@ -260,26 +296,41 @@ export class EventListComponent implements OnInit {
     populateMap(list, center) {
         const places = [];
 
-        list.forEach(event => {
-            // putMarker(29, 42);
-            //      event.
-            //      putMarker();
-            //      geocoder.geocode( { 'address': event.getAddress() }, function(results, status) {
+        for (var i = list.length - 1; i >= 0; i--) {
+            let name = list[i].name;
+            let address = list[i].address;
+            setTimeout(() => {
+                this.makeCallback(this.map, this.marker, this.infowindow, address, name, center);
+            }, i*1250);
 
-            this.makeCallback(this.map, this.marker, this.infowindow, event.address, event.name, center);
-            // navigator.geolocation.getCurrentPosition(function(position) {
-            //     let pos = {
-            //       lat: 18.5793,
-            //       lng: 73.8143
-            //     };
-            //     let marker = new google.maps.Marker({
-            //       map: this.map,
-            //       position: { lat: 18.5793, lng: 73.8143}
-            //     });
-            //   }
-        });
+        }
+
+    }
+    tickerFunc(tick) {
+        console.log(this);
+        this.ticks = tick
+    }
+    getLocation(term: string): Promise<any> {
+
+        return this.http.get('http://maps.google.com/maps/api/geocode/json?address=' + term + 'CA&sensor=false')
+            .toPromise()
+            .then((response) => Promise.resolve(response.json()))
+        .catch ((error) => Promise.resolve(error.json()));
     }
 
+    findLat(): void {
+        this.getLocation(this.location2)
+            .then((response) => this.lat = response.results[0].geometry.location.lat)
+            .catch((error) => console.error(error));
+    }
+    findLng(): void {
+        this.getLocation(this.location2)
+            .then((response) => this.lng = response.results[0].geometry.location.lng)
+            .catch((error) => console.error(error));
+    }
+
+    countDown;
+    counter = 60;
     populateListMap(list, name) {
         const places = [];
 
@@ -288,6 +339,7 @@ export class EventListComponent implements OnInit {
             //      event.
             //      putMarker();
             //      geocoder.geocode( { 'address': event.getAddress() }, function(results, status) {
+
 
             this.makeCallback2(this.map, this.marker, this.infowindow, event, name);
 
