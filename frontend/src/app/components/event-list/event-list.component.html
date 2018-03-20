@@ -51,6 +51,12 @@
                                                   <option *ngFor="let category of categories" [ngValue]="category.name">{{category.name}}</option>
                                             </select>
                                         </div>
+                                        <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
+                                            Distances:
+                                            <select [(ngModel)]="selectedDistance" name="distances">
+                                                  <option *ngFor="let distance of distances" [ngValue]="distance.name">{{distance.name}}</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <br>
                                     <div class="col-sm-5"></div>

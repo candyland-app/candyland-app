@@ -31,6 +31,7 @@ export class EventListComponent implements OnInit {
     private selectedCategory;
     private selectedMinPrice;
     private selectedMaxPrice;
+    private selectedDistance;
     public list;
     public listCoords: Array<{ address: string, lat: number, lng: number }> = [];
 
@@ -45,10 +46,18 @@ export class EventListComponent implements OnInit {
     private lat;
     private location;
     private ticks;
-
+    private dist
 
     marker: google.maps.Marker;
     infowindow: google.maps.InfoWindow;
+
+    public distances: Array<Object> = [
+        { name: "Παντού" },
+        { name: "< 1χλμ" },
+        { name: "< 5χλμ" },
+        { name: "< 10χλμ" },
+        { name: "< 20χλμ" }
+    ];
 
      public prices: Array<Object> = [
          { name: "1-10€" },
@@ -78,7 +87,7 @@ export class EventListComponent implements OnInit {
     }
     onSearch() {
         const mapProp = {
-            center: new google.maps.LatLng(38.2466395, 21.734574000000066),
+            center: new google.maps.LatLng(37.9838, 23.7275),
             zoom: 8,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -91,13 +100,14 @@ export class EventListComponent implements OnInit {
 
     ngOnInit() {
         const mapProp = {
-            center: new google.maps.LatLng(38.2466395, 21.734574000000066),
+            center: new google.maps.LatLng(37.9838, 23.7275),
             zoom: 8,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
 
         this.selectedCategory = 'Any Category';
+        this.selectedDistance = 'Παντού';
         //this.selectedAge = 0;
         //this.selectedMaxPrice = 0;
         this.route.queryParams.subscribe(params => {
@@ -138,11 +148,15 @@ export class EventListComponent implements OnInit {
     }
 
     do() {
-        //alert("aloha");
+        if (this.selectedDistance === "Παντού") this.dist = 100000.0;
+        else if (this.selectedDistance === "< 1χλμ") this.dist = 0.01;
+        else if (this.selectedDistance === "< 5χλμ") this.dist = 0.05;
+        else if (this.selectedDistance === "< 10χλμ") this.dist = 0.10;
+        else this.dist = 0.20;
         let name;
-        //this.tempFun();
+
         const mapProp = {
-            center: new google.maps.LatLng(38.2466395, 21.734574000000066),
+            center: new google.maps.LatLng(37.9838, 23.7275),
             zoom: 8,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -167,33 +181,28 @@ export class EventListComponent implements OnInit {
 
     makeCallback(map, marker, infowindow, event, name, center) {
         //alert(event);
+        console.log("//////" + event + "//////");
         const geocoder = new google.maps.Geocoder();
         const geocodeCallback = geocoder.geocode(
             { address: center },
             (results, status) => {
                 if (status === google.maps.GeocoderStatus.OK) {
 
-                    console.log(event + "1");
-
                     const geocoder2 = new google.maps.Geocoder();
                     const geocodeCallback2 = geocoder2.geocode(
                         { address: event },
                         (results2, status2) => {
-                            console.log(results2);
-                            console.log(event + "2");
-                            let a = results[0].geometry.location.lat();
-                            let a2 = results2[0].geometry.location.lat();
-                            let b = results[0].geometry.location.lng();
-                            let b2 = results2[0].geometry.location.lng();
 
-
-                            if (Math.sqrt(Math.pow(a - a2, 2) + Math.pow(b - b2, 2)) < 0.04) {
-                                if (status === google.maps.GeocoderStatus.OK) {
+                            if (status2 === google.maps.GeocoderStatus.OK) {
+                                let a = results[0].geometry.location.lat();
+                                let a2 = results2[0].geometry.location.lat();
+                                let b = results[0].geometry.location.lng();
+                                let b2 = results2[0].geometry.location.lng();
+                                if (Math.sqrt(Math.pow(a - a2, 2) + Math.pow(b - b2, 2)) < this.dist) {
 
                                     infowindow = new google.maps.InfoWindow({
                                         content: "<span>" + name + "</span>"
                                     });
-                                    console.log(event + "2");
                                     marker = new google.maps.Marker({
                                         position: results2[0].geometry.location,
                                         map,
@@ -207,12 +216,12 @@ export class EventListComponent implements OnInit {
                                     //infowindow.open(map, marker);
 
                             }else {
-                                console.log(event + " fail 2")
+                                    console.log(event + " too far")
                             }
 
 
                             } else {
-                                console.log(event + "too far");
+                                console.log(event + status2);
                             }
                         }
                     );
@@ -227,7 +236,7 @@ export class EventListComponent implements OnInit {
                                     infowindow = new google.maps.InfoWindow({
                                         content: "<span>" + name + "</span>"
                                     });
-                                    console.log(event + "3");
+
                                     marker = new google.maps.Marker({
                                         position: results3[0].geometry.location,
                                         map,
@@ -244,7 +253,7 @@ export class EventListComponent implements OnInit {
 
 
                             } else {
-                                    console.log(event + "3 fail " + status3);
+                                    console.log(event + status3);
                             }
                         }
                     );
