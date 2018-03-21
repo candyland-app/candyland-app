@@ -35,6 +35,7 @@ export class OrderComponent implements OnInit {
     private emptyPaymentList = true;
     private stateList: string[] = [];
     private order: Order = new Order();
+    private processingCheckout = false;
 
     constructor(
         private router: Router,
@@ -96,6 +97,30 @@ export class OrderComponent implements OnInit {
             userPayment.userBilling.userBillingZipcode;
     }
 
+    setDefaultPaymentMethod() {
+        this.payment.type = "No Card";
+        this.payment.cardNumber = "000000000000";
+        this.payment.expiryMonth = "4";
+        this.payment.expiryYear = "2020";
+        this.payment.cvc = 0;
+        this.payment.holderName = "No holder name";
+        this.payment.defaultPayment = null;
+        this.billingAddress.billingAddressName = "no address";
+        this.billingAddress.billingAddressStreet1 = "no street";
+        this.billingAddress.billingAddressStreet2 = "no street";
+        this.billingAddress.billingAddressCity = "no city";
+        this.billingAddress.billingAddressState = "no state";
+        this.billingAddress.billingAddressCountry = "no country";
+        this.billingAddress.billingAddressZipcode = "0";
+    }
+
+    onValidate() {
+        this.processingCheckout = true;
+        setTimeout(() => {
+            this.onSubmit();
+        }, 1000);
+    }
+
     onSubmit() {
         this.checkoutService
             .checkout(this.billingAddress, this.payment)
@@ -116,9 +141,11 @@ export class OrderComponent implements OnInit {
                     console.log(error.text());
                 }
             );
+
     }
 
     ngOnInit() {
+        this.processingCheckout = false;
         this.getCartItemList();
 
         this.cartService.getShoppingCart().subscribe(
@@ -146,6 +173,9 @@ export class OrderComponent implements OnInit {
                             return;
                         }
                     }
+                }
+                else {
+                    this.setDefaultPaymentMethod();
                 }
             },
             error => {

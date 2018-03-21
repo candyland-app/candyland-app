@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="row" style="margin-top: 80px;">
-        <form (ngSubmit)="onSubmit()" method="post" style="display: contents;">
+        <form (ngSubmit)="onValidate();" method="post" style="display: contents;">
             <div class="col-sm-5">
                 <div class="card card-default">
                     <div class="card-body">
@@ -271,8 +271,11 @@
                                     </h4>
                                     <br/>
                                     <br/>
-                                    <button mat-raised-button="mat-raised-button" type="submit" class="btn-block mat-primary">Place Order
+                                    <button mat-raised-button="mat-raised-button" [disabled]="processingCheckout" type="submit" class="btn-block mat-primary">Place Order
                                     </button>
+                                    <div class="alert alert-success" *ngIf="processingCheckout" style="margin-top: 10px">
+                                        <strong>Please wait while order is being processed!</strong>
+                                    </div>
                                 </div>
                             </div>
                         </mat-tab>

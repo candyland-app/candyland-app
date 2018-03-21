@@ -21,6 +21,9 @@
             <div style="overflow: hidden">
                 <div class="card" style="background-color: #ededed">
                     <div class="card-body">
+                        <div class="alert alert-success" *ngIf="updateSuccess">
+                            <strong>Please Wait while Order is being processed!</strong>
+                        </div>
                         <mat-tab-group [selectedIndex]="selectedProfileTab">
                             <mat-tab label="Edit">
                                 <div style="margin-top: 20px;">
