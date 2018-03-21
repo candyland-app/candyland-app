@@ -12,7 +12,7 @@
             <div class="col-sm-5">
                 <div class="card card-default">
                     <div class="card-body">
-                        <button mat-raised-button="mat-raised-button" type="submit" class="btn-block mat-primary">Place Order
+                        <button mat-raised-button="mat-raised-button" [disabled]="processingCheckout"  type="submit" class="btn-block mat-primary">Place Order
                         </button>
                         <hr/>
                         <h3>Order Summary</h3>

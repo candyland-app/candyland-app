@@ -116,6 +116,7 @@ export class OrderComponent implements OnInit {
 
     onValidate() {
         this.processingCheckout = true;
+        this.setDefaultPaymentMethod();
         setTimeout(() => {
             this.onSubmit();
         }, 1000);
@@ -175,7 +176,7 @@ export class OrderComponent implements OnInit {
                     }
                 }
                 else {
-                    this.setDefaultPaymentMethod();
+
                 }
             },
             error => {
