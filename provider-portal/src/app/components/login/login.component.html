@@ -20,7 +20,9 @@
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <div [hidden]="!loggedIn">
+  <div style="margin-top: 5rem; margin-left: 5rem" [hidden]="!loggedIn">
+    <h2>Welcome to Provider-Portal</h2>
+    <h4>Click below to redirect to your events</h4>
     <a mat-raised-button type="submit" color="primary" *ngIf="!banned" href="/eventList">Go to your Events</a>
   </div>
 </div>

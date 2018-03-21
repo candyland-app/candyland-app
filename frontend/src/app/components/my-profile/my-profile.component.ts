@@ -103,9 +103,10 @@ export class MyProfileComponent implements OnInit {
     }
 
     onNewPayment() {
-        if (this.userPayment.cardNumber.length !== 16) {
+        if (this.userPayment.cardNumber == null || this.userPayment.cardNumber.length !== 16) {
             this.invalidCardNo = true;
         } else if (
+            this.userPayment.cvc == null ||
             this.userPayment.cvc.toString().length > 4 ||
             this.userPayment.cvc.toString().length < 3
         ) {

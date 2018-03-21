@@ -63,8 +63,8 @@
                                         <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" required="required">
                                         <p style="color: #828282">Εισάγετε Email. Όλα τα μηνύματα θα στέλνονται σε αυτό.</p>
                                     </div>
-                                    <button [disabled]="hidebutton" mat-raised-button type="submit" color="primary">Δημιουργία</button>
-                                    <div class="alert alert-info" *ngIf="hidebutton">H αίτηση σας βρίσκεται υπό επεξεργασία... Παρακαλώ περιμένετε!!
+                                    <button [disabled]="hidebutton" mat-raised-button type="submit" color="primary" (click)="validateEmail(email); validateUsername(username);">Δημιουργία</button>
+                                    <div class="alert alert-info" *ngIf="hidebutton2">H αίτηση σας βρίσκεται υπό επεξεργασία... Παρακαλώ περιμένετε!!
                                 </div>
                                 </form>
                             </div>

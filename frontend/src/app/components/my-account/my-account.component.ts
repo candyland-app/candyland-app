@@ -24,6 +24,7 @@ export class MyAccountComponent implements OnInit {
     private username: string;
     private email: string;
     private hidebutton: boolean;
+    private hidebutton2: boolean;
     private emailNotExists = false;
     private forgetPasswordEmailSent: boolean;
     private recoverEmail: string;
@@ -53,10 +54,14 @@ export class MyAccountComponent implements OnInit {
     }
 
     onValidate() {
-        this.hidebutton = true;
-        setTimeout(() => {
-            this.onNewAccount();
-        }, 1000);
+
+        if (this.emailvalidator && this.namevalidator) {
+            this.hidebutton = true;
+            this.hidebutton2 = true;
+            setTimeout(() => {
+                this.onNewAccount();
+            }, 1000);
+        }
     }
 
 
@@ -65,15 +70,20 @@ export class MyAccountComponent implements OnInit {
         this.emailExists = false;
         this.emailSent = false;
         this.hidebutton = true;
+        this.hidebutton2 = true;
 
         this.userService.newUser(this.username, this.email).subscribe(
             res => {
                 console.log(res);
                 this.emailSent = true;
+                this.hidebutton = false;
+                this.hidebutton2 = false;
             },
             error => {
                 console.log(error.text());
                 const errorMessage = error.text();
+                this.hidebutton = false;
+                this.hidebutton2 = false;
                 if (errorMessage === 'usernameExists') {
                     this.usernameExists = true;
                 }
@@ -83,7 +93,20 @@ export class MyAccountComponent implements OnInit {
             }
         );
 
-        this.hidebutton = false;
+
+
+    }
+    private emailvalidator: boolean;
+    private namevalidator: boolean;
+    validateEmail(mail: string) {
+
+        if (mail != null && (mail.indexOf(".") > mail.indexOf("@")) && mail.indexOf("@") > -1) this.emailvalidator = true;
+        else this.emailvalidator = false;
+    }
+
+    validateUsername(name: string) {
+        if (name != null && name != "") this.namevalidator = true;
+        else this.namevalidator = false;
     }
 
     onForgetPassword() {
@@ -115,6 +138,7 @@ export class MyAccountComponent implements OnInit {
                 this.loggedIn = false;
             }
         );
+        this.hidebutton = false;
         this.hidebutton = false;
     }
 }

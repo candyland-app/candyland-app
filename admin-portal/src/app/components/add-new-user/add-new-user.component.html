@@ -6,9 +6,14 @@
 
         <form (ngSubmit)="onSubmit()">
             <mat-grid-list cols="4" rowHeight="60px">
-                <mat-grid-tile [colspan]="4" [rowspan]="1">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
                         <input matInput id="firstName" type="text" required [(ngModel)]="newUser.firstName" name="firstName" placeholder="First Name">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="lastName" type="text" required [(ngModel)]="newUser.lastName" name="lastName" placeholder="Last Name">
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -16,12 +21,12 @@
             <mat-grid-list cols="4" rowHeight="60px">
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="lastName" type="text" required [(ngModel)]="newUser.lastName" name="lastName" placeholder="Last Name">
+                        <input matInput id="username" type="text" required [(ngModel)]="newUser.username" name="username" placeholder="Username">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="username" type="text" required [(ngModel)]="newUser.username" name="username" placeholder="Username">
+                        <input matInput id="password" type="text" required [(ngModel)]="newUser.password" name="password" placeholder="Password">
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -34,7 +39,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="password" type="text" required [(ngModel)]="newUser.password" name="password" placeholder="Password">
+                        <input matInput id="role" type="number" required [(ngModel)]="newUser.password" name="role" placeholder="Roles - Admins: 3, Providers: 2, Parents: 1">
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
