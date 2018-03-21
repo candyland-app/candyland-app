@@ -65,6 +65,26 @@ public class UserServiceImpl implements UserService {
         return localUser;
     }
 
+    public List<User> findAll() {
+        List<User> userList = (List<User>) userRepository.findAll();
+
+        List<User> activeUserList = new ArrayList<>();
+
+        for (User user : userList) {
+            activeUserList.add(user);
+        }
+
+        return activeUserList;
+    }
+
+    public void removeOne(Long id) {
+        userRepository.delete(id);
+    }
+
+    public User findOne(Long id) {
+        return userRepository.findOne(id);
+    }
+
     @Override
     public User save(User user) {
         return userRepository.save(user);

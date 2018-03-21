@@ -5,6 +5,7 @@ import com.candyland.domain.UserBilling;
 import com.candyland.domain.UserPayment;
 import com.candyland.domain.security.UserRole;
 
+import java.util.List;
 import java.util.Set;
 
 public interface UserService {
@@ -18,6 +19,12 @@ public interface UserService {
     User save(User user);
 
     User findById(Long id);
+
+    List<User> findAll();
+
+    void removeOne(Long id);
+
+    User findOne(Long id);
 
     public void updateUserPaymentInfo(UserBilling userBilling, UserPayment userPayment, User user);
 

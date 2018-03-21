@@ -11,6 +11,7 @@ import com.candyland.utility.MailConstructor;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,6 +40,32 @@ public class UserResource {
 
     @Autowired
     private JavaMailSender mailSender;
+
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public User addUserPost(@RequestBody User user) {
+        return userService.save(user);
+    }
+
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public ResponseEntity remove(
+        @RequestBody String id
+    ) {
+        userService.removeOne(Long.parseLong(id));
+
+        return new ResponseEntity("Remove Success!", HttpStatus.OK);
+    }
+
+    @RequestMapping("/{id}")
+    public User getUser(@PathVariable("id") Long id) {
+        User user = userService.findOne(id);
+        return user;
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public User updateUserPost(@RequestBody User user) {
+        return userService.save(user);
+    }
 
     @RequestMapping(value = "/newUser", method = RequestMethod.POST)
     public ResponseEntity newUserPost(
@@ -175,6 +203,11 @@ public class UserResource {
         }
         return user.getWalletPoints();
     }*/
+
+    @RequestMapping("/userList")
+    public List<User> getUserList() {
+        return userService.findAll();
+    }
 
     @RequestMapping(value = "/updateWalletInfo", method = RequestMethod.POST)
     public ResponseEntity updateWalletInfo(
