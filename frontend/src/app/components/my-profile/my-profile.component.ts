@@ -39,6 +39,7 @@ export class MyProfileComponent implements OnInit {
     private defaultUserPaymentId: number;
     private stateList: string[] = [];
     private updateUserPaymentInfo: boolean;
+    private hidebutton: boolean;
 
     private invalidCardNo = false;
     private invalidCvc = false;
@@ -102,9 +103,10 @@ export class MyProfileComponent implements OnInit {
     }
 
     onNewPayment() {
-        if (this.userPayment.cardNumber.length !== 16) {
+        if (this.userPayment.cardNumber == null || this.userPayment.cardNumber.length !== 16) {
             this.invalidCardNo = true;
         } else if (
+            this.userPayment.cvc == null ||
             this.userPayment.cvc.toString().length > 4 ||
             this.userPayment.cvc.toString().length < 3
         ) {
@@ -200,5 +202,6 @@ export class MyProfileComponent implements OnInit {
         this.userPayment.expiryYear = '';
         this.userPayment.userBilling = this.userBilling;
         this.defaultPaymentSet = false;
+        this.hidebutton = false;
     }
 }

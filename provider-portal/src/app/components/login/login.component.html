@@ -3,6 +3,9 @@
     <mat-grid-list cols="6" [style.margin-top]="'20px'">
       <mat-grid-tile [colspan]="1"></mat-grid-tile>
       <mat-grid-tile [colspan]="4">
+        <div *ngIf="loginError" style="color: red;">
+            Λάθος username ή password.
+        </div>
         <form (ngSubmit)="onSubmit()">
           <mat-form-field class="full-width">
             <input matInput type="text" [(ngModel)]="credential.username" name="username" id="username" placeholder="Your Username">
@@ -17,7 +20,9 @@
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <div [hidden]="!loggedIn">
-    <h2>You have logged in!</h2>
+  <div style="margin-top: 5rem; margin-left: 5rem" [hidden]="!loggedIn">
+    <h2>Welcome to Provider-Portal</h2>
+    <h4>Click below to redirect to your events</h4>
+    <a mat-raised-button type="submit" color="primary" *ngIf="!banned" href="/eventList">Go to your Events</a>
   </div>
 </div>

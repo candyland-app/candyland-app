@@ -91,6 +91,7 @@ public class UserResource {
 
         String encryptedPassword = SecurityUtility.passwordEncoder().encode(password);
         user.setPassword(encryptedPassword);
+        user.setRole(1);
 
         Role role = new Role();
         role.setRoleId(1);
@@ -188,10 +189,13 @@ public class UserResource {
 
     @RequestMapping("/getCurrentUser")
     public User getCurrentUser(Principal principal) {
+        System.out.println("In JAVA getCurrentUser\n\n");
         User user = new User();
         if (null != principal) {
+            System.out.println("In -> JAVA getCurrentUser\n\n");
             user = userService.findByUsername(principal.getName());
         }
+        System.out.println(user.getUsername());
         return user;
     }
 /*
