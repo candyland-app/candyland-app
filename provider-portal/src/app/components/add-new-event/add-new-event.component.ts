@@ -37,6 +37,10 @@ export class AddNewEventComponent implements OnInit {
         );
     }
 
+    refresh() {
+        window.location.reload();
+    }
+
     ngOnInit() {
         this.eventAdded = false;
         this.newEvent.active = true;
