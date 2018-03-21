@@ -63,7 +63,7 @@ public class CreateEmailDocumentOperation {
             document.addPage(page);
             PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
-            File image = new File("/home/gbax/Workspace/candyland-app/media/logo.png");
+            File image = new File("src/main/resources/logo.png");
             PDImageXObject logo = PDImageXObject.createFromFileByContent(image, document);
 
             contentStream.drawImage(logo, 80.0f, 620.0f, 100.0f, 100.0f);
