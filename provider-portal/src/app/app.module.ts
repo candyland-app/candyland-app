@@ -36,6 +36,7 @@ import { EditEventService } from './services/edit-event.service';
 import { GetEventListService } from './services/get-event-list.service';
 import { GetEventService } from './services/get-event.service';
 import { LoginService } from './services/login.service';
+import { UserService } from './services/user.service';
 import { RemoveEventService } from './services/remove-event.service';
 import { UploadImageService } from './services/upload-image.service';
 
@@ -76,7 +77,8 @@ import { UploadImageService } from './services/upload-image.service';
         LoginService,
         GetEventListService,
         RemoveEventService,
-        UploadImageService
+        UploadImageService,
+        UserService
     ],
     bootstrap: [AppComponent, DialogResultExampleDialog]
 })

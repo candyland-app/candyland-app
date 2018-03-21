@@ -38,6 +38,7 @@ public class User implements UserDetails, Serializable {
     private String password;
     private String firstName;
     private String lastName;
+    private int role;
 
     private String email;
     private String phone;
@@ -88,6 +89,14 @@ public class User implements UserDetails, Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 
     public String getUsername() {

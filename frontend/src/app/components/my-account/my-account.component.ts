@@ -23,7 +23,7 @@ export class MyAccountComponent implements OnInit {
     private emailExists: boolean;
     private username: string;
     private email: string;
-
+    private hidebutton: boolean;
     private emailNotExists = false;
     private forgetPasswordEmailSent: boolean;
     private recoverEmail: string;
@@ -52,10 +52,19 @@ export class MyAccountComponent implements OnInit {
             );
     }
 
+    onValidate() {
+        this.hidebutton = true;
+        setTimeout(() => {
+            this.onNewAccount();
+        }, 1000);
+    }
+
+
     onNewAccount() {
         this.usernameExists = false;
         this.emailExists = false;
         this.emailSent = false;
+        this.hidebutton = true;
 
         this.userService.newUser(this.username, this.email).subscribe(
             res => {
@@ -73,6 +82,8 @@ export class MyAccountComponent implements OnInit {
                 }
             }
         );
+
+        this.hidebutton = false;
     }
 
     onForgetPassword() {
@@ -94,6 +105,7 @@ export class MyAccountComponent implements OnInit {
         );
     }
 
+
     ngOnInit() {
         this.loginService.checkSession().subscribe(
             res => {
@@ -103,5 +115,6 @@ export class MyAccountComponent implements OnInit {
                 this.loggedIn = false;
             }
         );
+        this.hidebutton = false;
     }
 }
