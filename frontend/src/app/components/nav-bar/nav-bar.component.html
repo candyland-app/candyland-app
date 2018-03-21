@@ -8,31 +8,28 @@
         <div id="navbar">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a mat-button style="text-decoration: none;" routerLink="/eventList">Events</a>
-                </li>
-                <li *ngIf="loggedIn">
-                    <a mat-button style="text-decoration: none;" routerLink="/shoppingCart">Cart</a>
-                </li>
-                <li *ngIf="loggedIn">
-                    <a mat-button style="text-decoration: none;" routerLink="/wallet">Wallet</a>
+                    <a mat-button style="text-decoration: none;" routerLink="/eventList">Εκδηλώσεις</a>
                 </li>
                 <li>
                     <a mat-button style="text-decoration: none;" routerLink="/faq">FAQ</a>
                 </li>
                 <li>
-                    <a mat-button style="text-decoration: none;" routerLink="/team">Team</a>
-                </li>
-                <li *ngIf="!loggedIn">
-                    <a mat-button style="text-decoration: none;" routerLink="/map">Map-Demo</a>
+                    <a mat-button style="text-decoration: none;" routerLink="/team">Η Ομάδα</a>
                 </li>
                 <li *ngIf="loggedIn">
-                    <a mat-button style="text-decoration: none;" routerLink="/myProfile">My Profile</a>
+                    <a mat-button style="text-decoration: none;" routerLink="/wallet">Πορτοφόλι</a>
                 </li>
                 <li *ngIf="loggedIn">
-                    <a mat-button style="text-decoration: none;" (click)="logout()">Logout </a>
+                    <a mat-button style="text-decoration: none;" routerLink="/shoppingCart">Καλάθι</a>
+                </li>
+                <li *ngIf="loggedIn">
+                    <a mat-button style="text-decoration: none;" routerLink="/myProfile">Το Προφίλ μου</a>
+                </li>
+                <li *ngIf="loggedIn">
+                    <a mat-button style="text-decoration: none;" (click)="logout()">Έξοδος</a>
                 </li>
                 <li *ngIf="!loggedIn">
-                    <a mat-button style="text-decoration: none;" routerLink="/myAccount" class="myacc">Sign in</a>
+                    <a mat-button style="text-decoration: none;" routerLink="/myAccount" class="myacc">Είσοδος</a>
                 </li>
             </ul>
         </div>

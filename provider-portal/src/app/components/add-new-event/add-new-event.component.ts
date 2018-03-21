@@ -49,7 +49,7 @@ export class AddNewEventComponent implements OnInit {
         this.newEvent.availableTickets = 1;
         this.newEvent.price = 0.01;
         this.newEvent.address = '';
-        this.newEvent.category = 'Any Category';
+        this.newEvent.category = 'Κάθε Κατηγορία';
         this.newEvent.description = '';
         this.newEvent.endTime = '';
         this.newEvent.startTime = '';

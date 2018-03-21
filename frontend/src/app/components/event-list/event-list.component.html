@@ -2,7 +2,7 @@
     <div class="row justify-content-center" style="margin: 40px 0px;">
         <div class="col-12">
             <h2 class="section-headline text-center">
-                <span>Events</span>
+                <span>Εκδηλώσεις</span>
             </h2>
             <hr style="width: 50%;" />
         </div>
@@ -16,43 +16,43 @@
                         <th colspan="5">
                             <div class="row">
                                 <div class="col-md-12" style=" background-color: #ededed;">
-                                    Filter by Description:
+                                    Φιλτράρετε Περιγραφή:
                                     <input class="form-control" style="margin-bottom: 20px; text-align: center;" placeholder="Search" [(ngModel)]="description"/>
                                 </div>
                                 <form (ngSubmit)="onSearch()" class="form-inline navbar-form" style="margin-bottom:50px; background-color: #ededed;">
 
                                     <div class="row">
                                         <div class="col-sm-4" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
-                                            Date:
+                                            Ημερομηνία:
                                             <input class="form-control" type="date" name="date" [(ngModel)]="selectedDate">
                                             <br>
                                         </div>
                                         <div class="col-sm-2" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
-                                            Ages:
+                                            Ηλικίες:
                                             <input id="age" class="form-control" type="number" name="age" style="width: 60px;" [(ngModel)]="selectedAge">
                                         </div>
                                         <div class="col-sm-3" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
-                                            Max Price:
+                                            Max Τιμή:
                                             <input id="maxprice" class="form-control" type="number" name="maxprice" style="width: 100px;" step="1" [(ngModel)]="selectedMaxPrice">
                                         </div>
                                         <div class="col-sm-2" style="text-align: center; margin-bottom:10px; margin-top: 10px;">
-                                            Categories:
+                                            Κατηγορίες:
                                             <select [(ngModel)]="selectedCategory" name="categories">
                                                   <option *ngFor="let category of categories" [ngValue]="category.name">{{category.name}}</option>
                                             </select>
                                         </div>
                                          <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
-                                            Address:
+                                            Διεύθυνση:
                                             <input id="address" class="form-control" type="text" name="address" placeholder="Address" [(ngModel)]="selectedAddress">
                                             <br>
                                         </div>
                                         <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
-                                            Zipcode:
+                                            ΤΚ:
                                             <input id="zipcode" class="form-control" type="text" name="zipcode" placeholder="Zipcode"  [(ngModel)]="selectedZipcode">
                                             <br>
                                         </div>
                                         <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
-                                            Distances:
+                                            Απόσταση:
                                             <select [(ngModel)]="selectedDistance" name="distances">
                                                   <option *ngFor="let distance of distances" [ngValue]="distance.name">{{distance.name}}</option>
                                             </select>
@@ -61,7 +61,7 @@
                                     <br>
                                     <div class="col-sm-5"></div>
                                     <div class="col-sm-2" style="text-align: center; margin-bottom: 20px">
-                                        <button class="form-control" type="submit" class="btn btn-default" style="background-color: pink">Add to Map!</button>
+                                        <button class="form-control" type="submit" class="btn btn-default" style="background-color: pink">Προσθήκη στο χάρτη!</button>
                                     </div>
                                     <div class="col-sm-5"></div>
                                 </form>
@@ -113,47 +113,47 @@
                                     </span>
                                 </h4>
                                 <span>
-                                    <strong>Category:</strong>
+                                    <strong>Κατηγορία:</strong>
                                     {{event.category}}
                                 </span>
                                 <br/>
                                 <span>
-                                    <strong>Address:</strong>
+                                    <strong>Διεύθυνση:</strong>
                                     {{event.address}}
                                 </span>
                                 <span> - </span>
                                 <span>
-                                    <strong>Zipcode:</strong>
+                                    <strong>ΤΚ:</strong>
                                     {{event.zipcode}}
                                 </span>
                                 <br/>
                                 <span>
-                                    <strong>Start Date:</strong>
+                                    <strong>Πρώτη Εκδήλωση:</strong>
                                     {{event.startDate}}
                                 </span>
                                 <span> - </span>
                                 <span>
-                                    <strong>End Date:</strong>
+                                    <strong>Τελευταία Εκδήλωση:</strong>
                                     {{event.endDate}}
                                 </span>
                                 <br/>
                                 <span>
-                                    <strong>Start Time:</strong>
+                                    <strong>Ώρα Έναρξης:</strong>
                                     {{event.startTime}}
                                 </span>
                                 <span> - </span>
                                 <span>
-                                    <strong>End Time:</strong>
+                                    <strong>Ώρα Λήξης:</strong>
                                     {{event.endTime}}
                                 </span>
                                 <br/>
                                 <span>
-                                    <strong>Ticket Price:</strong>
+                                    <strong>Τιμή Εισιτηρίου:</strong>
                                     {{event.price | number: '1.2-2'}} $
                                 </span>
                                 <span> - </span>
                                 <span>
-                                    <strong>Available Ticket:</strong>
+                                    <strong>Διαθέσιμα Εισιτήρια:</strong>
                                     <span *ngIf="event.availableTickets==0 || event.availableTickets<0" style="color: red;">
                                         SOLD OUT!
                                     </span>
@@ -163,17 +163,17 @@
                                 </span>
                                 <br/>
                                 <span>
-                                    <strong>Minimum Age:</strong>
+                                    <strong>Ελάχιστη Ηλικία:</strong>
                                     {{event.minAge }}
                                 </span>
                                 <span> - </span>
                                 <span>
-                                    <strong>Maximum Age:</strong>
+                                    <strong>Μέγιστη Ηλικία:</strong>
                                     {{event.maxAge}}
                                 </span>
                                 <br/>
                                 <span>
-                                    <strong>Description:</strong>
+                                    <strong>Περιγραφή:</strong>
                                     {{event.description | slice:0:500}}
                                 </span>
                             </div>

@@ -2,7 +2,7 @@
     <div class="row justify-content-center" style="margin: 40px 0px;">
         <div class="col-12">
             <h2 class="section-headline text-center">
-                <span>My Profile</span>
+                <span>Το Προφίλ μου</span>
             </h2>
             <hr style="width: 50%;" />
         </div>
@@ -21,37 +21,29 @@
             <div style="overflow: hidden">
                 <div class="card" style="background-color: #ededed">
                     <div class="card-body">
-                        <div class="alert alert-success" *ngIf="updateSuccess">
-                            <strong>Please Wait while Order is being processed!</strong>
-                        </div>
                         <mat-tab-group [selectedIndex]="selectedProfileTab">
                             <mat-tab label="Edit">
                                 <div style="margin-top: 20px;">
                                     <div class="alert alert-danger" *ngIf="incorrectPassword">
-                                        <strong>Incorrect Password!</strong> Please enter the correct password for the current user.
+                                        <strong>Λάθος Password!</strong> Παρακαλείστε να εισάγετε το σωστό κωδικό για το χρήστη σας.
                                     </div>
                                     <div class="alert alert-success" *ngIf="updateSuccess">
-                                        <strong>Update Success!</strong>
+                                        <strong>Ανανέωση Επιτυχής!</strong>
                                     </div>
                                 </div>
                                 <form (ngSubmit)="onUpdateUserInfo()">
                                     <input type="hidden" name="id" [(ngModel)]="user.id" />
-                                    <div class="bg-info" *ngIf="updateUserInfo">User info updated.
+                                    <div class="bg-info" *ngIf="updateUserInfo">Οι πληροφορίες του χρήστη ανανεώθηκαν.
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <label for="firstName"> First Name </label>
+                                                <label for="firstName"> Όνομα </label>
                                                 <input type="text" class="form-control" id="firstName"
                                                     name="firstName" [(ngModel)]="user.firstName" />
                                             </div>
                                             <div class="col-sm-4">
-                                                <label for="walletPoints"> Wallet Points </label>
-                                                <input type="number" class="form-control" id="walletPoints"
-                                                    name="walletPoints" [(ngModel)]="user.walletPoints" />
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <label for="lastName"> Last Name </label>
+                                                <label for="lastName"> Επώνυμο </label>
                                                 <input type="text" class="form-control" id="lastName"
                                                     name="lastName" [(ngModel)]="user.lastName" />
                                             </div>
@@ -60,43 +52,43 @@
 
                                     <div class="form-group">
                                         <label for="username"> Username * </label>&nbsp;
-                                        <span *ngIf="usernameExists" style="color: red">Username already taken. Please choose an other one.</span>
+                                        <span *ngIf="usernameExists" style="color: red">Το Username χρησιμοποιείται. Επιλέξτε άλλο.</span>
                                         <input required="required"
                                             type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username"
                                         />
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="currentPassword"> Current Password * </label>
+                                        <label for="currentPassword"> Παρόν Password * </label>
                                         <input type="password" class="form-control" id="password"
                                             name="password" [(ngModel)]="currentPassword" />
-                                        <p style="color: #828282;">Enter your current password to change your Email address or Password.</p>
+                                        <p style="color: #828282;">Εισάγεται τον παρόντα κωδικό για να αλλάξεται το Email ή το Password σας.</p>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="email"> Email Address * </label>&nbsp;
-                                        <span *ngIf="emailExists" style="color: red">Email already taken. Please choose an other one.</span>
+                                        <label for="email"> Διεύθυνση Email * </label>&nbsp;
+                                        <span *ngIf="emailExists" style="color: red">Το Email χρησιμοποιείται. Επιλέξτε άλλο.</span>
                                         <input required="required"
                                             type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email"
                                         />
-                                        <p style="color: #828282;">All messages from the system will be sent to that address.</p>
+                                        <p style="color: #828282;">Όλα τα μηνύματα θα στέλνονται σε αυτό..</p>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="txtNewPassword"> New Password * </label>&nbsp;
+                                        <label for="txtNewPassword"> Νέο Password * </label>&nbsp;
                                         <span id="checkPasswordMatch" style="color: red;"></span>
                                         <input type="password" class="form-control" id="txtNewPassword" name="txtNewPassword"
                                             [(ngModel)]="newPassword" />
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="txtConfirmPassword"> Confirm New Password *
+                                        <label for="txtConfirmPassword"> Επαληθεύστε New Password *
                                         </label>
                                         <input type="password" class="form-control" id="txtConfirmPassword" name="txtNewPassword"
                                         />
                                     </div>
 
-                                    <button mat-raised-button type="submit" color="primary" id="updateUserInfoButton">Save</button>
+                                    <button mat-raised-button type="submit" color="primary" id="updateUserInfoButton">Αποθήκευση</button>
                                 </form>
                             </mat-tab>
                             <mat-tab label="Orders">
@@ -106,10 +98,10 @@
                                             <table class="table table-sm table-inverse">
                                                 <thead>
                                                     <tr>
-                                                        <th>Order Date</th>
-                                                        <th>Order Number</th>
-                                                        <th>Total</th>
-                                                        <th>Status</th>
+                                                        <th>Ημερομηνία Αγοράς</th>
+                                                        <th>Αριθμός Αγοράς</th>
+                                                        <th>Σύνολο</th>
+                                                        <th>Κατάσταση</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -119,7 +111,7 @@
                                                              >{{order.orderDate}}</span></a>
                                                         </td>
                                                         <td>{{order.id}}</td>
-                                                        <td>{{order.orderTotal}} $</td>
+                                                        <td>{{order.orderTotal}} €</td>
                                                         <td>{{order.orderStatus}}</td>
                                                     </tr>
                                                 </tbody>
@@ -131,96 +123,36 @@
                                                             <h2>Order #<span>{{order.id}}</span> Details</h2>
                                                         </div>
                                                         <hr/>
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <div class="card card-default height">
-                                                                    <div class="card-header"><strong>Billing Details</strong>
-                                                                    </div>
-                                                                    <div class="card-body">
-                                                                        <span>{{order.billingAddress.billingAddressName}}</span>
-                                                                        <br/>
-                                                                        <span>{{order.billingAddress.billingAddressStreet1}} {{order.billingAddress.billingAddressStreet2}}</span>
-                                                                        <br/>
-                                                                        <span>{{order.billingAddress.billingAddressCity}}</span>
-                                                                        <br/>
-                                                                        <span>{{order.billingAddress.billingAddressState}}</span>
-                                                                        <br/>
-                                                                        <span>{{order.billingAddress.billingAddressZipcode}}</span>
-                                                                        <br/>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="card card-default height">
-                                                                    <div class="card-header"><strong>Payment Information</strong>
-                                                                    </div>
-                                                                    <div class="card-body">
-                                                                        <span>{{order.payment.holderName}}</span>
-                                                                        <br/> Visa
-                                                                        <br/>
-                                                                        <span>{{order.payment.cardNumber}}</span>
-                                                                        <br/>
-                                                                        <span>Exp Date:</span> <span>{{order.payment.expiryMonth}}</span>/<span>{{order.payment.expiryYear}}</span>
-                                                                        <br/>
-                                                                        <br/>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="row" style="padding-top: 15px;">
                                                     <div class="col-md-12">
                                                         <div class="card card-default">
                                                             <div class="card-header">
-                                                                <h3 class="text-center"><strong>Order Summary</strong></h3>
+                                                                <h3 class="text-center"><strong>Σύνοψη Αγοράς</strong></h3>
                                                             </div>
                                                             <div class="card-body">
                                                                 <div class="table-responsive">
                                                                     <table class="table table-condensed">
                                                                         <thead>
                                                                             <tr>
-                                                                                <td><strong>Event Name</strong></td>
-                                                                                <td class="text-center"><strong>Ticket Price</strong></td>
-                                                                                <td class="text-center"><strong>Tickets Number</strong>
+                                                                                <td><strong>Εκδήλωση</strong></td>
+                                                                                <td class="text-center"><strong>Τιμή Εισιτηρίου</strong></td>
+                                                                                <td class="text-center"><strong>Αριθμός Εισιτηρίων</strong>
                                                                                 </td>
-                                                                                <td class="text-right"><strong>Total</strong></td>
+                                                                                <td class="text-right"><strong>Σύνολο</strong></td>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
                                                                             <tr *ngFor="let cartItem of order['cartItemList']">
                                                                                 <td>{{cartItem.event.name}}
                                                                                 </td>
-                                                                                <td class="text-center">{{cartItem.event.price}} $
+                                                                                <td class="text-center">{{cartItem.event.price}} €
                                                                                 </td>
                                                                                 <td class="text-center">
                                                                                     {{cartItem.qty}}
                                                                                 </td>
-                                                                                <td class="text-right">{{cartItem.subtotal}} $
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td class="highrow"></td>
-                                                                                <td class="highrow"></td>
-                                                                                <td class="highrow text-center">
-                                                                                    <strong>Subtotal</strong></td>
-                                                                                <td class="highrow text-right">{{order.orderTotal}} $
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td class="emptyrow"></td>
-                                                                                <td class="emptyrow"></td>
-                                                                                <td class="emptyrow text-center"><strong>VAT</strong>
-                                                                                </td>
-                                                                                <td class="emptyrow text-right">{{order.orderTotal*0.1}} $
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td class="emptyrow"></td>
-                                                                                <td class="emptyrow"></td>
-                                                                                <td class="emptyrow text-center"><strong>Total</strong>
-                                                                                </td>
-                                                                                <td class="emptyrow text-right">{{order.orderTotal*1.1}} $
+                                                                                <td class="text-right">{{cartItem.subtotal}} €
                                                                                 </td>
                                                                             </tr>
                                                                         </tbody>
@@ -235,21 +167,21 @@
                                     </div>
                                 </div>
                             </mat-tab>
-                            <mat-tab label="Payment">
+                            <mat-tab label="Πληρωμές">
                                 <br />
                                 <br />
                                 <div>
-                                    <p *ngIf="defaultPaymentSet">Default payment set successfully!
+                                    <p *ngIf="defaultPaymentSet">Default Πληρωμή επιλέχθηκε με επιτυχία!
                                     </p>
                                     <mat-tab-group (selectedIndexChange)="selectedBillingChange($event)" [selectedIndex]="selectedBillingTab">
-                                        <mat-tab label="List of Credit Cards">
+                                        <mat-tab label="Λίστα Πιστωτικών Καρτών">
                                             <form (ngSubmit)="setDefaultPayment()" method="post">
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
                                                             <th>Default</th>
                                                             <th>Credit Card</th>
-                                                            <th>Operations</th>
+                                                            <th>Edit/Delete</th>
                                                         </tr>
                                                     </thead>
 
@@ -258,7 +190,7 @@
                                                             <td>
                                                                 <input type="radio" name="defaultUserPaymentId" [(ngModel)]="defaultUserPaymentId"
                                                                     [value]="userPayment.id" />
-                                                                <span>default</span>
+                                                                <span></span>
                                                             </td>
 
                                                             <td>{{ userPayment.cardName }}</td>
@@ -274,16 +206,15 @@
                                                     </tbody>
                                                 </table>
                                                 <button mat-raised-button type="submit" color="primary">
-                                                    Save</button>
+                                                    Αποθήκευση</button>
                                             </form>
                                         </mat-tab>
-                                        <mat-tab label="Add/Update Credit Card">
+                                        <mat-tab label="Προσθήκη/Ανανέωση Πιστωτικής Κάρτας">
                                             <form (ngSubmit)="onNewPayment()" method="post">
-                                                <div class="bg-info" *ngIf="updateUserPaymentInfo">User Info updated.</div>
                                                 <input hidden="hidden" name="id" [(ngModel)]="userPayment.id" />
                                                 <div class="form-group">
                                                     <br />
-                                                    <h6>* Give a name for your card</h6>
+                                                    <h6>* Δώστε όνομα στην κάρτα</h6>
                                                     <input type="text" class="form-control" id="cardName" placeholder="Card Name" name="cardName" required="required" [(ngModel)]="userPayment.cardName"
                                                     />
                                                 </div>
@@ -291,14 +222,14 @@
                                                 <!-- Billing Address -->
                                                 <hr />
                                                 <div class="form-group">
-                                                    <label for="billingName"> * Name </label>
+                                                    <label for="billingName"> * Όνομα </label>
                                                     <input type="text" class="form-control" id="billingName"
                                                         placeholder="Receiver name" name="userBillingName" required="required"
                                                         [(ngModel)]="userBilling.userBillingName" />
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="billingAddress"> * Street Address </label>
+                                                    <label for="billingAddress"> * Διεύθυνση </label>
                                                     <input type="text" class="form-control" id="billingAddress"
                                                         placeholder="Street Address 1" name="userBillingStreet1" required="required"
                                                         [(ngModel)]="userBilling.userBillingStreet1" />
@@ -313,7 +244,7 @@
 
                                                     <div class="col-sm-4">
                                                         <div class="form-group">
-                                                            <label for="billingCity"> * City </label>
+                                                            <label for="billingCity"> * Πόλη </label>
                                                             <input type="text" class="form-control" id="userBillingCity"
                                                                 placeholder="Your Billing City" name="userBillingCity" required="required"
                                                                 [(ngModel)]="userBilling.userBillingCity" />
@@ -335,7 +266,7 @@
 
                                                     <div class="col-sm-4">
                                                         <div class="form-group">
-                                                            <label for="billingZipcode"> * Zipcode </label>
+                                                            <label for="billingZipcode"> * ΤΚ </label>
                                                             <input type="text" class="form-control" id="userBillingZipcode"
                                                                 placeholder="Zipcode" name="userBillingZipcode" required="required"
                                                                 [(ngModel)]="userBilling.userBillingZipcode" />
@@ -346,7 +277,7 @@
                                                 <!-- User Payment -->
                                                 <hr />
                                                 <div class="form-group">
-                                                    <h4>Credit Card Information</h4>
+                                                    <h4>Πληροφορίες Πιστωτικής Κάρτας</h4>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-sm-12">
@@ -354,7 +285,7 @@
                                                         <br />
 
                                                         <div class="form-group">
-                                                            <label for="cardType"> * Select Card Type </label>
+                                                            <label for="cardType"> * Επιλέξτε Είδος Κάρτας </label>
                                                             <select id="cardType" class="form-control"
                                                                 name="cardType" [(ngModel)]="userPayment.type" required="required">
                                                                 <option value="" disabled>--card type--</option>
@@ -366,19 +297,19 @@
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="cardHolder"> * Card Holder </label>
+                                                            <label for="cardHolder"> * Όνομα Κατόχου Κάρτας </label>
                                                             <input type="text" class="form-control"
                                                                 id="cardHolder" placeholder="Card Holder Name" name="cardHolderName"
                                                                 required="required" [(ngModel)]="userPayment.holderName" />
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="cardNumber"> * Card Number </label>
+                                                            <label for="cardNumber"> * Αριθμός Κάρτας </label>
                                                             <div class="input-form">
                                                                 <input type="tel" class="form-control" id="cardNumber" placeholder="Valid Card Number" name="cardNumber" required="required"
                                                                     [(ngModel)]="userPayment.cardNumber" />
                                                                 <small *ngIf="invalidCardNo" style="color:red">
-                                                                    Invalid Card Number.
+                                                                    Ο αριθμός κάρτας πρέπει να είναι 16 νούμερα.
                                                                 </small>
                                                             </div>
                                                         </div>
@@ -388,7 +319,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-7">
                                                         <div class="form-group">
-                                                            <label> * Expiration Date </label>
+                                                            <label> * Ημερομηνία Λήξης </label>
                                                             <div class="row">
                                                                 <div class="col-sm-6">
                                                                     <select class="form-control" name="expiryMonth" required="required" [(ngModel)]="userPayment.expiryMonth">
@@ -427,19 +358,19 @@
 
                                                     <div class="col-sm-5 pull-right">
                                                         <div class="form-group">
-                                                            <label for="cardCVC">CV Code</label>
+                                                            <label for="cardCVC">Κωδικός CVC</label>
                                                             <input id="cardCVC" type="tel" class="form-control"
                                                                 name="cardCVC" placeholder="CVC" [(ngModel)]="userPayment.cvc"
                                                             />
                                                             <small *ngIf="invalidCvc" style="color:red">
-                                                                Invalid CVC.
+                                                                Ο κωδικός CVC πρέπει να είναι 3 ή 4 νούμερα.
                                                             </small>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <hr />
                                                 <button mat-raised-button type="submit" color="primary">
-                                                    Save</button>
+                                                    Αποθήκευση</button>
                                             </form>
                                         </mat-tab>
                                     </mat-tab-group>

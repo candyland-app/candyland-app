@@ -2,7 +2,7 @@
     <div class="row justify-content-center" style="margin: 40px 0px;">
         <div class="col-12">
             <h2 class="section-headline text-center">
-                <span>Shopping Cart</span>
+                <span>Το Καλάθι μου</span>
             </h2>
             <hr style="width: 50%;" />
         </div>
@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-sm-6 text-left">
                     <a mat-raised-button color="primary" routerLink="/eventList">
-                        Keep Shopping
+                        Συνεχίστε τις Αγορές
                     </a>
                 </div>
                 <div class="col-sm-6 text-right">
@@ -26,23 +26,23 @@
             </div>
             <br/>
             <div *ngIf="cartItemUpdated" class="alert alert-success">
-                Cart Updated Successfully!
+                Επιτυχής Ανανέωση Καλαθιού!
             </div>
             <div *ngIf="notEnoughStock" class="alert alert-warning">
-                Not Enough Tickets. Please Update your selected quantity.
+                Επιλέξατε ποσότητα εισιτηρίων παραπάνω από τα διαθέσιμα. Παρακαλούμε ανανεώστε την ποσότητα.
             </div>
             <div *ngIf="emptyCart" class="alert alert-warning">
-                Your Cart is Empty!
+                Το Καλάθι σας έιναι άδειο!
             </div>
             <div class="row">
                 <div class="col-sm-8">
                     <h4>
-                        Events
+                        Εκδηλώσεις
                     </h4>
                 </div>
                 <div class="col-sm-2">
                     <h4>
-                        Price
+                        Τιμή
                     </h4>
                 </div>
                 <div class="col-sm-2">
@@ -65,21 +65,21 @@
                         </h4>
                     </a>
                     <p *ngIf="cartItem.event.availableTickets > 10" style="color: green;">
-                        Tickets are available.
+                        Διαθέσιμα Προϊόντα
                     </p>
                     <p *ngIf="cartItem.event.availableTickets <= 10 && cartItem.event.availableTickets > 0" style="color: orange;">
-                        Only {{ cartItem.event.availableTickets }} Tickets Left
+                        Μόνο {{ cartItem.event.availableTickets }} Εισιτήρια απομένουν
                     </p>
                     <p *ngIf="cartItem.event.availableTickets == 0" style="color: red;">
-                        No Tickets Available
+                        Δεν υπάρχουν διαθέσιμα προιόντα
                     </p>
                     <a mat-button class="pointer" color="primary" (click)="onRemoveCartItem(cartItem)">
-                        Remove from Cart
+                        Αφαιρέστε απο το Καλάθι
                     </a>
                 </div>
                 <div class="col-sm-2">
                     <h5>
-                        {{ cartItem.event.price }} $
+                        {{ cartItem.event.price }} Πόντοι
                     </h5>
                 </div>
                 <div class="col-sm-2">
@@ -87,7 +87,7 @@
                     <input id="cartItem.id" name="qty" [disabled]="cartItem.event.availableTickets == 0" class="form-control cartItemQty" [(ngModel)]="cartItem.qty"
                         (ngModelChange)="cartItem.toUpdate = true" />
                     <a mat-button *ngIf="cartItem.toUpdate" class="pointer" color="warn" (click)="onUpdateCartItem(cartItem); onCheckout()">
-                        Update
+                        Ανανέωση
                     </a>
                 </div>
             </div>
@@ -96,11 +96,11 @@
                 <br/>
                 <h4 class="col-sm-12 text-right">
                     <strong style="font-size: large">
-                        Total Price
+                        Συνολική Τιμή
                         (<span>{{ cartItemNumber }}</span> event):
                     </strong>
                     <span>
-                        {{ shoppingCart.grandTotal }} $
+                        {{ shoppingCart.grandTotal }} Πόντοι
                     </span>
                 </h4>
             </div>

@@ -14,7 +14,7 @@ export class DataFilterPipe implements PipeTransform {
             res = _.filter(res, row => ((row.minAge <= queryAge) && (row.maxAge >= queryAge)) || queryAge == 0);
         }
         if (queryCat) {
-            res = _.filter(res, row => (row.category.indexOf(queryCat) > -1) || queryCat === "Any Category");
+            res = _.filter(res, row => (row.category.indexOf(queryCat) > -1) || queryCat === "Κάθε Κατηγορία");
         }
         if (queryMaxPr) {
             res = _.filter(res, row => ((row.price <= queryMaxPr)) || queryMaxPr == 0);

@@ -66,11 +66,13 @@ export class EventListComponent implements OnInit {
          { name: "41+€" }
     ];
     public categories: Array<Object> = [
-        { name: "Any Category" },
-        { name: "Sports" },
-        { name: "Music" },
-        { name: "Education" },
-        { name: "Cinema" }
+        { name: "Κάθε Κατηγορία" },
+        { name: "Αθλητικά" },
+        { name: "Μουσική" },
+        { name: "Εκπαίδευση" },
+        { name: "Σινεμά" },
+        { name: "Θέατρο" },
+        { name: "Άλλο" }
     ];
     constructor(
         private eventService: EventService,
@@ -106,7 +108,7 @@ export class EventListComponent implements OnInit {
         };
         this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
 
-        this.selectedCategory = 'Any Category';
+        this.selectedCategory = 'Κάθε Κατηγορία';
         this.selectedDistance = 'Παντού';
         //this.selectedAge = 0;
         //this.selectedMaxPrice = 0;

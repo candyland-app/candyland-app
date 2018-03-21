@@ -2,14 +2,14 @@
     <div class="row justify-content-center" style="margin: 40px 0px;">
         <div class="col-12">
             <h2 class="section-headline text-center">
-                <span>Event Info</span>
+                <span>Πληροφορίες Εκδήλωσης</span>
             </h2>
             <hr style="width: 50%;" />
         </div>
     </div>
     <div class="row justify-content-center" style="margin-top:30px">
         <div class="col-sm-3">
-            <a routerLink="/eventList">Back to Events List</a>
+            <a routerLink="/eventList">Πίσω στις Εκδηλώσεις</a>
             <br/>
             <img class="img-fluid" src="{{serverPath}}/image/event/{{event.id}}.png" />
         </div>
@@ -17,7 +17,7 @@
             <h3>
                 <span *ngIf="addEventSuccess" style="color: green;">
                     <i class="fa fa-check" style="color: green;"></i>
-                    Added to Cart!
+                    Προστέθηκε στο Καλάθι!
                 </span>
             </h3>
             <h3>
@@ -31,41 +31,55 @@
             <div class="row">
                 <div class="col-sm-4">
                     <span>
-                        <strong>Address:</strong>
+                        <strong>Κατηγορία:</strong>
+                        {{ event.category }}
+                    </span>
+                    <span>
+                        <strong>Διεύθυνση:</strong>
                         <span>{{ event.address }}</span>
                     </span>
                     <br/>
                     <span>
-                        <strong>Zipcode:</strong>
+                        <strong>ΤΚ:</strong>
                         <span>{{ event.zipcode }}</span>
                     </span>
                     <br/>
                     <span>
-                        <strong>Start Date:</strong>
+                        <strong>Πρώτη Εκδήλωση:</strong>
                         <span>{{ event.startDate }}</span>
                     </span>
                     <br/>
                     <span>
-                        <strong>End Date:</strong>
+                        <strong>Τελευταία Εκδήλωση:</strong>
                         <span>{{ event.endDate }}</span>
                     </span>
                     <br/>
                     <span>
-                        <strong>Start Time:</strong>
+                        <strong>Ώρα Έναρξης:</strong>
                         <span>{{ event.startTime }}</span>
                     </span>
                     <br/>
                     <span>
-                        <strong>End Time:</strong>
+                        <strong>Ώρα Λήξης:</strong>
                         <span>{{ event.endTime }}</span>
+                    </span>
+                    <span>
+                        <strong>Ελάχιστη Ηλικία:</strong>
+                        {{event.minAge }}
+                    </span>
+                    <br/>
+                    <span>
+                        <strong>Μέγιστη Ηλικία:</strong>
+                        {{event.maxAge}}
                     </span>
                 </div>
                 <div class="col-sm-8">
                     <div class="card" style="border-width: 0px;">
                         <div class="card-body">
                             <div class="col-sm-6">
-                                <h5>Ticket Price {{event.price | number: '1.2-2'}} $</h5>
-                                Number of Tickets:
+                                <h4>Τιμή Εισιτηρίου</h4>
+                                <h5>{{event.price | number: '1.2-2'}} Πόντοι</h5>
+                                Ποσότητα Εισιτηρίων:
                                 <select [(ngModel)]="qty" class="browser-default" style="display: inline;">
                                     <option *ngFor="let x of numberList" [ngValue]="x">
                                         {{ x }}
@@ -84,7 +98,7 @@
                                     Unavailable
                                 </h5>
                                 <button mat-raised-button [disabled]="event.availableTickets==0 || event.availableTickets<0" (click)="onAddToCart()" color="primary">
-                                    Add to Cart
+                                    Προσθήκη στο Καλάθι
                                 </button>
                             </div>
                         </div>
@@ -94,7 +108,7 @@
         </div>
         <div style="margin-top: 50px">
             <p>
-                <strong>Description:</strong> {{ event.description }}
+                <strong>Περιγραφή:</strong> {{ event.description }}
             </p>
             <hr/>
         </div>

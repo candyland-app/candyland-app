@@ -2,7 +2,7 @@
     <div class="row justify-content-center" style="margin: 40px 0px;">
         <div class="col-12">
             <h2 class="section-headline text-center">
-                <span>Order Checkout</span>
+                <span>Checkout</span>
             </h2>
             <hr style="width: 50%;" />
         </div>
@@ -12,37 +12,29 @@
             <div class="col-sm-5">
                 <div class="card card-default">
                     <div class="card-body">
-                        <button mat-raised-button="mat-raised-button" [disabled]="processingCheckout"  type="submit" class="btn-block mat-primary">Place Order
+                        <button mat-raised-button="mat-raised-button" [disabled]="processingCheckout"  type="submit" class="btn-block mat-primary">Αγορά!
                         </button>
                         <hr/>
-                        <h3>Order Summary</h3>
+                        <h3>Σύνοψη Αγοράς</h3>
                         <div class="row">
                             <div class="col-sm-7 text-left">
-                                Total without VAT:
+                                Συνολικοί Πόντοι:
                             </div>
                             <div class="col-sm-5 text-right">
-                                <span>{{shoppingCart.grandTotal}}</span>$
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-7 text-left">
-                                Estimated VAT:
-                            </div>
-                            <div class="col-sm-5 text-right">
-                                <span>{{shoppingCart.grandTotal*0.1 | number : '1.2-2'}}</span>$
+                                <span>{{shoppingCart.grandTotal}}</span>
                             </div>
                         </div>
                         <hr/>
                         <div class="row">
                             <div class="col-sm-7 text-left">
                                 <h4 style="text-decoration: underline">
-                                    <strong>Order Total:</strong>
+                                    <strong>Σύνολο σε Ευρώ:</strong>
                                 </h4>
                             </div>
                             <div class="col-sm-5 text-right">
                                 <h4>
                                     <strong style="color: green;">
-                                        <span>{{shoppingCart.grandTotal*1.1 | number : '1.2-2'}}</span>$
+                                        <span>{{shoppingCart.grandTotal*1.1 | number : '1.2-2'}}</span>€
                                     </strong>
                                 </h4>
                             </div>
@@ -58,20 +50,20 @@
                 </div>
                 <mat-card>
                     <mat-tab-group (selectedIndexChange)="selectedChange($event)" [selectedIndex]="selectedTab">
-                        <mat-tab label="Payment Method">
+                        <mat-tab label="Πορτοφόλι">
                             <div class="card card-default">
                                 <div class="card-heading">
                                     <h4 class="card-title text-center" style="padding-top: 20px;">
-                                        Availlable Points
+                                        Διαθέσιμοι Πόντοι
                                     </h4>
                                 </div>
                                 <div class="card-body">
                                     <table class="table" *ngIf="!emptyPaymentList">
                                         <thead>
                                             <tr>
-                                                <th>Wallet Points</th>
-                                                <th>Bonus Points</th>
-                                                <th>Total Points</th>
+                                                <th>Πόντοι</th>
+                                                <th>Bonus Πόντοι</th>
+                                                <th>Συνολικοί Πόντοι</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -88,28 +80,28 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <a mat-raised-button="mat-raised-button" class="mat-primary" (click)="onWallet()">Wallet</a>
-                                    <a mat-raised-button="mat-raised-button" class="mat-primary" style="float: right;" (click)="goToReview()">Next</a>
+                                    <a mat-raised-button="mat-raised-button" class="mat-primary" (click)="onWallet()">Πορτοφόλι</a>
+                                    <a mat-raised-button="mat-raised-button" class="mat-primary" style="float: right;" (click)="goToReview()">Επόμενο</a>
                                 </div>
                             </div>
                         </mat-tab>
-                        <mat-tab label="Review">
+                        <mat-tab label="Επισκόπηση">
                             <div class="card card-default">
                                 <div class="card-heading">
                                     <h4 class="card-title text-center" style="padding-top: 20px;">
-                                        Review Order
+                                        Επισκόπηση Αγοράς
                                     </h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-sm-7">
-                                            <h6>Events</h6>
+                                            <h6>Εκδηλώσεις</h6>
                                         </div>
                                         <div class="col-sm-2">
-                                            <h6>Price</h6>
+                                            <h6>Τιμή</h6>
                                         </div>
                                         <div class="col-sm-3">
-                                            <h6>Tickets</h6>
+                                            <h6>Εισιτήρια</h6>
                                         </div>
                                     </div>
                                     <div class="row" *ngFor="let cartItem of cartItemList">
@@ -123,17 +115,17 @@
                                             <a class="pointer" (click)="onSelect(cartItem.event)">
                                                 <h6>{{cartItem.event.name}}</h6>
                                             </a>
-                                            <p *ngIf="cartItem.event.availableTickets > 10" style="color: green;">In Stock</p>
+                                            <p *ngIf="cartItem.event.availableTickets > 10" style="color: green;">Σε Διαθεσιμότητα</p>
                                             <p *ngIf="cartItem.event.availableTickets < 10 && cartItem.event.availableTickets > 0" style="color: green;">
-                                                Only
+                                                Μόνο
                                                 <span>{{cartItem.event.availableTickets}}</span>
-                                                In Stock
+                                                σε Διαθεσιμότητα
                                             </p>
-                                            <p style="color: red;" *ngIf="cartItem.event.availableTickets==0">Tickets Unavailable</p>
+                                            <p style="color: red;" *ngIf="cartItem.event.availableTickets==0">Μη Διαθέσιμα Εισιτήρια</p>
                                         </div>
                                         <div class="col-sm-2">
                                             <h5 style="color: green; font-size: large;">
-                                                <span [ngClass]="{'text-strike': cartItem.event.availableTickets == 0 }">{{cartItem.event.price}}</span>$
+                                                <span [ngClass]="{'text-strike': cartItem.event.availableTickets == 0 }">{{cartItem.event.price}}</span>€
                                             </h5>
                                         </div>
                                         <div class="col-sm-3 text-center">
@@ -143,18 +135,18 @@
                                     <hr/>
                                     <h4 class="col-sm-12 text-right">
                                         <strong class="text-center" style="font-size: large">
-                                            Total Price:
+                                            Συνολική Τιμή:
                                         </strong>
                                         <span style="color: green; font-size: large;">
-                                            <span>{{shoppingCart.grandTotal}}</span>$
+                                            <span>{{shoppingCart.grandTotal}}</span>€
                                         </span>
                                     </h4>
                                     <br/>
                                     <br/>
-                                    <button mat-raised-button="mat-raised-button" [disabled]="processingCheckout" type="submit" class="btn-block mat-primary">Place Order
+                                    <button mat-raised-button="mat-raised-button" [disabled]="processingCheckout" type="submit" class="btn-block mat-primary">Αγορά!
                                     </button>
                                     <div class="alert alert-success" *ngIf="processingCheckout" style="margin-top: 10px">
-                                        <strong>Please wait while order is being processed!</strong>
+                                        <strong>Η παραγγελία σας βρίσκεται σε επεξεργασία. Παρακαλώ περιμένετε!</strong>
                                     </div>
                                 </div>
                             </div>

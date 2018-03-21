@@ -2,7 +2,7 @@
     <div class="row justify-content-center" style="margin: 40px 0px;">
         <div class="col-12">
             <h2 class="section-headline text-center">
-                <span>Order Summary</span>
+                <span>Σύνοψη Αγοράς</span>
             </h2>
             <hr style="width: 50%;" />
         </div>
@@ -11,14 +11,14 @@
         <div class="col-sm-12">
             <div class="alert alert-success">
                 <h3 class="text-center">
-                    <i class="fa fa-check" style="color: green;"></i> Your Order was Successfully Placed!</h3>
+                    <i class="fa fa-check" style="color: green;"></i> Η Αγορά σας ολοκληρώθηκε με επιτυχία!</h3>
             </div>
         </div>
     </div>
     <div class="row" style="margin-top: 30px;">
         <div class="col-sm-12">
             <h2 class="text-center">
-                Order Items
+                Εισιτήρια
             </h2>
         </div>
     </div>
@@ -27,17 +27,17 @@
             <div class="row">
                 <div class="col-sm-8">
                     <h4>
-                        Event
+                        Εκδήλωση
                     </h4>
                 </div>
                 <div class="col-sm-2">
                     <h4>
-                        Price
+                        Τιμή
                     </h4>
                 </div>
                 <div class="col-sm-2">
                     <h4>
-                        Tickets
+                        Εισιτήρια
                     </h4>
                 </div>
             </div>
@@ -55,18 +55,18 @@
                         </h4>
                     </a>
                     <p *ngIf="cartItem.event.availableTickets > 10" style="color: green;">
-                        Tickets are available.
+                        Διαθέσιμα Εισιτήρια.
                     </p>
                     <p *ngIf="cartItem.event.availableTickets < 10 && cartItem.event.availableTickets > 0" style="color: orange;">
-                        Only {{ cartItem.event.availableTickets }} Tickets Left
+                        Μόνο {{ cartItem.event.availableTickets }} Εισιτήρια απομένουν
                     </p>
                     <p *ngIf="cartItem.event.availableTickets == 10" style="color: red;">
-                        No Tickets Available
+                        Μη Διαθέσιμα Εισιτήρια
                     </p>
                 </div>
                 <div class="col-sm-2">
                     <h5>
-                        {{ cartItem.event.price }} $
+                        {{ cartItem.event.price }} €
                     </h5>
                 </div>
                 <div class="col-sm-2 text-center">
