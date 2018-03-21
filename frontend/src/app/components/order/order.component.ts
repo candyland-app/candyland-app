@@ -6,12 +6,14 @@ import { CartItem } from '../../models/cart-item';
 import { Event } from '../../models/event';
 import { Order } from '../../models/order';
 import { Payment } from '../../models/payment';
+import { User } from '../../models/user';
 import { ShoppingCart } from '../../models/shopping-cart';
 import { UserBilling } from '../../models/user-billing';
 import { UserPayment } from '../../models/user-payment';
 import { CartService } from '../../services/cart.service';
 import { CheckoutService } from '../../services/checkout.service';
 import { PaymentService } from '../../services/payment.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'app-order',
@@ -36,17 +38,23 @@ export class OrderComponent implements OnInit {
     private stateList: string[] = [];
     private order: Order = new Order();
     private processingCheckout = false;
+    private user: User = new User;
 
     constructor(
         private router: Router,
         private cartService: CartService,
         private paymentService: PaymentService,
+        private userService: UserService,
         private checkoutService: CheckoutService
     ) {}
 
     onSelect(event: Event) {
         this.selectedEvent = event;
         this.router.navigate(['/eventDetail', this.selectedEvent.id]);
+    }
+
+    onWallet() {
+        this.router.navigate(['/wallet']);
     }
 
     selectedChange(val: number) {
@@ -145,9 +153,34 @@ export class OrderComponent implements OnInit {
 
     }
 
+    private userPaymentList2;
+    private defaultUserPaymentId2;
+
+    getCurrentUser() {
+        this.userService.getCurrentUser().subscribe(
+            res => {
+                this.user = res.json();
+                this.userPaymentList2 = this.user.userPaymentList;
+                for (const index in this.userPaymentList) {
+                    if (this.userPaymentList[index].defaultPayment) {
+                        this.defaultUserPaymentId2 = this.userPaymentList[
+                            index
+                        ].id;
+                        break;
+                    }
+                }
+
+            },
+            err => {
+                console.log(err);
+            }
+        );
+    }
+
     ngOnInit() {
         this.processingCheckout = false;
         this.getCartItemList();
+        this.getCurrentUser();
 
         this.cartService.getShoppingCart().subscribe(
             res => {
