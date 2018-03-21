@@ -1,4 +1,5 @@
 table {
+    text-align: center;
     border-collapse: separate;
     border-spacing: 0;
     color: #4A4A4D;
@@ -12,7 +13,7 @@ td {
 }
 
 thead {
-    background: #395870;
+    background: #3F51B5;
     color: #FFF;
 }
 
@@ -37,22 +38,17 @@ td:first-child {
     border-left: 1px solid #CECFD5;
 }
 
-.book-title {
+.event-name {
     color: #395870;
     display: block;
 }
 
-.item-stock,
-.item-qty {
-    text-align: center;
-}
-
-.item-price {
-    text-align: right;
-}
-
 .item-multiple {
     display: block;
+}
+
+.mat-raised-button {
+    margin-top: 20px;
 }
 
 tfoot {

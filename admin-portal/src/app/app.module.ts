@@ -1,18 +1,24 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import {
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatInputModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatTabsModule,
+    MatToolbarModule
+} from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { routing } from './app.routing';
-
-import { AddUserService } from './services/add-user.service';
-import { EditUserService } from './services/edit-user.service';
-import { GetUserListService } from './services/get-user-list.service';
-import { GetUserService } from './services/get-user.service';
-import { LoginService } from './services/login.service';
-import { RemoveUserService } from './services/remove-user.service';
-import { UploadImageService } from './services/upload-image.service';
 
 import { AppComponent } from './app.component';
 import { AddNewUserComponent } from './components/add-new-user/add-new-user.component';
@@ -25,32 +31,49 @@ import {
 } from './components/user-list/user-list.component';
 import { ViewUserComponent } from './components/view-user/view-user.component';
 
+import { AddUserService } from './services/add-user.service';
+import { EditUserService } from './services/edit-user.service';
+import { GetUserListService } from './services/get-user-list.service';
+import { GetUserService } from './services/get-user.service';
+import { LoginService } from './services/login.service';
+import { RemoveUserService } from './services/remove-user.service';
+
 @NgModule({
     declarations: [
         AppComponent,
         NavBarComponent,
         LoginComponent,
         AddNewUserComponent,
-        UserListComponent,
         DialogResultExampleDialog,
+        UserListComponent,
         ViewUserComponent,
         EditUserComponent
     ],
     imports: [
-        BrowserModule,
-        FormsModule,
+        BrowserAnimationsModule,
         HttpModule,
         routing,
+        MatDialogModule,
+        MatListModule,
+        MatSlideToggleModule,
+        MatSelectModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatGridListModule,
+        MatToolbarModule,
+        BrowserModule,
+        FormsModule,
+        MatProgressSpinnerModule,
+        MatTabsModule,
         MatButtonModule,
         MatCheckboxModule
     ],
     providers: [
-        LoginService,
         AddUserService,
-        UploadImageService,
-        GetUserListService,
-        GetUserService,
         EditUserService,
+        GetUserService,
+        LoginService,
+        GetUserListService,
         RemoveUserService
     ],
     bootstrap: [AppComponent, DialogResultExampleDialog]

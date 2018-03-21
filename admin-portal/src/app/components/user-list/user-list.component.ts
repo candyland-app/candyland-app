@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { GetUserListService } from '../../services/get-user-list.service';
 import { LoginService } from '../../services/login.service';
 import { RemoveUserService } from '../../services/remove-user.service';
-
-import { MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
     selector: 'app-user-list',
@@ -23,7 +22,7 @@ export class UserListComponent implements OnInit {
         private getUserListService: GetUserListService,
         private removeUserService: RemoveUserService,
         private router: Router,
-        public dialog: MatDialog
+        private dialog: MatDialog
     ) {}
 
     onSelect(user: User) {
@@ -60,7 +59,7 @@ export class UserListComponent implements OnInit {
     updateSelected(checked: boolean) {
         if (checked) {
             this.allChecked = true;
-            this.removeUserList = this.userList.slice();
+            this.removeUserList = this.userList;
         } else {
             this.allChecked = false;
             this.removeUserList = [];
@@ -73,9 +72,14 @@ export class UserListComponent implements OnInit {
             console.log(result);
             if (result === 'yes') {
                 for (const user of this.removeUserList) {
-                    this.removeUserService
-                        .sendUser(user.id)
-                        .subscribe(res => {}, err => {});
+                    this.removeUserService.sendUser(user.id).subscribe(
+                        res => {
+                            console.log(res);
+                        },
+                        err => {
+                            console.log(err);
+                        }
+                    );
                 }
                 location.reload();
             }
@@ -97,4 +101,12 @@ export class UserListComponent implements OnInit {
     ngOnInit() {
         this.getUserList();
     }
+}
+
+@Component({
+    selector: 'dialog-result-example-dialog',
+    templateUrl: './dialog-result-example-dialog.html'
+})
+export class DialogResultExampleDialog {
+    constructor(public dialogRef: MatDialogRef<DialogResultExampleDialog>) {}
 }

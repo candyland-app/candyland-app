@@ -1,6 +1,14 @@
-<h1 md-dialog-title>Delete Confirmation</h1>
-<div md-dialog-content>Are you sure you want to delete?</div>
-<div md-dialog-actions>
-	<button md-button (click)="dialogRef.close('yes')">Yes</button>
-	<button md-button (click)="dialogRef.close('no')">No</button>
+<h1 mat-dialog-title>
+    Confirm Deletetion
+</h1>
+<div mat-dialog-content>
+    Are you sure?
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close('yes')">
+        Yes
+    </button>
+    <button mat-button (click)="dialogRef.close('no')">
+        No
+    </button>
 </div>

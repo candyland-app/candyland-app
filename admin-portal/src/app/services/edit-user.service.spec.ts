@@ -10,7 +10,7 @@ describe('EditUserService', () => {
     });
 
     it(
-        'should ...',
+        'should be created',
         inject([EditUserService], (service: EditUserService) => {
             expect(service).toBeTruthy();
         })

@@ -19,8 +19,9 @@ export class ViewUserComponent implements OnInit {
     ) {}
 
     onSelect(user: User) {
-        this.router.navigate(['/editUser', this.user.id]);
-        // .then(s => location.reload())
+        this.router.navigate(['/editUser', this.user.id]).then(res => {
+            location.reload();
+        });
     }
 
     ngOnInit() {

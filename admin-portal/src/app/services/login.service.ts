@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 export class LoginService {
     constructor(private http: Http) {}
 
-    sendCredential(username: string, password: string) {
+    sendCrendential(username: string, password: string) {
         const url = 'http://localhost:8181/token';
         const encodedCredentials = btoa(username + ':' + password);
         const basicHeader = 'Basic ' + encodedCredentials;
@@ -20,7 +20,6 @@ export class LoginService {
 
     checkSession() {
         const url = 'http://localhost:8181/checkSession';
-
         const headers = new Headers({
             'x-auth-token': localStorage.getItem('xAuthToken')
         });
@@ -30,7 +29,6 @@ export class LoginService {
 
     logout() {
         const url = 'http://localhost:8181/user/logout';
-
         const headers = new Headers({
             'x-auth-token': localStorage.getItem('xAuthToken')
         });

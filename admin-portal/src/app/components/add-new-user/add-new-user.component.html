@@ -1,92 +1,76 @@
 <div class="container">
-	<div [hidden]="userAdded">
-		<h3 style="margin-top: 30px;">New User Information <span style="font-size:small">* is a required field</span></h3>
+    <div [hidden]="userAdded">
+        <h3 style="margin-top: 30px;">New User Information
+            <span style="font-size:small">* is a required field</span>
+        </h3>
 
-		<form (ngSubmit)="onSubmit()">
-			<md-grid-list cols="4" rowHeight="60px">
-				<md-grid-tile [colspan]="4" [rowspan]="1">
-					<md-input-container>
-						<input mdInput id="username" type="text" required [(ngModel)]="newUser.username" name="username" placeholder="Username">
-					</md-input-container>
-				</md-grid-tile>
-			</md-grid-list>
+        <form (ngSubmit)="onSubmit()">
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="4" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="firstName" type="text" required [(ngModel)]="newUser.firstName" name="firstName" placeholder="First Name">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
 
-			<md-grid-list cols="4" rowHeight="60px">
-				<md-grid-tile [colspan]="2" [rowspan]="1">
-					<md-input-container>
-						<input mdInput id="firstName" type="text" required [(ngModel)]="newUser.firstName" name="firstName" placeholder="FirstName">
-					</md-input-container>
-				</md-grid-tile>
-				<md-grid-tile [colspan]="2" [rowspan]="1">
-					<md-input-container>
-						<input mdInput id="lastName" type="text" required [(ngModel)]="newUser.lastName" name="lastName" placeholder="LastName">
-					</md-input-container>
-				</md-grid-tile>
-			</md-grid-list>
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="lastName" type="text" required [(ngModel)]="newUser.lastName" name="lastName" placeholder="Last Name">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="username" type="text" required [(ngModel)]="newUser.username" name="username" placeholder="Username">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
 
-			<md-grid-list cols="4" rowHeight="60px">
-				<md-grid-tile [colspan]="4" [rowspan]="1">
-					<md-input-container>
-						<input mdInput id="address" type="text" required [(ngModel)]="newUser.address" name="address" placeholder="Address">
-					</md-input-container>
-				</md-grid-tile>
-			</md-grid-list>
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="email" type="text" required [(ngModel)]="newUser.email" name="email" placeholder="Email">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="password" type="text" required [(ngModel)]="newUser.password" name="password" placeholder="Password">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
 
-			<md-grid-list cols="4" rowHeight="60px">
-				<md-grid-tile [colspan]="2" [rowspan]="1">
-					<md-select placeholder="User Category" id="category" name="category" [(ngModel)]="newUser.category">
-						<md-option value="parent">Parent</md-option>
-						<md-option value="provider">Provider</md-option>
-					</md-select>
-				</md-grid-tile>
-			</md-grid-list>
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="walletPoints" type="number" required [(ngModel)]="newUser.walletPoints" name="walletPoints" placeholder="Wallet Points">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="bonusPoints" type="number" required [(ngModel)]="newUser.bonusPoints" name="bonusPoints" placeholder="Bonus Points">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
 
-			<md-grid-list cols="4" rowHeight="60px">
-				<md-grid-tile [colspan]="2" [rowspan]="1">
-					<md-input-container>
-						<input mdInput id="postalCode" type="number" [(ngModel)]="newUser.postalCode" name="postalCode" step="1" placeholder="NumbpostalCodeer of Pages">
-					</md-input-container>
-				</md-grid-tile>
-			</md-grid-list>
-
-			<md-grid-list cols="4" rowHeight="60px">
-				<md-grid-tile [colspan]="2" [rowspan]="1">
-					<md-input-container>
-						<input mdInput id="telephone" type="number" [(ngModel)]="newUser.telephone" name="telephone" step="0.01" placeholder="Telephone">
-					</md-input-container>
-				</md-grid-tile>
-			</md-grid-list>
-
-			<md-grid-list cols="4" rowHeight="60px">
-				<md-grid-tile [colspan]="4" [rowspan]="1">
-					<md-input-container>
-						<input mdInput id="email" type="text" required [(ngModel)]="newUser.email" name="email" placeholder="Email">
-					</md-input-container>
-				</md-grid-tile>
-			</md-grid-list>
-
-			<md-grid-list cols="4" rowHeight="60px">
-				<md-grid-tile [colspan]="2" [rowspan]="1">
-					&nbsp;
-					<md-slide-toggle [color]="color" [checked]="checked" [disabled]="disabled" [(ngModel)]="newUser.locked" name="locked">Locked</md-slide-toggle>
-				</md-grid-tile>
-			</md-grid-list>
-
-			Image &nbsp;
-			<input id="tile" type="file" id="userImage" name="userImage" (change)="uploadImageService.fileChangeEvent($event)">
-			<br><br>
-
-			<md-grid-list cols="20" rowHeight="60px">
-				<md-grid-tile [colspan]="2" [rowspan]="1">
-					<button class="mat-primary" md-raised-button type="submit">Add User</button>
-				</md-grid-tile>
-				<md-grid-tile [colspan]="2" [rowspan]="1">
-					<a class="mat-warn" md-raised-button routerLink="/">Cancel</a>
-				</md-grid-tile>
-			</md-grid-list>
-		</form>
-	</div>
-	<div class="row" [hidden]="!userAdded">
-		<h3>User added successfully!</h3>
-	</div>
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    &nbsp;
+                    <mat-slide-toggle [color]="color" [checked]="checked" [disabled]="disabled" [(ngModel)]="newUser.enabled" name="enabled">Enabled</mat-slide-toggle>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <br>
+            <br>
+            <mat-grid-list cols="20" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <button class="mat-primary" mat-raised-button type="submit">Add User</button>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <a class="mat-warn" mat-raised-button routerLink="/">Cancel</a>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </div>
+    <div class="row" [hidden]="!userAdded">
+        <h3>User added successfully!</h3>
+    </div>
 </div>

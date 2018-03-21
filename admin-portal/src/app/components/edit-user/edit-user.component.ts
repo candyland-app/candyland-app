@@ -3,7 +3,6 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { User } from '../../models/user';
 import { EditUserService } from '../../services/edit-user.service';
 import { GetUserService } from '../../services/get-user.service';
-import { UploadImageService } from '../../services/upload-image.service';
 
 @Component({
     selector: 'app-edit-user',
@@ -16,7 +15,6 @@ export class EditUserComponent implements OnInit {
     private userUpdated: boolean;
 
     constructor(
-        private uploadImageService: UploadImageService,
         private editUserService: EditUserService,
         private getUserService: GetUserService,
         private route: ActivatedRoute,
@@ -26,12 +24,11 @@ export class EditUserComponent implements OnInit {
     onSubmit() {
         this.editUserService.sendUser(this.user).subscribe(
             data => {
-                this.uploadImageService.modify(
-                    JSON.parse(JSON.parse(JSON.stringify(data))._body).id
-                );
                 this.userUpdated = true;
             },
-            error => console.log(error)
+            error => {
+                console.log(error);
+            }
         );
     }
 
@@ -44,7 +41,9 @@ export class EditUserComponent implements OnInit {
             res => {
                 this.user = res.json();
             },
-            error => console.log(error)
+            error => {
+                console.log(error);
+            }
         );
     }
 }

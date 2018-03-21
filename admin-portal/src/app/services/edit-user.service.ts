@@ -8,7 +8,6 @@ export class EditUserService {
 
     sendUser(user: User) {
         const url = 'http://localhost:8181/user/update';
-
         const headers = new Headers({
             'Content-Type': 'application/json',
             'x-auth-token': localStorage.getItem('xAuthToken')

@@ -1,3 +1,4 @@
+/* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 
@@ -17,15 +18,16 @@ body {
     margin: 0;
 }
 
-md-input-container {
+mat-form-field {
+    padding-top: 10px;
     width: 100%;
 }
 
-md-select {
+mat-select {
     width: 100%;
 }
 
-md-slide-toggle {
+mat-slide-toggle {
     width: 100%;
 }
 

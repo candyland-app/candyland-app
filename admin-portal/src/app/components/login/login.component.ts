@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         this.loginService
-            .sendCredential(this.credential.username, this.credential.password)
+            .sendCrendential(this.credential.username, this.credential.password)
             .subscribe(
                 res => {
                     console.log(res);
@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
             },
             error => {
                 this.loggedIn = false;
+                console.log('inactive session');
             }
         );
     }

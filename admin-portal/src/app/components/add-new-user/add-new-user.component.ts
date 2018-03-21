@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { AddUserService } from '../../services/add-user.service';
-import { UploadImageService } from '../../services/upload-image.service';
 
 @Component({
     selector: 'app-add-new-user',
@@ -12,20 +11,14 @@ export class AddNewUserComponent implements OnInit {
     private newUser: User = new User();
     private userAdded: boolean;
 
-    constructor(
-        private addUserService: AddUserService,
-        private uploadImageService: UploadImageService
-    ) {}
+    constructor(private addUserService: AddUserService) {}
 
     onSubmit() {
         this.addUserService.sendUser(this.newUser).subscribe(
             res => {
-                this.uploadImageService.upload(
-                    JSON.parse(JSON.parse(JSON.stringify(res))._body).id
-                );
                 this.userAdded = true;
                 this.newUser = new User();
-                this.newUser.locked = false;
+                this.newUser.enabled = true;
             },
             error => {
                 console.log(error);
@@ -35,6 +28,12 @@ export class AddNewUserComponent implements OnInit {
 
     ngOnInit() {
         this.userAdded = false;
-        this.newUser.locked = true;
+        this.newUser.enabled = true;
+        this.newUser.firstName = '';
+        this.newUser.lastName = '';
+        this.newUser.username = '';
+        this.newUser.password = '';
+        this.newUser.email = '';
+        this.newUser.phone = '';
     }
 }

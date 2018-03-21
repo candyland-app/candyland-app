@@ -25,7 +25,6 @@ export class NavBarComponent implements OnInit {
                 console.log(error);
             }
         );
-
         this.router.navigate(['/']);
     }
 
@@ -36,6 +35,7 @@ export class NavBarComponent implements OnInit {
             },
             error => {
                 this.loggedIn = false;
+                console.log('inactive session');
             }
         );
     }

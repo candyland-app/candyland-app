@@ -8,7 +8,6 @@ export class AddUserService {
 
     sendUser(user: User) {
         const url = 'http://localhost:8181/user/add';
-
         const headers = new Headers({
             'Content-Type': 'application/json',
             'x-auth-token': localStorage.getItem('xAuthToken')
