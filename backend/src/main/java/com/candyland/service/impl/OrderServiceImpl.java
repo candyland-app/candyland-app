@@ -59,7 +59,7 @@ public class OrderServiceImpl implements OrderService {
             Event event = cartItem.getEvent();
             cartItem.setOrder(order);
             event.setAvailableTickets(event.getAvailableTickets() - cartItem.getQty());
-            event.setActive(false);
+            if (event.getAvailableTickets() - cartItem.getQty() <= 0) event.setActive(false);
         }
 
         order.setCartItemList(cartItemList);

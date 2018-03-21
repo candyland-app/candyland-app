@@ -16,7 +16,10 @@
                     </a>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a mat-raised-button color="primary" routerLink="/checkout">
+                    <a *ngIf="!notEnoughStock" mat-raised-button color="primary" routerLink="/checkout">
+                        Checkout
+                    </a>
+                    <a *ngIf="notEnoughStock" [disabled]="true" mat-raised-button color="primary">
                         Checkout
                     </a>
                 </div>
@@ -64,10 +67,10 @@
                     <p *ngIf="cartItem.event.availableTickets > 10" style="color: green;">
                         Tickets are available.
                     </p>
-                    <p *ngIf="cartItem.event.availableTickets < 10 && cartItem.event.availableTickets > 0" style="color: orange;">
+                    <p *ngIf="cartItem.event.availableTickets <= 10 && cartItem.event.availableTickets > 0" style="color: orange;">
                         Only {{ cartItem.event.availableTickets }} Tickets Left
                     </p>
-                    <p *ngIf="cartItem.event.availableTickets == 10" style="color: red;">
+                    <p *ngIf="cartItem.event.availableTickets == 0" style="color: red;">
                         No Tickets Available
                     </p>
                     <a mat-button class="pointer" color="primary" (click)="onRemoveCartItem(cartItem)">
@@ -83,7 +86,7 @@
                     <input hidden="hidden" name="id" [(ngModel)]="cartItem.id" />
                     <input id="cartItem.id" name="qty" [disabled]="cartItem.event.availableTickets == 0" class="form-control cartItemQty" [(ngModel)]="cartItem.qty"
                         (ngModelChange)="cartItem.toUpdate = true" />
-                    <a mat-button *ngIf="cartItem.toUpdate" class="pointer" color="warn" (click)="onUpdateCartItem(cartItem)">
+                    <a mat-button *ngIf="cartItem.toUpdate" class="pointer" color="warn" (click)="onUpdateCartItem(cartItem); onCheckout()">
                         Update
                     </a>
                 </div>

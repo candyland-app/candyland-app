@@ -42,6 +42,7 @@ export class ShoppingCartComponent implements OnInit {
     }
 
     onUpdateCartItem(cartItem: CartItem) {
+        this.notEnoughStock = false;
         this.cartService.updateCartItem(cartItem.id, cartItem.qty).subscribe(
             res => {
                 console.log(res.text());
