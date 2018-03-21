@@ -93,7 +93,7 @@ export class EventListComponent implements OnInit {
         };
         this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
 
-        this.list = this.dataPipe.transform(this.eventList, this.description, this.selectedAge, this.selectedCategory, this.selectedMaxPrice);
+        this.list = this.dataPipe.transform(this.eventList, this.description, this.selectedAge, this.selectedCategory, this.selectedMaxPrice, true);
 
         this.do();
     }
