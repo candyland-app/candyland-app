@@ -65,14 +65,13 @@ public class MailConstructor {
             int index = order.getCartItemList().indexOf(item);
             op.setIndex(index);
             op.execute();
-            op.getDocument();
             orderFilenames.add("order" + order.getId().toString() + "_" + index + ".pdf");
         }
 
         MimeMessagePreparator messagePreparator = new MimeMessagePreparator() {
             @Override
             public void prepare(MimeMessage mimeMessage) throws Exception {
-                MimeMessageHelper email = new MimeMessageHelper(mimeMessage);
+                MimeMessageHelper email = new MimeMessageHelper(mimeMessage, true);
                 email.setTo(user.getEmail());
                 email.setSubject("Candyland - Order Confirmation " + order.getId());
                 email.setText(text, true);
