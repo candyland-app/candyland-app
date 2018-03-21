@@ -37,13 +37,10 @@ import { EditEventService } from './services/edit-event.service';
 import { GetEventListService } from './services/get-event-list.service';
 import { GetEventService } from './services/get-event.service';
 import { LoginService } from './services/login.service';
-<<<<<<< HEAD
 import { OrderService } from './services/order.service';
-=======
-import { UserService } from './services/user.service';
->>>>>>> a475a09f1434492fbd0cf01d0a1c4e2df9433089
 import { RemoveEventService } from './services/remove-event.service';
 import { UploadImageService } from './services/upload-image.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
     declarations: [
@@ -84,11 +81,8 @@ import { UploadImageService } from './services/upload-image.service';
         GetEventListService,
         RemoveEventService,
         UploadImageService,
-<<<<<<< HEAD
-        OrderService
-=======
+        OrderService,
         UserService
->>>>>>> a475a09f1434492fbd0cf01d0a1c4e2df9433089
     ],
     bootstrap: [AppComponent, DialogResultExampleDialog]
 })
