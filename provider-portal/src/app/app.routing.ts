@@ -5,12 +5,17 @@ import { EditEventComponent } from './components/edit-event/edit-event.component
 import { EventListComponent } from './components/event-list/event-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { ViewEventComponent } from './components/view-event/view-event.component';
+import { ReportComponent } from './components/report/report.component';
 
 const appRoutes: Routes = [
     {
         path: '',
         redirectTo: '/login',
         pathMatch: 'full'
+    },
+    {
+        path: 'report',
+        component: ReportComponent
     },
     {
         path: 'login',

@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="table-responsive" style="margin-top: 30px;">
+        <table id="eventListTable" class="table bordered highlight">
+            <thead>
+                <tr>
+					<th>Ιανουάριος</th>
+					<th>Φεβρουάριος</th>
+					<th>Μάρτιος</th>
+					<th>Απρίλιος</th>
+					<th>Μάιος</th>
+					<th>Ιούνιος</th>
+					<th>Ιούλιος</th>
+					<th>Αύγουστος</th>
+					<th>Σεπτέμβριος</th>
+					<th>Οκτώβριος</th>
+					<th>Νοέμβριος</th>
+					<th>Δεκέμβριος</th>
+                </tr>
+            </thead>
+            <tbody>
+            <!-- not sure of the table's structure yet... -->
+                <tr *ngFor="let order of orderList">
+					<td>{{ order.orderTotal }}</td>
+					<td>{{ order.orderDate }}</td>
+					<td>{{ order.orderStatus }}</td>
+					<td></td>
+				</tr>
+            </tbody>
+        </table>
+    </div>
+</div>

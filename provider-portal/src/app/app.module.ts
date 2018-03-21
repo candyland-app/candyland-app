@@ -29,6 +29,7 @@ import {
 } from './components/event-list/event-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ReportComponent } from './components/report/report.component';
 import { ViewEventComponent } from './components/view-event/view-event.component';
 
 import { AddEventService } from './services/add-event.service';
@@ -36,6 +37,7 @@ import { EditEventService } from './services/edit-event.service';
 import { GetEventListService } from './services/get-event-list.service';
 import { GetEventService } from './services/get-event.service';
 import { LoginService } from './services/login.service';
+import { OrderService } from './services/order.service';
 import { RemoveEventService } from './services/remove-event.service';
 import { UploadImageService } from './services/upload-image.service';
 
@@ -43,6 +45,7 @@ import { UploadImageService } from './services/upload-image.service';
     declarations: [
         AppComponent,
         NavBarComponent,
+        ReportComponent,
         LoginComponent,
         AddNewEventComponent,
         DialogResultExampleDialog,
@@ -76,7 +79,8 @@ import { UploadImageService } from './services/upload-image.service';
         LoginService,
         GetEventListService,
         RemoveEventService,
-        UploadImageService
+        UploadImageService,
+        OrderService
     ],
     bootstrap: [AppComponent, DialogResultExampleDialog]
 })
