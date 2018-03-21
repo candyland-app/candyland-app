@@ -9,7 +9,7 @@
     </div>
     <div class="row justify-content-center" style="margin-top:30px">
         <div class="col-12">
-            <table class="table" id="myTable" [mfData]="eventList | dataFilter : description : selectedAge : selectedCategory: selectedMaxPrice" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
+            <table class="table" id="myTable" [mfData]="eventList | dataFilter : description : selectedAge : selectedCategory: selectedMaxPrice : true" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
                 [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                 <thead>
                     <tr>{{ timer }}
@@ -27,28 +27,34 @@
                                             <input class="form-control" type="date" name="date" [(ngModel)]="selectedDate">
                                             <br>
                                         </div>
-                                        <div class="col-sm-4" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
+                                        <div class="col-sm-2" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
+                                            Ages:
+                                            <input id="age" class="form-control" type="number" name="age" style="width: 60px;" [(ngModel)]="selectedAge">
+                                        </div>
+                                        <div class="col-sm-3" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
+                                            Max Price:
+                                            <input id="maxprice" class="form-control" type="number" name="maxprice" style="width: 100px;" step="1" [(ngModel)]="selectedMaxPrice">
+                                        </div>
+                                        <div class="col-sm-2" style="text-align: center; margin-bottom:10px; margin-top: 10px;">
+                                            Categories:
+                                            <select [(ngModel)]="selectedCategory" name="categories">
+                                                  <option *ngFor="let category of categories" [ngValue]="category.name">{{category.name}}</option>
+                                            </select>
+                                        </div>
+                                         <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
                                             Address:
                                             <input id="address" class="form-control" type="text" name="address" placeholder="Address" [(ngModel)]="selectedAddress">
                                             <br>
                                         </div>
-                                        <div class="col-sm-4" style="text-align: center; margin-bottom:10px; margin-top: 20px;">
+                                        <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
                                             Zipcode:
-                                            <input id="zipcode" class="form-control" type="text" name="zipcode" placeholder="Zipcode" [(ngModel)]="selectedZipcode">
+                                            <input id="zipcode" class="form-control" type="text" name="zipcode" placeholder="Zipcode"  [(ngModel)]="selectedZipcode">
                                             <br>
                                         </div>
                                         <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
-                                            Ages:
-                                            <input id="age" class="form-control" type="number" name="age"  [(ngModel)]="selectedAge">
-                                        </div>
-                                        <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
-                                            Maximum Price:
-                                            <input id="maxprice" class="form-control" type="number" name="maxprice" style="width: 100px;" step="0.01" [(ngModel)]="selectedMaxPrice">
-                                        </div>
-                                        <div class="col-sm-4" style="text-align: center; margin-bottom:15px;">
-                                            Categories:
-                                            <select [(ngModel)]="selectedCategory" name="categories">
-                                                  <option *ngFor="let category of categories" [ngValue]="category.name">{{category.name}}</option>
+                                            Distances:
+                                            <select [(ngModel)]="selectedDistance" name="distances">
+                                                  <option *ngFor="let distance of distances" [ngValue]="distance.name">{{distance.name}}</option>
                                             </select>
                                         </div>
                                     </div>
