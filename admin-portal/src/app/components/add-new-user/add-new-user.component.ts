@@ -27,6 +27,7 @@ export class AddNewUserComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.newUser.
         this.userAdded = false;
         this.newUser.enabled = true;
         this.newUser.firstName = '';
