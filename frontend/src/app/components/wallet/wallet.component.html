@@ -15,11 +15,8 @@
                 <div class="card" style="background-color: #ededed">
                     <div class="card-body">
                         <form (ngSubmit)="onUpdateUserInfo()">
-                                    <div class="col-sm-12">
-                                        <div class="points-text">Αυτήν τη στιγμή έχετε {{ this.user.walletPoints + this.user.bonusPoints }} Πόντους στο λογαριασμό σας!</div>
-                                    </div>
                                     <div class="col-sm-12" id="custom">
-                                            <div style="text-align: center; color: #BF032D; font-size: 130%; margin-bottom: 20px; margin-left: 20%">Χρειάζεστε άλλους {{pointsNeeded}} Πόντους για να κερδίσετε +10!
+                                            <div style="text-align: center; color: #BF032D; font-size: 130%; margin-bottom: 20px; margin-left: 20%">Αυτήν τη στιγμή έχετε {{ this.user.walletPoints + this.user.bonusPoints }} Πόντους στο λογαριασμό σας!
                                             </div>
                                             <div class="popup" (click)="showInfo()">
                                                 <img src="../../../assets/grey-info.png" style="width:20px;">
@@ -52,7 +49,7 @@
                                         Ο αριθμός πόντων που προσθέσατε δεν είναι θετικός.
                                     </div>
                                     <div style="text-align: left; color: #FF236D; font-size: 130%; margin-bottom: 20px;" *ngIf="bonus">
-                                        Συγχαρητήρια κερδίσατε {{ bonusPoints * 10}} Πόντους.
+                                        Συγχαρητήρια κερδίσατε {{ bonusPoints }} Πόντους.
                                     </div>
                                 </form>
 

@@ -39,6 +39,7 @@ export class OrderComponent implements OnInit {
     private order: Order = new Order();
     private processingCheckout = false;
     private user: User = new User;
+    private hideButton = false;
 
     constructor(
         private router: Router,
@@ -123,11 +124,18 @@ export class OrderComponent implements OnInit {
     }
 
     onValidate() {
-        this.processingCheckout = true;
-        this.setDefaultPaymentMethod();
-        setTimeout(() => {
-            this.onSubmit();
-        }, 1000);
+
+        if (this.user.walletPoints + this.user.bonusPoints < this.shoppingCart.grandTotal) this.hideButton = true;
+        else this.hideButton = false;
+
+        if (!this.hideButton) {
+            this.processingCheckout = true;
+            this.setDefaultPaymentMethod();
+            setTimeout(() => {
+                this.onUpdateUserInfo();
+                this.onSubmit();
+            }, 1000);
+        }
     }
 
     onSubmit() {
@@ -151,6 +159,41 @@ export class OrderComponent implements OnInit {
                 }
             );
 
+    }
+    private incorrectPassword = false;
+    private updateSuccess = false;
+    private updateUserInfo = false;
+    private currentPassword: string;
+    private currentPoints;
+    private addedPoints;
+    private newPassword: string;
+    onUpdateUserInfo() {
+
+        else if (confirm("Are you sure you want do Buy? ")) {
+
+            this.user.bonusPoints = this.user.bonusPoints - this.shoppingCart.grandTotal;
+            this.user.walletPoints = 1.0 * (this.user.walletPoints + this.user.bonusPoints);
+            this.user.bonusPoints = 1.0 * 0;
+
+            this.userService
+                .updateUserInfo(this.user, this.currentPassword, this.currentPassword)
+                .subscribe(
+                    res => {
+                        console.log(res.text());
+                        this.updateSuccess = true;
+                        this.updateUserInfo = true;
+                    },
+                    error => {
+                        console.log(error.text());
+                        const errorMessage = error.text();
+                        if (errorMessage === 'Incorrect current password!') {
+                            this.incorrectPassword = true;
+                        }
+                    }
+                );
+
+
+        }
     }
 
     private userPaymentList2;
@@ -222,6 +265,7 @@ export class OrderComponent implements OnInit {
                 this.stateList.push(state);
             }
         }
+
 
         this.payment.type = '';
         this.payment.expiryMonth = '';

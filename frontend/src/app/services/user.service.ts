@@ -30,6 +30,7 @@ export class UserService {
         const userInfo = {
             id: user.id,
             walletPoints: user.walletPoints,
+            bonusPoints: user.bonusPoints,
             firstName: user.firstName,
             lastName: user.lastName,
             username: user.username,

@@ -74,8 +74,8 @@ export class WalletComponent implements OnInit {
             this.notPositive = true;
         }
         else if (confirm("Are you sure you want do add points? ")) {
-
-            this.user.walletPoints = this.currentPoints + this.addedPoints ;
+            let al = this.addedPoints;
+            this.user.walletPoints = 1.0 * (this.currentPoints + this.addedPoints) ;
             this.currentPoints = this.user.walletPoints;
             this.noCards = false;
             this.notPositive = false;
@@ -83,14 +83,15 @@ export class WalletComponent implements OnInit {
             this.pointsNeeded = 100 - Math.floor(this.user.walletPoints % 100);
             console.log(Math.floor(this.user.walletPoints) / 100);
             console.log(Math.floor(this.user.bonusPoints) / 10);
-            if (Math.floor(this.user.walletPoints / 100) > Math.floor(this.user.bonusPoints / 10)) {
-                this.bonusPoints = Math.floor(this.user.walletPoints / 100) - Math.floor(this.user.bonusPoints / 10);
-                this.user.bonusPoints = 10 * Math.floor(this.user.walletPoints / 100);
+            if (Math.floor(al / 100) > 0) {
+                this.bonusPoints = Math.floor(al / 100) * 10.0;
+                this.user.bonusPoints = this.user.bonusPoints + this.bonusPoints;
                 this.bonus = true;
                 console.log("fds");
 
             }
             else this.bonusPoints = 0;
+
 
             this.userService
                 .updateUserInfo(this.user, this.newPassword, this.currentPassword)

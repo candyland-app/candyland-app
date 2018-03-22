@@ -133,11 +133,19 @@ public class UserResource {
     public ResponseEntity profileInfo(
         @RequestBody HashMap<String, Object> mapper
     ) throws Exception {
-
+        System.out.println("---Entering");
         int id = (Integer) mapper.get("id");
         String email = (String) mapper.get("email");
-        Double points = 1.0 * ((Integer) mapper.get("walletPoints"));
-        int bonusPoints = -2;
+        System.out.println("---Entering2");
+        String temp = mapper.get("walletPoints").toString();
+        double points = Double.parseDouble(temp);
+
+        System.out.println(temp);
+        System.out.println("---Entering3");
+        System.out.println(temp);
+        temp = mapper.get("bonusPoints").toString();
+        double bonusPoints = Double.parseDouble(temp);
+        System.out.println("---Entering4");
         String username = (String) mapper.get("username");
         String firstName = (String) mapper.get("firstName");
         String lastName = (String) mapper.get("lastName");
@@ -145,7 +153,7 @@ public class UserResource {
         String currentPassword = (String) mapper.get("currentPassword");
 
         User currentUser = userService.findById(Long.valueOf(id));
-
+        System.out.println("---Continuing");
         if (currentUser == null) {
             throw new Exception("User not found");
         }
@@ -178,12 +186,13 @@ public class UserResource {
         currentUser.setFirstName(firstName);
         currentUser.setLastName(lastName);
         currentUser.setUsername(username);
+        currentUser.setBonusPoints(bonusPoints);
         currentUser.setWalletPoints(points);
-        currentUser.setBonusPoints(((int) (points / 100) * 10));
         currentUser.setEmail(email);
-        System.out.println((int) ((points / 100) * 10));
+        System.out.println("WalletPoints: " + points);
+        System.out.println("BonusPoints: " + bonusPoints);
         userService.save(currentUser);
-
+        System.out.println("---Ending");
         return new ResponseEntity("Update Success", HttpStatus.OK);
     }
 
