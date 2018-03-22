@@ -26,6 +26,7 @@ export class MyProfileComponent implements OnInit {
     private user: User = new User();
     private updateSuccess: boolean;
     private newPassword: string;
+    private valNewPassword: string;
     private incorrectPassword: boolean;
     private updateUserInfo = false;
 
@@ -59,6 +60,59 @@ export class MyProfileComponent implements OnInit {
     selectedBillingChange(val: number) {
         this.selectedBillingTab = val;
     }
+    private dontMatch = false;
+    onValidate()    {
+
+        if (this.newPassword === this.valNewPassword) {
+            this.dontMatch = false;
+            this.onUpdateUserInfo();
+        }
+        else this.dontMatch = true;
+    }
+    private simplealert = true;
+    onValidate2() {
+
+        this.simplealert = this.cardTypeValidator && this.namevalidator && this.namevalidator2 && this.namevalidator3 && this.namevalidator5 && this.namevalidator4;
+        if (this.simplealert) {
+
+            setTimeout(() => {
+                this.onNewPayment();
+            }, 1000);
+        }
+
+    }
+
+
+    private cardTypeValidator = true;
+    validateType(type: string) {
+        if (type != '') this.cardTypeValidator = true;
+        else this.cardTypeValidator = false;
+    }
+    private namevalidator = true;
+    validateName(name: string) {
+        if (name != null && name != "") this.namevalidator = true;
+        else this.namevalidator = false;
+    }
+    private namevalidator2 = true;
+    validateName2(name: string) {
+        if (name != null && name != "") this.namevalidator2 = true;
+        else this.namevalidator2 = false;
+    }
+    private namevalidator3 = true;
+    validateName3(name: string) {
+        if (name != null && name != "") this.namevalidator3 = true;
+        else this.namevalidator3 = false;
+    }
+    private namevalidator4 = true;
+    validateName4(name: string) {
+        if (name != null && name != "") this.namevalidator4 = true;
+        else this.namevalidator4 = false;
+    }
+    private namevalidator5 = true;
+    validateName5(name: string) {
+        if (name != null && name != "") this.namevalidator5 = true;
+        else this.namevalidator5 = false;
+    }
 
     onUpdateUserInfo() {
         this.userService
@@ -68,10 +122,12 @@ export class MyProfileComponent implements OnInit {
                     console.log(res.text());
                     this.updateSuccess = true;
                     this.updateUserInfo = true;
+                    this.incorrectPassword = false;
                 },
                 error => {
                     console.log(error.text());
                     const errorMessage = error.text();
+                    this.updateSuccess = false;
                     if (errorMessage === 'Incorrect current password!') {
                         this.incorrectPassword = true;
                     }
@@ -197,11 +253,14 @@ export class MyProfileComponent implements OnInit {
         }
 
         this.userBilling.userBillingState = '';
-        this.userPayment.type = '';
+        this.userPayment.type = 'visa';
         this.userPayment.expiryMonth = '';
         this.userPayment.expiryYear = '';
         this.userPayment.userBilling = this.userBilling;
         this.defaultPaymentSet = false;
         this.hidebutton = false;
+        this.newPassword = "";
+        this.valNewPassword = "";
+        this.currentPassword = "";
     }
 }

@@ -47,6 +47,9 @@
                                         <label for="newUsername">
                                             Username *
                                         </label>&nbsp;
+                                        <span *ngIf="!namevalidator" style="color: red;">
+                                            Το Username δεν γίνεται να είναι κενό.
+                                        </span>
                                         <span *ngIf="usernameExists" style="color: red;">
                                             To Username χρησιμοποιείται. Επιλέξτε διαφορετικό!
                                         </span>
@@ -57,6 +60,9 @@
                                         <label for="email">
                                             Email Address *
                                         </label>&nbsp;
+                                        <span *ngIf="!emailvalidator" style="color: red;">
+                                            Το Email δεν είναι σωστό.
+                                        </span>
                                         <span *ngIf="emailExists" style="color: red;">
                                             To Email χρησιμοποιείται. Επιλέξτε διαφορετικό!
                                         </span>
@@ -73,15 +79,18 @@
                             <div style="margin-top: 20px;">
                                 <div class="alert alert-warning" *ngIf="emailNotExists">Το Email δεν υπάρχει.</div>
                                 <div class="alert alert-success" *ngIf="forgetPasswordEmailSent">Recovery email στάλθηκε.</div>
-                                <form (ngSubmit)="onForgetPassword()">
+                                <form (ngSubmit)="onValidate2()">
                                     <div class="form-group">
                                         <label for="recoverEmail">
                                             Your Email Address *
                                         </label>
+                                        <span *ngIf="!emailvalidator2" style="color: red;">
+                                            Το Email δεν είναι σωστό.
+                                        </span>
                                         <input type="email" class="form-control" id="recoverEmail" name="recoverEmail" [(ngModel)]="recoverEmail" required="required">
                                         <p style="color: #828282">Εισάγετε το εγγεγραμμένο Email σας.</p>
                                     </div>
-                                    <button mat-raised-button type="submit" color="primary">Submit</button>
+                                    <button mat-raised-button type="submit" color="primary" (click)="validateEmail2(recoverEmail)">Submit</button>
                                 </form>
                             </div>
                         </mat-tab>

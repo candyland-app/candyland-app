@@ -54,12 +54,22 @@ export class MyAccountComponent implements OnInit {
     }
 
     onValidate() {
-
         if (this.emailvalidator && this.namevalidator) {
             this.hidebutton = true;
             this.hidebutton2 = true;
+            //this.emailvalidator = false;
+            //this.namevalidator = false;
             setTimeout(() => {
                 this.onNewAccount();
+            }, 1000);
+        }
+    }
+
+    onValidate2() {
+        if (this.emailvalidator2) {
+            //this.emailvalidator2 = false;
+            setTimeout(() => {
+                this.onForgetPassword();
             }, 1000);
         }
     }
@@ -96,12 +106,18 @@ export class MyAccountComponent implements OnInit {
 
 
     }
-    private emailvalidator: boolean;
-    private namevalidator: boolean;
+    private emailvalidator = true;
+    private emailvalidator2 = true;
+    private namevalidator = true;
     validateEmail(mail: string) {
 
         if (mail != null && (mail.indexOf(".") > mail.indexOf("@")) && mail.indexOf("@") > -1) this.emailvalidator = true;
         else this.emailvalidator = false;
+    }
+
+    validateEmail2(mail: string) {
+        if (mail != null && (mail.indexOf(".") > mail.indexOf("@")) && mail.indexOf("@") > -1) this.emailvalidator2 = true;
+        else this.emailvalidator2 = false;
     }
 
     validateUsername(name: string) {

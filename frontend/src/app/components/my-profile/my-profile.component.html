@@ -31,10 +31,8 @@
                                         <strong>Ανανέωση Επιτυχής!</strong>
                                     </div>
                                 </div>
-                                <form (ngSubmit)="onUpdateUserInfo()">
+                                <form (ngSubmit)="onValidate()">
                                     <input type="hidden" name="id" [(ngModel)]="user.id" />
-                                    <div class="bg-info" *ngIf="updateUserInfo">Οι πληροφορίες του χρήστη ανανεώθηκαν.
-                                    </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-4">
@@ -62,7 +60,7 @@
                                         <label for="currentPassword"> Παρόν Password * </label>
                                         <input type="password" class="form-control" id="password"
                                             name="password" [(ngModel)]="currentPassword" />
-                                        <p style="color: #828282;">Εισάγεται τον παρόντα κωδικό για να αλλάξεται το Email ή το Password σας.</p>
+                                        <p style="color: #828282;">Εισάγεται τον παρόντα κωδικό για να αλλάξεται το Password σας.</p>
                                     </div>
 
                                     <div class="form-group">
@@ -76,6 +74,7 @@
 
                                     <div class="form-group">
                                         <label for="txtNewPassword"> Νέο Password * </label>&nbsp;
+                                        <span *ngIf="dontMatch" style="color: red">Τα νέα Passwords δεν ταυτίζονται.</span>
                                         <span id="checkPasswordMatch" style="color: red;"></span>
                                         <input type="password" class="form-control" id="txtNewPassword" name="txtNewPassword"
                                             [(ngModel)]="newPassword" />
@@ -85,7 +84,7 @@
                                         <label for="txtConfirmPassword"> Επαληθεύστε New Password *
                                         </label>
                                         <input type="password" class="form-control" id="txtConfirmPassword" name="txtNewPassword"
-                                        />
+                                            [(ngModel)]="valNewPassword"/>
                                     </div>
 
                                     <button mat-raised-button type="submit" color="primary" id="updateUserInfoButton">Αποθήκευση</button>
@@ -210,7 +209,7 @@
                                             </form>
                                         </mat-tab>
                                         <mat-tab label="Προσθήκη/Ανανέωση Πιστωτικής Κάρτας">
-                                            <form (ngSubmit)="onNewPayment()" method="post">
+                                            <form (ngSubmit)="onValidate2()" method="post">
                                                 <input hidden="hidden" name="id" [(ngModel)]="userPayment.id" />
                                                 <div class="form-group">
                                                     <br />
@@ -355,7 +354,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="col-sm-5 pull-right">
                                                         <div class="form-group">
                                                             <label for="cardCVC">Κωδικός CVC</label>
@@ -368,8 +366,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <span *ngIf="!simplealert" style="color: red;">
+                                                    Συμπληρώστε όλα τα πεδία!
+                                                </span>
                                                 <hr />
-                                                <button mat-raised-button type="submit" color="primary">
+                                                <button mat-raised-button type="submit" color="primary" (click)="validateType(userPayment.type); validateName(userPayment.holderName); validateName2(userPayment.holderName); validateName3(userPayment.expiryMonth); validateName4(userPayment.expiryYear); validateName5(userPayment.cardName);">
                                                     Αποθήκευση</button>
                                             </form>
                                         </mat-tab>
