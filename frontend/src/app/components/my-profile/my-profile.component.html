@@ -57,19 +57,19 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="currentPassword"> Παρόν Password * </label>
-                                        <input type="password" class="form-control" id="password"
-                                            name="password" [(ngModel)]="currentPassword" />
-                                        <p style="color: #828282;">Εισάγεται τον παρόντα κωδικό για να αλλάξεται το Password σας.</p>
-                                    </div>
-
-                                    <div class="form-group">
                                         <label for="email"> Διεύθυνση Email * </label>&nbsp;
                                         <span *ngIf="emailExists" style="color: red">Το Email χρησιμοποιείται. Επιλέξτε άλλο.</span>
                                         <input required="required"
                                             type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email"
                                         />
                                         <p style="color: #828282;">Όλα τα μηνύματα θα στέλνονται σε αυτό..</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="currentPassword"> Παρόν Password * </label>
+                                        <input type="password" class="form-control" id="password"
+                                            name="password" [(ngModel)]="currentPassword" />
+                                        <p style="color: #828282;">Εισάγεται τον παρόντα κωδικό για να αλλάξεται το Password σας.</p>
                                     </div>
 
                                     <div class="form-group">
