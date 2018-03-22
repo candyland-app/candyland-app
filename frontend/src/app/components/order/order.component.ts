@@ -125,7 +125,7 @@ export class OrderComponent implements OnInit {
 
     onValidate() {
 
-        if (this.user.walletPoints + this.user.bonusPoints < this.shoppingCart.grandTotal) this.hideButton = true;
+        if (this.user.walletPoints + this.user.bonusPoints < this.shoppingCart.gradTotal) this.hideButton = true;
         else this.hideButton = false;
 
         if (!this.hideButton) {
@@ -169,9 +169,9 @@ export class OrderComponent implements OnInit {
     private newPassword: string;
     onUpdateUserInfo() {
 
-        else if (confirm("Are you sure you want do Buy? ")) {
+            if (confirm("Are you sure you want do Buy? ")) {
 
-            this.user.bonusPoints = this.user.bonusPoints - this.shoppingCart.grandTotal;
+            this.user.bonusPoints = this.user.bonusPoints - this.shoppingCart.gradTotal;
             this.user.walletPoints = 1.0 * (this.user.walletPoints + this.user.bonusPoints);
             this.user.bonusPoints = 1.0 * 0;
 
