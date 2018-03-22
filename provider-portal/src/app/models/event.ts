@@ -13,5 +13,6 @@ export class Event {
     public price: number;
     public active: boolean;
     public description: string;
+	public initialTickets: number;
     public availableTickets: number;
 }

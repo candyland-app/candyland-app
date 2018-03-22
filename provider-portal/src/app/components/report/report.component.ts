@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Event } from '../../models/event';
-import { Order } from '../../models/order';
-import { AddEventService } from '../../services/add-event.service';
 import { GetEventListService } from '../../services/get-event-list.service';
-import { OrderService } from '../../services/order.service';
-import { UploadImageService } from '../../services/upload-image.service';
+import { LoginService } from '../../services/login.service';
+import { RemoveEventService } from '../../services/remove-event.service';
 
 
 @Component({
@@ -13,35 +12,55 @@ import { UploadImageService } from '../../services/upload-image.service';
     styleUrls: ['./report.component.css']
 })
 export class ReportComponent implements OnInit {
+    private selectedEvent: Event;
+    private checked: boolean;
     private eventList: Event[];
-    private orderList: Order[];
-    private monthsSum: number[];
+    private allChecked: boolean;
+    private removeEventList: Event[] = new Array();
 
     constructor(
         private getEventListService: GetEventListService,
-        private getOrderListService: OrderService
+        private removeEventService: RemoveEventService,
+        private router: Router,
     ) {}
 
-    getOrderList() {
-        this.getOrderListService.getOrderList().subscribe(
+    onSelect(event: Event) {
+        this.selectedEvent = event;
+        this.router.navigate(['/viewEvent', this.selectedEvent.id]);
+    }
+
+    updateRemoveEventList(checked: boolean, event: Event) {
+        if (checked) {
+            this.removeEventList.push(event);
+        } else {
+            this.removeEventList.splice(this.removeEventList.indexOf(event), 1);
+        }
+    }
+
+    updateSelected(checked: boolean) {
+        if (checked) {
+            this.allChecked = true;
+            this.removeEventList = this.eventList;
+        } else {
+            this.allChecked = false;
+            this.removeEventList = [];
+        }
+    }
+
+    getEventList() {
+        this.getEventListService.getEventList().subscribe(
             res => {
                 console.log(res.json());
-                this.orderList = res.json();
+                this.eventList = res.json();
             },
             error => {
                 console.log(error);
             }
         );
     }
-  
-    calculateSums() {
-      this.orderList.forEach((order) => {
-        const dateString = new Date(order.orderDate);
-        this.monthsSum[dateString.getMonth()] += order.orderTotal;
-      });
-    }
-  
+
     ngOnInit() {
-        this.getOrderList();
+        this.getEventList();
     }
 }
+

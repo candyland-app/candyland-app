@@ -18,6 +18,7 @@ export class AddNewEventComponent implements OnInit {
     ) {}
 
     onSubmit() {
+      	this.newEvent.initialTickets = this.newEvent.availableTickets;
         this.addEventService.sendEvent(this.newEvent).subscribe(
             res => {
                 this.uploadImageService.upload(

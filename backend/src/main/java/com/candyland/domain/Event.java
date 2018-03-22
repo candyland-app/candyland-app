@@ -32,9 +32,9 @@ public class Event implements Serializable {
     private double price;
     private boolean active = true;
 
-
     @Column(columnDefinition = "text")
     private String description;
+    private int initialTickets;
     private int availableTickets;
 
     @Transient
@@ -168,5 +168,12 @@ public class Event implements Serializable {
         this.eventImage = eventImage;
     }
 
+    public int getInitialTickets() {
+        return initialTickets;
+    }
+
+    public void setInitialTickets(int initialTickets) {
+        this.initialTickets = initialTickets;
+    }
 
 }

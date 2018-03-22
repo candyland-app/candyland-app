@@ -3,28 +3,37 @@
         <table id="eventListTable" class="table bordered highlight">
             <thead>
                 <tr>
-					<th>Ιανουάριος</th>
-					<th>Φεβρουάριος</th>
-					<th>Μάρτιος</th>
-					<th>Απρίλιος</th>
-					<th>Μάιος</th>
-					<th>Ιούνιος</th>
-					<th>Ιούλιος</th>
-					<th>Αύγουστος</th>
-					<th>Σεπτέμβριος</th>
-					<th>Οκτώβριος</th>
-					<th>Νοέμβριος</th>
-					<th>Δεκέμβριος</th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Percentage Sold
+                    </th>
+                    <th>
+                        Money Earned
+                    </th>
                 </tr>
             </thead>
             <tbody>
-            <!-- not sure of the table's structure yet... -->
-                <tr *ngFor="let order of orderList">
-					<td>{{ order.orderTotal }}</td>
-					<td>{{ order.orderDate }}</td>
-					<td>{{ order.orderStatus }}</td>
-					<td></td>
-				</tr>
+                <tr *ngFor="let event of eventList">
+                    <td>
+                        <a (click)="onSelect(event)" style="cursor: pointer;">
+                            {{ event.name }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ event.address }}
+                    </td>
+                    <td>
+                        {{ ((1.0 * (event.initialTickets - event.availableTickets) / event.initialTickets) * 100) | number:'1.2-2' }} %
+                    </td>
+                    <td>
+                        {{ (event.initialTickets - event.availableTickets) * event.price | number:'1.2-2' }} €
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
