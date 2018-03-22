@@ -38,9 +38,9 @@ import { GetEventListService } from './services/get-event-list.service';
 import { GetEventService } from './services/get-event.service';
 import { LoginService } from './services/login.service';
 import { OrderService } from './services/order.service';
+import { UserService } from './services/user.service';
 import { RemoveEventService } from './services/remove-event.service';
 import { UploadImageService } from './services/upload-image.service';
-import { UserService } from './services/user.service';
 
 @NgModule({
     declarations: [
