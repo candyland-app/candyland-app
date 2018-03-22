@@ -1,14 +1,13 @@
 <div class="container">
     <div [hidden]="userUpdated">
-        <h3 style="margin-top: 30px;">Update User Information
-            <span style="font-size:small">* is a required field</span>
+        <h3 style="margin-top: 30px;">Ανανέωση Πληροφοριών Χρήστη
         </h3>
 
         <form (ngSubmit)="onSubmit()">
             <mat-grid-list cols="4" rowHeight="60px">
                 <mat-grid-tile [colspan]="4" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="firstName" type="text" required [(ngModel)]="user.firstName" name="firstName" placeholder="First Name">
+                        <input matInput id="firstName" type="text"  [(ngModel)]="user.firstName" name="firstName" placeholder="Όνομα">
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -16,25 +15,12 @@
             <mat-grid-list cols="4" rowHeight="60px">
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="lastName" type="text" required [(ngModel)]="user.lastName" name="lastName" placeholder="Last Name">
+                        <input matInput id="lastName" type="text"  [(ngModel)]="user.lastName" name="lastName" placeholder="Επώνυμο">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="username" type="text" required [(ngModel)]="user.username" name="username" placeholder="Username">
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
-
-            <mat-grid-list cols="4" rowHeight="60px">
-                <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <mat-form-field>
-                        <input matInput id="email" type="text" required [(ngModel)]="user.email" name="email" placeholder="Email">
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <mat-form-field>
-                        <input matInput id="password" type="text" required [(ngModel)]="user.password" name="password" placeholder="Password">
+                        <input matInput id="username" type="text"  [(ngModel)]="user.username" name="username" placeholder="Username">
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -42,12 +28,25 @@
             <mat-grid-list cols="4" rowHeight="60px">
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="walletPoints" type="number" required [(ngModel)]="user.walletPoints" name="walletPoints" placeholder="Wallet Points">
+                        <input matInput id="email" type="text"  [(ngModel)]="user.email" name="email" placeholder="Email">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="bonusPoints" type="number" required [(ngModel)]="user.bonusPoints" name="bonusPoints" placeholder="Bonus Points">
+                        <input matInput id="password" type="text"  [(ngModel)]="user.password" name="password" placeholder="Password">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="walletPoints" type="number"  [(ngModel)]="user.walletPoints" name="walletPoints" placeholder="Πόντοι Πορτοφολιού">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="bonusPoints" type="number"  [(ngModel)]="user.bonusPoints" name="bonusPoints" placeholder="Bonus Πόντοι Πορτοφολιού">
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -55,7 +54,7 @@
             <mat-grid-list cols="4" rowHeight="60px">
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     &nbsp;
-                    <mat-slide-toggle [color]="color" [checked]="checked" [disabled]="disabled" [(ngModel)]="user.enabled" name="enabled">Enabled</mat-slide-toggle>
+                    <mat-slide-toggle [color]="color" [checked]="checked" [disabled]="disabled" [(ngModel)]="user.enabled" name="enabled">Ενεργός</mat-slide-toggle>
                 </mat-grid-tile>
             </mat-grid-list>
             <br>
@@ -64,16 +63,16 @@
             <mat-grid-list cols="20" rowHeight="60px">
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <button class="mat-primary" mat-raised-button type="submit">
-                        Update User
+                        Ενημέρωση
                     </button>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <a class="mat-warn" mat-raised-button routerLink="/">Cancel</a>
+                    <a class="mat-warn" mat-raised-button routerLink="/">Ακύρωση</a>
                 </mat-grid-tile>
             </mat-grid-list>
         </form>
     </div>
     <div class="row" [hidden]="!userUpdated">
-        <h3>User updated successfully!</h3>
+        <h3>Ο Χρήστης ανανεώθηκε επιτυχώς!</h3>
     </div>
 </div>

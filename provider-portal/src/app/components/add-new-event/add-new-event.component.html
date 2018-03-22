@@ -1,14 +1,13 @@
 <div class="container">
     <div [hidden]="eventAdded">
-        <h3 style="margin-top: 30px;">New Event Information
-            <span style="font-size:small">* is a required field</span>
+        <h3 style="margin-top: 30px;">Πληροφορίες Νέας Εκδήλωσης
         </h3>
 
         <form (ngSubmit)="onSubmit()">
             <mat-grid-list cols="4" rowHeight="60px">
                 <mat-grid-tile [colspan]="4" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="name" type="text" required [(ngModel)]="newEvent.name" name="title" placeholder="Name">
+                        <input matInput id="name" type="text"  [(ngModel)]="newEvent.name" name="title" placeholder="Όνομα Εκδήλωσης">
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -16,25 +15,12 @@
             <mat-grid-list cols="4" rowHeight="60px">
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="address" type="text" required [(ngModel)]="newEvent.address" name="address" placeholder="Address">
+                        <input matInput id="address" type="text"  [(ngModel)]="newEvent.address" name="address" placeholder="Διεύθυνση">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="zipcode" type="text" required [(ngModel)]="newEvent.zipcode" name="zipcode" placeholder="Zipcode">
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
-
-            <mat-grid-list cols="4" rowHeight="60px">
-                <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <mat-form-field>
-                        <input matInput id="startDate" type="date" required [(ngModel)]="newEvent.startDate" name="startDate" placeholder="Start Date">
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <mat-form-field>
-                        <input matInput id="endDate" type="date" required [(ngModel)]="newEvent.endDate" name="endDate" placeholder="End Date">
+                        <input matInput id="zipcode" type="text"  [(ngModel)]="newEvent.zipcode" name="zipcode" placeholder="ΤΚ">
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -42,25 +28,12 @@
             <mat-grid-list cols="4" rowHeight="60px">
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="startTime" type="time" required [(ngModel)]="newEvent.startTime" name="startTime" placeholder="StartTime">
+                        <input matInput id="startDate" type="date"  [(ngModel)]="newEvent.startDate" name="startDate" placeholder="Ημερομηνία Έναρξης">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="endTime" type="time" required [(ngModel)]="newEvent.endTime" name="endTime" placeholder="EndTime">
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
-
-            <mat-grid-list cols="4" rowHeight="60px">
-                <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <mat-form-field>
-                        <input matInput id="minAge" min="1" type="number" [(ngModel)]="newEvent.minAge" name="minAge" step="1" required placeholder="Minimum Age">
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <mat-form-field>
-                        <input matInput id="maxAge" min="1" type="number" [(ngModel)]="newEvent.maxAge" name="maxAge" step="1" required placeholder="Maximum Age">
+                        <input matInput id="endDate" type="date"  [(ngModel)]="newEvent.endDate" name="endDate" placeholder="Ημερομηνία Λήξης">
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -68,7 +41,33 @@
             <mat-grid-list cols="4" rowHeight="60px">
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <mat-select required placeholder="Category" id="category" [(ngModel)]="newEvent.category" name="category">
+                        <input matInput id="startTime" type="time"  [(ngModel)]="newEvent.startTime" name="startTime" placeholder="Ώρα Έναρξης">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="endTime" type="time"  [(ngModel)]="newEvent.endTime" name="endTime" placeholder="Ώρα Λήξης">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="minAge" min="1" type="number" [(ngModel)]="newEvent.minAge" name="minAge" step="1"  placeholder="Ελάχιστη Ηλικία">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <input matInput id="maxAge" min="1" type="number" [(ngModel)]="newEvent.maxAge" name="maxAge" step="1"  placeholder="Μέγιστη Ηλικία">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-select  placeholder="Category" id="category" [(ngModel)]="newEvent.category" name="category">
                             <mat-option value="Αθλητικά">
                                 Αθλητικά
                             </mat-option>
@@ -92,7 +91,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
-                        <input matInput id="price" min="0.01" type="number" [(ngModel)]="newEvent.price" name="price" step="0.01" required placeholder="Ticket Price">
+                        <input matInput id="price" min="0.01" type="number" [(ngModel)]="newEvent.price" name="price" step="0.01"  placeholder="Τιμή">
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -101,35 +100,35 @@
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field>
                         <input matInput id="availableTickets" min="0" type="number" [(ngModel)]="newEvent.availableTickets" name="availableTickets"
-                            step="1" required placeholder="Available Tickets">
+                            step="1"  placeholder="Διαθέσιμα Εισιτήρια">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     &nbsp;
-                    <mat-slide-toggle [color]="color" [checked]="checked" [disabled]="disabled" [(ngModel)]="newEvent.active" name="active">Active</mat-slide-toggle>
+                    <mat-slide-toggle [color]="color" [checked]="checked" [disabled]="disabled" [(ngModel)]="newEvent.active" name="active">Ενεργός</mat-slide-toggle>
                 </mat-grid-tile>
             </mat-grid-list>
 
             <mat-form-field>
-                <textarea matInput id="description" [(ngModel)]="newEvent.description" name="description" placeholder="Description" required></textarea>
+                <textarea matInput id="description" [(ngModel)]="newEvent.description" name="description" placeholder="Περιγραφή" ></textarea>
             </mat-form-field>
-            Image &nbsp;
+            Εικόνα: &nbsp;
             <input id="tile" type="file" id="eventImage" name="eventImage" (change)="uploadImageService.fileChangeEvent($event)">
             <br>
             <br>
 
             <mat-grid-list cols="20" rowHeight="60px">
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <button class="mat-primary" mat-raised-button type="submit">Add Event</button>
+                    <button class="mat-primary" mat-raised-button type="submit">Προσθήκη</button>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <a class="mat-warn" mat-raised-button routerLink="/">Cancel</a>
+                    <a class="mat-warn" mat-raised-button routerLink="/">Ακύρωση</a>
                 </mat-grid-tile>
             </mat-grid-list>
         </form>
     </div>
     <div class="row" [hidden]="!eventAdded">
-        <h3>Event added successfully!</h3>
+        <h3>Εκδήλωση δημιουργήθηκε με επιτυχία!</h3>
         <button (click)="refresh()" class="mat-primary" mat-raised-button type="submit">Πρόσθεσε και άλλη εκδήλωση!</button>
     </div>
 </div>

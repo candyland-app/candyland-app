@@ -8,21 +8,21 @@
         </div>
         <form (ngSubmit)="onSubmit()">
           <mat-form-field class="full-width">
-            <input matInput type="text" [(ngModel)]="credential.username" name="username" id="username" placeholder="Your Username">
+            <input matInput type="text" [(ngModel)]="credential.username" name="username" id="username" placeholder="Username">
           </mat-form-field>
           <mat-form-field class="full-width">
-            <input matInput type="password" [(ngModel)]="credential.password" name="password" id="password" placeholder="Your Password">
+            <input matInput type="password" [(ngModel)]="credential.password" name="password" id="password" placeholder="Password">
           </mat-form-field>
           <button mat-raised-button type="submit" color="primary">
-            Login
+            Είσοδος
           </button>
         </form>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
   <div style="margin-top: 5rem; margin-left: 5rem" [hidden]="!loggedIn">
-    <h2>Welcome to Provider-Portal</h2>
-    <h4>Click below to redirect to your events</h4>
-    <a mat-raised-button type="submit" color="primary" *ngIf="!banned" href="/eventList">Go to your Events</a>
+    <h2>Καλωσήρθατε στο Provider-Portal</h2>
+    <h4>Κάντε κλικ από κατω για να πάτε στις Εκδηλώσεις σας!</h4>
+    <a mat-raised-button type="submit" color="primary" *ngIf="!banned" href="/eventList">Εκδηλώσεις</a>
   </div>
 </div>

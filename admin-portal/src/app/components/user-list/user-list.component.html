@@ -7,10 +7,10 @@
                         <input type="checkbox" (change)="updateSelected($event.target.checked)" />
                     </th>
                     <th>
-                        First Name
+                        Όνομα
                     </th>
                     <th>
-                        Last Name
+                        Επώνυμο
                     </th>
                     <th>
                         Username
@@ -19,16 +19,16 @@
                         Email
                     </th>
                     <th>
-                        Wallet Points
+                        Πόντοι Πορτοφολιού
                     </th>
                     <th>
-                        Bonus Points
+                        Bonus Πόντοι Πορτοφολιού
                     </th>
                     <th>
-                        Enabled
+                        Ενεργός
                     </th>
                     <th>
-                        Operation
+                        Ενέργειες
                     </th>
                 </tr>
             </thead>
@@ -65,7 +65,7 @@
                         <input hidden="hidden" name="id" />
                         <button mat-button (click)="openDialog(user)" value="delete">
                             <span class="fa fa-times"></span>
-                            Delete
+                            Διαγραφή
                         </button>
                     </td>
                 </tr>
@@ -73,6 +73,6 @@
         </table>
     </div>
     <button mat-raised-button color="warn" id="deleteSelected" (click)="removeSelectedUsers()">
-        Delete Selected
+        Διαγραφή Επιλεγμένων
     </button>
 </div>

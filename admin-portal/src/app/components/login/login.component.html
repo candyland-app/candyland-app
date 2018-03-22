@@ -5,10 +5,10 @@
       <mat-grid-tile [colspan]="4">
         <form (ngSubmit)="onSubmit()">
           <mat-form-field class="full-width">
-            <input matInput type="text" [(ngModel)]="credential.username" name="username" id="username" placeholder="Your Username">
+            <input matInput type="text" [(ngModel)]="credential.username" name="username" id="username" placeholder="Username">
           </mat-form-field>
           <mat-form-field class="full-width">
-            <input matInput type="password" [(ngModel)]="credential.password" name="password" id="password" placeholder="Your Password">
+            <input matInput type="password" [(ngModel)]="credential.password" name="password" id="password" placeholder="Password">
           </mat-form-field>
           <button mat-raised-button type="submit" color="primary">
             Login
@@ -18,6 +18,6 @@
     </mat-grid-list>
   </div>
   <div [hidden]="!loggedIn">
-    <h2>You have logged in!</h2>
+    <h2>Καλωσήρθατε στο Admin-Portal!</h2>
   </div>
 </div>
